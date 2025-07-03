@@ -1,0 +1,20 @@
+import { Session } from "next-auth";
+
+export default async function checkUserRole(
+    session: Session | null,
+    setIsAdmin: (isAdmin: boolean) => void,
+) {
+    if (session?.user?.email) {
+        try {
+            const response = await fetch(`/api/prisma/getUserRole?email=${session.user.email}`);
+            if (response.ok) {
+                const data = await response.json();
+                if (data.role === "admin") {
+                    setIsAdmin(true);
+                }
+            }
+        } catch (error) {
+            console.error("Error checking user role:", error);
+        }
+    }
+}
