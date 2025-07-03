@@ -1,0 +1,13 @@
+/* (Component) Event Table */
+.MuiDataGrid-root {
+    display: block;
+    background-color: white;
+}
+
+.MuiDataGrid-toolbarContainer .MuiButton-root {
+    color: #787878;
+}
+
+.MuiBadge-badge {
+    background-color: #1976d2;
+}

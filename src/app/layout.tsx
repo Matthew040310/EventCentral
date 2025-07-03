@@ -1,6 +1,6 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import Providers from "./providers";
-import "@/styles/global.css";
+import "./globals.css";
 import CustomNavBar from "@/components/CustomNavBar";
 import CustomFooter from "@/components/CustomFooter";
 

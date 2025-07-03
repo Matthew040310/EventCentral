@@ -1,0 +1,26 @@
+/* Hide time slots in week view */
+.rbc-time-column {
+    display: none !important;
+}
+
+.rbc-label {
+    padding: 0px !important;
+}
+
+/* Make all day row full page */
+.rbc-time-header {
+    height: 100% !important;
+}
+
+/* Edit Event Content Style */
+.rbc-event-label {
+    display: none !important;
+}
+
+/* .rbc-events-container {
+    width: 100% !important;
+} */
+
+.rbc-event-content {
+    font-size: 0.8rem !important;
+}
