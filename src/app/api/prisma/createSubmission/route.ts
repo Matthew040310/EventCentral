@@ -1,31 +1,25 @@
-import prisma from './dbClient';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import prisma from '../dbClient';
 import TRecurringDateParams from '@/types/TRecurringDateParams';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 import { recurringDates } from '@/util/replicateEventDates';
-import { deleteDrafts } from './deleteDraft';
+import { deleteDrafts } from '../deleteDraft/route';
 
-export default async function createSubmission(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  // If method is not POST, immediately return error
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  const eventDetails = req.body['Event Details'];
-  const impactAssessment = req.body['Impact Assessment'];
-
-  // If eventDetails does not have existing uuid assigned from saved draft
-  // reset eventDetails.id so that Prisma will auto assign an id upon creation
-  if (!eventDetails.id) {
-    delete eventDetails.id;
-  };
-
-  delete eventDetails.estimatedStartDate; // Not an accepted field for submittedEvent
-  let createdEventSubmission: any;
+// createSubmission.ts
+export default async function POST(request: Request) {
   try {
+    const body = await request.json();
+
+    const eventDetails = body['Event Details'];
+    const impactAssessment = body['Impact Assessment'];
+
+    // If eventDetails does not have existing uuid assigned from saved draft
+    // reset eventDetails.id so that Prisma will auto assign an id upon creation
+    if (!eventDetails.id) {
+      delete eventDetails.id;
+    };
+
+    delete eventDetails.estimatedStartDate; // Not an accepted field for submittedEvent
+    let createdEventSubmission: any;
     await prisma.$transaction(async (tx) => {
 
       // Create event details draft in submittedEvent table
@@ -110,14 +104,14 @@ export default async function createSubmission(
     })
 
     // Returns success message if above code all successful
-    return res.status(201).json({
-      message: 'Submission successful!',
+    return Response.json(
+      { message: 'Submission successful!' }, { status: 201 }
       // No need to return id as user will be routed to /thank-you upon submission success
-    });
+    );
   }
   catch (error: any) {
-    return res.status(500).json({
+    return Response.json({
       error: primsaErrorHandler("Submission failed", error)
-    });
+    }, { status: 500 });
   }
 }
