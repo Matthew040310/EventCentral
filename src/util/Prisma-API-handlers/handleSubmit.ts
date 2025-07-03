@@ -1,6 +1,5 @@
-import EventDetails from "src/types/IEventDetails";
-import ImpactAssessment from "src/types/IImpactAssessment";
-import router from 'next/router'; // To enable after all functions completed
+import EventDetails from "@/types/IEventDetails";
+import ImpactAssessment from "@/types/IImpactAssessment";
 import type { AlertColor } from '@mui/material/Alert';
 
 function cleanImpactAssessment(impactAssessment: ImpactAssessment): ImpactAssessment {
@@ -68,9 +67,8 @@ export default async function handleSubmit(
 
         const result = await response.json();
         setAlert({ open: true, severity: 'success', message: result.message });
-        // To enable after all functions completed
-        // router.push('/');
-    } catch (error: any) {
+    }
+    catch (error: any) {
         setAlert({ open: true, severity: 'error', message: error.message });
         throw error;
     }
