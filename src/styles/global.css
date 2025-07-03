@@ -1,0 +1,53 @@
+/* (Component) CustomNavBar */
+.span-bold-underline {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* (Component) CustomDropDown */
+.MuiAutocomplete-root {
+    margin-top: 8px
+}
+
+/* (Component) Event Table */
+.MuiDataGrid-root {
+    display: block;
+    background-color: white;
+}
+
+.MuiDataGrid-toolbarContainer .MuiButton-root {
+    color: #787878;
+}
+
+.MuiBadge-badge {
+    background-color: #1976d2;
+}
+
+/* react-big-calendar */
+
+/* Hide time slots in week view */
+.rbc-time-column {
+    display: none !important;
+}
+
+.rbc-label {
+    padding: 0px !important;
+}
+
+/* Make all day row full page */
+.rbc-time-header {
+    height: 100% !important;
+}
+
+/* Edit Event Content Style */
+.rbc-event-label {
+    display: none !important;
+}
+
+/* .rbc-events-container {
+    width: 100% !important;
+} */
+
+.rbc-event-content {
+    font-size: 0.8rem !important;
+}
