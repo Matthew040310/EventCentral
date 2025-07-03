@@ -1,8 +1,8 @@
-import prisma from './dbClient';
+import prisma from '../dbClient';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
-export default async function getSubmittedEvents(
+export default async function getDraftEvents(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -17,19 +17,19 @@ export default async function getSubmittedEvents(
   const sortby = req.method === 'POST' ? req.body.sortby : []
 
   try {
-    const submittedEvents = await prisma.submittedEvent.findMany({
+    const draftEvents = await prisma.draftEvent.findMany({
       where: filters,
       orderBy: sortby,
-      include: { submittedImpactAssessment: true }
+      include: { draftImpactAssessment: true }
     })
 
     return res.status(200).json({
-      response: submittedEvents
+      response: draftEvents
     });
   }
   catch (error: any) {
     return res.status(500).json({
-      error: primsaErrorHandler("Failed to retrieve Submitted Events", error)
+      error: primsaErrorHandler("Failed to retrieve draft", error)
     });
   }
 }

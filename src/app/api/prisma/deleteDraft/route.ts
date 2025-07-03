@@ -1,4 +1,4 @@
-import prisma from './dbClient';
+import prisma from '../dbClient';
 import type { Prisma } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';

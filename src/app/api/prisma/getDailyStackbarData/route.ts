@@ -2,7 +2,7 @@
 // Uses prisma .groupby to aggregate data (other GET functions use .findMany)
 // This API will handle the logic for fetching and grouping submitted events by date and type
 
-import prisma from './dbClient';
+import prisma from '../dbClient';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dayjs from 'dayjs';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
