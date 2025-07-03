@@ -1,5 +1,5 @@
-import FullEventReport from "src/types/IFullEventReport";
-import FullEventReportParams from "src/types/IFullEventReportParams";
+import FullEventReport from "@/types/IFullEventReport";
+import FullEventReportParams from "@/types/IFullEventReportParams";
 
 export default async function getFullEventReports(
     params: FullEventReportParams,

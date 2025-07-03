@@ -1,5 +1,5 @@
 import type { AlertColor } from '@mui/material/Alert';
-import EventState from 'src/types/TEventState';
+import EventState from '@/types/TEventState';
 
 export default async function handleDelete(
     eventID: string | string[] | null,

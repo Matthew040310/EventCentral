@@ -1,9 +1,9 @@
 import { NextRouter } from 'next/router';
 import { GridColDef, GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
 
-import HyperlinkTitle from '@/app/CalendarOverview/_EventTableRenderCells/HyperlinkTitle';
-import ColorText from '@/app/CalendarOverview/_EventTableRenderCells/ColorText';
-import AvailableActions from '@/app/CalendarOverview/_EventTableRenderCells/AvailableActions';
+import HyperlinkTitle from '@/app/CalendarOverview/_components/_EventTableRenderCells/HyperlinkTitle';
+import ColorText from '@/app/CalendarOverview/_components/_EventTableRenderCells/ColorText';
+import AvailableActions from '@/app/CalendarOverview/_components/_EventTableRenderCells/AvailableActions';
 
 import FullEventReport from '@/types/IFullEventReport';
 import EventState from '@/types/TEventState';

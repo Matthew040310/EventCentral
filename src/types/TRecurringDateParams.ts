@@ -1,4 +1,4 @@
-import { EVENT_FREQUENCY } from "src/constants/EventCentralConstants";
+import { EVENT_FREQUENCY } from "@/constants/EventCentralConstants";
 
 type TRecurringDateParams = {
     startDate: Date;
