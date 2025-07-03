@@ -32,7 +32,7 @@ type DateFilter = {
 
 type FieldFilter<T> =
     T extends number | null ? NumberFilter | null :
-    T extends string | null ? StringFilter | null :
+    T extends string | null ? StringFilter | string | null :
     T extends Date | null ? DateFilter | null :
     T;
 
