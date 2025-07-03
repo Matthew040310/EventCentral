@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { AlertColor } from '@mui/material';
-import EventDetails from 'src/types/IEventDetails';
-import ImpactAssessment from 'src/types/IImpactAssessment';
-import triggerSubmit from 'src/util/Prisma-API-handlers/handleSubmit';
-import triggerDelete from 'src/util/Prisma-API-handlers/handleDelete';
-import triggerSave from 'src/util/Prisma-API-handlers/handleSave';
-import getEventReportByID from 'src/util/Prisma-API-handlers/getEventReportByID';
+import EventDetails from '@/types/IEventDetails';
+import ImpactAssessment from '@/types/IImpactAssessment';
+import triggerSubmit from '@/util/Prisma-API-handlers/handleSubmit';
+import triggerDelete from '@/util/Prisma-API-handlers/handleDelete';
+import triggerSave from '@/util/Prisma-API-handlers/handleSave';
+import getEventReportByID from '@/util/Prisma-API-handlers/getEventReportByID';
 
 const checkValidImpactAssessmentId = async (
     eventDetails: EventDetails,

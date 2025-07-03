@@ -1,17 +1,16 @@
 import { NextRouter } from 'next/router';
 import { GridColDef, GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
-import { ContentCopy, Delete, Edit } from '@mui/icons-material';
 
-import HyperlinkTitle from 'src/components/CalendarOverview/EventTableRenderCells/HyperlinkTitle';
-import ColorText from 'src/components/CalendarOverview/EventTableRenderCells/ColorText';
-import AvailableActions from 'src/components/CalendarOverview/EventTableRenderCells/AvailableActions';
+import HyperlinkTitle from '@/app/CalendarOverview/_EventTableRenderCells/HyperlinkTitle';
+import ColorText from '@/app/CalendarOverview/_EventTableRenderCells/ColorText';
+import AvailableActions from '@/app/CalendarOverview/_EventTableRenderCells/AvailableActions';
 
-import FullEventReport from 'src/types/IFullEventReport';
-import EventState from 'src/types/TEventState';
-import UserRole from 'src/types/TUserRole';
-import { EVENT_TYPE } from 'src/constants/EventCentralConstants';
+import FullEventReport from '@/types/IFullEventReport';
+import EventState from '@/types/TEventState';
+import UserRole from '@/types/TUserRole';
+import { EVENT_TYPE } from '@/constants/EventCentralConstants';
 
-import dateFormatter from 'src/util/dateFormatter';
+import dateFormatter from '@/util/dateFormatter';
 
 const Yes_No_Params: Partial<GridColDef> = {
     type: "singleSelect",
@@ -33,12 +32,12 @@ const EventTableHeader = (
     else impactAssessmentLink = "submittedImpactAssessment";
 
     const ColumnHeaders: GridColDef[] = [
-        { field: 'type', headerName: 'Type', type: "singleSelect", valueOptions: EVENT_TYPE, flex: 1, }, 
+        { field: 'type', headerName: 'Type', type: "singleSelect", valueOptions: EVENT_TYPE, flex: 1, },
         {
             field: 'title', headerName: 'Title', flex: 1.5,
             renderCell: (params) => <HyperlinkTitle{...params} state={state} onHyperlinkClick={onHyperlinkClick} />
         },
-        { field: 'department', headerName: 'Department', flex: 1, }, 
+        { field: 'department', headerName: 'Department', flex: 1, },
         {
             field: 'startDate', headerName: 'Event Date', type: 'dateTime', flex: 1,
             valueFormatter: (value, row) => { return dateFormatter(value) }

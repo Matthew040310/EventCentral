@@ -1,6 +1,6 @@
 import { Frequency, RRule, Weekday } from 'rrule';
-import { EVENT_FREQUENCY, CUSTOM_EVENT_FREQUENCY } from 'src/constants/EventCentralConstants';
-import TRecurringDateParams from 'src/types/TRecurringDateParams';
+import { EVENT_FREQUENCY, CUSTOM_EVENT_FREQUENCY } from '@/constants/EventCentralConstants';
+import TRecurringDateParams from '@/types/TRecurringDateParams';
 
 /*
 RRule Documentation: https://www.npmjs.com/package/rrule
