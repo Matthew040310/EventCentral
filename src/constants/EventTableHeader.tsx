@@ -1,4 +1,3 @@
-import { NextRouter } from 'next/router';
 import { GridColDef, GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
 
 import HyperlinkTitle from '@/app/CalendarOverview/_components/_EventTableRenderCells/HyperlinkTitle';
@@ -22,7 +21,6 @@ const Yes_No_Params: Partial<GridColDef> = {
 const EventTableHeader = (
     state: EventState,
     role: UserRole = "Admin",
-    router: NextRouter,
     openDeleteDialog: (eventID: string) => void,
     onHyperlinkClick: (eventDetails: Partial<FullEventReport>) => void
 ) => {
@@ -70,7 +68,7 @@ const EventTableHeader = (
         },
         {
             field: 'actions', type: 'actions', flex: 1,
-            getActions: (params: GridRowParams) => (AvailableActions(params, router, state, role, openDeleteDialog))
+            getActions: (params: GridRowParams) => (AvailableActions(params, state, role, openDeleteDialog))
         },
     ];
 
