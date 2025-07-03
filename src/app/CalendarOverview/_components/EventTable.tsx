@@ -1,5 +1,5 @@
+"use client";
 import React, { useState, useEffect, useMemo } from 'react';
-import { NextRouter } from 'next/router';
 import { DataGrid, GridCallbackDetails, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
 import { Alert, AlertColor, Box, Fade, Paper, Typography } from '@mui/material';
 import { Delete } from '@mui/icons-material';
@@ -32,7 +32,6 @@ const initialState: GridInitialState = {
 interface EventTableProps {
   state: EventState;
   role: UserRole;
-  router: NextRouter;
   backgroundColor?: string;
   EventReports: Partial<FullEventReport>[] | FullEventReport[];
   onDeleteSuccess: () => void
@@ -42,7 +41,6 @@ interface EventTableProps {
 const EventTable: React.FC<EventTableProps> = ({
   state,
   role,
-  router,
   backgroundColor,
   EventReports,
   onDeleteSuccess,
@@ -81,7 +79,7 @@ const EventTable: React.FC<EventTableProps> = ({
     }
   }, [alert.open]);
 
-  const headers = useMemo(() => EventTableHeader(state, role, router, openDeleteDialog, onHyperlinkClick), [state, role, router, openDeleteDialog, onHyperlinkClick]);
+  const headers = useMemo(() => EventTableHeader(state, role, openDeleteDialog, onHyperlinkClick), [state, role, openDeleteDialog, onHyperlinkClick]);
   const pageSizeOptions = useMemo(() => [5, 10, 20, 50], []);
   const deleteDescription = useMemo(() => `Are you sure you want to delete <u><b>${selectedEvents.length}</b></u> event(s)? This action cannot be undone.`, [selectedEvents.length]);
 
