@@ -1,6 +1,6 @@
+// deleteSubmission.ts
 import prisma from '../dbClient';
 import type { Prisma } from '@prisma/client';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
 // Filter unique impactAssessment IDs from the returned IDs
@@ -95,24 +95,21 @@ export async function deleteSubmissionsByParentId(
   }
 }
 
-export default async function deleteSubmissionsAPI(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  if (req.method !== 'DELETE') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
+export async function DELETE(request: Request) {
 
   try {
-    await deleteSubmissions(req.body["TargetIDs"])
+    const body = await request.json();
+    await deleteSubmissions(body["TargetIDs"])
 
-    return res.status(200).json({
-      message: `Submission(s) successfully deleted!`,
-    });
+    return Response.json(
+      { message: "Submission(s) successfully deleted!" },
+      { status: 200 }
+    )
   }
   catch (error: any) {
-    return res.status(500).json({
-      error: primsaErrorHandler("Failed to delete draft", error)
-    });
+    return Response.json(
+      { error: primsaErrorHandler("Failed to delete submission", error) },
+      { status: 500 }
+    );
   }
 }

@@ -1,8 +1,7 @@
+// deleteDraft.ts
 import prisma from '../dbClient';
 import type { Prisma } from '@prisma/client';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
-
 
 // Seperate database delete and API call logic
 // So that the database delete function can be reused without API call (e.g. By createSubmission)
@@ -43,24 +42,20 @@ export async function deleteDrafts(
   })
 }
 
-export default async function deleteDraftAPI(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  if (req.method !== 'DELETE') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
-
+export async function DELETE(request: Request) {
   try {
-    await deleteDrafts(req.body["TargetIDs"])
+    const body = await request.json();
+    await deleteDrafts(body["TargetIDs"])
 
-    return res.status(200).json({
-      message: `Draft successfully deleted!`,
-    });
+    return Response.json(
+      { message: "Draft successfully deleted!" },
+      { status: 200 }
+    );
   }
   catch (error: any) {
-    return res.status(500).json({
-      error: primsaErrorHandler("Failed to delete draft", error)
-    });
+    return Response.json(
+      { error: primsaErrorHandler("Failed to delete draft", error) },
+      { status: 500 }
+    );
   }
 }
