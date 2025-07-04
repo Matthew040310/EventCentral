@@ -51,10 +51,10 @@ const CustomNavBar: React.FC = () => {
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl)}
                   onClose={() => setAnchorEl(null)}>
-                  <MenuItem onClick={() => setAnchorEl(null)}>{homeButton}</MenuItem>
+                  {/* <MenuItem onClick={() => setAnchorEl(null)}>{homeButton}</MenuItem> */}
                   <MenuItem onClick={() => setAnchorEl(null)}>{calendarOverviewButton}</MenuItem>
                   <MenuItem onClick={() => setAnchorEl(null)}>{searchButton}</MenuItem>
-                  <MenuItem onClick={() => setAnchorEl(null)}>{manageUsersButton}</MenuItem>
+                  {/* <MenuItem onClick={() => setAnchorEl(null)}>{manageUsersButton}</MenuItem> */}
                 </Menu>
               </Grid>
               {/* <Grid container justifyContent="center" alignItems="center" size={8}>{loggedInUser}</Grid> */}
@@ -63,10 +63,10 @@ const CustomNavBar: React.FC = () => {
             :
             /* Layout for larger screens */
             (<>
-              <Box>{homeButton}</Box>
+              {/* <Box>{homeButton}</Box> */}
               <Box flexGrow={1} sx={{ ml: 2 }}>{calendarOverviewButton}</Box>
               <Box sx={{ mr: 2 }}>{searchButton}</Box>
-              <Box sx={{ mr: 2 }}>{manageUsersButton}</Box>
+              {/* <Box sx={{ mr: 2 }}>{manageUsersButton}</Box> */}
               {/* <Box>{loggedInUser}</Box> */}
               <Box>{logoutButton}</Box>
             </>)}
