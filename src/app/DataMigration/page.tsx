@@ -14,7 +14,6 @@ import MAY_EVENTS from '@/constants/DataMigration/EDC_05May_2025';
 import JUN_EVENTS from '@/constants/DataMigration/EDC_06June_2025';
 import JUL_EVENTS from '@/constants/DataMigration/EDC_07July_2025';
 
-
 function MigrateHistoricData(targetEvents: any) {
     for (const event of targetEvents) {
         const eventDetails = event["Event Details"];

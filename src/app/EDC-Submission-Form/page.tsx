@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Head from 'next/head';
-import { useSession } from 'next-auth/react';
 
 // Components
 import { Alert, Box, Button, Container, Fade, Grid, Tooltip, Typography } from '@mui/material';
@@ -15,7 +14,6 @@ import PopUpDialog from '@/components/popUpDialog';
 
 // Interfaces & Constants
 import EventState from '@/types/TEventState';
-import UserRole from '@/types/TUserRole';
 import { STATUS } from '@/constants/EventCentralConstants';
 import DefaultEventDetails from '@/constants/DefaultEventDetails';
 import DefaultImpactAssessment from '@/constants/DefaultImpactAssessment';
@@ -27,7 +25,6 @@ import clickToCopy from '@/util/clickToCopy';
 import fieldsValid from '@/util/Event-Form/fieldsValid';
 
 const EventForm = () => {
-    const { data: session } = useSession();
     const router = useRouter();
     const searchParams = useSearchParams();
 
