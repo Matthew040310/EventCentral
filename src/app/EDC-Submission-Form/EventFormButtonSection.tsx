@@ -1,4 +1,3 @@
-import { Session } from 'next-auth';
 import { Grid } from '@mui/material';
 import { Delete, Save, Send } from '@mui/icons-material';
 
@@ -19,7 +18,6 @@ const updateDescription = `
     `;
 
 interface EventFormButtonsProps {
-    session: Session | null;
     eventDetails: EventDetails;
     isFieldsValid: boolean;
     state: EventState;
@@ -30,7 +28,6 @@ interface EventFormButtonsProps {
 }
 
 const EventFormButtonSection: React.FC<EventFormButtonsProps> = ({
-    session,
     eventDetails,
     isFieldsValid,
     state,
@@ -43,7 +40,7 @@ const EventFormButtonSection: React.FC<EventFormButtonsProps> = ({
         {/* Delete Button */}
         <ButtonWithDialog
             color="error"
-            disabled={!session || !eventDetails.id}
+            disabled={!eventDetails.id}
             endIcon={<Delete />}
             dialogOnClick={handleDelete}
             title="Warning"
@@ -56,7 +53,7 @@ const EventFormButtonSection: React.FC<EventFormButtonsProps> = ({
         {/* Save Button */}
         <CustomButton
             color="secondary"
-            disabled={!session || (!eventDetails.estimatedStartDate && !eventDetails.startDate)}
+            disabled={(!eventDetails.estimatedStartDate && !eventDetails.startDate)}
             endIcon={<Save />}
             onClick={handleSave}
         >
@@ -67,7 +64,7 @@ const EventFormButtonSection: React.FC<EventFormButtonsProps> = ({
         {state !== "Submitted"
             ? (<CustomButton
                 color="success"
-                disabled={!isFieldsValid || !session}
+                disabled={!isFieldsValid}
                 endIcon={<Send />}
                 onClick={handleSubmit}>
                 Submit
@@ -75,7 +72,7 @@ const EventFormButtonSection: React.FC<EventFormButtonsProps> = ({
 
             : (<ButtonWithDialog
                 color="success"
-                disabled={!isFieldsValid || !session}
+                disabled={!isFieldsValid}
                 endIcon={<Send />}
                 dialogOnClick={handleUpdate}
                 title="Check Scope of Update"
