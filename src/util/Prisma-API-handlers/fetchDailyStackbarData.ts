@@ -8,7 +8,7 @@ export default async function DailyStackbarData(
     startDate: Date,
 ): Promise<DailyStackbarData[]> {
     try {
-        const response = await fetch("/api/prisma/getDailyStackbarData/route.ts", {
+        const response = await fetch("/api/prisma/getDailyStackbarData", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ datumDate: startDate }),

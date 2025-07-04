@@ -8,8 +8,8 @@ export default async function handleDelete(
 ) {
     // Default endpoint target is deleteDraft
     const targetLink = state === "Draft"
-        ? "/api/prisma/deleteDraft/route.ts"
-        : "/api/prisma/deleteSubmission/route.ts"
+        ? "/api/prisma/deleteDraft"
+        : "/api/prisma/deleteSubmission"
 
     try {
         const response = await fetch(targetLink, {
