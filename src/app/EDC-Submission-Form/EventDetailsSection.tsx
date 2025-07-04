@@ -21,8 +21,11 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
     // Initialize knowStartDate based on async inputFields.startDate change
     useEffect(() => {
         // Check both startDate and estimatedStartDate
-        if (inputFields?.startDate || inputFields?.estimatedStartDate) {
+        if (inputFields?.startDate) {
             setKnowStartDate("Yes");
+        }
+        else if (inputFields?.estimatedStartDate) {
+            setKnowStartDate("No");
         }
     }, [inputFields?.startDate, inputFields?.estimatedStartDate]);
 
