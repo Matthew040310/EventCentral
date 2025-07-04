@@ -140,7 +140,7 @@ export const NOTIFICATION_TYPES = [
   'SMS',
   'Push Notification']
 
-import TDialogButton from 'src/types/TDialogButton';
+import TDialogButton from '@/types/TDialogButton';
 export const UPDATE_OPTIONS: TDialogButton[] = [
   { buttonOption: "Update this Event Only", color: "info" },
   { buttonOption: "Update Future Events", color: "error" }
