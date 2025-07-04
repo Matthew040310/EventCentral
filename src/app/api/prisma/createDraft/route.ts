@@ -1,22 +1,17 @@
 import prisma from '../dbClient';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
-export default async function createDraft(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  // If method is not POST, immediately return error
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  const eventDetails = req.body['Event Details'];
-  const impactAssessment = req.body['Impact Assessment']
-
-  delete eventDetails.id;
-  let parentEventID = "";
+// createDraft.ts
+export async function POST(request: Request) {
   try {
+    // If method is not POST, immediately return error
+    const body = await request.json();
+
+    const eventDetails = body['Event Details'];
+    const impactAssessment = body['Impact Assessment'];
+
+    delete eventDetails.id;
+    let parentEventID = "";
     await prisma.$transaction(async (tx) => {
 
       // Create event details draft in draftEvent table
@@ -50,14 +45,13 @@ export default async function createDraft(
       };
     })
 
-    return res.status(201).json({
-      message: 'Draft successfully saved!',
-      id: parentEventID
-    });
+    return Response.json(
+      { message: 'Draft successfully saved!', id: parentEventID }, { status: 201 }
+    );
   }
   catch (error: any) {
-    return res.status(500).json({
+    return Response.json({
       error: primsaErrorHandler("Failed to create draft", error)
-    });
+    }, { status: 500 });
   }
 }
