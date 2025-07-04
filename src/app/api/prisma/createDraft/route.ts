@@ -50,8 +50,8 @@ export async function POST(request: Request) {
     );
   }
   catch (error: any) {
-    return Response.json({
-      error: primsaErrorHandler("Failed to create draft", error)
-    }, { status: 500 });
+    return Response.json(
+      { error: primsaErrorHandler("Failed to create draft", error) },
+      { status: 500 });
   }
 }

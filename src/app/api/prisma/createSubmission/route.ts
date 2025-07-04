@@ -110,8 +110,8 @@ export async function POST(request: Request) {
     );
   }
   catch (error: any) {
-    return Response.json({
-      error: primsaErrorHandler("Submission failed", error)
-    }, { status: 500 });
+    return Response.json(
+      { error: primsaErrorHandler("Submission failed", error) },
+      { status: 500 });
   }
 }
