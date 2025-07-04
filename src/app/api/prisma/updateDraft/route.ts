@@ -1,5 +1,4 @@
 import prisma from '../dbClient';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
 export async function POST(request: Request) {

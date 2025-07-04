@@ -4,7 +4,8 @@ import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 import TRecurringDateParams from '@/types/TRecurringDateParams';
 import { UPDATE_OPTIONS } from '@/constants/EventCentralConstants';
 import { recurringDates } from '@/util/replicateEventDates';
-import { deleteSubmissionsByParentId } from '../deleteSubmission/route';
+import deleteSubmissionsByParentId from '../deleteSubmission/deleteSubmissionsByParentId';
+
 
 // Get the buttonOptions values from the UPDATE_OPTIONS constant
 const userResponses: String[] = UPDATE_OPTIONS.map(option => option.buttonOption);
