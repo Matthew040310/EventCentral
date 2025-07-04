@@ -2,26 +2,22 @@
 // Uses prisma .groupby to aggregate data (other GET functions use .findMany)
 // This API will handle the logic for fetching and grouping submitted events by date and type
 
+// getDailyStackbarData.ts
 import prisma from '../dbClient';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import dayjs from 'dayjs';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
-export default async function getDailyStackbarData(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
-
-  // body : {datumDate: dateParam}
-  const datumDate = dayjs(req.body.datumDate);
-  const startOfMonth = datumDate.startOf('month').toDate();
-  const endOfMonth = datumDate.endOf('month').toDate();
-  const dateRange = { startDate: { gte: startOfMonth, lte: endOfMonth } }
+export async function POST(request: Request) {
 
   try {
+    const body = await request.json();
+
+    // body : {datumDate: dateParam}
+    const datumDate = dayjs(body.datumDate);
+    const startOfMonth = datumDate.startOf('month').toDate();
+    const endOfMonth = datumDate.endOf('month').toDate();
+    const dateRange = { startDate: { gte: startOfMonth, lte: endOfMonth } }
+
     const dailyStackbarData = await prisma.submittedEvent.groupBy({
       by: ["startDate", "type"],
       _count: true,
@@ -29,15 +25,16 @@ export default async function getDailyStackbarData(
       orderBy: [{ startDate: 'asc' }],
     })
 
-    return res.status(200).json({
-      response: dailyStackbarData
-    });
-
+    return Response.json(
+      { response: dailyStackbarData },
+      { status: 200 }
+    );
   }
   catch (error: any) {
-    return res.status(500).json({
-      error: primsaErrorHandler("Failed to retrieve Submitted Events", error)
-    });
+    return Response.json(
+      { error: primsaErrorHandler("Failed to retrieve Submitted Events", error) },
+      { status: 500 }
+    );
   }
 }
 
