@@ -40,7 +40,9 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = (
             />
         </Grid>
 
-        <Legend />
+        <Grid mt={2} size={{ xl: 7, lg: 12 }}>
+            <Legend width={"90%"} />
+        </Grid>
 
         <Grid justifyContent={{ xl: "flex-end", xs: "center" }} display="flex"
             size={{ xl: 1, xs: 12 }}>
