@@ -1,4 +1,4 @@
-import getEventReportByID from 'src/util/Prisma-API-handlers/getEventReportByID';
+import getEventReportByID from '@/util/Prisma-API-handlers/getEventReportByID';
 
 export default async function validImpactAssessmentId(
     eventType: string,

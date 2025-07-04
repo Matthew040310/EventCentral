@@ -1,5 +1,5 @@
-import EventDetails from "src/types/IEventDetails";
-import ImpactAssessment from "src/types/IImpactAssessment";
+import EventDetails from "@/types/IEventDetails";
+import ImpactAssessment from "@/types/IImpactAssessment";
 
 export default function fieldsValid(
     eventDetails: EventDetails,
