@@ -7,8 +7,8 @@ const CalendarHeader = () => (
         textAlign={{ xs: "center", sm: "left" }} spacing={2} >
         <Grid display={{ xs: "none", sm: "block" }} size={{ sm: 1 }}></Grid>
 
-        <Grid size={{ sm: 5, xs: 12 }}>
-            <h2 style={{ marginBottom: "0px" }}>Welcome to EventCentral</h2>
+        <Grid size={{ sm: 5, xs: 12 }} mt={3}>
+            <Typography variant='h6' fontSize={20}>Welcome to EventCentral</Typography>
             <Typography variant='body2'>Your centralized event tracking and forecasting system</Typography>
         </Grid>
 
