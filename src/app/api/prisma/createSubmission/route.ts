@@ -5,7 +5,7 @@ import { recurringDates } from '@/util/replicateEventDates';
 import { deleteDrafts } from '../deleteDraft/route';
 
 // createSubmission.ts
-export default async function POST(request: Request) {
+export async function POST(request: Request) {
   try {
     const body = await request.json();
 
