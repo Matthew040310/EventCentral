@@ -9,21 +9,17 @@ import { deleteSubmissionsByParentId } from '../deleteSubmission/route';
 // Get the buttonOptions values from the UPDATE_OPTIONS constant
 const userResponses: String[] = UPDATE_OPTIONS.map(option => option.buttonOption);
 
-export default async function updateSubmissions(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
-
-  const eventDetails = req.body['Event Details']
-  const impactAssessment = req.body['Impact Assessment']
-  const updateScope = req.body['Update Scope']
-
-  let newParentEventID = eventDetails.id;
-  let { id, estimatedStartDate, ...updatedEventSubmission } = eventDetails;
+export async function POST(request: Request) {
   try {
+    const body = await request.json();
+
+    const eventDetails = body['Event Details']
+    const impactAssessment = body['Impact Assessment']
+    const updateScope = body['Update Scope']
+
+    let newParentEventID = eventDetails.id;
+    let { id, estimatedStartDate, ...updatedEventSubmission } = eventDetails;
+
     await prisma.$transaction(async (tx) => {
       // Create new impactAssessment for new submission
       impactAssessment.id = newParentEventID;
@@ -89,13 +85,15 @@ export default async function updateSubmissions(
     })
 
     // Returns success message if all prisma transactions successful
-    return res.status(201).json({
-      message: 'Submission successfully updated!',
-    });
+    return Response.json(
+      { message: 'Submission successfully updated!' },
+      { status: 201 }
+    );
   }
   catch (error: any) {
-    return res.status(500).json({
-      error: primsaErrorHandler("Failed to update submission", error)
-    });
+    return Response.json(
+      { error: primsaErrorHandler("Failed to update submission", error) },
+      { status: 500 }
+    );
   }
 }

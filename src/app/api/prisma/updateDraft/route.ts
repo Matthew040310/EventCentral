@@ -2,18 +2,13 @@ import prisma from '../dbClient';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
-export default async function updateDrafts(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
-  }
-
-  const eventDetails = req.body['Event Details']
-  const impactAssessment = req.body['Impact Assessment']
-
+export async function POST(request: Request) {
   try {
+    const body = await request.json();
+
+    const eventDetails = body['Event Details']
+    const impactAssessment = body['Impact Assessment']
+
     await prisma.$transaction(async (tx) => {
       // Update event details draft in draftEvent Table
       await tx.draftEvent.update({
@@ -42,13 +37,15 @@ export default async function updateDrafts(
     })
 
     // Returns success message if all prisma transactions successful
-    return res.status(201).json({
-      message: 'Draft successfully updated!',
-    });
+    return Response.json(
+      { message: 'Draft successfully updated!' },
+      { status: 201 }
+    );
   }
   catch (error: any) {
-    return res.status(500).json({
-      error: primsaErrorHandler("Failed to update draft", error)
-    });
+    return Response.json(
+      { error: primsaErrorHandler("Failed to update draft", error) },
+      { status: 500 }
+    );
   }
 }
