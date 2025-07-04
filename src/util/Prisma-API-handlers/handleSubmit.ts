@@ -35,13 +35,13 @@ export default async function handleSubmit(
     updateScope?: string
 ) {
     // Default api endpoint is createSubmission
-    var targetLink = "/api/prisma/createSubmission";
+    var targetLink = "/api/prisma/createSubmission/route.ts";
     var scope = {};
 
     // If updateScope is provided, change targetLink to updateSubmission
     // and add updateScope to the request body
     if (updateScope) {
-        targetLink = "/api/prisma/updateSubmission";
+        targetLink = "/api/prisma/updateSubmission/route.ts";
         scope = { "Update Scope": updateScope };
     };
 

@@ -17,8 +17,8 @@ export default async function handleSave(
     setAlert: (alert: { open: boolean, severity: AlertColor, message: string }) => void,
 ) {
     const targetLink = (eventDetails.id)
-        ? "/api/prisma/updateDraft"
-        : "/api/prisma/createDraft";
+        ? "/api/prisma/updateDraft/route.ts"
+        : "/api/prisma/createDraft/route.ts";
 
     try {
         const response = await fetch(targetLink, {
@@ -40,7 +40,7 @@ export default async function handleSave(
         setAlert({ open: true, severity: 'success', message: result.message });
 
         // If createDraft endpoint was used, update entry's id
-        if (targetLink === "/api/prisma/createDraft") {
+        if (targetLink === "/api/prisma/createDraft/route.ts") {
             updateId("Event Details")("id")(result.id)
             if (eventDetails.type !== "Existing") {
                 updateId("Impact Assessment")("id")(result.id)

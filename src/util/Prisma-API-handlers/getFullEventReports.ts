@@ -8,8 +8,8 @@ export default async function getFullEventReports(
 > {
     // Default endpoint target is getDraft
     const targetLink = params.state === "Submitted"
-        ? "/api/prisma/getSubmission"
-        : "/api/prisma/getDraft"
+        ? "/api/prisma/getSubmission/route.ts"
+        : "/api/prisma/getDraft/route.ts"
 
     const HTTP_METHOD = params.filters ? 'POST' : 'GET';
     let body = {};
