@@ -8,7 +8,7 @@ import fetchProviders from "@/util/fetchProviders";
 import NavBarButton from "./NavBarButton";
 
 const CustomNavBar: React.FC = () => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   const theme = useTheme();
   const [providers, setProviders] = useState<ClientSafeProvider[]>([]);
 
@@ -29,12 +29,12 @@ const CustomNavBar: React.FC = () => {
   const manageUsersButton = <NavBarButton href="/manage-users" icon={<Group />} title="Manage Users" />
   const logoutButton = <NavBarButton href="/logout" icon={<Logout />} title="Logout" iconAsContent={true} />
 
-  const loggedInUser = (
-    session?.user &&
-    <Typography fontSize={16} variant="subtitle2" sx={{ display: 'flex', alignItems: 'center' }}>
-      <AccountCircle sx={{ mr: 1 }} /><span className="span-bold-underline">{session?.user?.name}</span>
-    </Typography>
-  );
+  // const loggedInUser = (
+  //   session?.user &&
+  //   <Typography fontSize={16} variant="subtitle2" sx={{ display: 'flex', alignItems: 'center' }}>
+  //     <AccountCircle sx={{ mr: 1 }} /><span className="span-bold-underline">{session?.user?.name}</span>
+  //   </Typography>
+  // );
 
   // if (session?.user) 
   {
@@ -57,7 +57,7 @@ const CustomNavBar: React.FC = () => {
                   <MenuItem onClick={() => setAnchorEl(null)}>{manageUsersButton}</MenuItem>
                 </Menu>
               </Grid>
-              <Grid container justifyContent="center" alignItems="center" size={8}>{loggedInUser}</Grid>
+              {/* <Grid container justifyContent="center" alignItems="center" size={8}>{loggedInUser}</Grid> */}
               <Grid container justifyContent="flex-end" size={2}>{logoutButton}</Grid>
             </Grid>)
             :
@@ -67,7 +67,7 @@ const CustomNavBar: React.FC = () => {
               <Box flexGrow={1} sx={{ ml: 2 }}>{calendarOverviewButton}</Box>
               <Box sx={{ mr: 2 }}>{searchButton}</Box>
               <Box sx={{ mr: 2 }}>{manageUsersButton}</Box>
-              <Box>{loggedInUser}</Box>
+              {/* <Box>{loggedInUser}</Box> */}
               <Box>{logoutButton}</Box>
             </>)}
         </Toolbar>
