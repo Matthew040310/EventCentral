@@ -41,7 +41,7 @@ interface EventTableProps {
 const EventTable: React.FC<EventTableProps> = ({
   state,
   role,
-  backgroundColor,
+  backgroundColor = "white",
   EventReports,
   onDeleteSuccess,
   onHyperlinkClick
@@ -119,7 +119,7 @@ const EventTable: React.FC<EventTableProps> = ({
         buttons={DELETE_OPTIONS} />
 
       {/* Event Table */}
-      <DataGrid sx={{ border: 0 }}
+      <DataGrid sx={{ border: 0, backgroundColor: backgroundColor }}
         columns={headers}
         rows={EventReports}
         initialState={initialState}
