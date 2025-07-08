@@ -58,7 +58,7 @@ const CustomNavBar: React.FC = () => {
                 </Menu>
               </Grid>
               {/* <Grid container justifyContent="center" alignItems="center" size={8}>{loggedInUser}</Grid> */}
-              <Grid container justifyContent="flex-end" size={2}>{logoutButton}</Grid>
+              {/* <Grid container justifyContent="flex-end" size={2}>{logoutButton}</Grid> */}
             </Grid>)
             :
             /* Layout for larger screens */
@@ -68,7 +68,7 @@ const CustomNavBar: React.FC = () => {
               <Box sx={{ mr: 2 }}>{searchButton}</Box>
               {/* <Box sx={{ mr: 2 }}>{manageUsersButton}</Box> */}
               {/* <Box>{loggedInUser}</Box> */}
-              <Box>{logoutButton}</Box>
+              {/* <Box>{logoutButton}</Box> */}
             </>)}
         </Toolbar>
       </AppBar>
