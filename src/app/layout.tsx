@@ -1,4 +1,5 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { Analytics } from "@vercel/analytics/next"
 import Providers from "./providers";
 import "./globals.css";
 import CustomNavBar from "@/components/CustomNavBar";
@@ -12,6 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Providers>
             <CustomNavBar />
             {children}
+            <Analytics />
             <CustomFooter />
           </Providers>
         </AppRouterCacheProvider>
