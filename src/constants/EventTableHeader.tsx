@@ -1,7 +1,6 @@
 import { GridColDef, GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
 
 import HyperlinkTitle from '@/app/CalendarOverview/_components/_EventTableRenderCells/HyperlinkTitle';
-import ColorText from '@/app/CalendarOverview/_components/_EventTableRenderCells/ColorText';
 import AvailableActions from '@/app/CalendarOverview/_components/_EventTableRenderCells/AvailableActions';
 
 import FullEventReport from '@/types/IFullEventReport';
@@ -41,11 +40,7 @@ const EventTableHeader = (
             valueFormatter: (value, row) => { return dateFormatter(value) }
         },
         { field: "affectedCohortDescription", headerName: "Affected Cohort", flex: 1, },
-        {
-            field: "estimatedCohortSize", headerName: "Volume", type: 'number', flex: 1,
-            renderCell: (params) => <ColorText{...params} />
-
-        },
+        { field: "estimatedCohortSize", headerName: "Volume", type: 'number', flex: 1, },
         {
             field: 'perceivedUnhappiness', headerName: 'Unhappiness?', ...Yes_No_Params, description: "Will this event have perceived unhappiness from members?",
             valueGetter: (value, row) => row[impactAssessmentLink]?.perceivedUnhappiness || '', align: 'center', flex: 1,
