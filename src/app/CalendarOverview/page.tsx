@@ -7,7 +7,6 @@ import { View, Views } from 'react-big-calendar';
 import FullEventReport from '@/types/IFullEventReport';
 import { FullEventReportWithFilters } from '@/types/IFullEventReportParams';
 import UserRole from '@/types/TUserRole';
-import RBCEvent from '@/types/IRBCEvent';
 
 import CalendarOverviewHeader from './_components/Header';
 import CalendarToolBar from './_components/ToolBar';
@@ -15,6 +14,7 @@ import CalendarView from './_components/CalendarView';
 import EventTable from './_components/EventTable';
 import EventDetailsDialog from './_components/EventDetailsDialog';
 
+import filterEventsByDepartment from './functions/filterEventsByDepartment';
 import getFullEventReports from '@/util/Prisma-API-handlers/getFullEventReports'
 
 const CalendarOverview: React.FC = () => {
@@ -57,13 +57,6 @@ const CalendarOverview: React.FC = () => {
     setSelectedEvent(eventDetails);
     setOpenDialog(true);
   };
-
-  function filterEventsByDepartment(selectedDepartments: string[], event: Partial<FullEventReport> | RBCEvent): boolean {
-    return (
-      selectedDepartments.length === 0 ||
-      selectedDepartments.includes(event.department || "")
-    );
-  }
 
   return (
     <>
