@@ -12,39 +12,20 @@ const CalendarEvent: React.FC<CalendarEventProps> = ({
     EventObject: event,
     handleClick,
 }) => {
-    let eventColor = determineColor(event)
-    if (event.draftImpactAssessment) {
-        eventColor = "#BDC3C7";                                   // Override color for draft impact assessments
-    }
-
-    const embargoedLabel = event.embargoed === "Yes"
-        ? { color: "black", backgroundColor: "#F7CA18" }
-        : {}
-
-    const buttonTitle = event.embargoed === "Yes"
-        ? `${event.title} (Embargoed)`
-        : event.title;
-
-    const backgroundColor = (event?.estimatedCohortSize ?? 0) > 100000
-        ? eventColor
-        : "none"
-
-    const dummyBackgroundColor = (event?.draftImpactAssessment?.perceivedUnhappiness === "Yes" || event?.submittedImpactAssessment?.perceivedUnhappiness === "Yes")
-        ? eventColor
-        : "none"
+    const { backgroundColor, borderColor, textColor } = determineColor(event)
 
     return (
-        <Button variant="outlined" title={buttonTitle}
+        <Button variant="outlined" title={event.title}
             sx={{
-                bgcolor: backgroundColor,
-                '&:hover': { bgcolor: '#BDC3C7', color: '#000000' },
+                '&:hover': { bgcolor: '#BDC3C7' },
                 width: "100%",
                 height: "2vh",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 textTransform: "capitalize",
-                border: 3, borderColor: eventColor                    // Future feature: Highlight row selected items
+                borderColor: borderColor,
+                backgroundColor: backgroundColor,
             }}
             onClick={() => { handleClick(event) }}
         >
@@ -56,8 +37,7 @@ const CalendarEvent: React.FC<CalendarEventProps> = ({
                     width: "100%",
                     display: "block",
                     textAlign: "center",
-                    color: backgroundColor == "none" ? "black" : "white",
-                    ...embargoedLabel,
+                    color: textColor,
                 }}
             >
                 {event.title}
