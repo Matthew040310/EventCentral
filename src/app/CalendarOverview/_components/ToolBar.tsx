@@ -4,6 +4,7 @@ import { Autocomplete, Chip, Grid, Stack, Button, TextField, Typography } from '
 import { View, Views } from 'react-big-calendar';
 import DatePicker from '@/components/DatePicker_Today';
 import Legend from '@/components/Legend';
+import { ORGANISATION } from '@/constants/EventCentralConstants';
 
 const dateHeader = (date: Date, view: View) => {
     if (view === Views.MONTH) {
@@ -15,6 +16,11 @@ const dateHeader = (date: Date, view: View) => {
         return `${startOfWeek.format('D MMMM')} - ${endOfWeek.format('D MMMM')}`;
     }
 }
+
+const allDepartments = Object.values(ORGANISATION)
+    .flatMap(cluster => Object.values(cluster).flat())
+    .filter((value, index, self) => self.indexOf(value) === index)  // remove duplicates
+    .sort();                                                        // sort alphabetically
 
 interface CalendarToolBarProps {
     datumDate: Date | null;
@@ -51,7 +57,7 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
         <Grid size={{ xl: 2, lg: 8 }}>
             <Autocomplete
                 multiple
-                options={["Dept A", "Dept B"]}
+                options={allDepartments}
                 value={selectedDepartments}
                 onChange={(_, newValue) => setSelectedDepartments(newValue)}
                 renderValue={(value, props) =>
