@@ -237,7 +237,7 @@ const ImpactAssessmentSection: React.FC<ImpactAssessmentProps> = ({
 
     {/* Write Up for New Event */}
     <Typography variant="subtitle2" sx={{ mt: 3, mb: 0.5 }}>
-      Please provide a write-up for the event, including the following details:
+      Please provide a HOD approved write-up for the event, including the following details:
     </Typography>
     <ul style={{ fontSize: "12px" }}>
       <li>Background of event</li>
