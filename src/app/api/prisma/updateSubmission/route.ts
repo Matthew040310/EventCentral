@@ -1,10 +1,10 @@
+// updateSubmission.ts
 import prisma from '../dbClient';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 import TRecurringDateParams from '@/types/TRecurringDateParams';
 import { UPDATE_OPTIONS } from '@/constants/EventCentralConstants';
 import { recurringDates } from '@/util/replicateEventDates';
-import deleteSubmissionsByParentId from '../deleteSubmission/deleteSubmissionsByParentId';
+import deleteSubmissionsByParentId from './deleteSubmissionsByParentId';
 
 
 // Get the buttonOptions values from the UPDATE_OPTIONS constant
