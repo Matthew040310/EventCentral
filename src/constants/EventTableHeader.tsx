@@ -31,7 +31,7 @@ const EventTableHeader = (
     const ColumnHeaders: GridColDef[] = [
         { field: 'type', headerName: 'Type', type: "singleSelect", valueOptions: EVENT_TYPE, flex: 1, },
         {
-            field: 'title', headerName: 'Title', flex: 1.5,
+            field: 'title', headerName: 'Title', flex: 5,
             renderCell: (params) => <HyperlinkTitle{...params} state={state} onHyperlinkClick={onHyperlinkClick} />
         },
         { field: 'department', headerName: 'Department', flex: 1, },
