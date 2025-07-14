@@ -14,7 +14,7 @@ const HyperlinkTitle: React.FC<HyperlinkTitleProps> = (props) => {
 
     return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <span style={{ color: "#1976d2", cursor: "pointer", textDecoration: "underline" }}
+            <span style={{ color: "#1976d2", cursor: "pointer", textDecoration: "underline" }} title={row.title}
                 onClick={(e) => {
                     e.stopPropagation();
                     onHyperlinkClick(row);
