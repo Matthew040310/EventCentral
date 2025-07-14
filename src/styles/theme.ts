@@ -13,10 +13,10 @@ export const roboto = Roboto({
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#336C58",
+      main: "#336C58",            // Deep Green
     },
     secondary: {
-      main: "#1976d2",
+      main: "#1976d2",            // French Blue
     },
     error: {
       main: red.A400,
@@ -25,7 +25,7 @@ const theme = createTheme({
       main: orange[400],
     },
     background: {
-      default: "#ECF2F1"
+      default: "#ECF2F1"          // Anti-Flash White
     }
   },
   typography: {
@@ -34,12 +34,11 @@ const theme = createTheme({
 });
 
 export const Event_Legend = {
-  'New/Change (>1m)': '#FF4C4C',    // Red
-  'New/Change (>100k)': '#F39C12',  // Amber
-  'New/Change (<100k)': '#7E57C2',  // Purple
-  'Existing (>100k)': '#3572B0',    // Blue
-  'Existing (<100k)': '#222222',    // Black
-  'Draft': '#BDC3C7',               // Grey
+  'High Impact': '#FF4C4C',         // Red
+  'New/Changes': '#F39C12',         // Amber
+  'Existing': '#929292',            // Battleship Grey
+  // 'Existing': '#90A9B7',            // Cadet Grey
+  'Draft': '#D2D8B3',               // Beige
 }
 
 export default theme;

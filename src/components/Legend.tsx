@@ -2,11 +2,10 @@ import { Box, Stack, Chip, } from '@mui/material';
 import { Event_Legend } from '@/styles/theme';
 
 const LegendExplanation = [
-    "New or Existing with Change Event – Affects > 1,000,000 citizens",
-    "New or Existing with Change Event – Affects >= 100,000 citizens",
-    "New or Existing with Change Event – Affects < 100,000 citizens",
-    "Existing Event – Affects >= 100,000 citizens",
-    "Existing Event – Affects < 100,000 citizens"
+    "Potential to cause perceived unhappiness among members \nOR \nEmbargoed Event",
+    "New or Existing with Changes Event",
+    "Existing Event",
+    "Draft Event"
 ]
 
 const CalendarLegend = ({ width }: { width: string }) => (
@@ -19,7 +18,7 @@ const CalendarLegend = ({ width }: { width: string }) => (
                     title={LegendExplanation[index]}
                     sx={{
                         backgroundColor: Event_Legend[key as keyof typeof Event_Legend],
-                        color: '#fff',
+                        color: key !== "Draft" ? "white" : "black",
                         fontWeight: 500,
                         boxShadow: 1,
                         minWidth: '7vw',
