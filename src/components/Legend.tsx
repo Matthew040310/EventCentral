@@ -18,7 +18,7 @@ const CalendarLegend = ({ width }: { width: string }) => (
                     title={LegendExplanation[index]}
                     sx={{
                         backgroundColor: Event_Legend[key as keyof typeof Event_Legend],
-                        color: key !== "Draft" ? "white" : "black",
+                        color: "white",
                         fontWeight: 500,
                         boxShadow: 1,
                         minWidth: '7vw',
