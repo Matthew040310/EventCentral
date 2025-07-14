@@ -79,6 +79,7 @@ const CalendarOverview: React.FC = () => {
         events={[...submittedEventReports, ...draftEventReports]}
         view={selectedView}
         datumDate={datumDate}
+        selectedDepartments={selectedDepartments}
         setDate={setDatumDate}
         onCalendarEventClick={showEventDialog} />
 

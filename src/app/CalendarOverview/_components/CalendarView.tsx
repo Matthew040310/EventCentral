@@ -6,31 +6,43 @@ import { Calendar, Components, EventWrapperProps, View, Views, dayjsLocalizer } 
 import dayjs from 'dayjs'
 import FullEventReport from '@/types/IFullEventReport';
 import RBCEvent from "@/types/IRBCEvent"
-
 import CalendarEvent from './CalendarEvent'
 
 interface CalendarViewProps {
   events: Partial<FullEventReport>[];
   view: View,
   datumDate: Date | null;
+  selectedDepartments: string[];
   setDate: (date: Date) => void;
   onCalendarEventClick: (event: RBCEvent) => void;
+}
+
+function filterEvents(selectedDepartments: string[], event: RBCEvent): boolean {
+  return (
+    selectedDepartments.length === 0 ||
+    selectedDepartments.includes(event.department || "")
+  );
 }
 
 const CalendarView: React.FC<CalendarViewProps> = ({
   events = [],
   view,
   datumDate,
+  selectedDepartments,
   setDate,
   onCalendarEventClick
 }) => {
   const localizer = dayjsLocalizer(dayjs)
 
-  const normalizedEvents: RBCEvent[] = events.map(event => ({
-    ...event,
-    startDate: event.startDate ? new Date(event.startDate) : null,
-    end: event.startDate ? new Date(event.startDate) : null,      // required field for rendering
-  }));
+  const normalizedEvents: RBCEvent[] = events
+    .map(event => ({
+      ...event,
+      startDate: event.startDate ? new Date(event.startDate) : null,
+      end: event.startDate ? new Date(event.startDate) : null,      // required field for rendering
+    }))
+    .filter(event =>
+      filterEvents(selectedDepartments, event)
+    );
 
   const components: Components<RBCEvent, object> = {
     eventWrapper: ({ event }: EventWrapperProps<RBCEvent>) => {
@@ -78,7 +90,6 @@ const CalendarView: React.FC<CalendarViewProps> = ({
           events={normalizedEvents}
           popup={true}
           selectable={true}
-          // onSelectSlot={(slotInfo) => console.log(slotInfo.start)} // Future: Click to add event
           onView={() => { }}          // To remove console error as state is managed in parent component. Non-functional
           onNavigate={() => { }}      // To remove console error as state is managed in parent component. Non-functional
         />
