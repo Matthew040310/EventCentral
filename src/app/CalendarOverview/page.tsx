@@ -7,6 +7,7 @@ import { View, Views } from 'react-big-calendar';
 import FullEventReport from '@/types/IFullEventReport';
 import { FullEventReportWithFilters } from '@/types/IFullEventReportParams';
 import UserRole from '@/types/TUserRole';
+import RBCEvent from '@/types/IRBCEvent';
 
 import CalendarOverviewHeader from './_components/Header';
 import CalendarToolBar from './_components/ToolBar';
@@ -57,6 +58,13 @@ const CalendarOverview: React.FC = () => {
     setOpenDialog(true);
   };
 
+  function filterEventsByDepartment(selectedDepartments: string[], event: Partial<FullEventReport> | RBCEvent): boolean {
+    return (
+      selectedDepartments.length === 0 ||
+      selectedDepartments.includes(event.department || "")
+    );
+  }
+
   return (
     <>
       <Head>
@@ -80,13 +88,16 @@ const CalendarOverview: React.FC = () => {
         view={selectedView}
         datumDate={datumDate}
         selectedDepartments={selectedDepartments}
+        filterEventsByDepartment={filterEventsByDepartment}
         setDate={setDatumDate}
         onCalendarEventClick={showEventDialog} />
 
       <EventTable
         state="Submitted"
         role={role}
-        EventReports={submittedEventReports}
+        EventReports={submittedEventReports.filter(event =>
+          filterEventsByDepartment(selectedDepartments, event)
+        )}
         onDeleteSuccess={fetchDashboardData}
         onHyperlinkClick={showEventDialog}
       />
@@ -94,7 +105,9 @@ const CalendarOverview: React.FC = () => {
       <EventTable
         state="Draft"
         role={role}
-        EventReports={draftEventReports}
+        EventReports={draftEventReports.filter(event =>
+          filterEventsByDepartment(selectedDepartments, event)
+        )}
         onDeleteSuccess={fetchDashboardData}
         onHyperlinkClick={showEventDialog}
       />
