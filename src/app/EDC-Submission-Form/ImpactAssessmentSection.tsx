@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from '@mui/material';
 
 import CustomDropDown from "@/components/CustomDropDown"
 import CustomTextField from "@/components/CustomTextField"
-import CreatableMultiSelect from '@/components/CustomMultiSelect';
+import CustomMultiSelect from '@/components/CustomMultiSelect';
 import ToggleSampleResponse from '@/components/ToggleSampleResponse';
 
 import ImpactAssessmentProps from '@/types/IImpactAssessmentProps';
@@ -101,7 +101,7 @@ const ImpactAssessmentSection: React.FC<ImpactAssessmentProps> = ({
         value={inputFields?.haveAnnouncement ?? null}
         onChange={(_, newValue) => handleInputChange("haveAnnouncement")(newValue)} />
       {inputFields.haveAnnouncement === "Yes" &&
-        <CreatableMultiSelect
+        <CustomMultiSelect
           value={inputFields.announcementTypes ?? []}
           options={ANNOUNCEMENT_TYPES}
           label="Announcement Types"
@@ -118,7 +118,7 @@ const ImpactAssessmentSection: React.FC<ImpactAssessmentProps> = ({
         options={["Yes", "No"]}
         value={inputFields?.haveNotification ?? null}
         onChange={(_, newValue) => handleInputChange("haveNotification")(newValue)} />
-      {inputFields.haveNotification == "Yes" && <CreatableMultiSelect
+      {inputFields.haveNotification == "Yes" && <CustomMultiSelect
         label="Notification Types"
         value={inputFields.notificationTypes ?? []}
         options={NOTIFICATION_TYPES}
