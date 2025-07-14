@@ -20,6 +20,7 @@ const CalendarOverview: React.FC = () => {
   const [role, setRole] = useState<UserRole>('Admin');
 
   const [datumDate, setDatumDate] = useState<Date | null>(dayjs().toDate());
+  const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [selectedView, setSelectedView] = useState<View>(Views.MONTH)
   const [prismaFilters, setPrismaFilters] = useState<Partial<FullEventReportWithFilters>>({});
   const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
@@ -35,7 +36,8 @@ const CalendarOverview: React.FC = () => {
 
       const allDrafts = await getFullEventReports({ state: "Draft", sortby: [{ type: "desc" }, { estimatedCohortSize: "desc" }], filters: prismaFilters });
       setdraftEventReports(allDrafts || [])
-    } catch (error) {
+    }
+    catch (error) {
       console.error('Error fetching event reports:', error);
     }
   }
@@ -69,6 +71,8 @@ const CalendarOverview: React.FC = () => {
         setDatumDate={setDatumDate}
         selectedView={selectedView}
         setSelectedView={setSelectedView}
+        selectedDepartments={selectedDepartments}
+        setSelectedDepartments={setSelectedDepartments}
       />
 
       <CalendarView

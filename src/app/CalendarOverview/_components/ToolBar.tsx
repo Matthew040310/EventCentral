@@ -1,6 +1,6 @@
 import React from 'react'
 import dayjs from 'dayjs'
-import { Grid, Stack, Button, Typography } from '@mui/material'
+import { Autocomplete, Chip, Grid, Stack, Button, TextField, Typography } from '@mui/material'
 import { View, Views } from 'react-big-calendar';
 import DatePicker from '@/components/DatePicker_Today';
 import Legend from '@/components/Legend';
@@ -21,11 +21,15 @@ interface CalendarToolBarProps {
     setDatumDate: (date: Date | null) => void;
     selectedView: View;
     setSelectedView: (view: View) => void;
+    selectedDepartments: string[];
+    setSelectedDepartments: (departments: string[]) => void;
 }
 
-const CalendarToolBar: React.FC<CalendarToolBarProps> = (
-    { datumDate, setDatumDate, selectedView, setSelectedView }
-) =>
+const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
+    datumDate, setDatumDate,
+    selectedView, setSelectedView,
+    selectedDepartments, setSelectedDepartments
+}) =>
 (
     <Grid container mt={1} alignItems={"center"}
         justifyContent={{ lg: "center", sm: "flex-start" }}
@@ -40,8 +44,25 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = (
             />
         </Grid>
 
-        <Grid mt={2} size={{ xl: 7, lg: 12 }}>
-            <Legend width={"90%"} />
+        <Grid mt={2} size={{ xl: 5, lg: 12 }}>
+            <Legend width={"100%"} />
+        </Grid>
+
+        <Grid size={{ xl: 2, lg: 8 }}>
+            <Autocomplete
+                multiple
+                options={["Dept A", "Dept B"]}
+                value={selectedDepartments}
+                onChange={(_, newValue) => setSelectedDepartments(newValue)}
+                renderValue={(value, props) =>
+                    value.map((option, index) => (
+                        <Chip label={option} {...props({ index })} key={index} />
+                    ))
+                }
+                renderInput={(params) => (
+                    <TextField {...params} label={"Filter by Dept"} />
+                )}
+            />
         </Grid>
 
         <Grid justifyContent={{ xl: "flex-end", xs: "center" }} display="flex"
