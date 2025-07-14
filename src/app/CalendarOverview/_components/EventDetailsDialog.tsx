@@ -35,24 +35,19 @@ const EventDetailsDialog: React.FC<EventDetailsDialogProps> = ({
             <DialogContent dividers>
                 <EventDetailsContent eventDetails={eventDetails} />
 
-                <DividerWithText icon={<Info color="action" />}>Impact Assessment</DividerWithText>
-
-                <Grid container spacing={2}>
-                    {impactAssessmentReference
-                        ? <ImpactAssessmentContent eventDetails={eventDetails} />
-                        : <TypographyB2>No Impact Assessment submitted.</TypographyB2>
-                    }
-                </Grid>
-
                 {impactAssessmentReference && (
                     <>
+                        <DividerWithText icon={<Info color="action" />}>Impact Assessment</DividerWithText>
+                        <Grid container spacing={2}>
+                            <ImpactAssessmentContent eventDetails={eventDetails} />
+                        </Grid>
                         <DividerWithText icon={<Subject color="action" />}>Event Write Up</DividerWithText>
                         <TypographyB2>{impactAssessmentReference.eventWriteUp}</TypographyB2>
                     </>
                 )}
             </DialogContent>
             <DialogButtons id={id} state={state} onClose={onClose} />
-        </Dialog>
+        </Dialog >
     );
 }
 
