@@ -25,7 +25,7 @@ const CustomMultiSelect: React.FC<CustomMultiSelectProps> = ({
             options={options}
             value={value}
             onChange={onChange}
-            renderTags={(value, props) =>
+            renderValue={(value, props) =>
                 value.map((option, index) => (
                     <Chip label={option} {...props({ index })} key={index} />
                 ))
