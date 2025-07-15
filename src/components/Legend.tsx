@@ -14,12 +14,14 @@ interface LegendProps {
     width: string;
     selectedCategories: string[];
     setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>;
+    noDraftChip?: boolean;
 }
 
 const Legend: React.FC<LegendProps> = ({
     width,
     selectedCategories,
-    setSelectedCategories
+    setSelectedCategories,
+    noDraftChip = false
 }) => {
     const handleChipClick = (category: string) => {
         setSelectedCategories(prev => prev.includes(category)
@@ -41,6 +43,8 @@ const Legend: React.FC<LegendProps> = ({
         <Box sx={{ p: 2, my: 2, width: { width } }}>
             <Stack direction="row" textAlign="center" justifyContent="center" spacing={2}>
                 {legendItems.map(([category, color], index) => {
+                    if (noDraftChip && category === 'Draft') return null; // Skip Draft chip if noDraftChip is true. Used for SearchEvents page only
+
                     const selected = selectedCategories.includes(category);
                     return (
                         <Chip
