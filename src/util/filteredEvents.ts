@@ -20,16 +20,24 @@ function filterEventsByCategory(
 
     const { submittedImpactAssessment, embargoed, type } = event;
 
-    return (
-        (selectedCategories.has('High Impact') &&
-            (submittedImpactAssessment?.perceivedUnhappiness === 'Yes' || embargoed === 'Yes')) ||
+    const isHighImpact =
+        submittedImpactAssessment?.perceivedUnhappiness === 'Yes' || embargoed === 'Yes';
 
-        (selectedCategories.has('New/Changes') &&
-            (type === 'New' || type === 'Existing with Changes')) ||
+    // High Impact takes precedence and is exclusive
+    if (isHighImpact) {
+        return selectedCategories.has('High Impact');
+    }
 
-        (selectedCategories.has('Existing') &&
-            type === 'Existing')
-    );
+    // Non-High-Impact categories
+    if (selectedCategories.has('New/Changes') && (type === 'New' || type === 'Existing with Changes')) {
+        return true;
+    }
+
+    if (selectedCategories.has('Existing') && type === 'Existing') {
+        return true;
+    }
+
+    return false;
 }
 
 function filterEvent(
