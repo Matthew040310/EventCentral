@@ -72,9 +72,10 @@ export default function filteredEvents(
     selectedCategories: string[],
 ) {
     const filteredSubmittedEvents = applyFilters(selectedDepartments, selectedCategories, submittedEvents);
-    const filteredDraftEvents = applyFilters(selectedDepartments, selectedCategories, draftEvents);
 
-    // Filter for Draft Events. Done at the page level as 
+    // Draft events only filtered by department
+    const filteredDraftEvents = applyFilters(selectedDepartments, [], draftEvents);
+
     const isDraftSelected = selectedCategories.includes("Draft");
     const showAllCategories = selectedCategories.length === 0;
     const isOnlyDraftSelected = isDraftSelected && selectedCategories.length === 1;
