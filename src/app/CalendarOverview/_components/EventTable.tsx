@@ -21,11 +21,6 @@ const initialState: GridInitialState = {
   },
   sorting: {
     sortModel: [{ field: 'startDate', sort: 'asc' }],
-  },
-  filter: {
-    filterModel: {
-      items: [{ field: 'type', operator: 'isAnyOf', value: ['Existing with Changes', 'New'] }],
-    },
   }
 }
 
@@ -36,6 +31,7 @@ interface EventTableProps {
   EventReports: Partial<FullEventReport>[] | FullEventReport[];
   onDeleteSuccess: () => void
   onHyperlinkClick: (eventDetails: Partial<FullEventReport>) => void;
+  newAndChangeFilter?: boolean;
 }
 
 const EventTable: React.FC<EventTableProps> = ({
@@ -44,7 +40,8 @@ const EventTable: React.FC<EventTableProps> = ({
   backgroundColor = "white",
   EventReports,
   onDeleteSuccess,
-  onHyperlinkClick
+  onHyperlinkClick,
+  newAndChangeFilter = true
 }) => {
   const [selectedEvents, setSelectedEvents] = useState<GridRowId[]>([]);
   const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' })
@@ -82,6 +79,13 @@ const EventTable: React.FC<EventTableProps> = ({
   const headers = useMemo(() => EventTableHeader(state, role, openDeleteDialog, onHyperlinkClick), [state, role, openDeleteDialog, onHyperlinkClick]);
   const pageSizeOptions = useMemo(() => [5, 10, 20, 50], []);
   const deleteDescription = useMemo(() => `Are you sure you want to delete <u><b>${selectedEvents.length}</b></u> event(s)? This action cannot be undone.`, [selectedEvents.length]);
+  if (newAndChangeFilter) {
+    initialState.filter = {
+      filterModel: {
+        items: [{ field: 'type', operator: 'isAnyOf', value: ['Existing with Changes', 'New'] }],
+      },
+    }
+  }
 
   return (
     <Paper sx={{ width: '100%', px: 3, py: 1, mt: 2, bgcolor: backgroundColor }}>

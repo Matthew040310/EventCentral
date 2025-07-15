@@ -71,6 +71,7 @@ const SearchEvents: React.FC = () => {
                 EventReports={submittedEventReports}
                 onDeleteSuccess={fetchDashboardData}
                 onHyperlinkClick={showEventDialog}
+                newAndChangeFilter={false}
             />
 
             <EventTable
@@ -79,6 +80,7 @@ const SearchEvents: React.FC = () => {
                 EventReports={draftEventReports}
                 onDeleteSuccess={fetchDashboardData}
                 onHyperlinkClick={showEventDialog}
+                newAndChangeFilter={false}
             />
 
             <EventDetailsDialog
