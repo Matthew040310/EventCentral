@@ -24,20 +24,20 @@ const SubHeader: React.FC<SubHeaderProps> = ({
 }) => (
     <Grid container mt={1} alignItems={"center"}
         justifyContent={{ lg: "center", sm: "flex-start" }}
-        textAlign={{ lg: "center", sm: "left" }} spacing={1} bgcolor={"white"} >
+        textAlign={{ lg: "center", sm: "left" }} bgcolor={"white"} >
 
         <Grid size={1} display={{ xs: "none", md: "block" }}></Grid>
 
-        <Grid size={{ xl: 2, md: 5, xs: 12 }}>
-            <CustomDatePicker md={8}
+        <Grid size={{ xl: 1.5, md: 3, xs: 12 }}>
+            <CustomDatePicker md={10}
                 label={"Start Date"} required={false}
                 value={datumStartDate} minSelectableDate={null}
                 onChange={(date) => { setDatumStartDate(date); }}
             />
         </Grid>
 
-        <Grid size={{ xl: 2, md: 5, xs: 12 }}>
-            <CustomDatePicker md={8}
+        <Grid size={{ xl: 1.5, md: 3, xs: 12 }}>
+            <CustomDatePicker md={10}
                 label={"End Date"} required={false}
                 value={datumEndDate} minSelectableDate={null}
                 onChange={(date) => { setDatumEndDate(date); }}
@@ -59,7 +59,7 @@ const SubHeader: React.FC<SubHeaderProps> = ({
                 }} />
         </Grid>
 
-        <Grid mt={2} size={{ xl: 7, lg: 12 }}>
+        <Grid mt={2} size={{ xl: 4.5, lg: 12 }}>
             <Legend width={"100%"} />
         </Grid>
 

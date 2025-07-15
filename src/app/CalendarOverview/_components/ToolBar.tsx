@@ -50,12 +50,13 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
             />
         </Grid>
 
-        <Grid mt={2} size={{ xl: 5, lg: 12 }}>
+        <Grid mt={2} size={{ xl: 5.5, lg: 12 }}>
             <Legend width={"100%"} />
         </Grid>
 
-        <Grid size={{ xl: 2, lg: 8 }}>
+        <Grid size={{ xl: 1.5, lg: 8 }}>
             <Autocomplete
+                sx={{ width: "90%" }}
                 multiple
                 options={allDepartments}
                 value={selectedDepartments}
@@ -73,7 +74,7 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
 
         <Grid justifyContent={{ xl: "flex-end", xs: "center" }} display="flex"
             size={{ xl: 1, xs: 12 }}>
-            <Stack direction="row" alignItems="center" justifyContent="center">
+            <Stack direction="row" alignItems="center" justifyContent="center" mt={1}>
                 <Button variant={selectedView === "month" ? 'contained' : 'outlined'}
                     onClick={() => setSelectedView(Views.MONTH)}>
                     Month
