@@ -5,7 +5,6 @@ import dayjs from 'dayjs';
 import { View, Views } from 'react-big-calendar';
 
 import FullEventReport from '@/types/IFullEventReport';
-import { FullEventReportWithFilters } from '@/types/IFullEventReportParams';
 import UserRole from '@/types/TUserRole';
 
 import CalendarOverviewHeader from './_components/Header';
@@ -15,7 +14,7 @@ import EventTable from './_components/EventTable';
 import EventDetailsDialog from './_components/EventDetailsDialog';
 
 import eventFilter from './functions/filterEvents';
-import getFullEventReports from '@/util/Prisma-API-handlers/getFullEventReports'
+import getDashboardData from '@/util/getDashboardData';
 
 const CalendarOverview: React.FC = () => {
   const [role, setRole] = useState<UserRole>('Admin');
@@ -24,54 +23,36 @@ const CalendarOverview: React.FC = () => {
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedView, setSelectedView] = useState<View>(Views.MONTH)
-  const [prismaFilters, setPrismaFilters] = useState<Partial<FullEventReportWithFilters>>({});
   const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
   const [submittedEventReports, setSubmittedEventReports] = useState<FullEventReport[]>([]);
 
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<Partial<FullEventReport>>({});
 
-  const fetchDashboardData = async () => {
-    try {
-      const allSubmissions = await getFullEventReports({ state: "Submitted", sortby: [{ type: "desc" }, { estimatedCohortSize: "desc" }], filters: prismaFilters })
-      setSubmittedEventReports(allSubmissions as FullEventReport[] || [])
-
-      const allDrafts = await getFullEventReports({ state: "Draft", sortby: [{ type: "desc" }, { estimatedCohortSize: "desc" }], filters: prismaFilters });
-      setdraftEventReports(allDrafts || [])
-    }
-    catch (error) {
-      console.error('Error fetching event reports:', error);
-    }
-  }
-
-  useEffect(() => {
+  // Fetch Event Data for Render
+  const prismaFilters = useMemo(() => {
     const startOfMonth = dayjs(datumDate).startOf("month").startOf('week').toDate();
     const endOfMonth = dayjs(datumDate).endOf("month").endOf('week').toDate();
-    setPrismaFilters({ startDate: { gte: startOfMonth, lte: endOfMonth } })
+    return { startDate: { gte: startOfMonth, lte: endOfMonth } };
   }, [datumDate]);
 
+  const fetchDashboardData = getDashboardData(prismaFilters);
+
   useEffect(() => {
-    fetchDashboardData()
-  }, [prismaFilters]);
+    fetchDashboardData().then(({ submitted, draft }) => {
+      setSubmittedEventReports(submitted as FullEventReport[] || []);
+      setdraftEventReports(draft || []);
+    });
+  }, [fetchDashboardData]);
+
+  const filteredSubmittedEvents = eventFilter(selectedDepartments, selectedCategories, submittedEventReports)
+  const filteredDraftEvents = eventFilter(selectedDepartments, selectedCategories, draftEventReports)
+  //
 
   const showEventDialog = (eventDetails: Partial<FullEventReport>) => {
     setSelectedEvent(eventDetails);
     setOpenDialog(true);
   };
-
-  const filteredSubmittedEvents = useMemo(() =>
-    submittedEventReports.filter(event =>
-      eventFilter(selectedDepartments, selectedCategories, event)
-    ),
-    [submittedEventReports, selectedDepartments, selectedCategories]
-  );
-
-  const filteredDraftEvents = useMemo(() =>
-    draftEventReports.filter(event =>
-      eventFilter(selectedDepartments, selectedCategories, event)
-    ),
-    [draftEventReports, selectedDepartments, selectedCategories]
-  );
 
   return (
     <>
