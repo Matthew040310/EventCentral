@@ -62,6 +62,7 @@ model SubmittedEvent {
   type                      String
   embargoed                 String
   startDate                 DateTime
+  estimatedStartDate        DateTime?
   endDate                   DateTime?
   frequency                 String
   frequencyInterval         Int?
@@ -80,6 +81,8 @@ model SubmittedEvent {
   reportStatus              String
   // lastUpdatedBy          String?
   // lastUpdated                 DateTime?                  @updatedAt()
+
+  @@index(fields: [startDate])
 }
 
 model SubmittedImpactAssessment {
