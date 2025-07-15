@@ -1,6 +1,8 @@
+import React from 'react';
 import { Box, Stack, Chip, } from '@mui/material';
 import { Event_Legend } from '@/styles/theme';
 
+const legendItems = Object.entries(Event_Legend);
 const LegendExplanation = [
     "Potential to cause perceived unhappiness among members \nOR \nEmbargoed Event",
     "New or Existing with Changes Event",
@@ -8,25 +10,52 @@ const LegendExplanation = [
     "Draft Event"
 ]
 
-const CalendarLegend = ({ width }: { width: string }) => (
-    <Box sx={{ p: 2, my: 2, width: { width } }}>
-        <Stack direction="row" textAlign='center' justifyContent="center" spacing={2}>
-            {Object.keys(Event_Legend).map((key, index) => (
-                <Chip
-                    key={key}
-                    label={key}
-                    title={LegendExplanation[index]}
-                    sx={{
-                        backgroundColor: Event_Legend[key as keyof typeof Event_Legend],
-                        color: "white",
-                        fontWeight: 500,
-                        boxShadow: 1,
-                        minWidth: '7vw',
-                    }}
-                />
-            ))}
-        </Stack>
-    </Box>
-);
+interface LegendProps {
+    width: string;
+    selectedCategories: string[];
+    setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>;
+}
 
-export default CalendarLegend;
+const Legend: React.FC<LegendProps> = ({
+    width,
+    selectedCategories,
+    setSelectedCategories
+}) => {
+    const handleChipClick = (category: string) => {
+        setSelectedCategories(prev => prev.includes(category)
+            ? prev.filter(cat => cat !== category)
+            : [...prev, category]
+        );
+    };
+
+    const getChipStyles = (color: string, selected: boolean) => ({
+        backgroundColor: selected ? `${color} !important` : 'transparent',
+        color: selected ? 'white' : color,
+        borderColor: color,
+        fontWeight: 500,
+        boxShadow: 1,
+        minWidth: '7vw',
+    });
+
+    return (
+        <Box sx={{ p: 2, my: 2, width: { width } }}>
+            <Stack direction="row" textAlign="center" justifyContent="center" spacing={2}>
+                {legendItems.map(([category, color], index) => {
+                    const selected = selectedCategories.includes(category);
+                    return (
+                        <Chip
+                            key={category}
+                            label={category}
+                            title={LegendExplanation[index]}
+                            variant={selected ? 'filled' : 'outlined'}
+                            sx={getChipStyles(color, selected)}
+                            onClick={() => handleChipClick(category)}
+                        />
+                    );
+                })}
+            </Stack>
+        </Box>
+    );
+};
+
+export default Legend;
