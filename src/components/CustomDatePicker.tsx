@@ -52,6 +52,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
                     onChange={handleDateChange}
                     slotProps={{
                         textField: { required },
+                        actionBar: { actions: ['today'] },
                     }}
                     views={['year', 'month', 'day']}
                 />
