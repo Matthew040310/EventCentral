@@ -13,7 +13,7 @@ import CalendarView from './_components/CalendarView';
 import EventTable from './_components/EventTable';
 import EventDetailsDialog from './_components/EventDetailsDialog';
 
-import eventFilter from './functions/filteredEvents';
+import filteredEvents from './functions/filteredEvents';
 import getDashboardData from '@/util/getDashboardData';
 
 const CalendarOverview: React.FC = () => {
@@ -45,8 +45,8 @@ const CalendarOverview: React.FC = () => {
     });
   }, [fetchDashboardData]);
 
-  const filteredSubmittedEvents = eventFilter(selectedDepartments, selectedCategories, submittedEventReports)
-  const filteredDraftEvents = eventFilter(selectedDepartments, selectedCategories, draftEventReports)
+  const filteredSubmittedEvents = filteredEvents(selectedDepartments, selectedCategories, submittedEventReports)
+  const filteredDraftEvents = filteredEvents(selectedDepartments, selectedCategories, draftEventReports)
   //
 
   const showEventDialog = (eventDetails: Partial<FullEventReport>) => {
