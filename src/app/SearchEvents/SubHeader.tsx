@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Typography } from '@mui/material'
-import DatePicker from '@/components/DatePicker_Today'
+import CustomDatePicker from '@/components/CustomDatePicker'
 import Legend from '@/components/Legend'
 import dateFormatter from '@/util/dateFormatter'
 
@@ -24,18 +24,18 @@ const SubHeader: React.FC<SubHeaderProps> = ({
         <Grid size={1} display={{ xs: "none", md: "block" }}></Grid>
 
         <Grid size={{ xl: 2, md: 5, xs: 12 }}>
-            <DatePicker
-                label='Start Date'
-                datumDate={datumStartDate}
-                setDatumDate={setDatumStartDate}
+            <CustomDatePicker md={8}
+                label={"Start Date"} required={false}
+                value={datumStartDate} minSelectableDate={null}
+                onChange={(date) => { setDatumStartDate(date); }}
             />
         </Grid>
 
         <Grid size={{ xl: 2, md: 5, xs: 12 }}>
-            <DatePicker
-                label='End Date'
-                datumDate={datumEndDate}
-                setDatumDate={setDatumEndDate}
+            <CustomDatePicker md={8}
+                label={"End Date"} required={false}
+                value={datumEndDate} minSelectableDate={null}
+                onChange={(date) => { setDatumEndDate(date); }}
             />
         </Grid>
 

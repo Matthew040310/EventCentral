@@ -2,7 +2,7 @@ import React from 'react'
 import dayjs from 'dayjs'
 import { Autocomplete, Chip, Grid, Stack, Button, TextField, Typography } from '@mui/material'
 import { View, Views } from 'react-big-calendar';
-import DatePicker from '@/components/DatePicker_Today';
+import CustomDatePicker from '@/components/CustomDatePicker';
 import Legend from '@/components/Legend';
 import { ORGANISATION } from '@/constants/EventCentralConstants';
 
@@ -43,10 +43,10 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
         <Grid size={1}></Grid>
 
         <Grid size={{ xl: 2, xs: 10 }}>
-            <DatePicker
-                label='Go to Date'
-                datumDate={datumDate}
-                setDatumDate={setDatumDate}
+            <CustomDatePicker md={8}
+                label={"Go to Date"} required={false}
+                value={datumDate} minSelectableDate={null}
+                onChange={(date) => { setDatumDate(date); }}
             />
         </Grid>
 
