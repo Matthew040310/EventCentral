@@ -7,7 +7,7 @@ import FullEventReport from '@/types/IFullEventReport';
 import UserRole from '@/types/TUserRole';
 
 import Header from '@/app/CalendarOverview/_components/Header';
-import SearchEventToolBar from './SubHeader';
+import SearchEventToolBar from './ToolBar';
 import EventTable from '@/app/CalendarOverview/_components/EventTable';
 import EventDetailsDialog from '@/app/CalendarOverview/_components/EventDetailsDialog';
 
