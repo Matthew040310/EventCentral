@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import FullEventReport from '@/types/IFullEventReport';
 import RBCEvent from '@/types/IRBCEvent';
 
@@ -31,7 +32,7 @@ function filterEventsByCategory(
     return renderEvent;
 }
 
-export default function filterEvents(
+function filterEvents(
     selectedDepartments: string[],
     selectedCategories: string[],
     event: Partial<FullEventReport> | RBCEvent
@@ -40,4 +41,16 @@ export default function filterEvents(
         filterEventsByDepartment(selectedDepartments, event) &&
         filterEventsByCategory(selectedCategories, event)
     );
+}
+
+export default function useFilterEvents(
+    selectedDepartments: string[],
+    selectedCategories: string[],
+    events: Partial<FullEventReport>[] | RBCEvent[],
+) {
+    return useMemo(() => {
+        return events.filter(event =>
+            filterEvents(selectedDepartments, selectedCategories, event)
+        );
+    }, [selectedDepartments, selectedCategories, events]);
 }
