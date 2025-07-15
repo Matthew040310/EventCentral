@@ -74,7 +74,6 @@ const SearchEvents: React.FC = () => {
                 EventReports={submittedEventReports}
                 onDeleteSuccess={fetchDashboardData}
                 onHyperlinkClick={showEventDialog}
-                newAndChangeFilter={false}
                 unifiedSearch={true}
                 searchKeyword={searchKeyword}
             />
@@ -85,7 +84,6 @@ const SearchEvents: React.FC = () => {
                 EventReports={draftEventReports}
                 onDeleteSuccess={fetchDashboardData}
                 onHyperlinkClick={showEventDialog}
-                newAndChangeFilter={false}
                 unifiedSearch={true}
                 searchKeyword={searchKeyword}
             />

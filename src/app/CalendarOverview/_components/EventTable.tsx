@@ -31,7 +31,6 @@ interface EventTableProps {
   EventReports: Partial<FullEventReport>[] | FullEventReport[];
   onDeleteSuccess: () => void
   onHyperlinkClick: (eventDetails: Partial<FullEventReport>) => void;
-  newAndChangeFilter?: boolean;
   unifiedSearch?: boolean;
   searchKeyword?: string;
 }
@@ -43,7 +42,6 @@ const EventTable: React.FC<EventTableProps> = ({
   EventReports,
   onDeleteSuccess,
   onHyperlinkClick,
-  newAndChangeFilter = true,
   unifiedSearch = false,
   searchKeyword = ""
 }) => {
@@ -51,9 +49,7 @@ const EventTable: React.FC<EventTableProps> = ({
   const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' })
   const [dialogOpen, setDialogOpen] = useState(false);
   const [filterModel, setFilterModel] = useState<GridFilterModel>({
-    items: newAndChangeFilter
-      ? [{ field: 'type', operator: 'isAnyOf', value: ['Existing with Changes', 'New'] }]
-      : [],
+    items: [],
     quickFilterValues: [],
   });
 
