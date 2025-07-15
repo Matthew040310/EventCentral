@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useMemo } from 'react';
-import { DataGrid, GridCallbackDetails, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
+import { DataGrid, GridCallbackDetails, GridFilterModel, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
 import { Alert, AlertColor, Box, Fade, Paper, Typography } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 
@@ -50,6 +50,21 @@ const EventTable: React.FC<EventTableProps> = ({
   const [selectedEvents, setSelectedEvents] = useState<GridRowId[]>([]);
   const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' })
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [filterModel, setFilterModel] = useState<GridFilterModel>({
+    items: newAndChangeFilter
+      ? [{ field: 'type', operator: 'isAnyOf', value: ['Existing with Changes', 'New'] }]
+      : [],
+    quickFilterValues: [],
+  });
+
+  useEffect(() => {
+    setFilterModel((currentFilter) => ({
+      ...currentFilter,
+      quickFilterValues: searchKeyword
+        ? searchKeyword.split(' ')
+        : [],
+    }));
+  }, [searchKeyword]);
 
   const handleRowSelection = (
     newSelection: GridRowSelectionModel,
@@ -83,21 +98,6 @@ const EventTable: React.FC<EventTableProps> = ({
   const headers = useMemo(() => EventTableHeader(state, role, openDeleteDialog, onHyperlinkClick), [state, role, openDeleteDialog, onHyperlinkClick]);
   const pageSizeOptions = useMemo(() => [5, 10, 20, 50], []);
   const deleteDescription = useMemo(() => `Are you sure you want to delete <u><b>${selectedEvents.length}</b></u> event(s)? This action cannot be undone.`, [selectedEvents.length]);
-
-  if (newAndChangeFilter) {
-    initialState.filter = {
-      filterModel: {
-        items: [{ field: 'type', operator: 'isAnyOf', value: ['Existing with Changes', 'New'] }],
-      },
-    }
-  }
-
-  const filterModel = useMemo(() => ({
-    items: newAndChangeFilter
-      ? [{ field: 'type', operator: 'isAnyOf', value: ['Existing with Changes', 'New'] }]
-      : [],
-    quickFilterValues: searchKeyword ? searchKeyword.split(" ") : [],
-  }), [searchKeyword]);
 
   return (
     <Paper sx={{ width: '100%', px: 3, py: 1, mt: 2, bgcolor: backgroundColor }}>
@@ -139,7 +139,8 @@ const EventTable: React.FC<EventTableProps> = ({
         columns={headers}
         rows={EventReports}
         initialState={initialState}
-        filterModel={unifiedSearch ? filterModel : undefined}
+        onFilterModelChange={setFilterModel}
+        filterModel={filterModel}
         pageSizeOptions={pageSizeOptions}
         checkboxSelection
         onRowSelectionModelChange={handleRowSelection}
