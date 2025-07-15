@@ -1,6 +1,7 @@
 import React from 'react'
-import { Grid, Typography } from '@mui/material'
+import { Grid, InputAdornment, TextField, Typography } from '@mui/material'
 import CustomDatePicker from '@/components/CustomDatePicker'
+import { Search } from '@mui/icons-material'
 import Legend from '@/components/Legend'
 import dateFormatter from '@/util/dateFormatter'
 
@@ -9,13 +10,17 @@ interface SubHeaderProps {
     setDatumStartDate: (date: Date | null) => void;
     datumEndDate: Date | null;
     setDatumEndDate: (date: Date | null) => void;
+    searchKeyword: string;
+    setSearchKeyword: (keyword: string) => void;
 }
 
 const SubHeader: React.FC<SubHeaderProps> = ({
     datumStartDate,
     setDatumStartDate,
     datumEndDate,
-    setDatumEndDate
+    setDatumEndDate,
+    searchKeyword,
+    setSearchKeyword
 }) => (
     <Grid container mt={1} alignItems={"center"}
         justifyContent={{ lg: "center", sm: "flex-start" }}
@@ -39,15 +44,41 @@ const SubHeader: React.FC<SubHeaderProps> = ({
             />
         </Grid>
 
-
-        <Grid size={1} display={{ xs: "none", md: "block", xl: "none" }}></Grid>
+        <Grid size={{ md: 3, xs: 12 }} display={{ xs: "block", xl: "none" }} mt={1}>
+            <TextField
+                sx={{ width: "100%" }}
+                margin="dense"
+                label={"Search Event Keywords"}
+                size="medium"
+                value={searchKeyword}
+                onChange={(e) => setSearchKeyword(e.target.value)}
+                slotProps={{
+                    input: {
+                        startAdornment: (<InputAdornment position="start"><Search /></InputAdornment>)
+                    }
+                }} />
+        </Grid>
 
         <Grid mt={2} size={{ xl: 7, lg: 12 }}>
             <Legend width={"100%"} />
         </Grid>
 
-        <Grid size={1} display={{ xs: "none", xl: "block" }}></Grid>
+        <Grid size={2.5} display={{ xs: "none", xl: "block" }}>
+            <TextField
+                sx={{ width: "100%" }}
+                margin="dense"
+                label={"Search Event Keywords"}
+                size="medium"
+                value={searchKeyword}
+                onChange={(e) => setSearchKeyword(e.target.value)}
+                slotProps={{
+                    input: {
+                        startAdornment: (<InputAdornment position="start"><Search /></InputAdornment>)
+                    }
+                }} />
+        </Grid>
 
+        <Grid size={1} display={{ xs: "none", xl: "block" }}></Grid>
 
         <Grid size={12}>
             <Typography variant='h6' fontSize={"3vh"} mb={1}>
