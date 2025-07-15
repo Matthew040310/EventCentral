@@ -1,4 +1,3 @@
-// hooks/getDashboardData.ts
 import { useCallback } from 'react';
 import getFullEventReports from '@/util/Prisma-API-handlers/getFullEventReports';
 import { FullEventReportWithFilters } from '@/types/IFullEventReportParams';
