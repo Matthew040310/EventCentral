@@ -53,6 +53,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
                     slotProps={{
                         textField: { required },
                     }}
+                    views={['year', 'month', 'day']}
                 />
             </LocalizationProvider>
         </Grid>
