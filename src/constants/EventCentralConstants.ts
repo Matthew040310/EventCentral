@@ -119,6 +119,11 @@ export const ORGANISATION: Organisation = {
   }
 }
 
+export const ALL_DEPARTMENTS = Object.values(ORGANISATION)
+  .flatMap(cluster => Object.values(cluster).flat())
+  .filter((value, index, self) => self.indexOf(value) === index)  // remove duplicates
+  .sort();
+
 export const STATUS = [
   "Pending Write Up",
   "For SLD Vetting",
