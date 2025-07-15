@@ -35,27 +35,48 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
     selectedCategories, setSelectedCategories
 }) =>
 (
-    <Grid container mt={1} alignItems={"center"}
-        justifyContent={{ lg: "center", sm: "flex-start" }}
-        textAlign={{ lg: "center", sm: "left" }} spacing={2} bgcolor={"white"} >
+    <Grid container mt={1}
+        alignItems={"center"}
+        spacing={1} bgcolor={"white"} >
         <Grid size={1}></Grid>
 
-        <Grid size={{ xl: 2, xs: 10 }}>
-            <CustomDatePicker md={8}
+        <Grid size={{ lg: 2, sm: 5, xs: 10 }}>
+            <CustomDatePicker md={12} sm={12}
                 label={"Go to Date"} required={false}
                 value={datumDate} minSelectableDate={null}
                 onChange={(date) => { setDatumDate(date); }}
             />
         </Grid>
 
-        <Grid pb={1} size={{ xl: 5.5, lg: 12 }}>
+        {/* Appears BEFORE Legend when breakpoint < lg (1200px) */}
+        <Grid mt={1} size={{ sm: 5, xs: 12 }} display={{ lg: "none", xs: "flex" }}
+            justifyContent={{ xs: "center" }}>
+            <Autocomplete
+                sx={{ width: { sm: "90%", xs: "83%" } }}
+                multiple
+                options={ALL_DEPARTMENTS}
+                value={selectedDepartments}
+                onChange={(_, newValue) => setSelectedDepartments(newValue)}
+                renderValue={(value, props) =>
+                    value.map((option, index) => (
+                        <Chip label={option} {...props({ index })} key={index} />
+                    ))
+                }
+                renderInput={(params) => (
+                    <TextField {...params} label={"Filter by Dept"} />
+                )}
+            />
+        </Grid>
+
+        <Grid pb={1} size={{ xl: 5.5, lg: 5, xs: 12 }}>
             <Legend
                 width="100%"
                 selectedCategories={selectedCategories}
                 setSelectedCategories={setSelectedCategories} />
         </Grid>
 
-        <Grid size={{ xl: 1.5, lg: 8 }}>
+        {/* Appears AFTER Legend when breakpoint > lg (1200px) */}
+        <Grid size={{ xl: 1.5, lg: 2 }} display={{ lg: "block", xs: "none" }}>
             <Autocomplete
                 sx={{ width: "90%" }}
                 multiple
@@ -73,9 +94,9 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
             />
         </Grid>
 
-        <Grid justifyContent={{ xl: "flex-end", xs: "center" }} display="flex"
-            size={{ xl: 1, xs: 12 }}>
-            <Stack direction="row" alignItems="center" justifyContent="center" mt={1}>
+        <Grid mt={1} size={{ lg: 1, xs: 12 }}
+            justifyContent={{ lg: "flex-end", xs: "center" }}>
+            <Stack direction="row" alignItems="center" justifyContent="center">
                 <Button variant={selectedView === "month" ? 'contained' : 'outlined'}
                     onClick={() => setSelectedView(Views.MONTH)}>
                     Month

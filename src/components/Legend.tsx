@@ -40,7 +40,7 @@ const Legend: React.FC<LegendProps> = ({
     });
 
     return (
-        <Box sx={{ p: 2, mt: 2, width: { width } }}>
+        <Box p={2} mt={2} justifyContent="center" textAlign="center" width={width} >
             <Typography variant='h6' mb={1}>Click to Filter by Category</Typography>
             <Stack direction="row" textAlign="center" justifyContent="center" spacing={2}>
                 {legendItems.map(([category, color], index) => {
