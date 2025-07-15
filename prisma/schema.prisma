@@ -62,7 +62,6 @@ model SubmittedEvent {
   type                      String
   embargoed                 String
   startDate                 DateTime
-  estimatedStartDate        DateTime?
   endDate                   DateTime?
   frequency                 String
   frequencyInterval         Int?
