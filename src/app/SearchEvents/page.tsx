@@ -18,6 +18,7 @@ const SearchEvents: React.FC = () => {
 
     const [datumStartDate, setDatumStartDate] = useState<Date | null>(dayjs().startOf('year').toDate());
     const [datumEndDate, setDatumEndDate] = useState<Date | null>(dayjs().endOf('year').toDate());
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [searchKeyword, setSearchKeyword] = useState<string>('');
     const [prismaFilters, setPrismaFilters] = useState({});
     const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
@@ -65,6 +66,8 @@ const SearchEvents: React.FC = () => {
                 setDatumStartDate={setDatumStartDate}
                 datumEndDate={datumEndDate}
                 setDatumEndDate={setDatumEndDate}
+                selectedCategories={selectedCategories}
+                setSelectedCategories={setSelectedCategories}
                 searchKeyword={searchKeyword}
                 setSearchKeyword={setSearchKeyword} />
 

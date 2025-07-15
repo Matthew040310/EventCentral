@@ -10,6 +10,8 @@ interface SubHeaderProps {
     setDatumStartDate: (date: Date | null) => void;
     datumEndDate: Date | null;
     setDatumEndDate: (date: Date | null) => void;
+    selectedCategories: string[];
+    setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>;
     searchKeyword: string;
     setSearchKeyword: (keyword: string) => void;
 }
@@ -19,6 +21,8 @@ const SubHeader: React.FC<SubHeaderProps> = ({
     setDatumStartDate,
     datumEndDate,
     setDatumEndDate,
+    selectedCategories,
+    setSelectedCategories,
     searchKeyword,
     setSearchKeyword
 }) => (
@@ -60,7 +64,10 @@ const SubHeader: React.FC<SubHeaderProps> = ({
         </Grid>
 
         <Grid mt={2} size={{ xl: 4.5, lg: 12 }}>
-            <Legend width={"100%"} />
+            <Legend
+                width="100%"
+                selectedCategories={selectedCategories}
+                setSelectedCategories={setSelectedCategories} />
         </Grid>
 
         <Grid size={2.5} display={{ xs: "none", xl: "block" }}>
