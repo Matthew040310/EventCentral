@@ -43,7 +43,7 @@ const SubHeader: React.FC<SubHeaderProps> = ({
         <Grid size={{ xl: 1.5, md: 3, xs: 12 }}>
             <CustomDatePicker md={10}
                 label={"End Date"} required={false}
-                value={datumEndDate} minSelectableDate={null}
+                value={datumEndDate} minSelectableDate={datumStartDate}
                 onChange={(date) => { setDatumEndDate(date); }}
             />
         </Grid>
