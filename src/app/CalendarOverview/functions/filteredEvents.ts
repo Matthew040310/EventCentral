@@ -32,7 +32,6 @@ function filterEventsByCategory(
     );
 }
 
-
 function filterEvent(
     event: Event,
     departmentSet: Set<string>,

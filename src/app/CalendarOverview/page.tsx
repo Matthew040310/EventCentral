@@ -13,7 +13,7 @@ import CalendarView from './_components/CalendarView';
 import EventTable from './_components/EventTable';
 import EventDetailsDialog from './_components/EventDetailsDialog';
 
-import eventFilter from './functions/filterEvents';
+import eventFilter from './functions/filteredEvents';
 import getDashboardData from '@/util/getDashboardData';
 
 const CalendarOverview: React.FC = () => {
