@@ -1,34 +1,34 @@
 import React from 'react'
-import { Grid, InputAdornment, TextField, Typography } from '@mui/material'
+import { Autocomplete, Chip, Grid, InputAdornment, TextField, Typography } from '@mui/material'
 import CustomDatePicker from '@/components/CustomDatePicker'
 import { Search } from '@mui/icons-material'
 import Legend from '@/components/Legend'
 import dateFormatter from '@/util/dateFormatter'
+import { ALL_DEPARTMENTS } from '@/constants/EventCentralConstants'
 
-interface SubHeaderProps {
+interface SearchEventToolBarProps {
     datumStartDate: Date | null;
     setDatumStartDate: (date: Date | null) => void;
     datumEndDate: Date | null;
     setDatumEndDate: (date: Date | null) => void;
+    selectedDepartments: string[];
+    setSelectedDepartments: (departments: string[]) => void;
     selectedCategories: string[];
     setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>;
     searchKeyword: string;
     setSearchKeyword: (keyword: string) => void;
 }
 
-const SubHeader: React.FC<SubHeaderProps> = ({
-    datumStartDate,
-    setDatumStartDate,
-    datumEndDate,
-    setDatumEndDate,
-    selectedCategories,
-    setSelectedCategories,
-    searchKeyword,
-    setSearchKeyword
+const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
+    datumStartDate, setDatumStartDate,
+    datumEndDate, setDatumEndDate,
+    selectedDepartments, setSelectedDepartments,
+    selectedCategories, setSelectedCategories,
+    searchKeyword, setSearchKeyword
 }) => (
     <Grid container mt={1} alignItems={"center"}
         justifyContent={{ lg: "center", sm: "flex-start" }}
-        textAlign={{ lg: "center", sm: "left" }} bgcolor={"white"} >
+        textAlign={{ lg: "center", sm: "left" }} spacing={1} bgcolor={"white"} >
 
         <Grid size={1} display={{ xs: "none", md: "block" }}></Grid>
 
@@ -63,14 +63,33 @@ const SubHeader: React.FC<SubHeaderProps> = ({
                 }} />
         </Grid>
 
-        <Grid mt={2} size={{ xl: 4.5, lg: 12 }}>
+        <Grid mt={2} size={{ xl: 4, lg: 12 }}>
             <Legend
                 width="100%"
                 selectedCategories={selectedCategories}
-                setSelectedCategories={setSelectedCategories} />
+                setSelectedCategories={setSelectedCategories}
+                noDraftChip={true} />
         </Grid>
 
-        <Grid size={2.5} display={{ xs: "none", xl: "block" }}>
+        <Grid size={1.5} display={{ xs: "none", xl: "block" }}>
+            <Autocomplete
+                sx={{ width: "90%" }}
+                multiple
+                options={ALL_DEPARTMENTS}
+                value={selectedDepartments}
+                onChange={(_, newValue) => setSelectedDepartments(newValue)}
+                renderValue={(value, props) =>
+                    value.map((option, index) => (
+                        <Chip label={option} {...props({ index })} key={index} />
+                    ))
+                }
+                renderInput={(params) => (
+                    <TextField {...params} label={"Filter by Dept"} />
+                )}
+            />
+        </Grid>
+
+        <Grid size={1.5} display={{ xs: "none", xl: "block" }}>
             <TextField
                 sx={{ width: "100%" }}
                 margin="dense"
@@ -96,4 +115,4 @@ const SubHeader: React.FC<SubHeaderProps> = ({
 )
 
 
-export default SubHeader
+export default SearchEventToolBar;

@@ -7,11 +7,10 @@ import FullEventReport from '@/types/IFullEventReport';
 import UserRole from '@/types/TUserRole';
 
 import Header from '@/app/CalendarOverview/_components/Header';
-import SubHeader from './SubHeader';
+import SearchEventToolBar from './SubHeader';
 import EventTable from '@/app/CalendarOverview/_components/EventTable';
 import EventDetailsDialog from '@/app/CalendarOverview/_components/EventDetailsDialog';
 
-import getFullEventReports from '@/util/Prisma-API-handlers/getFullEventReports'
 import filteredEvents from '@/util/filteredEvents';
 import getDashboardData from '@/util/getDashboardData';
 
@@ -20,6 +19,7 @@ const SearchEvents: React.FC = () => {
 
     const [datumStartDate, setDatumStartDate] = useState<Date | null>(dayjs().startOf('year').toDate());
     const [datumEndDate, setDatumEndDate] = useState<Date | null>(dayjs().endOf('year').toDate());
+    const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [searchKeyword, setSearchKeyword] = useState<string>('');
     const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
@@ -47,8 +47,8 @@ const SearchEvents: React.FC = () => {
         });
     }, [fetchDashboardData]);
 
-    const filteredSubmittedEvents = filteredEvents([], selectedCategories, submittedEventReports)
-    const filteredDraftEvents = filteredEvents([], selectedCategories, draftEventReports)
+    const filteredSubmittedEvents = filteredEvents(selectedDepartments, selectedCategories, submittedEventReports)
+    const filteredDraftEvents = filteredEvents(selectedDepartments, selectedCategories, draftEventReports)
     //
 
     const showEventDialog = (eventDetails: Partial<FullEventReport>) => {
@@ -65,11 +65,13 @@ const SearchEvents: React.FC = () => {
 
             <Header />
 
-            <SubHeader
+            <SearchEventToolBar
                 datumStartDate={datumStartDate}
                 setDatumStartDate={setDatumStartDate}
                 datumEndDate={datumEndDate}
                 setDatumEndDate={setDatumEndDate}
+                selectedDepartments={selectedDepartments}
+                setSelectedDepartments={setSelectedDepartments}
                 selectedCategories={selectedCategories}
                 setSelectedCategories={setSelectedCategories}
                 searchKeyword={searchKeyword}
