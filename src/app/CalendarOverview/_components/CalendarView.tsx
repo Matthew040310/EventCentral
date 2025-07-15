@@ -12,8 +12,6 @@ interface CalendarViewProps {
   events: Partial<FullEventReport>[];
   view: View,
   datumDate: Date | null;
-  selectedDepartments: string[];
-  filterEventsByDepartment: (selectedDepartments: string[], event: Partial<FullEventReport> | RBCEvent) => boolean;
   setDate: (date: Date) => void;
   onCalendarEventClick: (event: RBCEvent) => void;
 }
@@ -22,8 +20,6 @@ const CalendarView: React.FC<CalendarViewProps> = ({
   events = [],
   view,
   datumDate,
-  selectedDepartments,
-  filterEventsByDepartment,
   setDate,
   onCalendarEventClick
 }) => {
@@ -35,9 +31,6 @@ const CalendarView: React.FC<CalendarViewProps> = ({
       startDate: event.startDate ? new Date(event.startDate) : null,
       end: event.startDate ? new Date(event.startDate) : null,      // required field for rendering
     }))
-    .filter(event =>
-      filterEventsByDepartment(selectedDepartments, event)
-    );
 
   const components: Components<RBCEvent, object> = {
     eventWrapper: ({ event }: EventWrapperProps<RBCEvent>) => {

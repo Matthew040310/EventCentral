@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import dayjs from 'dayjs';
 import { View, Views } from 'react-big-calendar';
@@ -14,7 +14,7 @@ import CalendarView from './_components/CalendarView';
 import EventTable from './_components/EventTable';
 import EventDetailsDialog from './_components/EventDetailsDialog';
 
-import filterEventsByDepartment from './functions/filterEventsByDepartment';
+import eventFilter from './functions/filterEvents';
 import getFullEventReports from '@/util/Prisma-API-handlers/getFullEventReports'
 
 const CalendarOverview: React.FC = () => {
@@ -22,6 +22,7 @@ const CalendarOverview: React.FC = () => {
 
   const [datumDate, setDatumDate] = useState<Date | null>(dayjs().toDate());
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedView, setSelectedView] = useState<View>(Views.MONTH)
   const [prismaFilters, setPrismaFilters] = useState<Partial<FullEventReportWithFilters>>({});
   const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
@@ -58,6 +59,20 @@ const CalendarOverview: React.FC = () => {
     setOpenDialog(true);
   };
 
+  const filteredSubmittedEvents = useMemo(() =>
+    submittedEventReports.filter(event =>
+      eventFilter(selectedDepartments, selectedCategories, event)
+    ),
+    [submittedEventReports, selectedDepartments, selectedCategories]
+  );
+
+  const filteredDraftEvents = useMemo(() =>
+    draftEventReports.filter(event =>
+      eventFilter(selectedDepartments, selectedCategories, event)
+    ),
+    [draftEventReports, selectedDepartments, selectedCategories]
+  );
+
   return (
     <>
       <Head>
@@ -77,20 +92,16 @@ const CalendarOverview: React.FC = () => {
       />
 
       <CalendarView
-        events={[...submittedEventReports, ...draftEventReports]}
+        events={[...filteredSubmittedEvents, ...filteredDraftEvents]}
         view={selectedView}
         datumDate={datumDate}
-        selectedDepartments={selectedDepartments}
-        filterEventsByDepartment={filterEventsByDepartment}
         setDate={setDatumDate}
         onCalendarEventClick={showEventDialog} />
 
       <EventTable
         state="Submitted"
         role={role}
-        EventReports={submittedEventReports.filter(event =>
-          filterEventsByDepartment(selectedDepartments, event)
-        )}
+        EventReports={filteredSubmittedEvents}
         onDeleteSuccess={fetchDashboardData}
         onHyperlinkClick={showEventDialog}
       />
@@ -98,9 +109,7 @@ const CalendarOverview: React.FC = () => {
       <EventTable
         state="Draft"
         role={role}
-        EventReports={draftEventReports.filter(event =>
-          filterEventsByDepartment(selectedDepartments, event)
-        )}
+        EventReports={filteredDraftEvents}
         onDeleteSuccess={fetchDashboardData}
         onHyperlinkClick={showEventDialog}
       />
