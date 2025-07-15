@@ -45,9 +45,8 @@ const CalendarOverview: React.FC = () => {
     });
   }, [fetchDashboardData]);
 
-  const filteredSubmittedEvents = filteredEvents(selectedDepartments, selectedCategories, submittedEventReports)
-  const filteredDraftEvents = filteredEvents(selectedDepartments, selectedCategories, draftEventReports)
-  //
+  const { filteredSubmittedEvents, filteredDraftEvents } =
+    filteredEvents(submittedEventReports, draftEventReports, selectedDepartments, selectedCategories)
 
   const showEventDialog = (eventDetails: Partial<FullEventReport>) => {
     setSelectedEvent(eventDetails);
