@@ -51,7 +51,7 @@ function filterEvent(
     );
 }
 
-export default function filteredEvents(
+function applyFilters(
     selectedDepartments: string[],
     selectedCategories: string[],
     events: Event[],
@@ -63,4 +63,34 @@ export default function filteredEvents(
             filterEvent(event, departmentSet, categorySet)
         );
     }, [selectedDepartments, selectedCategories, events]);
+}
+
+export default function filteredEvents(
+    submittedEvents: FullEventReport[],
+    draftEvents: Partial<FullEventReport>[],
+    selectedDepartments: string[],
+    selectedCategories: string[],
+) {
+    const filteredSubmittedEvents = applyFilters(selectedDepartments, selectedCategories, submittedEvents);
+    const filteredDraftEvents = applyFilters(selectedDepartments, selectedCategories, draftEvents);
+
+    // Filter for Draft Events. Done at the page level as 
+    const isDraftSelected = selectedCategories.includes("Draft");
+    const showAllCategories = selectedCategories.length === 0;
+    const isOnlyDraftSelected = isDraftSelected && selectedCategories.length === 1;
+
+    const returnSubmittedEvents = showAllCategories
+        ? filteredSubmittedEvents
+        : isOnlyDraftSelected
+            ? []
+            : filteredSubmittedEvents
+
+    const returnDraftEvents = showAllCategories || isDraftSelected
+        ? filteredDraftEvents
+        : [];
+
+    return {
+        filteredSubmittedEvents: returnSubmittedEvents,
+        filteredDraftEvents: returnDraftEvents
+    }
 }
