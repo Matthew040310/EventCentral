@@ -21,7 +21,7 @@ const CalendarOverview: React.FC = () => {
 
   const [datumDate, setDatumDate] = useState<Date | null>(dayjs().toDate());
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(["High Impact", "New/Changes"]);
   const [selectedView, setSelectedView] = useState<View>(Views.MONTH)
   const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
   const [submittedEventReports, setSubmittedEventReports] = useState<FullEventReport[]>([]);
@@ -70,6 +70,8 @@ const CalendarOverview: React.FC = () => {
         setSelectedView={setSelectedView}
         selectedDepartments={selectedDepartments}
         setSelectedDepartments={setSelectedDepartments}
+        selectedCategories={selectedCategories}
+        setSelectedCategories={setSelectedCategories}
       />
 
       <CalendarView

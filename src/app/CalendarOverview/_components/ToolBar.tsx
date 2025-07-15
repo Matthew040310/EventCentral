@@ -29,12 +29,15 @@ interface CalendarToolBarProps {
     setSelectedView: (view: View) => void;
     selectedDepartments: string[];
     setSelectedDepartments: (departments: string[]) => void;
+    selectedCategories: string[];
+    setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
     datumDate, setDatumDate,
     selectedView, setSelectedView,
-    selectedDepartments, setSelectedDepartments
+    selectedDepartments, setSelectedDepartments,
+    selectedCategories, setSelectedCategories
 }) =>
 (
     <Grid container mt={1} alignItems={"center"}
@@ -51,7 +54,10 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
         </Grid>
 
         <Grid mt={2} size={{ xl: 5.5, lg: 12 }}>
-            <Legend width={"100%"} />
+            <Legend
+                width="100%"
+                selectedCategories={selectedCategories}
+                setSelectedCategories={setSelectedCategories} />
         </Grid>
 
         <Grid size={{ xl: 1.5, lg: 8 }}>
