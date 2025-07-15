@@ -32,6 +32,8 @@ interface EventTableProps {
   onDeleteSuccess: () => void
   onHyperlinkClick: (eventDetails: Partial<FullEventReport>) => void;
   newAndChangeFilter?: boolean;
+  unifiedSearch?: boolean;
+  searchKeyword?: string;
 }
 
 const EventTable: React.FC<EventTableProps> = ({
@@ -41,7 +43,9 @@ const EventTable: React.FC<EventTableProps> = ({
   EventReports,
   onDeleteSuccess,
   onHyperlinkClick,
-  newAndChangeFilter = true
+  newAndChangeFilter = true,
+  unifiedSearch = false,
+  searchKeyword = ""
 }) => {
   const [selectedEvents, setSelectedEvents] = useState<GridRowId[]>([]);
   const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' })
@@ -79,6 +83,7 @@ const EventTable: React.FC<EventTableProps> = ({
   const headers = useMemo(() => EventTableHeader(state, role, openDeleteDialog, onHyperlinkClick), [state, role, openDeleteDialog, onHyperlinkClick]);
   const pageSizeOptions = useMemo(() => [5, 10, 20, 50], []);
   const deleteDescription = useMemo(() => `Are you sure you want to delete <u><b>${selectedEvents.length}</b></u> event(s)? This action cannot be undone.`, [selectedEvents.length]);
+
   if (newAndChangeFilter) {
     initialState.filter = {
       filterModel: {
@@ -86,6 +91,13 @@ const EventTable: React.FC<EventTableProps> = ({
       },
     }
   }
+
+  const filterModel = useMemo(() => ({
+    items: newAndChangeFilter
+      ? [{ field: 'type', operator: 'isAnyOf', value: ['Existing with Changes', 'New'] }]
+      : [],
+    quickFilterValues: searchKeyword ? searchKeyword.split(" ") : [],
+  }), [searchKeyword]);
 
   return (
     <Paper sx={{ width: '100%', px: 3, py: 1, mt: 2, bgcolor: backgroundColor }}>
@@ -127,11 +139,13 @@ const EventTable: React.FC<EventTableProps> = ({
         columns={headers}
         rows={EventReports}
         initialState={initialState}
+        filterModel={unifiedSearch ? filterModel : undefined}
         pageSizeOptions={pageSizeOptions}
         checkboxSelection
         onRowSelectionModelChange={handleRowSelection}
         autosizeOnMount
         showToolbar
+        slotProps={{ toolbar: { showQuickFilter: (!unifiedSearch) } }}
       />
     </Paper>
   )

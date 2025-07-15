@@ -75,6 +75,8 @@ const SearchEvents: React.FC = () => {
                 onDeleteSuccess={fetchDashboardData}
                 onHyperlinkClick={showEventDialog}
                 newAndChangeFilter={false}
+                unifiedSearch={true}
+                searchKeyword={searchKeyword}
             />
 
             <EventTable
@@ -84,6 +86,8 @@ const SearchEvents: React.FC = () => {
                 onDeleteSuccess={fetchDashboardData}
                 onHyperlinkClick={showEventDialog}
                 newAndChangeFilter={false}
+                unifiedSearch={true}
+                searchKeyword={searchKeyword}
             />
 
             <EventDetailsDialog
