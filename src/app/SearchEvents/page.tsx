@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import dayjs from 'dayjs';
 
@@ -12,6 +12,8 @@ import EventTable from '@/app/CalendarOverview/_components/EventTable';
 import EventDetailsDialog from '@/app/CalendarOverview/_components/EventDetailsDialog';
 
 import getFullEventReports from '@/util/Prisma-API-handlers/getFullEventReports'
+import filteredEvents from '@/util/filteredEvents';
+import getDashboardData from '@/util/getDashboardData';
 
 const SearchEvents: React.FC = () => {
     const [role, setRole] = useState<UserRole>('Admin');
@@ -20,32 +22,34 @@ const SearchEvents: React.FC = () => {
     const [datumEndDate, setDatumEndDate] = useState<Date | null>(dayjs().endOf('year').toDate());
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [searchKeyword, setSearchKeyword] = useState<string>('');
-    const [prismaFilters, setPrismaFilters] = useState({});
     const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
     const [submittedEventReports, setSubmittedEventReports] = useState<FullEventReport[]>([]);
 
     const [openDialog, setOpenDialog] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<Partial<FullEventReport>>({});
 
-    const fetchDashboardData = async () => {
-        try {
-            const allSubmissions = await getFullEventReports({ state: "Submitted", sortby: [{ type: "desc" }, { estimatedCohortSize: "desc" }], filters: prismaFilters })
-            setSubmittedEventReports(allSubmissions as FullEventReport[] || [])
-
-            const allDrafts = await getFullEventReports({ state: "Draft", sortby: [{ type: "desc" }, { estimatedCohortSize: "desc" }], filters: prismaFilters });
-            setdraftEventReports(allDrafts || [])
-        } catch (error) {
-            console.error('Error fetching event reports:', error);
+    // Fetch Event Data for Render
+    const prismaFilters = useMemo(() => {
+        return {
+            startDate: {
+                gte: datumStartDate ?? undefined,
+                lte: datumEndDate ?? undefined
+            }
         }
-    }
-
-    useEffect(() => {
-        setPrismaFilters({ startDate: { gte: datumStartDate, lte: datumEndDate } })
     }, [datumStartDate, datumEndDate]);
 
+    const fetchDashboardData = getDashboardData(prismaFilters);
+
     useEffect(() => {
-        fetchDashboardData()
-    }, [prismaFilters]);
+        fetchDashboardData().then(({ submitted, draft }) => {
+            setSubmittedEventReports(submitted as FullEventReport[] || []);
+            setdraftEventReports(draft || []);
+        });
+    }, [fetchDashboardData]);
+
+    const filteredSubmittedEvents = filteredEvents([], selectedCategories, submittedEventReports)
+    const filteredDraftEvents = filteredEvents([], selectedCategories, draftEventReports)
+    //
 
     const showEventDialog = (eventDetails: Partial<FullEventReport>) => {
         setSelectedEvent(eventDetails);
@@ -74,7 +78,7 @@ const SearchEvents: React.FC = () => {
             <EventTable
                 state="Submitted"
                 role={role}
-                EventReports={submittedEventReports}
+                EventReports={filteredSubmittedEvents}
                 onDeleteSuccess={fetchDashboardData}
                 onHyperlinkClick={showEventDialog}
                 unifiedSearch={true}
@@ -84,7 +88,7 @@ const SearchEvents: React.FC = () => {
             <EventTable
                 state="Draft"
                 role={role}
-                EventReports={draftEventReports}
+                EventReports={filteredDraftEvents}
                 onDeleteSuccess={fetchDashboardData}
                 onHyperlinkClick={showEventDialog}
                 unifiedSearch={true}
