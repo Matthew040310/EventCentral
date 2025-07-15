@@ -109,7 +109,7 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
         </Grid>
 
         <Grid size={1}></Grid>
-        <Grid container textAlign='center' justifyContent="center" size={12}>
+        <Grid size={12} textAlign='center' >
             <Typography variant='h6' fontSize={"3vh"} mb={1}>{dateHeader(datumDate!, selectedView)}</Typography>
         </Grid>
     </Grid>
