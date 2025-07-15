@@ -63,7 +63,7 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
                 }} />
         </Grid>
 
-        <Grid mt={2} size={{ xl: 4, lg: 12 }}>
+        <Grid pb={1} size={{ xl: 4, lg: 12 }}>
             <Legend
                 width="100%"
                 selectedCategories={selectedCategories}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Stack, Chip, } from '@mui/material';
+import { Box, Chip, Stack, Typography } from '@mui/material';
 import { Event_Legend } from '@/styles/theme';
 
 const legendItems = Object.entries(Event_Legend);
@@ -40,7 +40,8 @@ const Legend: React.FC<LegendProps> = ({
     });
 
     return (
-        <Box sx={{ p: 2, my: 2, width: { width } }}>
+        <Box sx={{ p: 2, mt: 2, width: { width } }}>
+            <Typography variant='h6' mb={1}>Click to Filter by Category</Typography>
             <Stack direction="row" textAlign="center" justifyContent="center" spacing={2}>
                 {legendItems.map(([category, color], index) => {
                     if (noDraftChip && category === 'Draft') return null; // Skip Draft chip if noDraftChip is true. Used for SearchEvents page only
