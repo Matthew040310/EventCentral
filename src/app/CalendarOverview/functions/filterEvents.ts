@@ -2,55 +2,58 @@ import { useMemo } from 'react';
 import FullEventReport from '@/types/IFullEventReport';
 import RBCEvent from '@/types/IRBCEvent';
 
+type Event = Partial<FullEventReport> | RBCEvent
+
 function filterEventsByDepartment(
-    selectedDepartments: string[],
-    event: Partial<FullEventReport> | RBCEvent
+    event: Event,
+    selectedDepartments: Set<string>,
 ): boolean {
-    if (selectedDepartments.length === 0) return true;
-    else return selectedDepartments.includes(event.department || "")
+    if (selectedDepartments.size === 0) return true;
+    else return selectedDepartments.has(event.department || "")
 }
 
 function filterEventsByCategory(
-    selectedCategories: string[],
-    event: Partial<FullEventReport> | RBCEvent
+    event: Event,
+    selectedCategories: Set<string>,
 ): boolean {
-    if (selectedCategories.length === 0) return true;
-    let renderEvent = false;
+    if (selectedCategories.size === 0) return true;
 
-    if (selectedCategories.includes("High Impact")) {
-        renderEvent = (event.submittedImpactAssessment?.perceivedUnhappiness === "Yes" || event.embargoed === "Yes")
-    }
+    const { submittedImpactAssessment, embargoed, type } = event;
 
-    if (selectedCategories.includes("New/Changes")) {
-        renderEvent = (event.type === "New" || event.type === "Existing with Changes")
-    }
-
-    if (selectedCategories.includes("Existing")) {
-        renderEvent = (event.type === "Existing")
-    }
-
-    return renderEvent;
-}
-
-function filterEvents(
-    selectedDepartments: string[],
-    selectedCategories: string[],
-    event: Partial<FullEventReport> | RBCEvent
-): boolean {
     return (
-        filterEventsByDepartment(selectedDepartments, event) &&
-        filterEventsByCategory(selectedCategories, event)
+        (selectedCategories.has('High Impact') &&
+            (submittedImpactAssessment?.perceivedUnhappiness === 'Yes' || embargoed === 'Yes')) ||
+
+        (selectedCategories.has('New/Changes') &&
+            (type === 'New' || type === 'Existing with Changes')) ||
+
+        (selectedCategories.has('Existing') &&
+            type === 'Existing')
     );
 }
 
-export default function useFilterEvents(
+
+function filterEvent(
+    event: Event,
+    departmentSet: Set<string>,
+    categorySet: Set<string>
+): boolean {
+    return (
+        filterEventsByDepartment(event, departmentSet) &&
+        filterEventsByCategory(event, categorySet)
+    );
+}
+
+export default function filteredEvents(
     selectedDepartments: string[],
     selectedCategories: string[],
-    events: Partial<FullEventReport>[] | RBCEvent[],
+    events: Event[],
 ) {
+    const departmentSet = useMemo(() => new Set(selectedDepartments), [selectedDepartments]);
+    const categorySet = useMemo(() => new Set(selectedCategories), [selectedCategories]);
     return useMemo(() => {
         return events.filter(event =>
-            filterEvents(selectedDepartments, selectedCategories, event)
+            filterEvent(event, departmentSet, categorySet)
         );
     }, [selectedDepartments, selectedCategories, events]);
 }
