@@ -26,44 +26,30 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
     selectedCategories, setSelectedCategories,
     searchKeyword, setSearchKeyword
 }) => (
-    <Grid container mt={1} alignItems={"center"}
-        justifyContent={{ lg: "center", sm: "flex-start" }}
+    <Grid container mt={1}
+        alignItems={"center"}
         textAlign={{ lg: "center", sm: "left" }} spacing={1} bgcolor={"white"} >
 
-        <Grid size={1} display={{ xs: "none", md: "block" }}></Grid>
+        {/* <Grid size={1} display={{ xs: "none", md: "block" }}></Grid> */}
+        <Grid size={1}></Grid>
 
-        <Grid size={{ xl: 1.5, md: 3, xs: 12 }}>
-            <CustomDatePicker md={10}
+        <Grid size={{ xl: 1.5, md: 2.5, xs: 5 }}>
+            <CustomDatePicker md={10} sm={12}
                 label={"Start Date"} required={false}
                 value={datumStartDate} minSelectableDate={null}
                 onChange={(date) => { setDatumStartDate(date); }}
             />
         </Grid>
 
-        <Grid size={{ xl: 1.5, md: 3, xs: 12 }}>
-            <CustomDatePicker md={10}
+        <Grid size={{ xl: 1.5, md: 2.5, xs: 5 }}>
+            <CustomDatePicker md={10} sm={12}
                 label={"End Date"} required={false}
                 value={datumEndDate} minSelectableDate={datumStartDate}
                 onChange={(date) => { setDatumEndDate(date); }}
             />
         </Grid>
 
-        <Grid size={{ md: 3, xs: 12 }} display={{ xs: "block", xl: "none" }} mt={1}>
-            <TextField
-                sx={{ width: "100%" }}
-                margin="dense"
-                label={"Search Event Keywords"}
-                size="medium"
-                value={searchKeyword}
-                onChange={(e) => setSearchKeyword(e.target.value)}
-                slotProps={{
-                    input: {
-                        startAdornment: (<InputAdornment position="start"><Search /></InputAdornment>)
-                    }
-                }} />
-        </Grid>
-
-        <Grid pb={1} size={{ xl: 4, lg: 12 }}>
+        <Grid pb={1} size={{ xl: 4, xs: 12 }} display={{ xl: "flex", xs: "none" }} justifyContent="center">
             <Legend
                 width="100%"
                 selectedCategories={selectedCategories}
@@ -71,9 +57,10 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
                 noDraftChip={true} />
         </Grid>
 
-        <Grid size={1.5} display={{ xs: "none", xl: "block" }}>
+        <Grid mt={1} size={{ xl: 1.5, md: 2.5, xs: 12 }} display="flex"
+            justifyContent={{ xs: "center" }}>
             <Autocomplete
-                sx={{ width: "90%" }}
+                sx={{ width: { md: "90%", xs: "83%" } }}
                 multiple
                 options={ALL_DEPARTMENTS}
                 value={selectedDepartments}
@@ -89,9 +76,10 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
             />
         </Grid>
 
-        <Grid size={1.5} display={{ xs: "none", xl: "block" }}>
+        <Grid mt={1.5} size={{ xl: 1.5, md: 2.5, xs: 12 }} display="flex"
+            justifyContent={{ xs: "center" }}>
             <TextField
-                sx={{ width: "100%" }}
+                sx={{ width: { md: "90%", xs: "83%" } }}
                 margin="dense"
                 label={"Search Event Keywords"}
                 size="medium"
@@ -104,9 +92,17 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
                 }} />
         </Grid>
 
+        <Grid pb={1} size={{ xl: 4, xs: 12 }} display={{ xl: "none", xs: "flex" }} justifyContent="center">
+            <Legend
+                width="100%"
+                selectedCategories={selectedCategories}
+                setSelectedCategories={setSelectedCategories}
+                noDraftChip={true} />
+        </Grid>
+
         <Grid size={1} display={{ xs: "none", xl: "block" }}></Grid>
 
-        <Grid size={12}>
+        <Grid size={12} textAlign="center">
             <Typography variant='h6' fontSize={"3vh"} mb={1}>
                 All Events From <u>{dateFormatter(datumStartDate)}</u> to <u>{dateFormatter(datumEndDate)}</u>
             </Typography>
