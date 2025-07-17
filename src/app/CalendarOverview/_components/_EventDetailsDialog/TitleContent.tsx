@@ -4,21 +4,24 @@ import FullEventReport from '@/types/IFullEventReport';
 
 interface TitleContentProps {
     eventDetails: Partial<FullEventReport>;
+    eventColor: string;
 }
 
 const TitleContent: React.FC<TitleContentProps> = ({
     eventDetails,
+    eventColor,
 }) => {
-    const { title, type, embargoed } = eventDetails;
+    const { title, embargoed } = eventDetails;
 
     return (
         <Stack direction="row" alignItems="center" spacing={1}>
-            <EventAvailable color="primary" />
-            <Typography variant="h6" component="span" sx={{ flexGrow: 1 }}>
+            <EventAvailable sx={{ color: eventColor }} />
+            <Typography variant="h6" component="span" sx={{ flexGrow: 1 }} color={eventColor}>
                 {title}
             </Typography>
-            <Chip label={type} color={type === "New" ? "success" : "info"} size="small" />
-            <Chip label={embargoed === "Yes" ? "Embargoed" : "Not Embargoed"} size="small" color={embargoed === "Yes" ? "warning" : "default"} />
+            {embargoed === "Yes" &&
+                <Chip label="Embargoed" size="small" sx={{ color: eventColor }} />
+            }
         </Stack>
     )
 }
