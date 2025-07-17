@@ -10,9 +10,8 @@ import UserRole from '@/types/TUserRole';
 import CalendarOverviewHeader from './_components/Header';
 import CalendarToolBar from './_components/ToolBar';
 import CalendarView from './_components/CalendarView';
-import ReportViewToggle from './_components/ReportViewToggle';
 import EventTable from './_components/EventTable';
-import EventDetailsDialog from './_components/EventDetailsDialog';
+import EventDetailsDialog from '@/components/EventDetailsDialog';
 
 import filteredEvents from '../../util/filteredEvents';
 import getDashboardData from '@/util/getDashboardData';
@@ -24,7 +23,6 @@ const CalendarOverview: React.FC = () => {
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>(["High Impact", "New/Changes"]);
   const [selectedCalendarView, setSelectedCalendarView] = useState<View>(Views.MONTH)
-  const [selectedReportView, setSelectedReportView] = useState<string>('Table');
   const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
   const [submittedEventReports, setSubmittedEventReports] = useState<FullEventReport[]>([]);
 
@@ -59,7 +57,6 @@ const CalendarOverview: React.FC = () => {
     <>
       <Head>
         <title>EventCentral - Calendar Overview</title>
-        <meta name="description" content="Centralized event tracking and forecasting system" />
       </Head>
 
       <CalendarOverviewHeader />
@@ -82,31 +79,21 @@ const CalendarOverview: React.FC = () => {
         setDate={setDatumDate}
         onCalendarEventClick={showEventDialog} />
 
-      <ReportViewToggle
-        selectedReportView={selectedReportView}
-        setSelectedReportView={setSelectedReportView} />
+      <EventTable
+        state="Submitted"
+        role={role}
+        EventReports={filteredSubmittedEvents}
+        onDeleteSuccess={fetchDashboardData}
+        onHyperlinkClick={showEventDialog}
+      />
 
-      {selectedReportView === 'Table'
-        ? (<>
-          <EventTable
-            state="Submitted"
-            role={role}
-            EventReports={filteredSubmittedEvents}
-            onDeleteSuccess={fetchDashboardData}
-            onHyperlinkClick={showEventDialog}
-          />
-
-          <EventTable
-            state="Draft"
-            role={role}
-            EventReports={filteredDraftEvents}
-            onDeleteSuccess={fetchDashboardData}
-            onHyperlinkClick={showEventDialog}
-          />
-        </>)
-        :
-        <h1>To Be Populated</h1>
-      }
+      <EventTable
+        state="Draft"
+        role={role}
+        EventReports={filteredDraftEvents}
+        onDeleteSuccess={fetchDashboardData}
+        onHyperlinkClick={showEventDialog}
+      />
 
       <EventDetailsDialog
         open={openDialog}
