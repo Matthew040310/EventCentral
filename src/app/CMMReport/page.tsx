@@ -71,7 +71,7 @@ const CalendarOverview: React.FC = () => {
       />
 
       <Grid container>
-        <Grid size={8}>
+        <Grid size={{ lg: 8 }}>
           <CalendarView
             events={[...filteredSubmittedEvents, ...filteredDraftEvents]}
             view={selectedCalendarView}
@@ -79,7 +79,7 @@ const CalendarOverview: React.FC = () => {
             setDate={setDatumDate}
             onCalendarEventClick={showEventDialog} />
         </Grid>
-        <Grid size={4}>
+        <Grid size={{ lg: 4 }}>
           <EventWriteUp
             eventDetailsArray={filteredSubmittedEvents} />
         </Grid>
