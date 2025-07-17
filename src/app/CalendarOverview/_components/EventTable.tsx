@@ -96,7 +96,7 @@ const EventTable: React.FC<EventTableProps> = ({
   const deleteDescription = useMemo(() => `Are you sure you want to delete <u><b>${selectedEvents.length}</b></u> event(s)? This action cannot be undone.`, [selectedEvents.length]);
 
   return (
-    <Paper sx={{ width: '100%', px: 3, py: 1, mt: 2, bgcolor: backgroundColor }}>
+    <Paper sx={{ width: '100%', px: 3, py: 1, mb: 2, bgcolor: backgroundColor }}>
 
       {/* Header with delete button */}
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
