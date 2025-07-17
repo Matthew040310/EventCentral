@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
-import CustomDropDown from "@/components/CustomDropDown"
-import CustomTextField from "@/components/CustomTextField"
-import CustomMultiSelect from '@/components/CustomMultiSelect';
+import CustomDropDown from "@/app/EDC-Submission-Form/_components/CustomDropDown"
+import CustomTextField from "@/app/EDC-Submission-Form/_components/CustomTextField"
+import CustomMultiSelect from '@/app/EDC-Submission-Form/_components/CustomMultiSelect';
 import ToggleSampleResponse from '@/components/ToggleSampleResponse';
 
 import ImpactAssessmentProps from '@/types/IImpactAssessmentProps';

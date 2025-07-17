@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material';
 import { Delete, Save, Send } from '@mui/icons-material';
 
-import ButtonWithDialog from '@/components/ButtonWithDialog'
-import CustomButton from '@/components/CustomButton';
+import ButtonWithDialog from '@/app/EDC-Submission-Form/_components/ButtonWithDialog'
+import CustomButton from '@/app/EDC-Submission-Form/_components/CustomButton';
 
 import EventDetails from '@/types/IEventDetails';
 import EventState from '@/types/TEventState';

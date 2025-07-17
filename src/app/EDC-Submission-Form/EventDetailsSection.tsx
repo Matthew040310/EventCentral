@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
-import CustomDropDown from "@/components/CustomDropDown"
-import CustomTextField from "@/components/CustomTextField"
+import CustomDropDown from "@/app/EDC-Submission-Form/_components/CustomDropDown"
+import CustomTextField from "@/app/EDC-Submission-Form/_components/CustomTextField"
 import CustomDatePicker from "@/components/CustomDatePicker"
 import EventDetailsProps from '@/types/IEventDetailsProps';
 import TRecurringDateParams from '@/types/TRecurringDateParams';

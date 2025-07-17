@@ -8,8 +8,8 @@ import { Alert, Box, Button, Container, Fade, Grid, Tooltip, Typography } from '
 import EventDetailsSection from './EventDetailsSection';
 import ImpactAssessmentSection from './ImpactAssessmentSection';
 import EventFormButtonSection from './EventFormButtonSection';
-import CustomTextField from '@/components/CustomTextField';
-import CustomDropDown from '@/components/CustomDropDown';
+import CustomTextField from '@/app/EDC-Submission-Form/_components/CustomTextField';
+import CustomDropDown from '@/app/EDC-Submission-Form/_components/CustomDropDown';
 import PopUpDialog from '@/components/popUpDialog';
 
 // Interfaces & Constants
