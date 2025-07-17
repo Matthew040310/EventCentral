@@ -1,5 +1,5 @@
 import RBCEvent from "@/types/IRBCEvent"
-import determineColor from "../functions/determineColor"
+import determineColor from "../_functions/determineColor"
 import { Button } from "@mui/material"
 import React from "react";
 

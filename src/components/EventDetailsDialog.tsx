@@ -9,7 +9,7 @@ import ImpactAssessmentContent from "./_EventDetailsDialog/ImpactAssessmentConte
 import DialogButtons from "./_EventDetailsDialog/DialogButtons";
 
 import FullEventReport from "@/types/IFullEventReport";
-import determineColor from "../app/CalendarOverview/functions/determineColor";
+import determineColor from "../app/CalendarOverview/_functions/determineColor";
 
 interface EventDetailsDialogProps {
     open: boolean;

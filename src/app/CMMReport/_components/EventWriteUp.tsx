@@ -6,8 +6,8 @@ import TitleContent from "../../../components/_EventDetailsDialog/TitleContent";
 import FullEventReport from "@/types/IFullEventReport";
 
 import dateFormatter from '@/util/dateFormatter';
-import determineColor from '../../CalendarOverview/functions/determineColor';
-import sortWriteUps from './sortWriteUp';
+import determineColor from '../../CalendarOverview/_functions/determineColor';
+import sortWriteUps from '../_functions/sortWriteUp';
 
 interface EventWriteUpProps {
     eventDetails: Partial<FullEventReport>;

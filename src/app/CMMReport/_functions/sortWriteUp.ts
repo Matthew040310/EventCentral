@@ -1,4 +1,4 @@
-import determineColor from "@/app/CalendarOverview/functions/determineColor";
+import determineColor from "@/app/CalendarOverview/_functions/determineColor";
 import FullEventReport from "@/types/IFullEventReport";
 
 const CATEGORY_INDEX: Record<string, number> = {

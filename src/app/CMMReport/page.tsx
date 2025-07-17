@@ -23,8 +23,8 @@ const CalendarOverview: React.FC = () => {
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>(["High Impact", "New/Changes"]);
   const [selectedCalendarView, setSelectedCalendarView] = useState<View>(Views.MONTH)
-  const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
   const [submittedEventReports, setSubmittedEventReports] = useState<FullEventReport[]>([]);
+  const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
 
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<Partial<FullEventReport>>({});
