@@ -1,10 +1,9 @@
 "use client";
 import React, { useState, useEffect, useMemo } from 'react';
 import { DataGrid, GridCallbackDetails, GridFilterModel, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
-import { Alert, AlertColor, Box, Fade, Paper, Typography } from '@mui/material';
+import { Alert, AlertColor, Box, Button, Fade, Paper, Typography } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 
-import CustomButton from '@/components/CustomButton';
 import PopUpDialog from '@/components/popUpDialog';
 
 import FullEventReport from "@/types/IFullEventReport";
@@ -111,14 +110,14 @@ const EventTable: React.FC<EventTableProps> = ({
         </Fade>
 
         {/* Delete Button */}
-        <CustomButton
-          color="error"
+        <Button
+          variant='contained'
+          color='error'
           disabled={selectedEvents.length === 0}
-          endIcon={<Delete />}
           onClick={() => setDialogOpen(true)}
-          button_mt={0}>
+          endIcon={<Delete />}>
           Delete
-        </CustomButton>
+        </Button>
       </Box>
 
       {/* Dialog for Delete Button Click */}
