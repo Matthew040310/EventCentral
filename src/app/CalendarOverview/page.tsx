@@ -10,6 +10,7 @@ import UserRole from '@/types/TUserRole';
 import CalendarOverviewHeader from './_components/Header';
 import CalendarToolBar from './_components/ToolBar';
 import CalendarView from './_components/CalendarView';
+import ReportViewToggle from './_components/ReportViewToggle';
 import EventTable from './_components/EventTable';
 import EventDetailsDialog from './_components/EventDetailsDialog';
 
@@ -80,6 +81,10 @@ const CalendarOverview: React.FC = () => {
         datumDate={datumDate}
         setDate={setDatumDate}
         onCalendarEventClick={showEventDialog} />
+
+      <ReportViewToggle
+        selectedReportView={selectedReportView}
+        setSelectedReportView={setSelectedReportView} />
 
       {selectedReportView === 'Table'
         ? (<>
