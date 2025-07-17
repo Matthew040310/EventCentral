@@ -11,7 +11,7 @@ const ReportViewToggle: React.FC<ReportViewToggleProps> = ({
     setSelectedReportView
 }) => {
     return (
-        <Paper sx={{ width: '100%', px: 3, py: 1, mt: 2, bgcolor: "white" }}>
+        <Paper sx={{ width: '100%', px: 3, py: 2, mt: 2, bgcolor: "white" }}>
             <Stack direction="row" alignItems="center">
                 <Button variant={selectedReportView === "Table" ? 'contained' : 'outlined'}
                     onClick={() => setSelectedReportView("Table")}>
