@@ -2,13 +2,13 @@ import CustomButton, { ICustomButtonProps } from "./CustomButton";
 import PopUpDialog, { TPopUpDialogProps } from "./popUpDialog";
 import { useState } from "react";
 
-interface ButtonWithDialog extends
+interface ButtonWithDialogProps extends
     Omit<ICustomButtonProps, "onClick">,
     Omit<TPopUpDialogProps, "onClick" | "open" | "onClose"> {
     dialogOnClick: (e: string) => void;
 }
 
-const ButtonWithDialog: React.FC<ButtonWithDialog> = ({
+const ButtonWithDialog: React.FC<ButtonWithDialogProps> = ({
     sm = 2.5,
     xs = 4,
     color,
