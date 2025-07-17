@@ -1,0 +1,97 @@
+"use client";
+import React, { useEffect, useMemo, useState } from 'react';
+import { Grid } from '@mui/material';
+import Head from 'next/head';
+import dayjs from 'dayjs';
+import { View, Views } from 'react-big-calendar';
+
+import FullEventReport from '@/types/IFullEventReport';
+import UserRole from '@/types/TUserRole';
+
+import CalendarToolBar from '../CalendarOverview/_components/ToolBar';
+import CalendarView from '../CalendarOverview/_components/CalendarView';
+import EventWriteUp from './_components/EventWriteUp';
+import EventDetailsDialog from '@/components/EventDetailsDialog';
+
+import filteredEvents from '../../util/filteredEvents';
+import getDashboardData from '@/util/getDashboardData';
+
+const CalendarOverview: React.FC = () => {
+  const [role, setRole] = useState<UserRole>('Admin');
+
+  const [datumDate, setDatumDate] = useState<Date | null>(dayjs().toDate());
+  const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(["High Impact", "New/Changes"]);
+  const [selectedCalendarView, setSelectedCalendarView] = useState<View>(Views.MONTH)
+  const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
+  const [submittedEventReports, setSubmittedEventReports] = useState<FullEventReport[]>([]);
+
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<Partial<FullEventReport>>({});
+
+  // Fetch Event Data for Render
+  const prismaFilters = useMemo(() => {
+    const startOfMonth = dayjs(datumDate).startOf("month").startOf('week').toDate();
+    const endOfMonth = dayjs(datumDate).endOf("month").endOf('week').toDate();
+    return { startDate: { gte: startOfMonth, lte: endOfMonth } };
+  }, [datumDate]);
+
+  const fetchDashboardData = getDashboardData(prismaFilters);
+
+  useEffect(() => {
+    fetchDashboardData().then(({ submitted, draft }) => {
+      setSubmittedEventReports(submitted as FullEventReport[] || []);
+      setdraftEventReports(draft || []);
+    });
+  }, [fetchDashboardData]);
+
+  const { filteredSubmittedEvents, filteredDraftEvents } =
+    filteredEvents(submittedEventReports, draftEventReports, selectedDepartments, selectedCategories)
+
+  const showEventDialog = (eventDetails: Partial<FullEventReport>) => {
+    setSelectedEvent(eventDetails);
+    setOpenDialog(true);
+  };
+
+  return (
+    <>
+      <Head>
+        <title>EventCentral - Core Management Meeting Report</title>
+      </Head>
+
+      <CalendarToolBar
+        datumDate={datumDate}
+        setDatumDate={setDatumDate}
+        selectedView={selectedCalendarView}
+        setSelectedView={setSelectedCalendarView}
+        selectedDepartments={selectedDepartments}
+        setSelectedDepartments={setSelectedDepartments}
+        selectedCategories={selectedCategories}
+        setSelectedCategories={setSelectedCategories}
+      />
+
+      <Grid container>
+        <Grid size={8}>
+          <CalendarView
+            events={[...filteredSubmittedEvents, ...filteredDraftEvents]}
+            view={selectedCalendarView}
+            datumDate={datumDate}
+            setDate={setDatumDate}
+            onCalendarEventClick={showEventDialog} />
+        </Grid>
+        <Grid size={4}>
+          <EventWriteUp
+            eventDetailsArray={filteredSubmittedEvents} />
+        </Grid>
+      </Grid>
+
+      <EventDetailsDialog
+        open={openDialog}
+        onClose={() => setOpenDialog(false)}
+        eventDetails={selectedEvent}
+      />
+    </>
+  );
+};
+
+export default CalendarOverview;
