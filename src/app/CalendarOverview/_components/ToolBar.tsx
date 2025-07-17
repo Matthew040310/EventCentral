@@ -1,21 +1,9 @@
 import React from 'react'
-import dayjs from 'dayjs'
 import { Autocomplete, Chip, Grid, Stack, Button, TextField, Typography } from '@mui/material'
 import { View, Views } from 'react-big-calendar';
 import CustomDatePicker from '@/components/CustomDatePicker';
 import Legend from '@/components/Legend';
 import { ALL_DEPARTMENTS } from '@/constants/EventCentralConstants';
-
-const dateHeader = (date: Date, view: View) => {
-    if (view === Views.MONTH) {
-        return dayjs(date).format('MMMM YYYY');
-    }
-    else {
-        const startOfWeek = dayjs(date).startOf('week');
-        const endOfWeek = dayjs(date).endOf('week');
-        return `${startOfWeek.format('D MMMM')} - ${endOfWeek.format('D MMMM')}`;
-    }
-}                                                     // sort alphabetically
 
 interface CalendarToolBarProps {
     datumDate: Date | null;
@@ -109,9 +97,6 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
         </Grid>
 
         <Grid size={1}></Grid>
-        <Grid size={12} textAlign='center' >
-            <Typography variant='h6' fontSize={"3vh"} mb={1}>{dateHeader(datumDate!, selectedView)}</Typography>
-        </Grid>
     </Grid>
 )
 

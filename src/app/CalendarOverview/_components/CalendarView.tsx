@@ -1,6 +1,6 @@
 import "react-big-calendar/lib/css/react-big-calendar.css"
 import { useCallback } from 'react'
-import { Button, Grid } from '@mui/material'
+import { Button, Grid, Typography } from '@mui/material'
 import { ArrowLeft, ArrowRight } from '@mui/icons-material'
 import { Calendar, Components, EventWrapperProps, View, Views, dayjsLocalizer } from 'react-big-calendar'
 import dayjs from 'dayjs'
@@ -14,6 +14,17 @@ interface CalendarViewProps {
   datumDate: Date | null;
   setDate: (date: Date) => void;
   onCalendarEventClick: (event: RBCEvent) => void;
+}
+
+const dateHeader = (date: Date, view: View) => {
+  if (view === Views.MONTH) {
+    return dayjs(date).format('MMMM YYYY');
+  }
+  else {
+    const startOfWeek = dayjs(date).startOf('week');
+    const endOfWeek = dayjs(date).endOf('week');
+    return `${startOfWeek.format('D MMMM')} - ${endOfWeek.format('D MMMM')}`;
+  }
 }
 
 const CalendarView: React.FC<CalendarViewProps> = ({
@@ -58,6 +69,13 @@ const CalendarView: React.FC<CalendarViewProps> = ({
 
   return (
     <Grid container bgcolor={"white"}>
+
+      {/* Calendar Header */}
+      <Grid size={12} textAlign='center' >
+        <Typography variant='h6' fontSize={"3vh"} mb={1}>{dateHeader(datumDate!, view)}</Typography>
+      </Grid>
+
+      {/* Calendar */}
       <Grid justifyContent={"center"} display="flex" size={2}>
         <Button sx={{ color: "grey" }} onClick={onPrevClick}>
           Previous {view}
