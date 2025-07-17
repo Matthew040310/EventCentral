@@ -12,20 +12,26 @@ import sortWriteUps from './sortWriteUp';
 interface EventWriteUpProps {
     eventDetails: Partial<FullEventReport>;
     eventColor: string;
+    onClick: (event: Partial<FullEventReport>) => void;
 }
 
 interface EventWriteUpSectionProps {
     eventDetailsArray: Partial<FullEventReport>[];
+    onWriteUpClick: (event: Partial<FullEventReport>) => void;
 }
 
 const EventWriteUp: React.FC<EventWriteUpProps> = ({
     eventDetails,
-    eventColor
+    eventColor,
+    onClick
 }) => (
     <Paper sx={{
         p: 2, mb: 1,
         border: `1px solid ${eventColor}`
-    }}>
+    }}
+        onClick={() => { onClick(eventDetails) }}
+        title="Click to view more details"
+    >
         <TitleContent eventDetails={eventDetails} eventColor={eventColor} />
 
         <Box component="div" px={2} py={1}>
@@ -46,13 +52,14 @@ const EventWriteUp: React.FC<EventWriteUpProps> = ({
                 {eventDetails.submittedImpactAssessment?.eventWriteUp || "No write up provided."}
             </Typography>
         </Box>
-    </Paper>
+    </Paper >
 
 )
 
 
 const EventWriteUpSection: React.FC<EventWriteUpSectionProps> = ({
-    eventDetailsArray
+    eventDetailsArray,
+    onWriteUpClick
 }) => {
     const [sortBy, setSortBy] = useState<string>('Date');
 
@@ -86,7 +93,10 @@ const EventWriteUpSection: React.FC<EventWriteUpSectionProps> = ({
                     const { label, borderColor } = determineColor(eventDetails);
 
                     if (label === "High Impact" || label === "New/Changes") {
-                        return <EventWriteUp key={idx} eventDetails={eventDetails} eventColor={borderColor} />
+                        return <EventWriteUp key={idx}
+                            eventDetails={eventDetails}
+                            eventColor={borderColor}
+                            onClick={onWriteUpClick} />
                     }
                 })}
             </Paper>

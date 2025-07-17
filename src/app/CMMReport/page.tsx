@@ -81,7 +81,8 @@ const CalendarOverview: React.FC = () => {
         </Grid>
         <Grid size={{ lg: 4 }}>
           <EventWriteUp
-            eventDetailsArray={filteredSubmittedEvents} />
+            eventDetailsArray={filteredSubmittedEvents}
+            onWriteUpClick={showEventDialog} />
         </Grid>
       </Grid>
 
