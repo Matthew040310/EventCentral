@@ -9,6 +9,7 @@ import ImpactAssessmentContent from "./_EventDetailsDialog/ImpactAssessmentConte
 import DialogButtons from "./_EventDetailsDialog/DialogButtons";
 
 import FullEventReport from "@/types/IFullEventReport";
+import determineColor from "../functions/determineColor";
 
 interface EventDetailsDialogProps {
     open: boolean;
@@ -26,11 +27,12 @@ const EventDetailsDialog: React.FC<EventDetailsDialogProps> = ({
     const { id, submittedImpactAssessment, draftImpactAssessment } = eventDetails;
     const impactAssessmentReference = submittedImpactAssessment || draftImpactAssessment;
     const state = impactAssessmentReference == submittedImpactAssessment ? "Submitted" : "Draft";
+    const { borderColor } = determineColor(eventDetails);
 
     return (
         <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
             <DialogTitle>
-                <TitleContent eventDetails={eventDetails} />
+                <TitleContent eventDetails={eventDetails} eventColor={borderColor} />
             </DialogTitle>
             <DialogContent dividers>
                 <EventDetailsContent eventDetails={eventDetails} />
