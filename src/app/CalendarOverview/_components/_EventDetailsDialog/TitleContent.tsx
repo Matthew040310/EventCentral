@@ -2,7 +2,13 @@ import { Stack, Typography, Chip } from '@mui/material';
 import { EventAvailable } from '@mui/icons-material';
 import FullEventReport from '@/types/IFullEventReport';
 
-const TitleContent = ({ eventDetails }: { eventDetails: Partial<FullEventReport> }) => {
+interface TitleContentProps {
+    eventDetails: Partial<FullEventReport>;
+}
+
+const TitleContent: React.FC<TitleContentProps> = ({
+    eventDetails,
+}) => {
     const { title, type, embargoed } = eventDetails;
 
     return (
