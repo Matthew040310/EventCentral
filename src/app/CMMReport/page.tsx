@@ -10,7 +10,7 @@ import UserRole from '@/types/TUserRole';
 
 import CalendarToolBar from '../CalendarOverview/_components/ToolBar';
 import CalendarView from '../CalendarOverview/_components/CalendarView';
-import EventWriteUp from './_components/EventWriteUp';
+import EventWriteUpSection from './_components/EventWriteUpSection';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
 
 import filteredEvents from '../../util/filteredEvents';
@@ -79,8 +79,9 @@ const CalendarOverview: React.FC = () => {
             setDate={setDatumDate}
             onCalendarEventClick={showEventDialog} />
         </Grid>
+
         <Grid size={{ lg: 4 }}>
-          <EventWriteUp
+          <EventWriteUpSection
             eventDetailsArray={filteredSubmittedEvents}
             onWriteUpClick={showEventDialog} />
         </Grid>
