@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from 'react';
+import { Box } from '@mui/material';
 import Head from 'next/head';
 import dayjs from 'dayjs';
 import { View, Views } from 'react-big-calendar';
@@ -72,12 +73,14 @@ const CalendarOverview: React.FC = () => {
         setSelectedCategories={setSelectedCategories}
       />
 
-      <CalendarView
-        events={[...filteredSubmittedEvents, ...filteredDraftEvents]}
-        view={selectedCalendarView}
-        datumDate={datumDate}
-        setDate={setDatumDate}
-        onCalendarEventClick={showEventDialog} />
+      <Box height="75vh"> {/* Required as Calendar Inherits height from parent */}
+        <CalendarView
+          events={[...filteredSubmittedEvents, ...filteredDraftEvents]}
+          view={selectedCalendarView}
+          datumDate={datumDate}
+          setDate={setDatumDate}
+          onCalendarEventClick={showEventDialog} />
+      </Box>
 
       <EventTable
         state="Submitted"
