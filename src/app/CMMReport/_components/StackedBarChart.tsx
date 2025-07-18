@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { Box, Typography } from '@mui/material';
 import { Event_Legend } from '@/styles/theme';
-import determineCategory from '@/app/CalendarOverview/_functions/determineCategory';
+import determineCategory from '@/util/determineCategory';
 
 import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 

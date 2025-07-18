@@ -1,5 +1,5 @@
 import RBCEvent from "@/types/IRBCEvent"
-import determineCategory from "../_functions/determineCategory"
+import determineCategory from "@/util/determineCategory"
 import { Button } from "@mui/material"
 import React from "react";
 

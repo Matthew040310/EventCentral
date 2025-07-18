@@ -1,4 +1,4 @@
-import determineCategory from "@/app/CalendarOverview/_functions/determineCategory";
+import determineCategory from "@/util/determineCategory";
 import FullEventReport from "@/types/IFullEventReport";
 
 const CATEGORY_INDEX: Record<string, number> = {

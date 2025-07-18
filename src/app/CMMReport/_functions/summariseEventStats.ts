@@ -1,5 +1,5 @@
 import FullEventReport from '@/types/IFullEventReport';
-import determineCategory from "@/app/CalendarOverview/_functions/determineCategory";
+import determineCategory from "@/util/determineCategory";
 
 export default function eventStatistics(eventDetailsArray: Partial<FullEventReport>[]) {
     let highImpact = 0;

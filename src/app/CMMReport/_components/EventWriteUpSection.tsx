@@ -5,7 +5,7 @@ import { Button, Paper, Stack } from '@mui/material'
 import EventWriteUp from './EventWriteUp';
 import FullEventReport from "@/types/IFullEventReport";
 
-import determineCategory from '@/app/CalendarOverview/_functions/determineCategory';
+import determineCategory from '@/util/determineCategory';
 import sortWriteUps from '../_functions/sortWriteUp';
 
 interface EventWriteUpSectionProps {
