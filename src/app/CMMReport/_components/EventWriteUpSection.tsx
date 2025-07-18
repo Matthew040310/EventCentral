@@ -41,7 +41,8 @@ const EventWriteUpSection: React.FC<EventWriteUpSectionProps> = ({
             {/* Scrollable Paper Element */}
             <Paper sx={{
                 px: 3, pt: 1, border: "1px solid lightgrey",
-                height: "93vh", overflowY: "auto",
+                flex: 1, overflowY: "auto",
+                minHeight: 0, // <-- Required for flex children of a column flex parent!
             }}>
 
                 {/* Event Write Ups */}
