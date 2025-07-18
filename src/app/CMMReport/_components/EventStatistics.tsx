@@ -1,6 +1,6 @@
 import React from 'react'
 import { useMemo } from 'react'
-import { Paper } from '@mui/material'
+import { Box } from '@mui/material'
 import FullEventReport from '@/types/IFullEventReport';
 import { Event_Legend } from '@/styles/theme';
 
@@ -19,9 +19,9 @@ const EventStatistics: React.FC<EventStatisticsProps> = ({
     }, [submittedEventReports])
 
     return (
-        <Paper sx={{
+        <Box sx={{
             p: 2, flexDirection: 'row',
-            display: 'flex', justifyContent: 'space-around', alignItems: 'stretch',
+            display: 'flex', justifyContent: 'space-evenly', alignItems: 'stretch',
         }}>
             <EventStatisticsCard count={eventStats.highImpact} color={Event_Legend["High Impact"]}>
                 High Impact Events
@@ -39,7 +39,7 @@ const EventStatistics: React.FC<EventStatisticsProps> = ({
                 Total Submitted Events
             </EventStatisticsCard>
 
-        </Paper>
+        </Box>
     )
 }
 
