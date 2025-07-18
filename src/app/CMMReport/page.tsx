@@ -73,7 +73,7 @@ const CalendarOverview: React.FC = () => {
       />
 
       <Grid container bgcolor="white" >
-        <Grid size={{ lg: 8 }} sx={{ height: "80vh", display: "flex", flexDirection: "column" }}>
+        <Grid size={{ lg: 8 }} sx={{ height: "800px", display: "flex", flexDirection: "column" }}>
           <EventStatistics submittedEventReports={submittedEventReports} />
 
           <CalendarView
@@ -85,7 +85,7 @@ const CalendarOverview: React.FC = () => {
         </Grid>
 
         <Grid size={{ lg: 4 }}
-          sx={{ height: "80vh", display: "flex", flexDirection: "column" }}
+          sx={{ height: "800px", display: "flex", flexDirection: "column" }}
           px={{ xs: 10, lg: 0 }}
           mt={{ xs: 2, lg: 0 }}>
           <EventWriteUpSection
