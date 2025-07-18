@@ -8,8 +8,8 @@ import { Alert, Box, Button, Container, Fade, Grid, Tooltip, Typography } from '
 import EventDetailsSection from './EventDetailsSection';
 import ImpactAssessmentSection from './ImpactAssessmentSection';
 import EventFormButtonSection from './EventFormButtonSection';
-import CustomTextField from '@/app/EDC-Submission-Form/_components/CustomTextField';
-import CustomDropDown from '@/app/EDC-Submission-Form/_components/CustomDropDown';
+import CustomTextField from './_components/CustomTextField';
+import CustomDropDown from './_components/CustomDropDown';
 import PopUpDialog from '@/components/popUpDialog';
 
 // Interfaces & Constants
@@ -19,10 +19,10 @@ import DefaultEventDetails from '@/constants/DefaultEventDetails';
 import DefaultImpactAssessment from '@/constants/DefaultImpactAssessment';
 
 // Functions
-import { eventFormHandlers } from '@/util/Event-Form/eventFormHandlers';
 import getEventReportByID from '@/util/Prisma-API-handlers/getEventReportByID';
 import clickToCopy from '@/util/clickToCopy';
-import fieldsValid from '@/util/Event-Form/fieldsValid';
+import { eventFormHandlers } from './_functions/eventFormHandlers';
+import fieldsValid from './_functions/fieldsValid';
 
 const EventForm = () => {
     const router = useRouter();
