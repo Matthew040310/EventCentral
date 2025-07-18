@@ -1,9 +1,8 @@
-import { useCallback } from 'react';
 import getFullEventReports from '@/util/Prisma-API-handlers/getFullEventReports';
 import { FullEventReportWithFilters } from '@/types/IFullEventReportParams';
 
 export default function getDashboardData(prismaFilters: Partial<FullEventReportWithFilters>) {
-    const getEventData = useCallback(async () => {
+    return async () => {
         try {
             const allSubmissions = await getFullEventReports({
                 state: 'Submitted',
@@ -26,7 +25,5 @@ export default function getDashboardData(prismaFilters: Partial<FullEventReportW
             console.error('Error fetching event reports:', error);
             return { submitted: [], draft: [] };
         }
-    }, [prismaFilters]);
-
-    return getEventData;
+    }
 }
