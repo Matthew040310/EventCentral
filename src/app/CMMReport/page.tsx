@@ -71,8 +71,8 @@ const CalendarOverview: React.FC = () => {
         setSelectedCategories={setSelectedCategories}
       />
 
-      <Grid container>
-        <Grid size={{ lg: 8 }}>
+      <Grid container bgcolor="white" >
+        <Grid size={{ lg: 8 }} sx={{ height: "80vh", display: "flex", flexDirection: "column" }}>
           <EventStatistics submittedEventReports={submittedEventReports} />
 
           <CalendarView
@@ -83,12 +83,15 @@ const CalendarOverview: React.FC = () => {
             onCalendarEventClick={showEventDialog} />
         </Grid>
 
-        <Grid size={{ lg: 4 }}>
+        <Grid size={{ lg: 4 }}
+          sx={{ height: "80vh", display: "flex", flexDirection: "column" }}
+          px={{ xs: 10, lg: 0 }}
+          mt={{ xs: 2, lg: 0 }}>
           <EventWriteUpSection
             eventDetailsArray={filteredSubmittedEvents}
             onWriteUpClick={showEventDialog} />
         </Grid>
-      </Grid>
+      </Grid >
 
       <EventDetailsDialog
         open={openDialog}
