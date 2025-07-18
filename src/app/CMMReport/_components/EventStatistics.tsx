@@ -20,8 +20,8 @@ const EventStatistics: React.FC<EventStatisticsProps> = ({
 
     return (
         <Paper sx={{
-            display: 'flex', flexDirection: 'row', alignItems: 'center',
-            gap: 4, p: 2, justifyContent: 'space-around',
+            p: 2, flexDirection: 'row',
+            display: 'flex', justifyContent: 'space-around', alignItems: 'stretch',
         }}>
             <EventStatisticsCard count={eventStats.total}>
                 Total Submitted Events
@@ -39,7 +39,7 @@ const EventStatistics: React.FC<EventStatisticsProps> = ({
                 Existing Events
             </EventStatisticsCard>
 
-        </Paper >
+        </Paper>
     )
 }
 

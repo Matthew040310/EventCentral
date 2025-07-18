@@ -10,7 +10,12 @@ interface EventStatisticsCardProps extends PropsWithChildren {
 const EventStatisticsCard: React.FC<EventStatisticsCardProps> = ({
     color = "", count, children
 }) => (
-    <Card sx={{ width: "25vh", color: color, }}>
+    <Card sx={{
+        color: color,
+        width: "250px",
+        boxShadow: '0 1px 5px rgba(0,0,0,0.10)',
+        border: '1px solid #ddd',
+    }}>
         <CardContent sx={{ textAlign: 'center' }}>
             <Typography gutterBottom variant="h6" component="div">
                 {children}
