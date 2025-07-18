@@ -46,6 +46,16 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
         if (selectedCategories.includes("High Impact")) arr.push({ ...HighImpact });
         if (selectedCategories.includes("New/Changes")) arr.push({ ...Change_New });
         if (selectedCategories.includes("Existing")) arr.push({ ...Existing });
+
+        // Default to showing all categories if none are selected
+        if (arr.length === 0) {
+            return [
+                { ...HighImpact },
+                { ...Change_New },
+                { ...Existing }
+            ]
+        }
+
         return arr;
     }, [submittedEventReports, selectedCategories]);
 
