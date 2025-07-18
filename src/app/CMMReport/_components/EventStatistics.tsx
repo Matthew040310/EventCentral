@@ -23,10 +23,6 @@ const EventStatistics: React.FC<EventStatisticsProps> = ({
             p: 2, flexDirection: 'row',
             display: 'flex', justifyContent: 'space-around', alignItems: 'stretch',
         }}>
-            <EventStatisticsCard count={eventStats.total}>
-                Total Submitted Events
-            </EventStatisticsCard>
-
             <EventStatisticsCard count={eventStats.highImpact} color={Event_Legend["High Impact"]}>
                 High Impact Events
             </EventStatisticsCard>
@@ -37,6 +33,10 @@ const EventStatistics: React.FC<EventStatisticsProps> = ({
 
             <EventStatisticsCard count={eventStats.existing} color={Event_Legend["Existing"]}>
                 Existing Events
+            </EventStatisticsCard>
+
+            <EventStatisticsCard count={eventStats.total}>
+                Total Submitted Events
             </EventStatisticsCard>
 
         </Paper>
