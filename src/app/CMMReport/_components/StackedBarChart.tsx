@@ -1,4 +1,6 @@
 import React from 'react';
+import dayjs from 'dayjs';
+
 import { BarChart } from '@mui/x-charts/BarChart';
 import { Box, Typography } from '@mui/material';
 import { Event_Legend } from '@/styles/theme';
@@ -34,7 +36,9 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
 
     return (
         <>
-            <Typography variant="h6" sx={{ fontSize: 30, display: "flex", alignItems: "center", justifyContent: "center", my: 2 }}>2025</Typography>
+            <Typography variant="h6" sx={{ fontSize: 30, display: "flex", alignItems: "center", justifyContent: "center", my: 2 }}>
+                Events Overview for {dayjs(datumDate).format('YYYY')}
+            </Typography>
 
             <Box component="div"
                 sx={{
