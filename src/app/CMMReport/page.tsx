@@ -15,6 +15,7 @@ import EventDetailsDialog from '@/components/EventDetailsDialog';
 
 import filteredEvents from '../../util/filteredEvents';
 import getDashboardData from '@/util/getDashboardData';
+import EventStatistics from './_components/EventStatistics';
 
 const CalendarOverview: React.FC = () => {
   const [role, setRole] = useState<UserRole>('Admin');
@@ -72,6 +73,8 @@ const CalendarOverview: React.FC = () => {
 
       <Grid container>
         <Grid size={{ lg: 8 }}>
+          <EventStatistics submittedEventReports={submittedEventReports} />
+
           <CalendarView
             events={[...filteredSubmittedEvents, ...filteredDraftEvents]}
             view={selectedCalendarView}
