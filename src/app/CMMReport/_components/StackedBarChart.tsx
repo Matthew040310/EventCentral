@@ -5,6 +5,8 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import { Box, Typography } from '@mui/material';
 import { Event_Legend } from '@/styles/theme';
 
+import useDashboardEventReports from '@/hooks/useDashboardEventReports';
+
 const xAxisLabel = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", " Oct", "Nov", "Dec"];
 
 const HighImpact = {
@@ -33,6 +35,15 @@ interface StackedBarChartProps {
 const StackedBarChart: React.FC<StackedBarChartProps> = ({
     datumDate
 }) => {
+    const year = dayjs(datumDate).year()
+
+    // Custom Hook to fetch Event Reports
+    const { submittedEventReports, draftEventReports, refetch } = useDashboardEventReports(
+        () => {
+            const startOfYear = dayjs(datumDate).startOf('year').toDate();
+            const endOfYear = dayjs(datumDate).endOf('year').toDate();
+            return { startDate: { gte: startOfYear, lte: endOfYear } }
+        }, [year]);
 
     return (
         <>
