@@ -1,8 +1,9 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import dayjs from 'dayjs';
-
 import { BarChart } from '@mui/x-charts/BarChart';
 import { Box, Typography } from '@mui/material';
+import Legend from '@/components/Legend';
+
 import categoriseMonthlyEvents from '../_functions/categoriseMonthlyEvents';
 
 import useDashboardEventReports from '@/hooks/useDashboardEventReports';
@@ -17,6 +18,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
     datumDate
 }) => {
     const year = dayjs(datumDate).year()
+    const [selectedCategories, setSelectedCategories] = useState<string[]>(["High Impact", "New/Changes"]);
 
     // Custom Hook to fetch Event Reports
     const { submittedEventReports } = useDashboardEventReports(
@@ -36,6 +38,13 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
                 Events Overview for {dayjs(datumDate).format('YYYY')}
             </Typography>
 
+            <Legend
+                width="100%"
+                selectedCategories={selectedCategories}
+                setSelectedCategories={setSelectedCategories}
+                noDraftChip={true}
+                showExplaination={false} />
+
             <Box component="div"
                 sx={{
                     display: "flex",
@@ -48,6 +57,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
                     xAxis={[{ data: xAxisLabel, label: 'Month', labelStyle: { fontSize: 16 } }]}
                     yAxis={[{ label: 'Number of Events', labelStyle: { fontSize: 16 } }]}
                     grid={{ horizontal: true }}
+                    hideLegend={true}
                     series={
                         [
                             { ...HighImpact },
