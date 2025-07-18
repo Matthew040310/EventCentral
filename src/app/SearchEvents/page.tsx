@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Head from 'next/head';
 import dayjs from 'dayjs';
 
@@ -12,37 +12,24 @@ import EventTable from '@/app/CalendarOverview/_components/EventTable';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
 
 import filteredEvents from '@/util/filteredEvents';
-import getDashboardData from '@/util/getDashboardData';
+import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 
 const SearchEvents: React.FC = () => {
     const [role, setRole] = useState<UserRole>('Admin');
 
-    const [datumStartDate, setDatumStartDate] = useState<Date | null>(dayjs().startOf('year').toDate());
-    const [datumEndDate, setDatumEndDate] = useState<Date | null>(dayjs().endOf('year').toDate());
+    const [datumStartDate, setDatumStartDate] = useState<Date>(dayjs().startOf('year').toDate());
+    const [datumEndDate, setDatumEndDate] = useState<Date>(dayjs().endOf('year').toDate());
     const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [searchKeyword, setSearchKeyword] = useState<string>('');
-    const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
-    const [submittedEventReports, setSubmittedEventReports] = useState<FullEventReport[]>([]);
 
     const [openDialog, setOpenDialog] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<Partial<FullEventReport>>({});
 
-    // Fetch Event Data for Render
-    const fetchDashboardData = useCallback(async () => {
-        const prismaFilters = {
-            startDate: {
-                gte: datumStartDate ?? undefined,
-                lte: datumEndDate ?? undefined
-            }
-        };
-
-        const { submitted, draft } = await getDashboardData(prismaFilters);
-        setSubmittedEventReports(submitted as FullEventReport[] || []);
-        setdraftEventReports(draft || []);
-    }, [datumStartDate, datumEndDate]);
-
-    useEffect(() => { fetchDashboardData() }, [fetchDashboardData]);
+    // Custom Hook to fetch Event Reports
+    const { submittedEventReports, draftEventReports, refetch } = useDashboardEventReports(
+        () => ({ startDate: { gte: datumStartDate, lte: datumEndDate } }),
+        [datumStartDate, datumEndDate]);
 
     const { filteredSubmittedEvents, filteredDraftEvents } = useMemo(() =>
         filteredEvents(submittedEventReports, draftEventReports, selectedDepartments, selectedCategories),
@@ -79,7 +66,7 @@ const SearchEvents: React.FC = () => {
                 state="Submitted"
                 role={role}
                 EventReports={filteredSubmittedEvents}
-                onDeleteSuccess={fetchDashboardData}
+                onDeleteSuccess={refetch}
                 onHyperlinkClick={showEventDialog}
                 unifiedSearch={true}
                 searchKeyword={searchKeyword}
@@ -89,7 +76,7 @@ const SearchEvents: React.FC = () => {
                 state="Draft"
                 role={role}
                 EventReports={filteredDraftEvents}
-                onDeleteSuccess={fetchDashboardData}
+                onDeleteSuccess={refetch}
                 onHyperlinkClick={showEventDialog}
                 unifiedSearch={true}
                 searchKeyword={searchKeyword}

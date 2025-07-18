@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Grid } from '@mui/material';
 import Head from 'next/head';
 import dayjs from 'dayjs';
@@ -16,39 +16,31 @@ import StackedBarChart from './_components/StackedBarChart';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
 
 import filteredEvents from '../../util/filteredEvents';
-import getDashboardData from '@/util/getDashboardData';
+import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 
-const CalendarOverview: React.FC = () => {
+const CMMReport: React.FC = () => {
   const [role, setRole] = useState<UserRole>('Admin');
 
-  const [datumDate, setDatumDate] = useState<Date | null>(dayjs().toDate());
+  const [datumDate, setDatumDate] = useState<Date>(dayjs().toDate());
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>(["High Impact", "New/Changes"]);
   const [selectedCalendarView, setSelectedCalendarView] = useState<View>(Views.MONTH)
-  const [submittedEventReports, setSubmittedEventReports] = useState<FullEventReport[]>([]);
-  const [draftEventReports, setdraftEventReports] = useState<Partial<FullEventReport>[]>([]);
 
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<Partial<FullEventReport>>({});
 
-  // Fetch Event Data for Render
-  const prismaFilters = useMemo(() => {
-    const startOfMonth = dayjs(datumDate).startOf("month").startOf('week').toDate();
-    const endOfMonth = dayjs(datumDate).endOf("month").endOf('week').toDate();
-    return { startDate: { gte: startOfMonth, lte: endOfMonth } };
-  }, [datumDate]);
+  // Custom Hook to fetch Event Reports
+  const { submittedEventReports, draftEventReports, refetch } = useDashboardEventReports(
+    () => {
+      const startOfMonth = dayjs(datumDate).startOf("month").startOf("week").toDate();
+      const endOfMonth = dayjs(datumDate).endOf("month").endOf("week").toDate();
+      return { startDate: { gte: startOfMonth, lte: endOfMonth } };
+    }, [datumDate]);
 
-  const fetchDashboardData = getDashboardData(prismaFilters);
-
-  useEffect(() => {
-    fetchDashboardData().then(({ submitted, draft }) => {
-      setSubmittedEventReports(submitted as FullEventReport[] || []);
-      setdraftEventReports(draft || []);
-    });
-  }, [fetchDashboardData]);
-
-  const { filteredSubmittedEvents, filteredDraftEvents } =
-    filteredEvents(submittedEventReports, draftEventReports, selectedDepartments, selectedCategories)
+  const { filteredSubmittedEvents, filteredDraftEvents } = useMemo(() =>
+    filteredEvents(submittedEventReports, draftEventReports, selectedDepartments, selectedCategories),
+    [submittedEventReports, draftEventReports, selectedDepartments, selectedCategories]);
+  //
 
   const showEventDialog = (eventDetails: Partial<FullEventReport>) => {
     setSelectedEvent(eventDetails);
@@ -106,4 +98,4 @@ const CalendarOverview: React.FC = () => {
   );
 };
 
-export default CalendarOverview;
+export default CMMReport;
