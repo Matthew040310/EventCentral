@@ -21,7 +21,7 @@ import DefaultImpactAssessment from '@/constants/DefaultImpactAssessment';
 // Functions
 import getEventReportByID from '@/util/Prisma-API-handlers/getEventReportByID';
 import clickToCopy from '@/util/clickToCopy';
-import { eventFormHandlers } from './_functions/eventFormHandlers';
+import { eventFormHandlers } from './_functions/useEventFormHandlers';
 import fieldsValid from './_functions/fieldsValid';
 
 const EventForm = () => {
