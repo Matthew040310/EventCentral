@@ -49,8 +49,6 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
         return arr;
     }, [submittedEventReports, selectedCategories]);
 
-    console.log("StackedBarChart shownData", shownData);
-
     return (
         <>
             <Typography variant="h6" sx={{ fontSize: 30, display: "flex", alignItems: "center", justifyContent: "center", my: 2 }}>
