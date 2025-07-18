@@ -67,7 +67,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    height: "50vh",
+                    height: "500px",
                 }}>
 
                 <BarChart
