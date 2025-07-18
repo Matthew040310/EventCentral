@@ -28,11 +28,11 @@ const EventWriteUp: React.FC<EventWriteUpProps> = ({
 
         <Box component="div" px={2} py={1}>
             {/* Event Date */}
-            <Stack direction="row">
-                <Typography variant="subtitle2" fontSize={15}>
+            <Stack direction="row" fontSize={18}>
+                <Typography variant="subtitle2" fontSize="inherit">
                     Impact Period:
                 </Typography>
-                <Typography variant='subtitle2' ml={1} color="text.secondary" fontSize={15}>
+                <Typography variant='subtitle2' ml={1} color="text.secondary" fontSize="inherit">
                     {dateFormatter(eventDetails.startDate || null)}
                     {eventDetails.endDate && (" - ")}
                     {dateFormatter(eventDetails.endDate || null)}
@@ -40,7 +40,7 @@ const EventWriteUp: React.FC<EventWriteUpProps> = ({
             </Stack>
 
             {/* Event Write Up */}
-            <Typography variant="subtitle2" fontSize={15} color='text.secondary' mt={1}>
+            <Typography variant="subtitle2" color='text.secondary' mt={1} fontSize={15}>
                 {eventDetails.submittedImpactAssessment?.eventWriteUp || "No write up provided."}
             </Typography>
         </Box>
