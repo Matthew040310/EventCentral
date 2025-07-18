@@ -73,7 +73,7 @@ const CalendarOverview: React.FC = () => {
         setSelectedCategories={setSelectedCategories}
       />
 
-      <Box height="75vh"> {/* Required as Calendar Inherits height from parent */}
+      <Box height="80vh"> {/* Required as Calendar Inherits height from parent */}
         <CalendarView
           events={[...filteredSubmittedEvents, ...filteredDraftEvents]}
           view={selectedCalendarView}
