@@ -1,6 +1,6 @@
 "use client";
 import React, { useMemo, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import Head from 'next/head';
 import dayjs from 'dayjs';
 import { View, Views } from 'react-big-calendar';
@@ -10,6 +10,7 @@ import UserRole from '@/types/TUserRole';
 
 import CalendarOverviewHeader from './_components/Header';
 import CalendarToolBar from './_components/ToolBar';
+import EventStatistics from '../CMMReport/_components/EventStatistics';
 import CalendarView from './_components/CalendarView';
 import EventTable from './_components/EventTable';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
@@ -64,6 +65,14 @@ const CalendarOverview: React.FC = () => {
         selectedCategories={selectedCategories}
         setSelectedCategories={setSelectedCategories}
       />
+
+      <Grid container bgcolor="white">
+        <Grid size={2}></Grid>
+        <Grid size={8}>
+          <EventStatistics submittedEventReports={submittedEventReports} />
+        </Grid>
+        <Grid size={2}></Grid>
+      </Grid >
 
       <Box height="800px"> {/* Required as Calendar Inherits height from parent */}
         <CalendarView
