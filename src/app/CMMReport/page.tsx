@@ -86,7 +86,8 @@ const CMMReport: React.FC = () => {
         </Grid>
       </Grid >
 
-      <StackedBarChart />
+      <StackedBarChart
+        datumDate={datumDate} />
 
       <EventDetailsDialog
         open={openDialog}
