@@ -15,7 +15,7 @@ import EventWriteUpSection from './_components/EventWriteUpSection';
 import StackedBarChart from './_components/StackedBarChart';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
 
-import filteredEvents from '../../util/filteredEvents';
+import filteredEvents from '@/util/filteredEvents';
 import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 
 const CMMReport: React.FC = () => {
@@ -30,7 +30,7 @@ const CMMReport: React.FC = () => {
   const [selectedEvent, setSelectedEvent] = useState<Partial<FullEventReport>>({});
 
   // Custom Hook to fetch Event Reports
-  const { submittedEventReports, draftEventReports, refetch } = useDashboardEventReports(
+  const { submittedEventReports, draftEventReports } = useDashboardEventReports(
     () => {
       const startOfMonth = dayjs(datumDate).startOf("month").startOf("week").toDate();
       const endOfMonth = dayjs(datumDate).endOf("month").endOf("week").toDate();
