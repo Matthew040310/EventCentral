@@ -60,8 +60,8 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
                 }}>
 
                 <BarChart
-                    xAxis={[{ data: xAxisLabel, label: 'Date', }]}
-                    yAxis={[{ label: 'Number of Events' }]}
+                    xAxis={[{ data: xAxisLabel, label: 'Month', labelStyle: { fontSize: 16 } }]}
+                    yAxis={[{ label: 'Number of Events', labelStyle: { fontSize: 16 } }]}
                     grid={{ horizontal: true }}
                     series={
                         [
