@@ -24,7 +24,13 @@ const Existing = {
     color: Event_Legend["Existing"]
 };
 
-const StackedBarChart: React.FC = () => {
+interface StackedBarChartProps {
+    datumDate: Date;
+}
+
+const StackedBarChart: React.FC<StackedBarChartProps> = ({
+    datumDate
+}) => {
 
     return (
         <>
