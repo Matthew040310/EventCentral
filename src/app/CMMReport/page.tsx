@@ -12,6 +12,7 @@ import CalendarToolBar from '../CalendarOverview/_components/ToolBar';
 import EventStatistics from './_components/EventStatistics';
 import CalendarView from '../CalendarOverview/_components/CalendarView';
 import EventWriteUpSection from './_components/EventWriteUpSection';
+import StackedBarChart from './_components/StackedBarChart';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
 
 import filteredEvents from '../../util/filteredEvents';
@@ -93,11 +94,14 @@ const CalendarOverview: React.FC = () => {
         </Grid>
       </Grid >
 
+      <StackedBarChart />
+
       <EventDetailsDialog
         open={openDialog}
         onClose={() => setOpenDialog(false)}
         eventDetails={selectedEvent}
       />
+
     </>
   );
 };
