@@ -1,4 +1,4 @@
-import determineColor from "@/app/CalendarOverview/_functions/determineColor";
+import determineCategory from "@/app/CalendarOverview/_functions/determineCategory";
 import FullEventReport from "@/types/IFullEventReport";
 
 const CATEGORY_INDEX: Record<string, number> = {
@@ -19,8 +19,8 @@ export default function sortEventDetailsArray(
             if (!b.startDate) return -1;
             return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
         } else if (sortBy === "Category") {
-            const labelA = determineColor(a).label;
-            const labelB = determineColor(b).label;
+            const labelA = determineCategory(a).label;
+            const labelB = determineCategory(b).label;
             const idxA = CATEGORY_INDEX[labelA] ?? 99;
             const idxB = CATEGORY_INDEX[labelB] ?? 99;
             if (idxA !== idxB) return idxA - idxB;

@@ -1,5 +1,5 @@
 import RBCEvent from "@/types/IRBCEvent"
-import determineColor from "../_functions/determineColor"
+import determineCategory from "../_functions/determineCategory"
 import { Button } from "@mui/material"
 import React from "react";
 
@@ -12,7 +12,7 @@ const CalendarEvent: React.FC<CalendarEventProps> = ({
     EventObject: event,
     handleClick,
 }) => {
-    const { backgroundColor, borderColor, textColor } = determineColor(event)
+    const { backgroundColor, borderColor, textColor } = determineCategory(event)
 
     return (
         <Button variant="outlined" title={event.title}

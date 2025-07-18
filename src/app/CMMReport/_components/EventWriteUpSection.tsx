@@ -5,7 +5,7 @@ import { Button, Paper, Stack } from '@mui/material'
 import EventWriteUp from './EventWriteUp';
 import FullEventReport from "@/types/IFullEventReport";
 
-import determineColor from '@/app/CalendarOverview/_functions/determineColor';
+import determineCategory from '@/app/CalendarOverview/_functions/determineCategory';
 import sortWriteUps from '../_functions/sortWriteUp';
 
 interface EventWriteUpSectionProps {
@@ -47,7 +47,7 @@ const EventWriteUpSection: React.FC<EventWriteUpSectionProps> = ({
 
                 {/* Event Write Ups */}
                 {sortedEventDetailsArray.map((eventDetails, idx) => {
-                    const { label, borderColor } = determineColor(eventDetails);
+                    const { label, borderColor } = determineCategory(eventDetails);
 
                     if (label === "High Impact" || label === "New/Changes") {
                         return <EventWriteUp key={idx}

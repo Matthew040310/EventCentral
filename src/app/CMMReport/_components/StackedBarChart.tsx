@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { Box, Typography } from '@mui/material';
 import { Event_Legend } from '@/styles/theme';
+import determineCategory from '@/app/CalendarOverview/_functions/determineCategory';
 
 import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 
@@ -38,7 +39,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
     const year = dayjs(datumDate).year()
 
     // Custom Hook to fetch Event Reports
-    const { submittedEventReports, draftEventReports, refetch } = useDashboardEventReports(
+    const { submittedEventReports } = useDashboardEventReports(
         () => {
             const startOfYear = dayjs(datumDate).startOf('year').toDate();
             const endOfYear = dayjs(datumDate).endOf('year').toDate();

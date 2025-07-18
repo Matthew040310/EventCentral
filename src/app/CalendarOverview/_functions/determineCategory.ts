@@ -2,7 +2,7 @@ import FullEventReport from "@/types/IFullEventReport";
 import RBCEvent from "@/types/IRBCEvent";
 import { Event_Legend } from "@/styles/theme";
 
-export default function determineColor(
+export default function determineCategory(
     event: Partial<FullEventReport> | RBCEvent
 ) {
     let styleObject = {
