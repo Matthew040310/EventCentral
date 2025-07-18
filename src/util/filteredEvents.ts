@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import FullEventReport from '@/types/IFullEventReport';
 import RBCEvent from '@/types/IRBCEvent';
 
@@ -56,13 +55,11 @@ function applyFilters(
     selectedCategories: string[],
     events: Event[],
 ) {
-    const departmentSet = useMemo(() => new Set(selectedDepartments), [selectedDepartments]);
-    const categorySet = useMemo(() => new Set(selectedCategories), [selectedCategories]);
-    return useMemo(() => {
-        return events.filter(event =>
-            filterEvent(event, departmentSet, categorySet)
-        );
-    }, [selectedDepartments, selectedCategories, events]);
+    const departmentSet = new Set(selectedDepartments);
+    const categorySet = new Set(selectedCategories);
+    return events.filter(event =>
+        filterEvent(event, departmentSet, categorySet)
+    );
 }
 
 export default function filteredEvents(
