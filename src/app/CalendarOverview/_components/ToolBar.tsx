@@ -23,7 +23,7 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
     selectedCategories, setSelectedCategories
 }) =>
 (
-    <Grid container mt={1}
+    <Grid container mt={1} py={2}
         alignItems={"center"}
         spacing={1} bgcolor={"white"} >
         <Grid size={1}></Grid>

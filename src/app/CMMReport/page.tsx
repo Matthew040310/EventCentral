@@ -64,7 +64,7 @@ const CMMReport: React.FC = () => {
         setSelectedCategories={setSelectedCategories}
       />
 
-      <Grid container bgcolor="white" >
+      <Grid container bgcolor="white" py={3} borderTop="1px dotted #E0E0E0">
         <Grid size={{ lg: 8 }} sx={{ height: "800px", display: "flex", flexDirection: "column" }}>
           <EventStatistics submittedEventReports={submittedEventReports} />
 

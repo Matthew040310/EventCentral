@@ -40,8 +40,7 @@ const Legend: React.FC<LegendProps> = ({
     });
 
     return (
-        <Box p={2} mt={2} justifyContent="center" textAlign="center" width={width} >
-            <Typography variant='h6' mb={1}>Click to Filter by Category</Typography>
+        <Box justifyContent="center" textAlign="center" width={width} >
             <Stack direction="row" textAlign="center" justifyContent="center" spacing={2}>
                 {legendItems.map(([category, color], index) => {
                     if (noDraftChip && category === 'Draft') return null; // Skip Draft chip if noDraftChip is true. Used for SearchEvents page only

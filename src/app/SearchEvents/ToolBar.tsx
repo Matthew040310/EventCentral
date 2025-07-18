@@ -26,7 +26,7 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
     selectedCategories, setSelectedCategories,
     searchKeyword, setSearchKeyword
 }) => (
-    <Grid container mt={1}
+    <Grid container mt={1} py={2}
         alignItems={"center"}
         textAlign={{ lg: "center", sm: "left" }} spacing={1} bgcolor={"white"} >
 
