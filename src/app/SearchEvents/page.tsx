@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
 import dayjs from 'dayjs';
 
@@ -29,26 +29,24 @@ const SearchEvents: React.FC = () => {
     const [selectedEvent, setSelectedEvent] = useState<Partial<FullEventReport>>({});
 
     // Fetch Event Data for Render
-    const prismaFilters = useMemo(() => {
-        return {
+    const fetchDashboardData = useCallback(async () => {
+        const prismaFilters = {
             startDate: {
                 gte: datumStartDate ?? undefined,
                 lte: datumEndDate ?? undefined
             }
-        }
+        };
+
+        const { submitted, draft } = await getDashboardData(prismaFilters);
+        setSubmittedEventReports(submitted as FullEventReport[] || []);
+        setdraftEventReports(draft || []);
     }, [datumStartDate, datumEndDate]);
 
-    const fetchDashboardData = getDashboardData(prismaFilters);
+    useEffect(() => { fetchDashboardData() }, [fetchDashboardData]);
 
-    useEffect(() => {
-        fetchDashboardData().then(({ submitted, draft }) => {
-            setSubmittedEventReports(submitted as FullEventReport[] || []);
-            setdraftEventReports(draft || []);
-        });
-    }, [fetchDashboardData]);
-
-    const { filteredSubmittedEvents, filteredDraftEvents } =
-        filteredEvents(submittedEventReports, draftEventReports, selectedDepartments, selectedCategories)
+    const { filteredSubmittedEvents, filteredDraftEvents } = useMemo(() =>
+        filteredEvents(submittedEventReports, draftEventReports, selectedDepartments, selectedCategories),
+        [submittedEventReports, draftEventReports, selectedDepartments, selectedCategories]);
     //
 
     const showEventDialog = (eventDetails: Partial<FullEventReport>) => {
