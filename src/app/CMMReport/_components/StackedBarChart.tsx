@@ -16,6 +16,7 @@ const xAxisProps = {
 const yAxisProps = {
     label: 'Number of Events',
     labelStyle: { fontSize: 16 },
+    min: 0, tickMinStep: 1,
 }
 
 interface StackedBarChartProps {
