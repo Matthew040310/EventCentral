@@ -1,6 +1,6 @@
 import "react-big-calendar/lib/css/react-big-calendar.css"
 import { useCallback } from 'react'
-import { Button, Grid, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import { ArrowLeft, ArrowRight } from '@mui/icons-material'
 import { Calendar, Components, EventWrapperProps, View, Views, dayjsLocalizer } from 'react-big-calendar'
 import dayjs from 'dayjs'
@@ -68,46 +68,61 @@ const CalendarView: React.FC<CalendarViewProps> = ({
   }, [view, datumDate]);
 
   return (
-    <Grid container bgcolor={"white"}>
+    <Box pb={2}
+      bgcolor="white" height="100%" width="100%"
+      display="flex" flexDirection="column">
 
       {/* Calendar Header */}
-      <Grid size={12} textAlign='center' >
-        <Typography variant='h6' fontSize={"3vh"} mb={1}>{dateHeader(datumDate!, view)}</Typography>
-      </Grid>
+      <Box textAlign="center" my={1}>
+        <Typography variant='h6' fontSize={"3vh"}>{dateHeader(datumDate!, view)}</Typography>
+      </Box>
 
       {/* Calendar */}
-      <Grid justifyContent={"center"} display="flex" size={2}>
-        <Button sx={{ color: "grey" }} onClick={onPrevClick}>
-          Previous {view}
-          <ArrowLeft sx={{ fontSize: 100 }} />
-        </Button>
-      </Grid>
-      <Grid pb={5} size={8}>
-        <Calendar<RBCEvent, object>
-          localizer={localizer}
-          style={{ height: "75vh" }}
-          startAccessor="startDate"
-          toolbar={false}
-          components={components}
+      <Box sx={{ flex: 1, display: 'flex', flexDirection: 'row' }}>
+        <Box sx={{
+          width: '16.66%',    // 2/12 or xs={2}
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <Button sx={{ color: "grey" }} onClick={onPrevClick}>
+            Previous {view}
+            <ArrowLeft sx={{ fontSize: 100 }} />
+          </Button>
+        </Box>
 
-          view={view}
-          date={datumDate as Date}
+        <Box sx={{ flex: 1, minWidth: 0 }}>
+          <Calendar<RBCEvent, object>
+            localizer={localizer}
+            startAccessor="startDate"
+            toolbar={false}
+            components={components}
 
-          events={normalizedEvents}
-          popup={true}
-          selectable={true}
-          onView={() => { }}          // To remove console error as state is managed in parent component. Non-functional
-          onNavigate={() => { }}      // To remove console error as state is managed in parent component. Non-functional
-        />
-      </Grid>
-      <Grid justifyContent={"center"} display="flex" size={2}>
-        <Button sx={{ color: "grey" }} onClick={onNextClick}>
-          <ArrowRight sx={{ fontSize: 100 }} />
-          Next {view}
-        </Button>
-      </Grid>
-    </Grid >
+            view={view}
+            date={datumDate as Date}
+
+            events={normalizedEvents}
+            popup={true}
+            selectable={true}
+            onView={() => { }}          // To remove console error as state is managed in parent component. Non-functional
+            onNavigate={() => { }}      // To remove console error as state is managed in parent component. Non-functional
+          />
+        </Box>
+
+        <Box sx={{
+          width: '16.66%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <Button sx={{ color: "grey" }} onClick={onNextClick}>
+            <ArrowRight sx={{ fontSize: 100 }} />
+            Next {view}
+          </Button>
+        </Box>
+      </Box >
+    </Box>
   );
 }
 
-export default CalendarView
+export default CalendarView;
