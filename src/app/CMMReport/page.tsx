@@ -9,13 +9,13 @@ import FullEventReport from '@/types/IFullEventReport';
 import UserRole from '@/types/TUserRole';
 
 import CalendarToolBar from '../CalendarOverview/_components/ToolBar';
+import EventStatistics from './_components/EventStatistics';
 import CalendarView from '../CalendarOverview/_components/CalendarView';
 import EventWriteUpSection from './_components/EventWriteUpSection';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
 
 import filteredEvents from '../../util/filteredEvents';
 import getDashboardData from '@/util/getDashboardData';
-import EventStatistics from './_components/EventStatistics';
 
 const CalendarOverview: React.FC = () => {
   const [role, setRole] = useState<UserRole>('Admin');
