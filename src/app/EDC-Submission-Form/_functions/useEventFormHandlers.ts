@@ -5,22 +5,7 @@ import ImpactAssessment from '@/types/IImpactAssessment';
 import triggerSubmit from '@/util/Prisma-API-handlers/handleSubmit';
 import triggerDelete from '@/util/Prisma-API-handlers/handleDelete';
 import triggerSave from '@/util/Prisma-API-handlers/handleSave';
-import getEventReportByID from '@/util/Prisma-API-handlers/getEventReportByID';
-
-const checkValidImpactAssessmentId = async (
-    eventDetails: EventDetails,
-    impactAssessment: ImpactAssessment,
-    setInvalidImpactAssessmentId: (val: boolean) => void
-): Promise<boolean> => {
-    if (eventDetails.type === "Existing" && impactAssessment.id) {
-        const result = await getEventReportByID(impactAssessment.id as string, "Submitted");
-        if (!result?.impactAssessment.id) {
-            setInvalidImpactAssessmentId(true);
-            return false
-        }
-    }
-    return true
-}
+import validImpactAssessmentId from './validImpactAssessmentId';
 
 type SectionMap = {
     // formSection    : fieldName types
@@ -85,7 +70,7 @@ export function eventFormHandlers(
 
     // handleSubmit
     const handleSubmit = async () => {
-        const isValid = await checkValidImpactAssessmentId(eventDetails, impactAssessment, setInvalidImpactAssessmentId);
+        const isValid = await validImpactAssessmentId(eventDetails, impactAssessment, setInvalidImpactAssessmentId);
         if (!isValid) return;
         triggerSubmit(eventDetails, impactAssessment, setAlert);
     }

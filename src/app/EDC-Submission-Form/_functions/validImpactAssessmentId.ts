@@ -1,16 +1,18 @@
+import EventDetails from '@/types/IEventDetails';
+import ImpactAssessment from '@/types/IImpactAssessment';
 import getEventReportByID from '@/util/Prisma-API-handlers/getEventReportByID';
 
 export default async function validImpactAssessmentId(
-    eventType: string,
-    impactAssessmentId: string,
+    eventDetails: EventDetails,
+    impactAssessment: ImpactAssessment,
     setInvalidImpactAssessmentId: (val: boolean) => void
-) {
-    if (eventType === "Existing") {
-        const result = await getEventReportByID(impactAssessmentId, "Submitted");
+): Promise<boolean> {
+    if (eventDetails.type === "Existing" && impactAssessment.id) {
+        const result = await getEventReportByID(impactAssessment.id as string, "Submitted");
         if (!result?.impactAssessment.id) {
             setInvalidImpactAssessmentId(true);
-            return false;
+            return false
         }
     }
-    return true;
+    return true
 }
