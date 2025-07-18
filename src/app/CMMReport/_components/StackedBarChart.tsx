@@ -32,6 +32,16 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
         return categoriseMonthlyEvents(submittedEventReports);
     }, [submittedEventReports]);
 
+    const shownData = useMemo(() => {
+        const arr = [];
+        if (selectedCategories.includes("High Impact")) arr.push({ ...HighImpact });
+        if (selectedCategories.includes("New/Changes")) arr.push({ ...Change_New });
+        if (selectedCategories.includes("Existing")) arr.push({ ...Existing });
+        return arr;
+    }, [submittedEventReports, selectedCategories]);
+
+    console.log("StackedBarChart shownData", shownData);
+
     return (
         <>
             <Typography variant="h6" sx={{ fontSize: 30, display: "flex", alignItems: "center", justifyContent: "center", my: 2 }}>
@@ -58,12 +68,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
                     yAxis={[{ label: 'Number of Events', labelStyle: { fontSize: 16 } }]}
                     grid={{ horizontal: true }}
                     hideLegend={true}
-                    series={
-                        [
-                            { ...HighImpact },
-                            { ...Change_New },
-                            { ...Existing },
-                        ]}
+                    series={shownData}
                 />
             </Box >
 
