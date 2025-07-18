@@ -5,10 +5,18 @@ import { Box, Typography } from '@mui/material';
 import Legend from '@/components/Legend';
 
 import categoriseMonthlyEvents from '../_functions/categoriseMonthlyEvents';
-
 import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 
-const xAxisLabel = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", " Oct", "Nov", "Dec"];
+const xAxisProps = {
+    data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", " Oct", "Nov", "Dec"],
+    label: 'Month',
+    labelStyle: { fontSize: 16 }
+}
+
+const yAxisProps = {
+    label: 'Number of Events',
+    labelStyle: { fontSize: 16 },
+}
 
 interface StackedBarChartProps {
     datumDate: Date;
@@ -64,8 +72,8 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
                 }}>
 
                 <BarChart
-                    xAxis={[{ data: xAxisLabel, label: 'Month', labelStyle: { fontSize: 16 } }]}
-                    yAxis={[{ label: 'Number of Events', labelStyle: { fontSize: 16 } }]}
+                    xAxis={[xAxisProps]}
+                    yAxis={[yAxisProps]}
                     grid={{ horizontal: true }}
                     hideLegend={true}
                     series={shownData}
