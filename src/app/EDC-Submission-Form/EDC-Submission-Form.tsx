@@ -21,8 +21,10 @@ import DefaultImpactAssessment from '@/constants/DefaultImpactAssessment';
 // Functions
 import getEventReportByID from '@/util/Prisma-API-handlers/getEventReportByID';
 import clickToCopy from '@/util/clickToCopy';
-import { eventFormHandlers } from './_functions/useEventFormHandlers';
 import fieldsValid from './_functions/fieldsValid';
+
+// Hooks
+import useEventFormHandlers from './_functions/useEventFormHandlers';
 
 const EventForm = () => {
     const router = useRouter();
@@ -42,7 +44,7 @@ const EventForm = () => {
         handleSave,
         handleSubmit,
         handleUpdate,
-    } = eventFormHandlers(DefaultEventDetails, DefaultImpactAssessment, setInvalidImpactAssessmentId)
+    } = useEventFormHandlers(DefaultEventDetails, DefaultImpactAssessment, setInvalidImpactAssessmentId)
 
     /* Populate previous data if id is provided in the query */
     const id = searchParams.get('id');

@@ -13,7 +13,7 @@ type SectionMap = {
     "Impact Assessment": ImpactAssessment;
 };
 
-export function eventFormHandlers(
+export default function useEventFormHandlers(
     initialEventDetails: EventDetails,
     initialImpactAssessment: ImpactAssessment,
     setInvalidImpactAssessmentId: (val: boolean) => void
@@ -94,5 +94,3 @@ export function eventFormHandlers(
         handleUpdate,
     };
 }
-
-export default eventFormHandlers;
