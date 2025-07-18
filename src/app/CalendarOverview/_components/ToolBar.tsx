@@ -6,8 +6,8 @@ import Legend from '@/components/Legend';
 import { ALL_DEPARTMENTS } from '@/constants/EventCentralConstants';
 
 interface CalendarToolBarProps {
-    datumDate: Date | null;
-    setDatumDate: (date: Date | null) => void;
+    datumDate: Date;
+    setDatumDate: (date: Date) => void;
     selectedView: View;
     setSelectedView: (view: View) => void;
     selectedDepartments: string[];
@@ -32,7 +32,7 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
             <CustomDatePicker md={12} sm={12}
                 label={"Go to Date"} required={false}
                 value={datumDate} minSelectableDate={null}
-                onChange={(date) => { setDatumDate(date); }}
+                onChange={(date) => { setDatumDate(date as Date); }}
             />
         </Grid>
 

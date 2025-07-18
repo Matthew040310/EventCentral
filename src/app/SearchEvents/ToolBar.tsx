@@ -7,10 +7,10 @@ import dateFormatter from '@/util/dateFormatter'
 import { ALL_DEPARTMENTS } from '@/constants/EventCentralConstants'
 
 interface SearchEventToolBarProps {
-    datumStartDate: Date | null;
-    setDatumStartDate: (date: Date | null) => void;
-    datumEndDate: Date | null;
-    setDatumEndDate: (date: Date | null) => void;
+    datumStartDate: Date;
+    setDatumStartDate: (date: Date) => void;
+    datumEndDate: Date;
+    setDatumEndDate: (date: Date) => void;
     selectedDepartments: string[];
     setSelectedDepartments: (departments: string[]) => void;
     selectedCategories: string[];
@@ -37,7 +37,7 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
             <CustomDatePicker md={10} sm={12}
                 label={"Start Date"} required={false}
                 value={datumStartDate} minSelectableDate={null}
-                onChange={(date) => { setDatumStartDate(date); }}
+                onChange={(date) => { setDatumStartDate(date as Date); }}
             />
         </Grid>
 
@@ -45,7 +45,7 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
             <CustomDatePicker md={10} sm={12}
                 label={"End Date"} required={false}
                 value={datumEndDate} minSelectableDate={datumStartDate}
-                onChange={(date) => { setDatumEndDate(date); }}
+                onChange={(date) => { setDatumEndDate(date as Date); }}
             />
         </Grid>
 
