@@ -9,7 +9,7 @@ const CalendarHeader = () => (
 
         <Grid size={{ sm: 5, xs: 12 }} mt={3}>
             <Typography variant='h6' fontSize={20}>Welcome to EventCentral</Typography>
-            <Typography variant='body2'>Your centralized event tracking and forecasting system</Typography>
+            <Typography variant='body2'>Your centralised event tracking and forecasting system</Typography>
         </Grid>
 
         <Grid mt={1.5} justifyContent={"flex-end"} display="flex" size={{ sm: 5 }}>
