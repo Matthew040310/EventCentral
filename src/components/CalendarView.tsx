@@ -7,6 +7,7 @@ import dayjs from 'dayjs'
 import FullEventReport from '@/types/IFullEventReport';
 import RBCEvent from "@/types/IRBCEvent"
 import CalendarEvent from '@/components/CalendarEvent'
+import filterUniqueCalendarEvents from "@/util/filterUniqueCalendarEvents"
 
 interface CalendarViewProps {
   events: Partial<FullEventReport>[];
@@ -36,12 +37,14 @@ const CalendarView: React.FC<CalendarViewProps> = ({
 }) => {
   const localizer = dayjsLocalizer(dayjs)
 
-  const normalizedEvents: RBCEvent[] = events
-    .map(event => ({
-      ...event,
-      startDate: event.startDate ? new Date(event.startDate) : null,
-      end: event.startDate ? new Date(event.startDate) : null,      // required field for rendering
-    }))
+  // const normalizedEvents: RBCEvent[] = events
+  //   .map(event => ({
+  //     ...event,
+  //     startDate: event.startDate ? new Date(event.startDate) : null,
+  //     end: event.startDate ? new Date(event.startDate) : null,      // required field for rendering
+  //   }))
+
+  const calendarEvents = filterUniqueCalendarEvents(events)
 
   const components: Components<RBCEvent, object> = {
     eventWrapper: ({ event }: EventWrapperProps<RBCEvent>) => {
@@ -101,7 +104,7 @@ const CalendarView: React.FC<CalendarViewProps> = ({
             view={view}
             date={datumDate as Date}
 
-            events={normalizedEvents}
+            events={calendarEvents}
             popup={true}
             selectable={true}
             onView={() => { }}          // To remove console error as state is managed in parent component. Non-functional
