@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useSession, signIn, ClientSafeProvider, } from "next-auth/react";
 import { AppBar, Box, Grid, IconButton, Toolbar, Menu, MenuItem, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { AccountCircle, Assessment, CalendarMonth, Home, Group, Logout, ManageAccounts, Search } from '@mui/icons-material';
+import { AccountCircle, AddCircleOutline, Assessment, CalendarMonth, Home, Group, Logout, ManageAccounts, Search, Info } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
 import fetchProviders from "@/util/fetchProviders";
 import NavBarButton from "./NavBarButton";
@@ -23,12 +23,13 @@ const CustomNavBar: React.FC = () => {
   //   }
   // }, [session]);
 
-  const homeButton = <NavBarButton href="/" icon={<Home />} title="Home" />
-  const calendarOverviewButton = <NavBarButton href="/CalendarOverview" icon={<CalendarMonth />} title="Calendar Overview" />
-  const CMMReportButton = <NavBarButton href="/CMMReport" icon={<Assessment />} title="Core Management Report" />
-  const searchButton = <NavBarButton href="/SearchEvents" icon={<Search />} title="Search Events" />
-  const manageUsersButton = <NavBarButton href="/ManageUsers" icon={<ManageAccounts />} title="Manage Users" />
-  const logoutButton = <NavBarButton href="/logout" icon={<Logout />} title="Logout" iconAsContent={true} />
+  const HomeButton = <NavBarButton href="/" icon={<CalendarMonth />} title="Home" />
+  const CMMReportButton = <NavBarButton href="/CMMReport" icon={<Assessment />} title="Overview" />
+  const InfoButton = <NavBarButton href="#" icon={<Info />} title="Wiki" />
+  const SubmitNewEventButton = <NavBarButton href="/EDC-Submission-Form" icon={<AddCircleOutline />} title="Submit New Event" />
+  const SearchButton = <NavBarButton href="/SearchEvents" icon={<Search />} title="Search Events" />
+  const ManageUsersButton = <NavBarButton href="/ManageUsers" icon={<ManageAccounts />} title="Manage Users" />
+  const LogoutButton = <NavBarButton href="/logout" icon={<Logout />} title="Logout" iconAsContent={true} />
 
   // const loggedInUser = (
   //   session?.user &&
@@ -52,26 +53,28 @@ const CustomNavBar: React.FC = () => {
                   anchorEl={anchorEl}
                   open={Boolean(anchorEl)}
                   onClose={() => setAnchorEl(null)}>
-                  <MenuItem onClick={() => setAnchorEl(null)}>{homeButton}</MenuItem>
-                  <MenuItem onClick={() => setAnchorEl(null)}>{calendarOverviewButton}</MenuItem>
+                  <MenuItem onClick={() => setAnchorEl(null)}>{HomeButton}</MenuItem>
                   <MenuItem onClick={() => setAnchorEl(null)}>{CMMReportButton}</MenuItem>
-                  <MenuItem onClick={() => setAnchorEl(null)}>{searchButton}</MenuItem>
-                  {/* <MenuItem onClick={() => setAnchorEl(null)}>{manageUsersButton}</MenuItem> */}
+                  <MenuItem onClick={() => setAnchorEl(null)}>{InfoButton}</MenuItem>
+                  <MenuItem onClick={() => setAnchorEl(null)}>{SubmitNewEventButton}</MenuItem>
+                  <MenuItem onClick={() => setAnchorEl(null)}>{SearchButton}</MenuItem>
+                  <MenuItem onClick={() => setAnchorEl(null)}>{ManageUsersButton}</MenuItem>
                 </Menu>
               </Grid>
-              {/* <Grid container justifyContent="center" alignItems="center" size={8}>{loggedInUser}</Grid> */}
-              <Grid ml="auto">{logoutButton}</Grid>
+              {/* <Grid ml="auto">{loggedInUser}</Grid> */}
+              <Grid ml="auto">{LogoutButton}</Grid>
             </Grid>)
             :
             /* Layout for larger screens */
             (<>
-              <Box>{homeButton}</Box>
-              <Box ml={2}>{calendarOverviewButton}</Box>
+              <Box ml={2}>{HomeButton}</Box>
               <Box ml={2}>{CMMReportButton}</Box>
-              <Box ml="auto">{searchButton}</Box>
-              <Box ml={2}>{manageUsersButton}</Box>
-              {/* <Box>{loggedInUser}</Box> */}
-              <Box ml={2}>{logoutButton}</Box>
+              <Box ml={2}>{InfoButton}</Box>
+              <Box ml="auto">{SubmitNewEventButton}</Box>
+              <Box ml={2}>{SearchButton}</Box>
+              <Box ml={2}>{ManageUsersButton}</Box>
+              {/* <Box ml={2}>{loggedInUser}</Box> */}
+              <Box ml={2}>{LogoutButton}</Box>
             </>)}
         </Toolbar>
       </AppBar>
