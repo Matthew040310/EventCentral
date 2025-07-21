@@ -2,21 +2,21 @@ import FullEventReport from '@/types/IFullEventReport';
 import determineCategory from "@/util/determineCategory";
 
 export default function eventStatistics(eventDetailsArray: Partial<FullEventReport>[]) {
-    let highImpact = 0;
-    let newChanges = 0;
-    let existing = 0;
+    const highImpact = new Set<string>();
+    const newChanges = new Set<string>();
+    const existing = new Set<string>();
 
     for (const evt of eventDetailsArray) {
         const cat = determineCategory(evt).label;
-        if (cat === "High Impact") highImpact++;
-        else if (cat === "New/Changes") newChanges++;
-        else if (cat === "Existing") existing++;
+        if (cat === "High Impact") highImpact.add(evt.parentid as string);
+        else if (cat === "New/Changes") newChanges.add(evt.parentid as string);
+        else if (cat === "Existing") existing.add(evt.parentid as string);
     }
 
     return {
-        total: eventDetailsArray.length,
-        highImpact,
-        newChanges,
-        existing,
+        total: (highImpact.size + newChanges.size + existing.size),
+        highImpact: highImpact.size,
+        newChanges: newChanges.size,
+        existing: existing.size,
     }
 }
