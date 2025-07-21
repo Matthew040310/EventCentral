@@ -53,6 +53,9 @@ const CMMReport: React.FC = () => {
         <title>EventCentral - Core Management Meeting Report</title>
       </Head>
 
+      <StackedBarChart
+        datumDate={datumDate} />
+
       <CalendarToolBar
         datumDate={datumDate}
         setDatumDate={setDatumDate}
@@ -86,8 +89,6 @@ const CMMReport: React.FC = () => {
         </Grid>
       </Grid >
 
-      <StackedBarChart
-        datumDate={datumDate} />
 
       <EventDetailsDialog
         open={openDialog}
