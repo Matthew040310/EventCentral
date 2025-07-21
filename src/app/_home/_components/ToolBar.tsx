@@ -1,5 +1,5 @@
 import React from 'react'
-import { Autocomplete, Chip, Grid, Stack, Button, TextField, Typography } from '@mui/material'
+import { Autocomplete, Chip, Grid, Stack, Button, TextField } from '@mui/material'
 import { View, Views } from 'react-big-calendar';
 import CustomDatePicker from '@/components/CustomDatePicker';
 import Legend from '@/components/Legend';

@@ -1,7 +1,7 @@
 import { GridColDef, GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
 
-import HyperlinkTitle from '@/app/CalendarOverview/_components/_EventTableRenderCells/HyperlinkTitle';
-import AvailableActions from '@/app/CalendarOverview/_components/_EventTableRenderCells/AvailableActions';
+import HyperlinkTitle from '@/components/_EventTableRenderCells/HyperlinkTitle';
+import AvailableActions from '@/components/_EventTableRenderCells/AvailableActions';
 
 import FullEventReport from '@/types/IFullEventReport';
 import EventState from '@/types/TEventState';

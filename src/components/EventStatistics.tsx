@@ -4,8 +4,8 @@ import { Box } from '@mui/material'
 import FullEventReport from '@/types/IFullEventReport';
 import { Event_Legend } from '@/styles/theme';
 
-import EventStatisticsCard from './EventStatisticsCard';
-import eventStatistics from '../_functions/summariseEventStats'
+import EventStatisticsCard from '@/components/EventStatisticsCard';
+import eventStatistics from '@/util/summariseEventStats'
 
 interface EventStatisticsProps {
     submittedEventReports: Partial<FullEventReport>[];

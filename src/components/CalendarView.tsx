@@ -6,7 +6,7 @@ import { Calendar, Components, EventWrapperProps, View, Views, dayjsLocalizer } 
 import dayjs from 'dayjs'
 import FullEventReport from '@/types/IFullEventReport';
 import RBCEvent from "@/types/IRBCEvent"
-import CalendarEvent from './CalendarEvent'
+import CalendarEvent from '@/components/CalendarEvent'
 
 interface CalendarViewProps {
   events: Partial<FullEventReport>[];

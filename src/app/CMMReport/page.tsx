@@ -8,9 +8,9 @@ import { View, Views } from 'react-big-calendar';
 import FullEventReport from '@/types/IFullEventReport';
 import UserRole from '@/types/TUserRole';
 
-import CalendarToolBar from '../CalendarOverview/_components/ToolBar';
-import EventStatistics from './_components/EventStatistics';
-import CalendarView from '../CalendarOverview/_components/CalendarView';
+import CalendarToolBar from '@/app/_home/_components/ToolBar';
+import EventStatistics from '../../components/EventStatistics';
+import CalendarView from '@/components/CalendarView';
 import EventWriteUpSection from './_components/EventWriteUpSection';
 import StackedBarChart from './_components/StackedBarChart';
 import EventDetailsDialog from '@/components/EventDetailsDialog';

@@ -10,9 +10,9 @@ import UserRole from '@/types/TUserRole';
 
 import CalendarOverviewHeader from '@/app/_home/_components/Header';
 import CalendarToolBar from '@/app/_home/_components/ToolBar';
-import EventStatistics from '@/app/CMMReport/_components/EventStatistics';
-import CalendarView from '@/app/_home/_components/CalendarView';
-import EventTable from '@/app/_home/_components/EventTable';
+import EventStatistics from '@/components/EventStatistics';
+import CalendarView from '@/components/CalendarView';
+import EventTable from '@/components/EventTable';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
 
 import filteredEvents from '@/util/filteredEvents';
