@@ -14,6 +14,7 @@ const CustomTextField: React.FC<CustomTextFieldProps> = ({
 }) => (
     <Grid mt={1} size={{ xs: xs, sm: sm }}>
         <TextField
+            sx={{ bgcolor: "white" }}
             fullWidth
             margin={margin}
             required

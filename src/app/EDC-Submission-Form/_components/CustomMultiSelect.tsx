@@ -20,6 +20,7 @@ const CustomMultiSelect: React.FC<CustomMultiSelectProps> = ({
 }) => (
     <Grid mt={1} size={{ xs: 12, sm: 9 }}>
         <Autocomplete
+            sx={{ bgcolor: "white" }}
             multiple
             freeSolo={freeSolo}
             options={options}

@@ -46,7 +46,7 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = ({
             <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
                 <DatePicker
                     label={label}
-                    sx={{ mt: 1, width: "100%" }}
+                    sx={{ mt: 1, width: "100%", bgcolor: "white" }}
                     minDate={dayjs(minSelectableDate)}
                     value={value ? dayjs(value) : null}
                     onChange={handleDateChange}

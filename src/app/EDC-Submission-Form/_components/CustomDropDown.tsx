@@ -29,6 +29,7 @@ const CustomDropDown: React.FC<CustomDropDownProps> = ({
 }) => (
     <Grid mt={1} size={{ xs: xs, sm: sm }}>
         <Autocomplete
+            sx={{ bgcolor: "white" }}
             options={options}
             value={value}
             onChange={onChange}
