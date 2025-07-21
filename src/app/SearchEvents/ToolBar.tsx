@@ -1,9 +1,7 @@
 import React from 'react'
-import { Autocomplete, Chip, Grid, InputAdornment, TextField, Typography } from '@mui/material'
+import { Autocomplete, Chip, Grid, TextField } from '@mui/material'
 import CustomDatePicker from '@/components/CustomDatePicker'
-import { Search } from '@mui/icons-material'
 import Legend from '@/components/Legend'
-import dateFormatter from '@/util/dateFormatter'
 import { ALL_DEPARTMENTS } from '@/constants/EventCentralConstants'
 
 interface SearchEventToolBarProps {
@@ -15,8 +13,6 @@ interface SearchEventToolBarProps {
     setSelectedDepartments: (departments: string[]) => void;
     selectedCategories: string[];
     setSelectedCategories: React.Dispatch<React.SetStateAction<string[]>>;
-    searchKeyword: string;
-    setSearchKeyword: (keyword: string) => void;
 }
 
 const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
@@ -24,16 +20,13 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
     datumEndDate, setDatumEndDate,
     selectedDepartments, setSelectedDepartments,
     selectedCategories, setSelectedCategories,
-    searchKeyword, setSearchKeyword
 }) => (
-    <Grid container mt={1} py={2}
-        alignItems={"center"}
-        textAlign={{ lg: "center", sm: "left" }} spacing={1} bgcolor={"white"} >
+    <Grid container py={3} alignItems="center"
+        justifyContent="center">
 
-        {/* <Grid size={1} display={{ xs: "none", md: "block" }}></Grid> */}
-        <Grid size={1}></Grid>
+        <Grid size={1} display={{ xl: "block", xs: "none" }}></Grid>
 
-        <Grid size={{ xl: 1.5, md: 2.5, xs: 5 }}>
+        <Grid size={{ xl: 1.5, md: 3, xs: 5 }}>
             <CustomDatePicker md={10} sm={12}
                 label={"Start Date"} required={false}
                 value={datumStartDate} minSelectableDate={null}
@@ -41,7 +34,7 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
             />
         </Grid>
 
-        <Grid size={{ xl: 1.5, md: 2.5, xs: 5 }}>
+        <Grid size={{ xl: 1.5, md: 3, xs: 5 }}>
             <CustomDatePicker md={10} sm={12}
                 label={"End Date"} required={false}
                 value={datumEndDate} minSelectableDate={datumStartDate}
@@ -49,7 +42,7 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
             />
         </Grid>
 
-        <Grid pb={1} size={{ xl: 4, xs: 12 }} display={{ xl: "flex", xs: "none" }} justifyContent="center">
+        <Grid pb={1} size={4} display={{ xl: "flex", xs: "none" }} justifyContent="center">
             <Legend
                 width="100%"
                 selectedCategories={selectedCategories}
@@ -57,10 +50,13 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
                 noDraftChip={true} />
         </Grid>
 
-        <Grid mt={1} size={{ xl: 1.5, md: 2.5, xs: 12 }} display="flex"
-            justifyContent={{ xs: "center" }}>
+        <Grid mt={{ md: 1, xs: 3 }}
+            size={{ xl: 1.5, md: 3, xs: 12 }} display="flex"
+            ml={{ xl: "auto" }}
+            justifyContent={{ xl: "center", md: "flex-end", xs: "center" }}
+        >
             <Autocomplete
-                sx={{ width: { md: "90%", xs: "83%" } }}
+                sx={{ width: { md: "90%", xs: "83%" }, bgcolor: "white" }}
                 multiple
                 options={ALL_DEPARTMENTS}
                 value={selectedDepartments}
@@ -76,36 +72,12 @@ const SearchEventToolBar: React.FC<SearchEventToolBarProps> = ({
             />
         </Grid>
 
-        <Grid mt={1.5} size={{ xl: 1.5, md: 2.5, xs: 12 }} display="flex"
-            justifyContent={{ xs: "center" }}>
-            <TextField
-                sx={{ width: { md: "90%", xs: "83%" } }}
-                margin="dense"
-                label={"Search Event Keywords"}
-                size="medium"
-                value={searchKeyword}
-                onChange={(e) => setSearchKeyword(e.target.value)}
-                slotProps={{
-                    input: {
-                        startAdornment: (<InputAdornment position="start"><Search /></InputAdornment>)
-                    }
-                }} />
-        </Grid>
-
-        <Grid pb={1} size={{ xl: 4, xs: 12 }} display={{ xl: "none", xs: "flex" }} justifyContent="center">
+        <Grid mt={3} pb={1} size={{ xl: 4, xs: 12 }} display={{ xl: "none", xs: "flex" }} justifyContent="center">
             <Legend
                 width="100%"
                 selectedCategories={selectedCategories}
                 setSelectedCategories={setSelectedCategories}
                 noDraftChip={true} />
-        </Grid>
-
-        <Grid size={1} display={{ xs: "none", xl: "block" }}></Grid>
-
-        <Grid size={12} textAlign="center">
-            <Typography variant='h6' fontSize={"3vh"} mb={1}>
-                All Events From <u>{dateFormatter(datumStartDate)}</u> to <u>{dateFormatter(datumEndDate)}</u>
-            </Typography>
         </Grid>
     </Grid >
 )

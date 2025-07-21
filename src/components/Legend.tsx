@@ -33,7 +33,7 @@ const Legend: React.FC<LegendProps> = ({
     };
 
     const getChipStyles = (color: string, selected: boolean) => ({
-        backgroundColor: selected ? `${color} !important` : 'transparent',
+        backgroundColor: selected ? `${color} !important` : 'white',
         color: selected ? 'white' : color,
         borderColor: color,
         fontWeight: 500,
