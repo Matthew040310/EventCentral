@@ -36,7 +36,7 @@ const EventStatistics: React.FC<EventStatisticsProps> = ({
             </EventStatisticsCard>
 
             <EventStatisticsCard count={eventStats.total}>
-                Total Submitted Events
+                Total Events
             </EventStatisticsCard>
 
         </Box>
