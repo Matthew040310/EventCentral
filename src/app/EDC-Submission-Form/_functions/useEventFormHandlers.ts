@@ -6,6 +6,7 @@ import triggerSubmit from '@/util/Prisma-API-handlers/handleSubmit';
 import triggerDelete from '@/util/Prisma-API-handlers/handleDelete';
 import triggerSave from '@/util/Prisma-API-handlers/handleSave';
 import validImpactAssessmentId from './validImpactAssessmentId';
+import EventState from '@/types/TEventState';
 
 type SectionMap = {
     // formSection    : fieldName types
@@ -56,9 +57,9 @@ export default function useEventFormHandlers(
     };
 
     // handleDelete
-    const handleDelete = (userResponse: string) => {
+    const handleDelete = (state: EventState) => (userResponse: string) => {
         if (userResponse === "Confirm") {
-            triggerDelete(eventDetails.id, setAlert)
+            triggerDelete(eventDetails.id, setAlert, state)
             setEventDetails((prev) => ({ ...prev, id: '' }));
         }
     };

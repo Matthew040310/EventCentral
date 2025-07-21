@@ -177,7 +177,7 @@ const EventForm = () => {
                     eventDetails={eventDetails}
                     isFieldsValid={isFieldsValid}
                     state={state as EventState}
-                    handleDelete={handleDelete}
+                    handleDelete={handleDelete(state as EventState)}
                     handleSave={handleSave}
                     handleSubmit={handleSubmit}
                     handleUpdate={handleUpdate} />
