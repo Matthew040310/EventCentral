@@ -17,7 +17,7 @@ const EventWriteUpSection: React.FC<EventWriteUpSectionProps> = ({
     eventDetailsArray,
     onWriteUpClick
 }) => {
-    const [sortBy, setSortBy] = useState<string>('Date');
+    const [sortBy, setSortBy] = useState<string>('Category');
 
     const sortedEventDetailsArray = useMemo(
         () => sortWriteUps(eventDetailsArray, sortBy),
@@ -28,13 +28,13 @@ const EventWriteUpSection: React.FC<EventWriteUpSectionProps> = ({
         <>
             {/* Filter Buttons */}
             <Stack direction="row" pb={2} alignItems="center" justifyContent="center" bgcolor="white">
-                <Button variant={sortBy === "Date" ? 'contained' : 'outlined'}
-                    onClick={() => setSortBy("Date")}>
-                    Sort By Date
-                </Button>
                 <Button variant={sortBy === "Category" ? 'contained' : 'outlined'}
                     onClick={() => setSortBy("Category")}>
                     Sort By Category
+                </Button>
+                <Button variant={sortBy === "Date" ? 'contained' : 'outlined'}
+                    onClick={() => setSortBy("Date")}>
+                    Sort By Date
                 </Button>
             </Stack>
 
