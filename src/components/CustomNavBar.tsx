@@ -27,7 +27,7 @@ const CustomNavBar: React.FC = () => {
   const calendarOverviewButton = <NavBarButton href="/CalendarOverview" icon={<CalendarMonth />} title="Calendar Overview" />
   const CMMReportButton = <NavBarButton href="/CMMReport" icon={<Assessment />} title="Core Management Report" />
   const searchButton = <NavBarButton href="/SearchEvents" icon={<Search />} title="Search Events" />
-  const manageUsersButton = <NavBarButton href="/manage-users" icon={<ManageAccounts />} title="Manage Users" />
+  const manageUsersButton = <NavBarButton href="/ManageUsers" icon={<ManageAccounts />} title="Manage Users" />
   const logoutButton = <NavBarButton href="/logout" icon={<Logout />} title="Logout" iconAsContent={true} />
 
   // const loggedInUser = (
