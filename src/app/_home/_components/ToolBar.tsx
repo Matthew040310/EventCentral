@@ -56,7 +56,7 @@ const CalendarToolBar: React.FC<CalendarToolBarProps> = ({
             />
         </Grid>
 
-        <Grid pb={1} size={{ xl: 5.5, lg: 5, xs: 12 }}>
+        <Grid pb={1} size={{ xl: 5.5, lg: 5, xs: 12 }} my={{ lg: 0, xs: 1 }}>
             <Legend
                 width="100%"
                 selectedCategories={selectedCategories}
