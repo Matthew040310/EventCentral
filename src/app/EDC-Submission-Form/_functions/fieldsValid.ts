@@ -44,7 +44,7 @@ function eventDetailsValid(
                 eventDetails.customFrequency &&
                 eventDetails.selectedDay)
         }
-        else if (eventDetails.frequency !== "Ad-hoc") {
+        else if (eventDetails.frequency !== "One-off") {
             return Boolean(
                 (eventDetails.endDate && eventDetails.endDate > new Date()) &&
                 eventDetails.frequencyInterval)

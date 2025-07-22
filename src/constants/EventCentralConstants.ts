@@ -8,7 +8,7 @@ export const EVENT_TYPE = [
 
 import { RRule, Weekday } from 'rrule';
 export const EVENT_FREQUENCY = {
-  "Ad-hoc": "",
+  "One-off": "",
   "Daily": RRule.DAILY,
   "Weekly": RRule.WEEKLY,
   "Monthly": RRule.MONTHLY,

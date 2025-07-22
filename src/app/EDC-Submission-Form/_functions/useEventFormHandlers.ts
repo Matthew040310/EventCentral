@@ -30,7 +30,7 @@ export default function useEventFormHandlers(
         // Reset dependent fields based on the field being changed
         const resetDependencyFields = (): Partial<EventDetails> => {
             if (fieldName === 'frequency') {
-                return newValue === 'Ad-hoc'
+                return newValue === 'One-off'
                     ? { endDate: null, frequencyInterval: null, customFrequency: null, selectedDay: null }
                     : { customFrequency: null, selectedDay: null };
             }

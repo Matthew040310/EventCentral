@@ -33,7 +33,7 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
         if (knowStartDate === "No") {
             handleInputChange("startDate")(null);
             handleInputChange("endDate")(null);
-            handleInputChange("frequency")("Ad-hoc");
+            handleInputChange("frequency")("One-off");
             handleInputChange("frequencyInterval")(null);
             handleInputChange("customFrequency")(null);
             handleInputChange("selectedDay")(null);
@@ -53,8 +53,8 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
     } as TRecurringDateParams
 
     let showRecurringMessage =
-        // If frequency is not Ad-hoc or Custom, and both startDate, endDate and frequencyInterval are required
-        (inputFields?.frequency !== "Ad-hoc" && inputFields?.frequency !== "Custom" && inputFields?.startDate && inputFields?.endDate && inputFields?.frequencyInterval) ||
+        // If frequency is not One-off or Custom, and both startDate, endDate and frequencyInterval are required
+        (inputFields?.frequency !== "One-off" && inputFields?.frequency !== "Custom" && inputFields?.startDate && inputFields?.endDate && inputFields?.frequencyInterval) ||
         // Else if frequency is Custom, and all required fields are provided
         (inputFields?.frequency === "Custom" && inputFields?.startDate && inputFields?.endDate && inputFields?.frequencyInterval && inputFields?.customFrequency && inputFields?.selectedDay);
 
@@ -86,7 +86,7 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                             value={inputFields.startDate}
                             onChange={(date) => handleInputChange("startDate")(date)} />
 
-                        {inputFields?.frequency !== "Ad-hoc" && inputFields?.frequency !== null && (
+                        {inputFields?.frequency !== "One-off" && inputFields?.frequency !== null && (
                             <CustomDatePicker label="Event End Date"
                                 value={inputFields.endDate ?? null}
                                 onChange={(date) => handleInputChange("endDate")(date)}
@@ -98,7 +98,7 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                             value={inputFields?.frequency}
                             onChange={(_, newValue) => handleInputChange("frequency")(newValue)} />
                         {/* Recurring Logic to be Implemented */}
-                        {inputFields?.frequency !== "Ad-hoc" && inputFields?.frequency !== null && (
+                        {inputFields?.frequency !== "One-off" && inputFields?.frequency !== null && (
                             <>
                                 <CustomTextField label="Recurrence Interval"
                                     name="frequencyInterval"

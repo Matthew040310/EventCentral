@@ -42,7 +42,7 @@ export async function POST(request: Request) {
       });
 
       if (updateScope !== userResponses[0]) {
-        if (eventDetails.frequency !== "Ad-hoc") {
+        if (eventDetails.frequency !== "One-off") {
 
           updatedEventSubmission.type = "Existing";
 
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
           }
         }
 
-        // If response is to overwrite future events, and updated event type is "Ad-hoc"
+        // If response is to overwrite future events, and updated event type is "One-off"
         // Delete all future submissions with the same parentid
         else if (updateScope === userResponses[1]) {
           await deleteSubmissionsByParentId(originalParentEventID,

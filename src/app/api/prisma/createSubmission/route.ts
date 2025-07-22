@@ -66,8 +66,8 @@ export async function POST(request: Request) {
         });
       }
 
-      // Do auto replication of event dates if eventDetails.frequency is not "Ad-hoc"
-      if (eventDetails.frequency !== "Ad-hoc") {
+      // Do auto replication of event dates if eventDetails.frequency is not "One-off"
+      if (eventDetails.frequency !== "One-off") {
 
         // Reset id so that Prisma will auto assign an id upon creation
         const { id, ...replicatedEvent } = createdEventSubmission;
