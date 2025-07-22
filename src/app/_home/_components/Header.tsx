@@ -1,4 +1,5 @@
-import { Button, Grid, Link, Typography } from '@mui/material'
+import Link from 'next/link'
+import { Button, Grid, Typography } from '@mui/material'
 import { AddCircleOutline } from '@mui/icons-material'
 
 const CalendarHeader = () => (

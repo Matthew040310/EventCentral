@@ -1,5 +1,6 @@
 import React from "react"
-import { Box, Button, Link } from "@mui/material"
+import Link from "next/link"
+import { Box, Button } from "@mui/material"
 import { Close, Edit } from "@mui/icons-material"
 
 interface DialogButtonsProps {
