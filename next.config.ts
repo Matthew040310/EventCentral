@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  basePath: '/event-central',
+  assetPrefix: '/event-central',
 };
 
 export default nextConfig;
