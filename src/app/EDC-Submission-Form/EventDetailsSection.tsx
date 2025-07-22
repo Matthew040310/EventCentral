@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
 import CustomDropDown from "@/app/EDC-Submission-Form/_components/CustomDropDown"
@@ -43,7 +42,7 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
         }
     }, [knowStartDate]);
 
-    let recurringDateParams = {
+    const recurringDateParams = {
         startDate: inputFields.startDate,
         endDate: inputFields.endDate,
         frequency: inputFields.frequency,
@@ -52,7 +51,7 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
         ...(inputFields.selectedDay ? { selectedDay: inputFields.selectedDay } : {}),
     } as TRecurringDateParams
 
-    let showRecurringMessage =
+    const showRecurringMessage =
         // If frequency is not One-off or Custom, and both startDate, endDate and frequencyInterval are required
         (inputFields?.frequency !== "One-off" && inputFields?.frequency !== "Custom" && inputFields?.startDate && inputFields?.endDate && inputFields?.frequencyInterval) ||
         // Else if frequency is Custom, and all required fields are provided
