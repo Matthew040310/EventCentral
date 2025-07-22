@@ -1,6 +1,8 @@
 import type { AlertColor } from '@mui/material/Alert';
 import EventState from '@/types/TEventState';
 
+const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default async function handleDelete(
     eventID: string | string[] | null,
     setAlert: (alert: { open: boolean, severity: AlertColor, message: string }) => void,
@@ -8,8 +10,8 @@ export default async function handleDelete(
 ) {
     // Default endpoint target is deleteDraft
     const targetLink = state === "Draft"
-        ? "/api/prisma/deleteDraft"
-        : "/api/prisma/deleteSubmission"
+        ? `${APP_BASE_PATH}/api/prisma/deleteDraft`
+        : `${APP_BASE_PATH}/api/prisma/deleteSubmission`
 
     try {
         const response = await fetch(targetLink, {

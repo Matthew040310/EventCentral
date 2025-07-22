@@ -2,6 +2,8 @@ import EventDetails from "@/types/IEventDetails";
 import ImpactAssessment from "@/types/IImpactAssessment";
 import type { AlertColor } from '@mui/material/Alert';
 
+const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 type SectionMap = {
     // formSection    : fieldName types
     "Event Details": EventDetails;
@@ -17,8 +19,8 @@ export default async function handleSave(
     setAlert: (alert: { open: boolean, severity: AlertColor, message: string }) => void,
 ) {
     const targetLink = (eventDetails.id)
-        ? "/api/prisma/updateDraft"
-        : "/api/prisma/createDraft";
+        ? `${APP_BASE_PATH}/api/prisma/updateDraft`
+        : `${APP_BASE_PATH}/api/prisma/createDraft`;
 
     try {
         const response = await fetch(targetLink, {
@@ -40,7 +42,7 @@ export default async function handleSave(
         setAlert({ open: true, severity: 'success', message: result.message });
 
         // If createDraft endpoint was used, update entry's id
-        if (targetLink === "/api/prisma/createDraft") {
+        if (targetLink === `${APP_BASE_PATH}/api/prisma/createDraft`) {
             updateId("Event Details")("id")(result.id)
             if (eventDetails.type !== "Existing") {
                 updateId("Impact Assessment")("id")(result.id)

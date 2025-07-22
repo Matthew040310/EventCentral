@@ -2,6 +2,8 @@ import EventDetails from "@/types/IEventDetails";
 import ImpactAssessment from "@/types/IImpactAssessment";
 import type { AlertColor } from '@mui/material/Alert';
 
+const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 function cleanImpactAssessment(impactAssessment: ImpactAssessment): ImpactAssessment {
     // Remove unrequired fields on the backend
     if (impactAssessment.perceivedUnhappiness === "No") {
@@ -35,13 +37,13 @@ export default async function handleSubmit(
     updateScope?: string
 ) {
     // Default api endpoint is createSubmission
-    var targetLink = "/api/prisma/createSubmission";
+    var targetLink = `${APP_BASE_PATH}/api/prisma/createSubmission`;
     var scope = {};
 
     // If updateScope is provided, change targetLink to updateSubmission
     // and add updateScope to the request body
     if (updateScope) {
-        targetLink = "/api/prisma/updateSubmission";
+        targetLink = `${APP_BASE_PATH}/api/prisma/updateSubmission`;
         scope = { "Update Scope": updateScope };
     };
 

@@ -1,6 +1,8 @@
 import FullEventReport from "@/types/IFullEventReport";
 import FullEventReportParams from "@/types/IFullEventReportParams";
 
+const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default async function getFullEventReports(
     params: FullEventReportParams,
 ): Promise<
@@ -8,8 +10,8 @@ export default async function getFullEventReports(
 > {
     // Default endpoint target is getDraft
     const targetLink = params.state === "Submitted"
-        ? "/api/prisma/getSubmission"
-        : "/api/prisma/getDraft"
+        ? `${APP_BASE_PATH}/api/prisma/getSubmission`
+        : `${APP_BASE_PATH}/api/prisma/getDraft`
 
     const HTTP_METHOD = params.filters ? 'POST' : 'GET';
     let body = {};
