@@ -96,7 +96,7 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                             options={Object.keys(EVENT_FREQUENCY)}
                             value={inputFields?.frequency}
                             onChange={(_, newValue) => handleInputChange("frequency")(newValue)} />
-                        {/* Recurring Logic to be Implemented */}
+
                         {inputFields?.frequency !== "One-off" && inputFields?.frequency !== null && (
                             <>
                                 <CustomTextField label="Recurrence Interval"
@@ -148,7 +148,8 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                                 )}
                             </>
                         )}
-                    </>}
+                    </>
+                }
 
                 <CustomTextField label="Event Title" sm={12}
                     name="eventTitle"
@@ -182,20 +183,21 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                     Overall In Charge Details
                 </Typography></Grid>
 
-                <CustomDropDown label="Cluster" xs={4} sm={4}
-                    options={Object.keys(ORGANISATION)}
-                    value={inputFields?.cluster}
-                    onChange={(_, newValue) => handleInputChange("cluster")(newValue)} />
-                <CustomDropDown label="Group" xs={4} sm={4}
-                    options={inputFields.cluster ? Object.keys(ORGANISATION[inputFields.cluster!]) : ["NA"]}
-                    value={inputFields?.group}
-                    onChange={(_, newValue) => handleInputChange("group")(newValue)}
-                    disabled={!inputFields.cluster} />    {/* Cluster field must be selected before Group */}
                 <CustomDropDown label="Department" xs={4} sm={4}
                     options={inputFields.group ? ORGANISATION[inputFields.cluster!][inputFields.group!] : ["NA"]}
                     value={inputFields?.department}
                     onChange={(_, newValue) => handleInputChange("department")(newValue)}
-                    disabled={!inputFields.group} />      {/* Group field must be selected before Department */}
+                    disabled={!inputFields.group} />
+                <CustomDropDown label="Group" xs={4} sm={4}
+                    options={inputFields.cluster ? Object.keys(ORGANISATION[inputFields.cluster!]) : ["NA"]}
+                    value={inputFields?.group}
+                    onChange={(_, newValue) => handleInputChange("group")(newValue)}
+                    disabled={!inputFields.cluster} />
+                <CustomDropDown label="Cluster" xs={4} sm={4}
+                    options={Object.keys(ORGANISATION)}
+                    value={inputFields?.cluster}
+                    onChange={(_, newValue) => handleInputChange("cluster")(newValue)} />
+
 
                 <CustomTextField label="Event OIC Name" sm={12}
                     name="eventOIC"
