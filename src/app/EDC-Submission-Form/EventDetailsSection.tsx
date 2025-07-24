@@ -7,7 +7,7 @@ import CustomDatePicker from "@/components/CustomDatePicker"
 import EventDetailsProps from '@/types/IEventDetailsProps';
 import TRecurringDateParams from '@/types/TRecurringDateParams';
 
-import { ORGANISATION, EVENT_FREQUENCY, CUSTOM_EVENT_FREQUENCY } from '@/constants/EventCentralConstants';
+import { EVENT_FREQUENCY, CUSTOM_EVENT_FREQUENCY, ALL_DEPARTMENTS, ALL_GROUPS, ALL_CLUSTERS } from '@/constants/EventCentralConstants';
 import { lastRecurringDate } from '@/util/replicateEventDates';
 
 const EventDetailsSection: React.FC<EventDetailsProps> = ({
@@ -184,15 +184,15 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                 </Typography></Grid>
 
                 <CustomDropDown label="Department" xs={4} sm={4}
-                    options={inputFields.group ? ORGANISATION[inputFields.cluster!][inputFields.group!] : ["NA"]}
+                    options={ALL_DEPARTMENTS}
                     value={inputFields?.department}
                     onChange={(_, newValue) => handleInputChange("department")(newValue)} />
                 <CustomDropDown label="Group" xs={4} sm={4}
-                    options={inputFields.cluster ? Object.keys(ORGANISATION[inputFields.cluster!]) : ["NA"]}
+                    options={ALL_GROUPS}
                     value={inputFields?.group}
                     onChange={(_, newValue) => handleInputChange("group")(newValue)} />
                 <CustomDropDown label="Cluster" xs={4} sm={4}
-                    options={Object.keys(ORGANISATION)}
+                    options={ALL_CLUSTERS}
                     value={inputFields?.cluster}
                     onChange={(_, newValue) => handleInputChange("cluster")(newValue)} />
 
