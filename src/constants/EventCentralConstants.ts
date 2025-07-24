@@ -119,10 +119,20 @@ export const ORGANISATION: Organisation = {
   }
 }
 
-export const ALL_DEPARTMENTS = Object.values(ORGANISATION)
-  .flatMap(cluster => Object.values(cluster).flat())
-  .filter((value, index, self) => self.indexOf(value) === index)  // remove duplicates
-  .sort();
+export const Department_Group_Cluster_Map: Record<string, { cluster: string; group: string }> = (() => {
+  const map: Record<string, { cluster: string; group: string }> = {};
+
+  for (const cluster of Object.keys(ORGANISATION)) {
+    for (const group of Object.keys(ORGANISATION[cluster])) {
+      for (const department of ORGANISATION[cluster][group]) {
+        map[department] = { cluster, group };
+      }
+    }
+  }
+  return map;
+})();
+
+export const ALL_DEPARTMENTS = Object.keys(Department_Group_Cluster_Map).sort()
 
 export const STATUS = [
   "Pending Write Up",
