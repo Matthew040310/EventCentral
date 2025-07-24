@@ -52,6 +52,7 @@ model DraftImpactAssessment {
   dataInsightDetails          String?
   initiativesDetails          String?
   eventWriteUp                String?
+  clearingHOD                 String?
 }
 
 model SubmittedEvent {
@@ -101,6 +102,7 @@ model SubmittedImpactAssessment {
   dataInsightDetails          String
   initiativesDetails          String
   eventWriteUp                String
+  clearingHOD                 String?
   // lastUpdatedBy          String?
   // lastUpdated                   DateTime?        @updatedAt()
 }

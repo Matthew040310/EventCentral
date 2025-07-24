@@ -250,6 +250,11 @@ const ImpactAssessmentSection: React.FC<ImpactAssessmentProps> = ({
       value={inputFields?.eventWriteUp ?? ""}
       onChange={(e) => handleInputChange("eventWriteUp")(e.target.value)}
       rows={5} multiline />
+
+    <CustomTextField label="Clearing HOD Name" sm={12}
+      name="clearingHOD"
+      value={inputFields?.clearingHOD ?? ""}
+      onChange={(e) => handleInputChange("clearingHOD")(e.target.value)} />
   </Box >
 );
 

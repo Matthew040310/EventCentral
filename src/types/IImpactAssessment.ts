@@ -14,4 +14,5 @@ export default interface ImpactAssessment {
     dataInsightDetails?: string | null;
     initiativesDetails?: string | null;
     eventWriteUp?: string | null;
+    clearingHOD?: string | null;
 }
