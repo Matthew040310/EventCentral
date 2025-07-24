@@ -132,6 +132,11 @@ export const Department_Group_Cluster_Map: Record<string, { cluster: string; gro
   return map;
 })();
 
+export const ALL_CLUSTERS = Object.keys(ORGANISATION).sort()
+export const ALL_GROUPS = Object.keys(Department_Group_Cluster_Map)
+  .map(department => Department_Group_Cluster_Map[department].group)
+  .filter((value, index, self) => self.indexOf(value) === index)
+  .sort()
 export const ALL_DEPARTMENTS = Object.keys(Department_Group_Cluster_Map).sort()
 
 export const STATUS = [
