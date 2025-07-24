@@ -186,13 +186,11 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                 <CustomDropDown label="Department" xs={4} sm={4}
                     options={inputFields.group ? ORGANISATION[inputFields.cluster!][inputFields.group!] : ["NA"]}
                     value={inputFields?.department}
-                    onChange={(_, newValue) => handleInputChange("department")(newValue)}
-                    disabled={!inputFields.group} />
+                    onChange={(_, newValue) => handleInputChange("department")(newValue)} />
                 <CustomDropDown label="Group" xs={4} sm={4}
                     options={inputFields.cluster ? Object.keys(ORGANISATION[inputFields.cluster!]) : ["NA"]}
                     value={inputFields?.group}
-                    onChange={(_, newValue) => handleInputChange("group")(newValue)}
-                    disabled={!inputFields.cluster} />
+                    onChange={(_, newValue) => handleInputChange("group")(newValue)} />
                 <CustomDropDown label="Cluster" xs={4} sm={4}
                     options={Object.keys(ORGANISATION)}
                     value={inputFields?.cluster}
