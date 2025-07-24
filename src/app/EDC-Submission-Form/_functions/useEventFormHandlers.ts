@@ -35,8 +35,8 @@ export default function useEventFormHandlers(
                     : { customFrequency: null, selectedDay: null };
             }
             if (fieldName === 'customFrequency') return { selectedDay: null };
-            if (fieldName === 'cluster') return { group: null, department: null };
-            if (fieldName === 'group') return { department: null };
+            // if (fieldName === 'cluster') return { group: null, department: null };
+            // if (fieldName === 'group') return { department: null };
             return {};
         };
 
