@@ -1,12 +1,17 @@
 import { useState } from 'react';
 import { AlertColor } from '@mui/material';
+
+// Interface and Constants
 import EventDetails from '@/types/IEventDetails';
+import EventState from '@/types/TEventState';
 import ImpactAssessment from '@/types/IImpactAssessment';
+import { Department_Group_Cluster_Map } from '@/constants/EventCentralConstants';
+
+// Utility Functions
 import triggerSubmit from '@/util/Prisma-API-handlers/handleSubmit';
 import triggerDelete from '@/util/Prisma-API-handlers/handleDelete';
 import triggerSave from '@/util/Prisma-API-handlers/handleSave';
 import validImpactAssessmentId from './validImpactAssessmentId';
-import EventState from '@/types/TEventState';
 
 type SectionMap = {
     // formSection    : fieldName types
@@ -37,6 +42,11 @@ export default function useEventFormHandlers(
             if (fieldName === 'customFrequency') return { selectedDay: null };
             // if (fieldName === 'cluster') return { group: null, department: null };
             // if (fieldName === 'group') return { department: null };
+            if (fieldName === 'department') {
+                const department = newValue as string;
+                const { cluster, group } = Department_Group_Cluster_Map[department] || { cluster: null, group: null };
+                return { cluster, group };
+            }
             return {};
         };
 
