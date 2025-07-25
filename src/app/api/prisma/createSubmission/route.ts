@@ -74,7 +74,7 @@ export async function POST(request: Request) {
         replicatedEvent.type = "Existing";
 
         // Get all recurring dates based on eventDetails
-        let recurringDateParams = {
+        const recurringDateParams = {
           startDate: new Date(eventDetails.startDate),
           endDate: new Date(eventDetails.endDate),
           frequency: eventDetails.frequency,
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
 
         // Create new entry in submittedEvent table for each date
         for (let date of replicationDates) {
-          replicatedEvent.startDate = new Date(date);
+          replicatedEvent.eventDate = new Date(date);
           await tx.submittedEvent.create({
             data: replicatedEvent
           });
