@@ -4,9 +4,10 @@ import { Event_Legend } from '@/styles/theme';
 
 const legendItems = Object.entries(Event_Legend);
 const LegendExplanation = [
-    "Potential to cause perceived unhappiness among members \nOR \nEmbargoed Event",
+    "Potential to cause perceived unhappiness among members \nOR \nEmbargoed Event \nOR \nCohort Size >= 2m",
     "New or Existing with Changes Event",
-    "Existing Event",
+    "Existing Event above 100k (inclusive)",
+    "Existing Event below 100k",
     "Draft Event"
 ]
 
