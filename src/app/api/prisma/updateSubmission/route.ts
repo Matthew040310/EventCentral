@@ -18,8 +18,8 @@ export async function POST(request: Request) {
     const impactAssessment = body['Impact Assessment']
     const updateScope = body['Update Scope']
 
-    let newParentEventID = eventDetails.id;
-    let { id, estimatedStartDate, ...updatedEventSubmission } = eventDetails;
+    const newParentEventID = eventDetails.id;
+    let { id, estimatedStartDate, ...updatedEventSubmission } = eventDetails;   // "let" declaration as updatedEventSubmission will be modified later
 
     await prisma.$transaction(async (tx) => {
       // Create new impactAssessment for new submission
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       });
 
       // Update submittedEvent details
-      let originalParentEventID = eventDetails.parentid;
+      const originalParentEventID = eventDetails.parentid;
       updatedEventSubmission.parentid = newParentEventID;
       updatedEventSubmission.impactAssessmentId = newParentEventID;
 
@@ -48,15 +48,15 @@ export async function POST(request: Request) {
 
           // Determine date range scope based on user response
           const dateRangeScope = {
-            startDate: { gt: eventDetails.startDate },
+            eventDate: { gt: eventDetails.eventDate },
           };
 
           await deleteSubmissionsByParentId(originalParentEventID, dateRangeScope, tx);
 
           // Get all recurring dates based on eventDetails
-          let recurringDateParams = {
-            startDate: new Date(eventDetails.startDate),
-            endDate: new Date(eventDetails.endDate),
+          const recurringDateParams = {
+            startDate: new Date(eventDetails.eventDate),    // We reference eventDate here because: 1) If this event is the parent event, eventDate == startDate
+            endDate: new Date(eventDetails.eventDate),      //                                      2) If this event is a replication, we do not want previous events to be affected
             frequency: eventDetails.frequency,
             frequencyInterval: eventDetails.frequencyInterval,
             ...(eventDetails.customFrequency ? { customFrequency: eventDetails.customFrequency } : {}),
@@ -64,12 +64,12 @@ export async function POST(request: Request) {
           } as TRecurringDateParams
           const dates = recurringDates(recurringDateParams);
 
-          // Filter for original eventDetails startDate
-          const originalStartDate = new Date(eventDetails.startDate).toISOString().slice(0, 10);
+          // Filter for original eventDetails eventDate
+          const originalStartDate = new Date(eventDetails.eventDate).toISOString().slice(0, 10);
           const replicationDates = dates.all().filter(date => date.toISOString().slice(0, 10) !== originalStartDate);
 
           for (let date of replicationDates) {
-            updatedEventSubmission.startDate = new Date(date);
+            updatedEventSubmission.eventDate = new Date(date);
             await tx.submittedEvent.create({
               data: updatedEventSubmission
             });
@@ -80,7 +80,7 @@ export async function POST(request: Request) {
         // Delete all future submissions with the same parentid
         else if (updateScope === userResponses[1]) {
           await deleteSubmissionsByParentId(originalParentEventID,
-            { startDate: { gt: eventDetails.startDate } }, tx);
+            { eventDate: { gt: eventDetails.eventDate } }, tx);
         }
       }
     })
