@@ -36,8 +36,11 @@ export default async function getEventReportByID(
 
         // Parse existingEventDetails for suitable format
         delete existingEventDetails[impactAssessmentLink]; // Remove impact assessment from event details
-        existingEventDetails.startDate = existingEventDetails.startDate && new Date(existingEventDetails.startDate);
-        existingEventDetails.endDate = existingEventDetails.endDate && new Date(existingEventDetails.endDate);
+
+        // Convert date strings to Date objects if they exist
+        // existingEventDetails.startDate = existingEventDetails.startDate && new Date(existingEventDetails.startDate);
+        // existingEventDetails.eventDate = existingEventDetails.eventDate && new Date(existingEventDetails.eventDate);
+        // existingEventDetails.endDate = existingEventDetails.endDate && new Date(existingEventDetails.endDate);
 
         return {
             eventDetails: existingEventDetails as ExtendedEventDetails,
