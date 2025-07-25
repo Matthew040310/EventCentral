@@ -23,7 +23,7 @@ export default function categorizeMonthlyEvents(submittedEventReports: FullEvent
     const existingCounts = Array(12).fill(0);
 
     submittedEventReports.forEach((event) => {
-        const month = dayjs(event.startDate).month();
+        const month = dayjs(event.eventDate).month();
         const category = determineCategory(event).label;
 
         if (category === "High Impact") {

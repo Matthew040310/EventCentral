@@ -19,7 +19,7 @@ const initialState: GridInitialState = {
     paginationModel: { pageSize: 5, },
   },
   sorting: {
-    sortModel: [{ field: 'startDate', sort: 'asc' }],
+    sortModel: [{ field: 'eventDate', sort: 'asc' }],
   }
 }
 

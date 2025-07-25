@@ -36,7 +36,7 @@ const EventTableHeader = (
         },
         { field: 'department', headerName: 'Department', flex: 1, },
         {
-            field: 'startDate', headerName: 'Event Date', type: 'dateTime', flex: 1,
+            field: 'eventDate', headerName: 'Event Date', type: 'dateTime', flex: 1,
             valueFormatter: (value, row) => { return dateFormatter(value) }
         },
         { field: "affectedCohortDescription", headerName: "Affected Cohort", flex: 1, },

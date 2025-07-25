@@ -30,7 +30,7 @@ const SearchEvents: React.FC = () => {
 
     // Custom Hook to fetch Event Reports
     const { submittedEventReports, draftEventReports, refetch } = useDashboardEventReports(
-        () => ({ startDate: { gte: datumStartDate, lte: datumEndDate } }),
+        () => ({ eventDate: { gte: datumStartDate, lte: datumEndDate } }),
         [datumStartDate, datumEndDate]);
 
     const { filteredSubmittedEvents, filteredDraftEvents } = useMemo(() =>

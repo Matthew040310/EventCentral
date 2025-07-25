@@ -14,10 +14,10 @@ export default function sortEventDetailsArray(
 ): Partial<FullEventReport>[] {
     return [...events].sort((a, b) => {
         if (sortBy === "Date") {
-            if (!a.startDate && !b.startDate) return 0;
-            if (!a.startDate) return 1;
-            if (!b.startDate) return -1;
-            return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
+            if (!a.eventDate && !b.eventDate) return 0;
+            if (!a.eventDate) return 1;
+            if (!b.eventDate) return -1;
+            return new Date(a.eventDate).getTime() - new Date(b.eventDate).getTime();
         } else if (sortBy === "Category") {
             const labelA = determineCategory(a).label;
             const labelB = determineCategory(b).label;
@@ -25,10 +25,10 @@ export default function sortEventDetailsArray(
             const idxB = CATEGORY_INDEX[labelB] ?? 99;
             if (idxA !== idxB) return idxA - idxB;
             // fallback to date within the same category
-            if (!a.startDate && !b.startDate) return 0;
-            if (!a.startDate) return 1;
-            if (!b.startDate) return -1;
-            return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
+            if (!a.eventDate && !b.eventDate) return 0;
+            if (!a.eventDate) return 1;
+            if (!b.eventDate) return -1;
+            return new Date(a.eventDate).getTime() - new Date(b.eventDate).getTime();
         }
         return 0;
     });

@@ -34,7 +34,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
         () => {
             const startOfYear = dayjs(datumDate).startOf('year').toDate();
             const endOfYear = dayjs(datumDate).endOf('year').toDate();
-            return { startDate: { gte: startOfYear, lte: endOfYear } }
+            return { eventDate: { gte: startOfYear, lte: endOfYear } }
         }, [year]);
 
     const { HighImpact, Change_New, Existing } = useMemo(() => {

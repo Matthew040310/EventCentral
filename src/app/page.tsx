@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
     () => {
       const startOfMonth = dayjs(datumDate).startOf("month").startOf("week").toDate();
       const endOfMonth = dayjs(datumDate).endOf("month").endOf("week").toDate();
-      return { startDate: { gte: startOfMonth, lte: endOfMonth } };
+      return { eventDate: { gte: startOfMonth, lte: endOfMonth } };
     }, [datumDate]);
 
   const { filteredSubmittedEvents, filteredDraftEvents } = useMemo(() =>

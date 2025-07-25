@@ -36,14 +36,6 @@ const CalendarView: React.FC<CalendarViewProps> = ({
   onCalendarEventClick
 }) => {
   const localizer = dayjsLocalizer(dayjs)
-
-  // const normalizedEvents: RBCEvent[] = events
-  //   .map(event => ({
-  //     ...event,
-  //     startDate: event.startDate ? new Date(event.startDate) : null,
-  //     end: event.startDate ? new Date(event.startDate) : null,      // required field for rendering
-  //   }))
-
   const calendarEvents = filterUniqueCalendarEvents(events)
 
   const components: Components<RBCEvent, object> = {
@@ -97,7 +89,7 @@ const CalendarView: React.FC<CalendarViewProps> = ({
         <Box sx={{ flex: 1, minWidth: 0 }}>
           <Calendar<RBCEvent, object>
             localizer={localizer}
-            startAccessor="startDate"
+            startAccessor="eventDate"
             toolbar={false}
             components={components}
 

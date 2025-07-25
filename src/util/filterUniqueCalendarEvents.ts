@@ -10,16 +10,16 @@ export default function filterUniqueCalendarEvents(events: Partial<FullEventRepo
             // If parentid is null or undefined, add the draft event directly
             result.push({
                 ...event,
-                startDate: event.startDate ? new Date(event.startDate) : null,
-                end: event.startDate ? new Date(event.startDate) : null,  // required for rendering
+                eventDate: event.eventDate ? new Date(event.eventDate) : null,
+                end: event.eventDate ? new Date(event.eventDate) : null,  // required for rendering
             });
         }
         else if (!seenParentIds.has(event.parentid)) {
             seenParentIds.add(event.parentid);
             result.push({
                 ...event,
-                startDate: event.startDate ? new Date(event.startDate) : null,
-                end: event.startDate ? new Date(event.startDate) : null,  // required for rendering
+                eventDate: event.eventDate ? new Date(event.eventDate) : null,
+                end: event.eventDate ? new Date(event.eventDate) : null,  // required for rendering
             });
         }
     }
