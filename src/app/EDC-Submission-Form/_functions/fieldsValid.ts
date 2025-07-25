@@ -21,7 +21,7 @@ function eventDetailsValid(
     let requiredFieldsValid = Boolean(
         eventDetails.type &&
         eventDetails.embargoed &&
-        (eventDetails.startDate && eventDetails.startDate >= today) &&
+        eventDetails.startDate &&
         eventDetails.frequency &&
         eventDetails.title &&
         eventDetails.scheme &&
