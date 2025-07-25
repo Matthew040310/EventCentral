@@ -37,7 +37,7 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
             return { eventDate: { gte: startOfYear, lte: endOfYear } }
         }, [year]);
 
-    const { HighImpact, Change_New, Existing } = useMemo(() => {
+    const { HighImpact, Change_New, Existing_MoreThan100k, Existing_LessThan100k } = useMemo(() => {
         return categoriseMonthlyEvents(submittedEventReports);
     }, [submittedEventReports]);
 
@@ -45,14 +45,16 @@ const StackedBarChart: React.FC<StackedBarChartProps> = ({
         const arr = [];
         if (selectedCategories.includes("High Impact")) arr.push({ ...HighImpact });
         if (selectedCategories.includes("New/Changes")) arr.push({ ...Change_New });
-        if (selectedCategories.includes("Existing")) arr.push({ ...Existing });
+        if (selectedCategories.includes("Existing >=100k")) arr.push({ ...Existing_MoreThan100k });
+        if (selectedCategories.includes("Existing <100k")) arr.push({ ...Existing_LessThan100k });
 
         // Default to showing all categories if none are selected
         if (arr.length === 0) {
             return [
                 { ...HighImpact },
                 { ...Change_New },
-                { ...Existing }
+                { ...Existing_MoreThan100k },
+                { ...Existing_LessThan100k }
             ]
         }
 
