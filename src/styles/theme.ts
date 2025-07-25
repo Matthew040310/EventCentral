@@ -42,4 +42,6 @@ export const Event_Legend = {
   'Draft': '#90A9B7',               // Beige
 }
 
+export const LEGEND_ITEMS = Object.entries(Event_Legend);
+
 export default theme;

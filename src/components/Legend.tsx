@@ -1,8 +1,7 @@
 import React from 'react';
 import { Box, Chip, Stack, Typography } from '@mui/material';
-import { Event_Legend } from '@/styles/theme';
+import { LEGEND_ITEMS } from '@/styles/theme';
 
-const legendItems = Object.entries(Event_Legend);
 const LegendExplanation = [
     "Potential to cause perceived unhappiness among members \nOR \nEmbargoed Event \nOR \nCohort Size >= 2m",
     "New or Existing with Changes Event",
@@ -48,7 +47,7 @@ const Legend: React.FC<LegendProps> = ({
                 <Typography variant='h6' mb={1}>Click to Filter by Category</Typography>
             }
             <Stack direction="row" textAlign="center" justifyContent="center" spacing={2}>
-                {legendItems.map(([category, color], index) => {
+                {LEGEND_ITEMS.map(([category, color], index) => {
                     if (noDraftChip && category === 'Draft') return null; // Skip Draft chip if noDraftChip is true. Used for SearchEvents page only
 
                     const selected = selectedCategories.includes(category);
