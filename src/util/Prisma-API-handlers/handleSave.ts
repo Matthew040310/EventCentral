@@ -22,6 +22,8 @@ export default async function handleSave(
         ? `${APP_BASE_PATH}/api/prisma/updateDraft`
         : `${APP_BASE_PATH}/api/prisma/createDraft`;
 
+    eventDetails.eventDate = eventDetails.startDate || eventDetails.estimatedStartDate || null;
+
     try {
         const response = await fetch(targetLink, {
             method: 'POST',

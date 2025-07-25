@@ -47,6 +47,8 @@ export default async function handleSubmit(
         scope = { "Update Scope": updateScope };
     };
 
+    // Automatically modify eventDetails and impactAssessment before sending
+    eventDetails.eventDate = eventDetails.startDate || eventDetails.estimatedStartDate || null;
     impactAssessment = cleanImpactAssessment(impactAssessment);
 
     try {
