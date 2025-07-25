@@ -1,5 +1,7 @@
 import FullEventReport from '@/types/IFullEventReport';
 import RBCEvent from '@/types/IRBCEvent';
+import determineCategory from './determineCategory';
+import { LEGEND_ITEMS } from '@/styles/theme';
 
 type Event = Partial<FullEventReport> | RBCEvent
 
@@ -17,23 +19,12 @@ function filterEventsByCategory(
 ): boolean {
     if (selectedCategories.size === 0) return true;
 
-    const { submittedImpactAssessment, embargoed, type } = event;
+    const { label } = determineCategory(event);
 
-    const isHighImpact =
-        submittedImpactAssessment?.perceivedUnhappiness === 'Yes' || embargoed === 'Yes';
-
-    // High Impact takes precedence and is exclusive
-    if (isHighImpact) {
-        return selectedCategories.has('High Impact');
-    }
-
-    // Non-High-Impact categories
-    if (selectedCategories.has('New/Changes') && (type === 'New' || type === 'Existing with Changes')) {
-        return true;
-    }
-
-    if (selectedCategories.has('Existing') && type === 'Existing') {
-        return true;
+    for (const [category, color] of LEGEND_ITEMS) {
+        if (category === label) {
+            return selectedCategories.has(category);
+        }
     }
 
     return false;
