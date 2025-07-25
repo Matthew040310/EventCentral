@@ -26,15 +26,30 @@ const EventWriteUp: React.FC<EventWriteUpProps> = ({
         <TitleContent eventDetails={eventDetails} eventColor={eventColor} />
 
         <Box component="div" px={2} py={1}>
-            {/* Event Date */}
+            {/* Impact Period */}
+            <Stack direction="row" fontSize={18}>
+                <Typography variant="subtitle2" fontSize="inherit">
+                    Event Date:
+                </Typography>
+                <Typography variant='subtitle2' ml={1} color="text.secondary" fontSize="inherit">
+                    {dateFormatter(eventDetails.eventDate || null)}
+                </Typography>
+            </Stack>
+
+            {/* Impact Period */}
             <Stack direction="row" fontSize={18}>
                 <Typography variant="subtitle2" fontSize="inherit">
                     Impact Period:
                 </Typography>
                 <Typography variant='subtitle2' ml={1} color="text.secondary" fontSize="inherit">
-                    {dateFormatter(eventDetails.startDate || null)}
-                    {eventDetails.endDate && (" - ")}
-                    {dateFormatter(eventDetails.endDate || null)}
+                    {eventDetails.frequency !== "One-off"
+                        ?
+                        <>
+                            {dateFormatter(eventDetails.startDate || null)}
+                            {eventDetails.endDate && (" - ")}
+                            {dateFormatter(eventDetails.endDate || null)}
+                        </>
+                        : "One-off Event"}
                 </Typography>
             </Stack>
 
