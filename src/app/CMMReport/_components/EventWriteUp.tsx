@@ -1,10 +1,9 @@
 import React from 'react'
 import { Box, Paper, Stack, Typography } from '@mui/material'
 
-import TitleContent from "@/components/_EventDetailsDialog/TitleContent";
 import FullEventReport from "@/types/IFullEventReport";
-
 import dateFormatter from '@/util/dateFormatter';
+import TitleContent from "./WriteUpTitle";
 
 interface EventWriteUpProps {
     eventDetails: Partial<FullEventReport>;
