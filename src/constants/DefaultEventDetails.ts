@@ -4,6 +4,7 @@ const DefaultEventDetails = {
     embargoed: null,
     estimatedStartDate: null,           // optional field for draft events
     startDate: null,
+    eventDate: null,
     endDate: null,
     frequency: "One-off",
     frequencyInterval: null,            // optional field for recurring events

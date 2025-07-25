@@ -4,6 +4,7 @@ export default interface EventDetails {
     embargoed: string | null;
     estimatedStartDate?: Date | null;           // optional field for draft events
     startDate: Date | null;
+    eventDate: Date | null;
     endDate?: Date | null;                      // optional field for recurring events
     frequency: string;
     frequencyInterval?: number | null;          // optional field for recurring events
