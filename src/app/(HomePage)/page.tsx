@@ -8,8 +8,8 @@ import { View, Views } from 'react-big-calendar';
 import FullEventReport from '@/types/IFullEventReport';
 import UserRole from '@/types/TUserRole';
 
-import CalendarOverviewHeader from '@/app/_home/_components/Header';
-import CalendarToolBar from '@/app/_home/_components/ToolBar';
+import CalendarOverviewHeader from '@/app/(HomePage)/_components/Header';
+import CalendarToolBar from '@/app/(HomePage)/_components/ToolBar';
 import EventStatistics from '@/components/EventStatistics';
 import CalendarView from '@/components/CalendarView';
 import EventTable from '@/components/EventTable';
