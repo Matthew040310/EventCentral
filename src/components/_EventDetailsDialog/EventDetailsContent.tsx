@@ -14,7 +14,7 @@ import { TypographyS2 } from './DialogComponents';
 const EventDetailsContent = ({ eventDetails }: { eventDetails: Partial<FullEventReport> }) => {
     const { parentid, startDate, eventDate, endDate, frequency, frequencyInterval, customFrequency, selectedDay,
         scheme, cluster, group, department, description,
-        affectedCohortDescription, estimatedCohortSize, reportStatus,
+        affectedCohortDescription, estimatedCohortSize,
         OIC, OICEmail
     } = eventDetails;
 
