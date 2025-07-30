@@ -36,9 +36,8 @@ const theme = createTheme({
 export const Event_Legend = {
   'High Impact': '#FF4C4C',         // Red
   'New/Changes': '#F39C12',         // Amber
-  'Existing >=100k': '#1976d2',     // Battleship Grey
-  'Existing <100k': 'black',        // Black
-  // 'Existing': '#90A9B7',         // Cadet Grey
+  'Existing >=100k': '#1976d2',     // French Blue
+  'Existing <100k': 'Green',
   'Draft': '#90A9B7',               // Beige
 }
 
