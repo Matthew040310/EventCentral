@@ -78,8 +78,8 @@ const EventDetailsContent = ({ eventDetails }: { eventDetails: Partial<FullEvent
                 <Typography>{affectedCohortDescription}</Typography>
                 <TypographyS2>Estimated Cohort Size</TypographyS2>
                 <Typography>{estimatedCohortSize?.toLocaleString()}</Typography>
-                <TypographyS2>Report Status</TypographyS2>
-                <Typography>{reportStatus}</Typography>
+                {/* <TypographyS2>Report Status</TypographyS2>
+                <Typography>{reportStatus}</Typography> */}
             </Grid>
             {/* Contact Details */}
             <Grid size={{ xs: 12, md: 6 }}>

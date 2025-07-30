@@ -20,5 +20,5 @@ export default interface EventDetails {
     department: string | null;
     OIC: string;
     OICEmail: string;
-    reportStatus: string | null;
+    // reportStatus: string | null;
 }

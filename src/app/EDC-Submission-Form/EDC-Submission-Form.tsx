@@ -170,12 +170,12 @@ const EventForm = () => {
                     </>}
 
                 {/* Report Status */}
-                <Grid size={12}>
+                {/* <Grid size={12}>
                     <CustomDropDown label="Report Status?" sm={12}
                         options={STATUS}
                         value={eventDetails.reportStatus}
                         onChange={(_, newValue) => handleChange("Event Details")("reportStatus")(newValue)} />
-                </Grid>
+                </Grid> */}
 
                 <EventFormButtonSection
                     eventDetails={eventDetails}

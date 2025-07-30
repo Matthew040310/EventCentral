@@ -20,7 +20,7 @@ const DefaultEventDetails = {
     department: null,
     OIC: "",
     OICEmail: "",
-    reportStatus: null,
+    // reportStatus: null,
 
     // (Future) Fields for Event Details
     // updatedBy: session?.user?.email

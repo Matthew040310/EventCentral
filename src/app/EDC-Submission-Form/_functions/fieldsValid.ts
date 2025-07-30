@@ -32,8 +32,8 @@ function eventDetailsValid(
         eventDetails.group &&
         eventDetails.department &&
         eventDetails.OIC &&
-        eventDetails.OICEmail &&
-        eventDetails.reportStatus
+        eventDetails.OICEmail
+        // && eventDetails.reportStatus
     )
 
     function nonAdHocFieldsValid(): boolean {
