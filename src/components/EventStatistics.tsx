@@ -39,7 +39,7 @@ const EventStatistics: React.FC<EventStatisticsProps> = ({
                 Existing Events {"<"} 100k Cohort Size
             </EventStatisticsCard>
 
-            <EventStatisticsCard count={eventStats.total} color='green'>
+            <EventStatisticsCard count={eventStats.total} color='black'>
                 Total Events
             </EventStatisticsCard>
 
