@@ -29,7 +29,7 @@ const CustomNavBar: React.FC = () => {
   const SubmitNewEventButton = <NavBarButton href="/EDC-Submission-Form" icon={<AddCircleOutline />} title="Submit New Event" />
   const SearchButton = <NavBarButton href="/SearchEvents" icon={<Search />} title="Search Events" />
   const ManageUsersButton = <NavBarButton href="/ManageUsers" icon={<ManageAccounts />} title="Manage Users" />
-  const LogoutButton = <NavBarButton href="/logout" icon={<Logout />} title="Logout" iconAsContent={true} />
+  const LogoutButton = <NavBarButton href="/" icon={<Logout />} title="Exit Event Central" iconAsContent={true} />
 
   // const loggedInUser = (
   //   session?.user &&
