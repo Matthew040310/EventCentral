@@ -6,10 +6,12 @@ import { SnackbarProvider } from "notistack";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "@/styles/theme";
 
+const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function Providers({ children }: { children: React.ReactNode }) {
     return (
         <AppRouterCacheProvider>
-            <SessionProvider>
+            <SessionProvider basePath={`${APP_BASE_PATH}/api/auth`} >
                 <ThemeProvider theme={theme}>
                     <SnackbarProvider maxSnack={3}>
                         <CssBaseline />
