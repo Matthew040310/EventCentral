@@ -1,7 +1,7 @@
 // auth.ts
-import NextAuth, { NextAuthOptions, User } from "next-auth";
+import NextAuth, { User } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import AzureADProvider from "next-auth/providers/azure-ad";
+// import AzureADProvider from "next-auth/providers/azure-ad";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/app/api/prisma/dbClient";
 
@@ -9,7 +9,8 @@ import prisma from "@/app/api/prisma/dbClient";
 const adapter = PrismaAdapter(prisma)
 const _linkAccount = adapter.linkAccount;
 adapter.linkAccount = (account) => {
-    const { 'not-before-policy': _, ext_expires_in, ...data } = account;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { 'not-before-policy': notBeforePolicy, ext_expires_in, ...data } = account;
     return _linkAccount?.(data);
 };
 
@@ -26,12 +27,10 @@ const providers = [
     // })
 ];
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export default NextAuth({
     adapter: adapter,
     providers: providers,
-    theme: {
-        colorScheme: "light",
-    },
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async signIn({ user }: { user: User | null }) {
             // Check if email is not a string, convert it to a string
@@ -61,15 +60,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             // User's email is authorized, allow access
             return true;
         },
-        // async jwt(params: { token: any; user: any }) {
-        //   // Remove the code that assigns token.role
-        //   return params.token;
-        // },
-
-        // async session(params: { session: any; token: any }) {
-        //   // Remove the code that appends the role to session.user
-        //   return params.session;
-        // },
+        async session({ session, token }) {
+            // Ensure session is properly populated with user ID
+            if (session.user) {
+                (session.user as { id?: string }).id = token.sub as string;
+            }
+            return session;
+        },
+        async jwt({ token, user }) {
+            // Ensure user ID is included in token
+            if (user) {
+                token.sub = user.id;
+            }
+            return token;
+        },
     },
-    debug: true
+    debug: process.env.NODE_ENV === 'development',
 });

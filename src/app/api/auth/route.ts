@@ -1,6 +1,8 @@
-import { signIn } from "@/auth";
+// meant for nextauth v5
 
-export async function GET(req: Request) {
-    const searchParams = new URL(req.url).searchParams;
-    return signIn("microsoft-entra-id", { redirectTo: searchParams.get("callbackUrl") ?? "" });
-  }
+// import { signIn } from "@/auth";
+
+// export async function GET(req: Request) {
+//     const searchParams = new URL(req.url).searchParams;
+//     return signIn("azure-ad", { redirectTo: searchParams.get("callbackUrl") ?? "" });
+//   }
