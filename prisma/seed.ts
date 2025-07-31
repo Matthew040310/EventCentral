@@ -1,12 +1,17 @@
-const { PrismaClient } = require("@prisma/client");
+import { PrismaClient } from "@prisma/client";
+import "dotenv/config";
 
 const prisma = new PrismaClient();
-require("dotenv");
 
 async function seed() {
   try {
     // Seed data for AuthorizedUsers
     // console.log(`SUPEREMAIL: ${process.env.SUPEREMAIL}`);
+
+    if (!process.env.SUPEREMAIL) {
+      console.error("SUPEREMAIL environment variable is not set");
+      return;
+    }
 
     const authorizedUserData = {
       email: process.env.SUPEREMAIL,
