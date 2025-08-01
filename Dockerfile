@@ -2,6 +2,7 @@ ARG NODE=node:24-alpine
 
 # ---- Base ----
 FROM $NODE AS base
+
 WORKDIR /app
 
 # Copy package files
@@ -22,6 +23,12 @@ RUN npm run build
 
 # ---- Runner ----
 FROM base AS runner
+
+# Install curl for healthcheck in container definition
+RUN apk add --update \
+    curl \
+    dumb-init \
+    && rm -rf /var/cache/apk/*
 
 # Create non-root user
 ENV USER_ID=65535
@@ -60,6 +67,12 @@ ENV NODE_OPTIONS="--max-old-space-size=259"
 
 EXPOSE 3000
 ENV PORT=3000
+
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry.
+ENV NEXT_TELEMETRY_DISABLED=1
+ENTRYPOINT ["dumb-init", "--"]
 
 # Generate Prisma client at runtime and start
 CMD ["sh", "-c", "npx prisma migrate deploy && npx prisma generate && npm run seed && npm start"]
