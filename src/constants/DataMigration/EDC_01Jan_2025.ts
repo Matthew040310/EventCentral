@@ -37,7 +37,7 @@ const ROW4_DETAILS =
     "department": "AMD",
     "OIC": "SDD(AMD) Chua Mei Ling",
     "OICEmail": "Chua.Mei.Ling@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW4_CIA = {
@@ -77,7 +77,7 @@ const ROW5_DETAILS_W1 = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW5_DETAILS_W2 = {
@@ -100,7 +100,7 @@ const ROW5_DETAILS_W2 = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW5_DETAILS_W3 = {
@@ -123,7 +123,7 @@ const ROW5_DETAILS_W3 = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW6_DETAILS = {
@@ -146,7 +146,7 @@ const ROW6_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW7_DETAILS = {
@@ -169,7 +169,7 @@ const ROW7_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW8_DETAILS = {
@@ -192,7 +192,7 @@ const ROW8_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW9_DETAILS = {
@@ -215,7 +215,7 @@ const ROW9_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW10_DETAILS = {
@@ -238,7 +238,7 @@ const ROW10_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW11_DETAILS = {
@@ -261,7 +261,7 @@ const ROW11_DETAILS = {
     "department": "AMD",
     "OIC": "AD(AMD) Lim Lan Si",
     "OICEmail": "Lim.Lan.Si@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW12_DETAILS = {
@@ -284,7 +284,7 @@ const ROW12_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Chua Mei Ling",
     "OICEmail": "Chua.Mei.Ling@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW13_DETAILS = {
@@ -307,7 +307,7 @@ const ROW13_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Chua Mei Ling",
     "OICEmail": "Chua.Mei.Ling@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW14_DETAILS = {
@@ -330,7 +330,7 @@ const ROW14_DETAILS = {
     "department": "AMD",
     "OIC": "AD(AMD) Lim Lan Si",
     "OICEmail": "Lim.Lan.Si@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW15_DETAILS_1 = {
@@ -353,7 +353,7 @@ const ROW15_DETAILS_1 = {
     "department": "AMD",
     "OIC": "AD(AMD) Lim Lan Si",
     "OICEmail": "Lim.Lan.Si@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW15_DETAILS_2 = {
@@ -376,7 +376,7 @@ const ROW15_DETAILS_2 = {
     "department": "AMD",
     "OIC": "AD(AMD) Lim Lan Si",
     "OICEmail": "Lim.Lan.Si@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW15_CIA = {
@@ -416,7 +416,7 @@ const ROW16_DETAILS = {
     "department": "AMD",
     "OIC": "AD(AMD) Lim Lan Si",
     "OICEmail": "Lim.Lan.Si@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // COM
@@ -440,7 +440,7 @@ const ROW24_DETAILS = {
     "department": "MPD",
     "OIC": "DD(MP) Joanne Lim",
     "OICEmail": "Joanne.Lim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW25_DETAILS = {
@@ -463,7 +463,7 @@ const ROW25_DETAILS = {
     "department": "MPD",
     "OIC": "DD(MP) Valerie Ong",
     "OICEmail": "Valerie.Ong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW25_CIA = {
@@ -503,7 +503,7 @@ const ROW26_DETAILS = {
     "department": "MPD",
     "OIC": "DD(MP) Adeline Leu",
     "OICEmail": "Adeline.Leu@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW26_CIA = {
@@ -544,7 +544,7 @@ const ROW45_DETAILS = {
     "department": "DSD",
     "OIC": "M (DSD) Lee Yen Ching",
     "OICEmail": "Lee.Yen.Ching@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW46_DETAILS = {
@@ -567,7 +567,7 @@ const ROW46_DETAILS = {
     "department": "DSD",
     "OIC": "M (DSD) Lee Yen Ching",
     "OICEmail": "Lee.Yen.Ching@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW47_DETAILS = {
@@ -590,7 +590,7 @@ const ROW47_DETAILS = {
     "department": "DSD",
     "OIC": "SM(DS) Tan Yong Heng",
     "OICEmail": "Tan.Yong.Heng@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW48_DETAILS = {
@@ -613,7 +613,7 @@ const ROW48_DETAILS = {
     "department": "DSD",
     "OIC": "SM(DS) Tan Yong Heng",
     "OICEmail": "Tan.Yong.Heng@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW49_DETAILS = {
@@ -636,7 +636,7 @@ const ROW49_DETAILS = {
     "department": "DSD",
     "OIC": "AD (DS) Rahman Ahmad",
     "OICEmail": "Rahman.Ahmad@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW50_DETAILS = {
@@ -659,7 +659,7 @@ const ROW50_DETAILS = {
     "department": "DSD",
     "OIC": "M(DS) Tee Kai Qi",
     "OICEmail": "Tee.Kai.Qi@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW50_CIA = {
@@ -700,7 +700,7 @@ const ROW53_DETAILS = {
     "department": "CED",
     "OIC": "DD(CED) Lin Ziping",
     "OICEmail": "Lin.Ziping@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW54_DETAILS = {
@@ -723,7 +723,7 @@ const ROW54_DETAILS = {
     "department": "CED",
     "OIC": "DD(CED) Lin Ziping",
     "OICEmail": "Lin.Ziping@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW55_DETAILS = {
@@ -746,7 +746,7 @@ const ROW55_DETAILS = {
     "department": "CED",
     "OIC": "DD(CED) Lin Ziping",
     "OICEmail": "Lin.Ziping@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW56_DETAILS = {
@@ -769,7 +769,7 @@ const ROW56_DETAILS = {
     "department": "CED",
     "OIC": "DD(CED) Lin Ziping",
     "OICEmail": "Lin.Ziping@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW57_DETAILS = {
@@ -792,7 +792,7 @@ const ROW57_DETAILS = {
     "department": "CED",
     "OIC": "SM(CED) Siva",
     "OICEmail": "Siva@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // CSD
@@ -816,7 +816,7 @@ const ROW60_DETAILS = {
     "department": "CED",
     "OIC": "SM(CS) Anuradha ",
     "OICEmail": "Anuradha@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW61_DETAILS = {
@@ -839,7 +839,7 @@ const ROW61_DETAILS = {
     "department": "CED",
     "OIC": "SM(CS) Anuradha ",
     "OICEmail": "Anuradha@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW62_DETAILS = {
@@ -862,7 +862,7 @@ const ROW62_DETAILS = {
     "department": "CED",
     "OIC": "SM(CS) Anuradha ",
     "OICEmail": "Anuradha@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // SED
@@ -886,7 +886,7 @@ const ROW67_DETAILS = {
     "department": "SED",
     "OIC": "DD(SED) Ling Weiyin",
     "OICEmail": "Ling.Weiyin@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW68_DETAILS = {
@@ -911,7 +911,7 @@ const ROW68_DETAILS = {
     "department": "SED",
     "OIC": "DD(SED) Ling Weiyin",
     "OICEmail": "Ling.Weiyin@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW69_DETAILS = {
@@ -936,7 +936,7 @@ const ROW69_DETAILS = {
     "department": "SED",
     "OIC": "DD(SED) Ling Weiyin",
     "OICEmail": "Ling.Weiyin@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW70_DETAILS = {
@@ -964,7 +964,7 @@ const ROW70_DETAILS = {
     "department": "SED",
     "OIC": "DD(SED) Kyle Huang",
     "OICEmail": "Kyle.Huang@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW70_CIA = {
@@ -1006,7 +1006,7 @@ const ROW76_DETAILS = {
     "department": "HCP",
     "OIC": "DD(HCP) Angela Kwek",
     "OICEmail": "Angela.Kwek@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW77_DETAILS = {
@@ -1029,7 +1029,7 @@ const ROW77_DETAILS = {
     "department": "HCP",
     "OIC": "DD(HCP) Angela Kwek",
     "OICEmail": "Angela.Kwek@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW78_DETAILS = {
@@ -1052,7 +1052,7 @@ const ROW78_DETAILS = {
     "department": "HCP",
     "OIC": "DD(HCP) Angela Kwek",
     "OICEmail": "Angela.Kwek@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW79_DETAILS = {
@@ -1075,7 +1075,7 @@ const ROW79_DETAILS = {
     "department": "HCP",
     "OIC": "DD(HCP) Angela Kwek",
     "OICEmail": "Angela.Kwek@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW80_DETAILS = {
@@ -1098,7 +1098,7 @@ const ROW80_DETAILS = {
     "department": "HCP",
     "OIC": "DD(HCP) Angela Kwek",
     "OICEmail": "Angela.Kwek@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // HID
@@ -1122,7 +1122,7 @@ const ROW84_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Anita Hong,",
     "OICEmail": "Anita.Hong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW85_DETAILS = {
@@ -1145,7 +1145,7 @@ const ROW85_DETAILS = {
     "department": "HID",
     "OIC": "DD(HID) Jamie Siew,",
     "OICEmail": "Jamie.Siew@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW86_DETAILS = {
@@ -1168,7 +1168,7 @@ const ROW86_DETAILS = {
     "department": "HID",
     "OIC": "DD(HID) Lu Zhijia",
     "OICEmail": "Lu.Zhijia@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW87_DETAILS = {
@@ -1191,7 +1191,7 @@ const ROW87_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Joycelyn Tan",
     "OICEmail": "Joycelyn.Tan@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW88_DETAILS = {
@@ -1214,7 +1214,7 @@ const ROW88_DETAILS = {
     "department": "HID",
     "OIC": "DD(HID) Lu Zhijia",
     "OICEmail": "Lu.Zhijia@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW89_DETAILS = {
@@ -1237,7 +1237,7 @@ const ROW89_DETAILS = {
     "department": "HID",
     "OIC": "DD(HID) Lu Zhijia",
     "OICEmail": "Lu.Zhijia@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW90_DETAILS = {
@@ -1260,7 +1260,7 @@ const ROW90_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Jamie Siew",
     "OICEmail": "Jamie.Siew@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW91_DETAILS = {
@@ -1283,7 +1283,7 @@ const ROW91_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Grace Chua",
     "OICEmail": "Grace.Chua@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW92_93_DETAILS = {
@@ -1306,7 +1306,7 @@ const ROW92_93_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Chui Chein Sheun",
     "OICEmail": "Chui.Chein.Sheun@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW94_DETAILS = {
@@ -1329,7 +1329,7 @@ const ROW94_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Chui Chein Sheun",
     "OICEmail": "Chui.Chein.Sheun@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW95_DETAILS = {
@@ -1352,7 +1352,7 @@ const ROW95_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Chui Chein Sheun",
     "OICEmail": "Chui.Chein.Sheun@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW96_DETAILS = {
@@ -1375,7 +1375,7 @@ const ROW96_DETAILS = {
     "department": "HID",
     "OIC": "DD(HID) Lu Zhijia",
     "OICEmail": "Lu.Zhijia@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW97_DETAILS = {
@@ -1398,7 +1398,7 @@ const ROW97_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Jocelyn Low",
     "OICEmail": "Jocelyn.Low@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW98_DETAILS = {
@@ -1421,7 +1421,7 @@ const ROW98_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Grace Chua",
     "OICEmail": "Grace.Chua@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW99_DETAILS = {
@@ -1446,7 +1446,7 @@ const ROW99_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Joycelyn Tan",
     "OICEmail": "Joycelyn.Tan@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW100_DETAILS = {
@@ -1469,7 +1469,7 @@ const ROW100_DETAILS = {
     "department": "HID",
     "OIC": "DD(HID) Lu Zhijia",
     "OICEmail": "Lu.Zhijia@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW101_DETAILS = {
@@ -1492,7 +1492,7 @@ const ROW101_DETAILS = {
     "department": "HID",
     "OIC": "DD(HID) Lu Zhijia",
     "OICEmail": "Lu.Zhijia@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW103_DETAILS = {
@@ -1515,7 +1515,7 @@ const ROW103_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Anita Hong",
     "OICEmail": "Anita.Hong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW104_DETAILS = {
@@ -1538,7 +1538,7 @@ const ROW104_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Anita Hong",
     "OICEmail": "Anita.Hong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW105_DETAILS = {
@@ -1561,7 +1561,7 @@ const ROW105_DETAILS = {
     "department": "HID",
     "OIC": "DD(HID) Lu Zhijia",
     "OICEmail": "Lu.Zhijia@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW106_DETAILS = {
@@ -1584,7 +1584,7 @@ const ROW106_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Anita Hong",
     "OICEmail": "Anita.Hong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW107_DETAILS = {
@@ -1607,7 +1607,7 @@ const ROW107_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Anita Hong",
     "OICEmail": "Anita.Hong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW108_DETAILS = {
@@ -1630,7 +1630,7 @@ const ROW108_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Joycelyn Tan",
     "OICEmail": "Joycelyn.Tan@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // HED
@@ -1654,7 +1654,7 @@ const ROW111_DETAILS = {
     "department": "HED",
     "OIC": "AD(HE) Yong Cai Xian",
     "OICEmail": "Yong.Cai.Xian@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW112_DETAILS = {
@@ -1677,7 +1677,7 @@ const ROW112_DETAILS = {
     "department": "HED",
     "OIC": "AD(HE) Tay Ming Ting",
     "OICEmail": "Tay.Ming.Ting@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // RSG
@@ -1701,7 +1701,7 @@ const ROW120_DETAILS = {
     "department": "RSD",
     "OIC": "AD (RS) Joanne Ng Xin Yi",
     "OICEmail": "Joanne.Ng.Xin.Yi@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW120_CIA = {
@@ -1741,7 +1741,7 @@ const ROW121_DETAILS = {
     "department": "RSD",
     "OIC": "AD (RS) Joanne Ng Xin Yi",
     "OICEmail": "Joanne.Ng.Xin.Yi@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW121_CIA = {
@@ -1781,7 +1781,7 @@ const ROW122_DETAILS = {
     "department": "RSD",
     "OIC": "SM(RS) Tan Shu Liang",
     "OICEmail": "Tan.Shu.Liang@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW122_CIA = {
@@ -1824,7 +1824,7 @@ const ROW123_DETAILS = {
     "department": "RSD",
     "OIC": "AD (RS) Joanne Ng Xin Yi ",
     "OICEmail": "Joanne.Ng.Xin.Yi@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW123_CIA = {
@@ -1866,7 +1866,7 @@ const ROW124_DETAILS = {
     "department": "RIU",
     "OIC": "DD(RIU) Xia Yin",
     "OICEmail": "Xia.Yin@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW124_CIA = {
@@ -1906,7 +1906,7 @@ const ROW125_DETAILS = {
     "department": "RIU",
     "OIC": "DD(RIU) Xia Yin",
     "OICEmail": "Xia.Yin@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW125_CIA = {
@@ -1948,7 +1948,7 @@ const ROW126_DETAILS = {
     "department": "RWD",
     "OIC": "M(RW) Xu Zhirong",
     "OICEmail": "Xu.Zhirong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW126_CIA = {
@@ -1988,7 +1988,7 @@ const ROW127_DETAILS = {
     "department": "RWD",
     "OIC": "AM(RW) Arina Lim",
     "OICEmail": "Arina.Lim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW128_DETAILS = {
@@ -2011,7 +2011,7 @@ const ROW128_DETAILS = {
     "department": "RWD",
     "OIC": "AM(RW) Arina Lim",
     "OICEmail": "Arina.Lim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW129_DETAILS = {
@@ -2034,7 +2034,7 @@ const ROW129_DETAILS = {
     "department": "RWD",
     "OIC": "M(RW) Yongjun Cai",
     "OICEmail": "Yongjun.Cai@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW130_DETAILS = {
@@ -2057,7 +2057,7 @@ const ROW130_DETAILS = {
     "department": "RWD",
     "OIC": "DD(RW) Adeline Ho",
     "OICEmail": "Adeline.Ho@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW131_DETAILS = {
@@ -2080,7 +2080,7 @@ const ROW131_DETAILS = {
     "department": "RWD",
     "OIC": "DD(RW) Adeline Ho",
     "OICEmail": "Adeline.Ho@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW132_DETAILS = {
@@ -2103,7 +2103,7 @@ const ROW132_DETAILS = {
     "department": "RWD",
     "OIC": "DD(RW) Adeline Ho",
     "OICEmail": "Adeline.Ho@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW133_DETAILS = {
@@ -2126,7 +2126,7 @@ const ROW133_DETAILS = {
     "department": "RWD",
     "OIC": "M(RW) Vanessa Ong ",
     "OICEmail": "Vanessa.Ong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW134_DETAILS = {
@@ -2149,7 +2149,7 @@ const ROW134_DETAILS = {
     "department": "RWD",
     "OIC": "AM(RW) Arina Lim",
     "OICEmail": "Arina.Lim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW135_DETAILS = {
@@ -2172,7 +2172,7 @@ const ROW135_DETAILS = {
     "department": "RWD",
     "OIC": "AD(RW) Sherlene Teh",
     "OICEmail": "Sherlene.Teh@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW136_DETAILS = {
@@ -2195,7 +2195,7 @@ const ROW136_DETAILS = {
     "department": "RWD",
     "OIC": "AD(RW) Sherlene Teh",
     "OICEmail": "Sherlene.Teh@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW137_DETAILS = {
@@ -2218,7 +2218,7 @@ const ROW137_DETAILS = {
     "department": "RWD",
     "OIC": "M(RW) Yongjun Cai",
     "OICEmail": "Yongjun.Cai@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW138_DETAILS = {
@@ -2241,7 +2241,7 @@ const ROW138_DETAILS = {
     "department": "RWD",
     "OIC": "M(RW) Xu Zhirong",
     "OICEmail": "Xu.Zhirong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW139_DETAILS = {
@@ -2264,7 +2264,7 @@ const ROW139_DETAILS = {
     "department": "RWD",
     "OIC": "M(RW) Dion Thong",
     "OICEmail": "Dion.Thong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // NAC
@@ -2288,7 +2288,7 @@ const ROW144_DETAILS = {
     "department": "NAC",
     "OIC": "SM(NAC) Erika Tedja",
     "OICEmail": "Erika.Tedja@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW145_DETAILS = {
@@ -2311,7 +2311,7 @@ const ROW145_DETAILS = {
     "department": "NAC",
     "OIC": "SM (NAC) Eric HL Lim",
     "OICEmail": "Eric.HL.Lim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW146_DETAILS = {
@@ -2334,7 +2334,7 @@ const ROW146_DETAILS = {
     "department": "NAC",
     "OIC": "AD(NAC) Sharlene Lee ",
     "OICEmail": "Sharlee.Lee@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW147_DETAILS = {
@@ -2357,7 +2357,7 @@ const ROW147_DETAILS = {
     "department": "NAC",
     "OIC": "AD(NAC) Sharlene Lee ",
     "OICEmail": "Sharlee.Lee@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW148_DETAILS = {
@@ -2380,7 +2380,7 @@ const ROW148_DETAILS = {
     "department": "NAC",
     "OIC": "AD(NAC) Sharlene Lee ",
     "OICEmail": "Sharlee.Lee@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW149_DETAILS = {
@@ -2403,7 +2403,7 @@ const ROW149_DETAILS = {
     "department": "NAC",
     "OIC": "AD(NAC) Sharlene Lee ",
     "OICEmail": "Sharlee.Lee@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW150_DETAILS = {
@@ -2426,7 +2426,7 @@ const ROW150_DETAILS = {
     "department": "NAC",
     "OIC": "M(NAC) Rajendran Meena",
     "OICEmail": "Rajendran.Meena@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW153_DETAILS = {
@@ -2449,7 +2449,7 @@ const ROW153_DETAILS = {
     "department": "NAC",
     "OIC": "AM(NAC) Phoebe Lim",
     "OICEmail": "Phoebe.Lim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // AIS
@@ -2473,7 +2473,7 @@ const ROW158_DETAILS = {
     "department": "AIS",
     "OIC": "DD(AIS) Justin Chang",
     "OICEmail": "Justin.Chang@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW159_DETAILS = {
@@ -2496,7 +2496,7 @@ const ROW159_DETAILS = {
     "department": "AIS",
     "OIC": "AD(AIS) Adele HO ",
     "OICEmail": "Adele.Ho@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW160_DETAILS = {
@@ -2520,7 +2520,7 @@ const ROW160_DETAILS = {
     "department": "AIS",
     "OIC": "AD(AIS) Pamela Tan",
     "OICEmail": "Pamela.Tan@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // RHS
@@ -2547,7 +2547,7 @@ const ROW165_DETAILS = {
     "department": "RHS",
     "OIC": "Neo Ming Yuan",
     "OICEmail": "Neo.Ming.Yuan@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const JAN_EVENTS = [

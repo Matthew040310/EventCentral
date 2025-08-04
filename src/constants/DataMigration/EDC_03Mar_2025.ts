@@ -36,7 +36,7 @@ const ROW11_DETAILS = {
     "department": "AMD",
     "OIC": "AD(AMD) Lim Lan Si",
     "OICEmail": "Lim.Lan.Si@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW12_DETAILS = {
@@ -59,7 +59,7 @@ const ROW12_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW13_DETAILS = {
@@ -82,7 +82,7 @@ const ROW13_DETAILS = {
     "department": "AMD",
     "OIC": "AD(AMD) Lim Lan Si",
     "OICEmail": "Lim.Lan.Si@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW14_DETAILS = {
@@ -105,7 +105,7 @@ const ROW14_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW16_DETAILS = {
@@ -128,7 +128,7 @@ const ROW16_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Chua Mei Ling",
     "OICEmail": "Chua.Mei.Ling@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // COM
@@ -152,7 +152,7 @@ const ROW28_DETAILS = {
     "department": "MPD",
     "OIC": "DD(MP) Joanne Lim",
     "OICEmail": "Joanne.Lim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // CSD
@@ -176,7 +176,7 @@ const ROW65_DETAILS_M = {
     "department": "CSD",
     "OIC": "Ernest Ng",
     "OICEmail": "Ernest.Ng@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW65_DETAILS_E = {
@@ -199,7 +199,7 @@ const ROW65_DETAILS_E = {
     "department": "CSD",
     "OIC": "Nadeera Shahrafay",
     "OICEmail": "Nadeera.Shahrafay@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW66_DETAILS = {
@@ -222,7 +222,7 @@ const ROW66_DETAILS = {
     "department": "CSD",
     "OIC": "SDD(CS) Erica Aw",
     "OICEmail": "Erica.Aw@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // SED
@@ -246,7 +246,7 @@ const ROW70_DETAILS = {
     "department": "SED",
     "OIC": "AD(SED) Yang Yiming",
     "OICEmail": "Yang.Yiming@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW71_DETAILS = {
@@ -269,7 +269,7 @@ const ROW71_DETAILS = {
     "department": "SED",
     "OIC": "DD(SED) Jasimah Majid",
     "OICEmail": "Jasimah.Majid@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW72_DETAILS = {
@@ -292,7 +292,7 @@ const ROW72_DETAILS = {
     "department": "SED",
     "OIC": "DD(SED) Jasimah Majid",
     "OICEmail": "Jasimah.Majid@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // HID
@@ -316,7 +316,7 @@ const ROW112_DETAILS = {
     "department": "HID",
     "OIC": "DD(HI) Lu Zhijia",
     "OICEmail": "Lu.Zhijia@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW113_DETAILS = {
@@ -339,7 +339,7 @@ const ROW113_DETAILS = {
     "department": "HID",
     "OIC": "SDD(HID) Joycelyn Tan",
     "OICEmail": "Joycelyn.Tan@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 // RSG
@@ -363,7 +363,7 @@ const ROW126_DETAILS = {
     "department": "RSG",
     "OIC": "SM(Ng Suqi)",
     "OICEmail": "Ng.Suqi@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const ROW127_DETAILS = {
@@ -386,7 +386,7 @@ const ROW127_DETAILS = {
     "department": "RSG",
     "OIC": "SM(Tan Shu Liang)",
     "OICEmail": "Tan.Shu.Liang@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const EVENTS = [
