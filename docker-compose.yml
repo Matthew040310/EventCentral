@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: eventcentral-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - eventcentral-network
+
+  eventcentral:
+    build: .
+    container_name: eventcentral-app
+    environment:
+      - DATABASE_URL=postgresql://postgres:mysecretpassword@postgres:5432/postgres
+      - SUPEREMAIL=xiaofan.cpf@gmail.com
+      - ENV=production
+      - NEXT_PUBLIC_BASE_PATH=/eventcentral
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    networks:
+      - eventcentral-network
+
+volumes:
+  postgres_data:
+
+networks:
+  eventcentral-network:
+    driver: bridge 
