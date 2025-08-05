@@ -43,12 +43,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                         // Set any other properties you want to store for this user
                     },
                 });
-
-                // Return true to allow access
-                return true;
             }
-
-            // User's email is authorized, allow access
             return true;
         },
     },
