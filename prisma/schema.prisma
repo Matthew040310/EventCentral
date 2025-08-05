@@ -17,6 +17,7 @@ model DraftEvent {
   embargoed                 String?
   estimatedStartDate        DateTime?
   startDate                 DateTime?
+  eventDate                 DateTime?
   endDate                   DateTime?
   frequency                 String?
   frequencyInterval         Int?
@@ -32,7 +33,7 @@ model DraftEvent {
   department                String?
   OIC                       String?
   OICEmail                  String?
-  reportStatus              String?
+  // reportStatus              String?
 }
 
 model DraftImpactAssessment {
@@ -52,6 +53,7 @@ model DraftImpactAssessment {
   dataInsightDetails          String?
   initiativesDetails          String?
   eventWriteUp                String?
+  clearingHOD                 String?
 }
 
 model SubmittedEvent {
@@ -62,6 +64,7 @@ model SubmittedEvent {
   type                      String
   embargoed                 String
   startDate                 DateTime
+  eventDate                 DateTime
   endDate                   DateTime?
   frequency                 String
   frequencyInterval         Int?
@@ -77,11 +80,11 @@ model SubmittedEvent {
   department                String
   OIC                       String
   OICEmail                  String
-  reportStatus              String
+  // reportStatus              String
   // lastUpdatedBy          String?
   // lastUpdated                 DateTime?                  @updatedAt()
 
-  @@index(fields: [startDate])
+  @@index(fields: [eventDate])
 }
 
 model SubmittedImpactAssessment {
@@ -101,6 +104,7 @@ model SubmittedImpactAssessment {
   dataInsightDetails          String
   initiativesDetails          String
   eventWriteUp                String
+  clearingHOD                 String?
   // lastUpdatedBy          String?
   // lastUpdated                   DateTime?        @updatedAt()
 }

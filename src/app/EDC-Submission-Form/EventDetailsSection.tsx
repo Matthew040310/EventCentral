@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
 import CustomDropDown from "@/app/EDC-Submission-Form/_components/CustomDropDown"
@@ -8,7 +7,7 @@ import CustomDatePicker from "@/components/CustomDatePicker"
 import EventDetailsProps from '@/types/IEventDetailsProps';
 import TRecurringDateParams from '@/types/TRecurringDateParams';
 
-import { ORGANISATION, EVENT_FREQUENCY, CUSTOM_EVENT_FREQUENCY } from '@/constants/EventCentralConstants';
+import { EVENT_FREQUENCY, CUSTOM_EVENT_FREQUENCY, ALL_DEPARTMENTS, ALL_GROUPS, ALL_CLUSTERS } from '@/constants/EventCentralConstants';
 import { lastRecurringDate } from '@/util/replicateEventDates';
 
 const EventDetailsSection: React.FC<EventDetailsProps> = ({
@@ -21,19 +20,15 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
     // Initialize knowStartDate based on async inputFields.startDate change
     useEffect(() => {
         // Check both startDate and estimatedStartDate
-        if (inputFields?.startDate) {
-            setKnowStartDate("Yes");
-        }
-        else if (inputFields?.estimatedStartDate) {
-            setKnowStartDate("No");
-        }
+        if (inputFields?.startDate) setKnowStartDate("Yes");
+        else if (inputFields?.estimatedStartDate) setKnowStartDate("No");
     }, [inputFields?.startDate, inputFields?.estimatedStartDate]);
 
     useEffect(() => {
         if (knowStartDate === "No") {
             handleInputChange("startDate")(null);
             handleInputChange("endDate")(null);
-            handleInputChange("frequency")("Ad-hoc");
+            handleInputChange("frequency")("One-off");
             handleInputChange("frequencyInterval")(null);
             handleInputChange("customFrequency")(null);
             handleInputChange("selectedDay")(null);
@@ -43,7 +38,7 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
         }
     }, [knowStartDate]);
 
-    let recurringDateParams = {
+    const recurringDateParams = {
         startDate: inputFields.startDate,
         endDate: inputFields.endDate,
         frequency: inputFields.frequency,
@@ -52,9 +47,9 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
         ...(inputFields.selectedDay ? { selectedDay: inputFields.selectedDay } : {}),
     } as TRecurringDateParams
 
-    let showRecurringMessage =
-        // If frequency is not Ad-hoc or Custom, and both startDate, endDate and frequencyInterval are required
-        (inputFields?.frequency !== "Ad-hoc" && inputFields?.frequency !== "Custom" && inputFields?.startDate && inputFields?.endDate && inputFields?.frequencyInterval) ||
+    const showRecurringMessage =
+        // If frequency is not One-off or Custom, and both startDate, endDate and frequencyInterval are required
+        (inputFields?.frequency !== "One-off" && inputFields?.frequency !== "Custom" && inputFields?.startDate && inputFields?.endDate && inputFields?.frequencyInterval) ||
         // Else if frequency is Custom, and all required fields are provided
         (inputFields?.frequency === "Custom" && inputFields?.startDate && inputFields?.endDate && inputFields?.frequencyInterval && inputFields?.customFrequency && inputFields?.selectedDay);
 
@@ -86,7 +81,7 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                             value={inputFields.startDate}
                             onChange={(date) => handleInputChange("startDate")(date)} />
 
-                        {inputFields?.frequency !== "Ad-hoc" && inputFields?.frequency !== null && (
+                        {inputFields?.frequency !== "One-off" && inputFields?.frequency !== null && (
                             <CustomDatePicker label="Event End Date"
                                 value={inputFields.endDate ?? null}
                                 onChange={(date) => handleInputChange("endDate")(date)}
@@ -97,8 +92,8 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                             options={Object.keys(EVENT_FREQUENCY)}
                             value={inputFields?.frequency}
                             onChange={(_, newValue) => handleInputChange("frequency")(newValue)} />
-                        {/* Recurring Logic to be Implemented */}
-                        {inputFields?.frequency !== "Ad-hoc" && inputFields?.frequency !== null && (
+
+                        {inputFields?.frequency !== "One-off" && inputFields?.frequency !== null && (
                             <>
                                 <CustomTextField label="Recurrence Interval"
                                     name="frequencyInterval"
@@ -149,7 +144,8 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                                 )}
                             </>
                         )}
-                    </>}
+                    </>
+                }
 
                 <CustomTextField label="Event Title" sm={12}
                     name="eventTitle"
@@ -183,20 +179,19 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                     Overall In Charge Details
                 </Typography></Grid>
 
+                <CustomDropDown label="Department" xs={4} sm={4}
+                    options={ALL_DEPARTMENTS}
+                    value={inputFields?.department}
+                    onChange={(_, newValue) => handleInputChange("department")(newValue)} />
+                <CustomDropDown label="Group" xs={4} sm={4}
+                    options={ALL_GROUPS}
+                    value={inputFields?.group}
+                    onChange={(_, newValue) => handleInputChange("group")(newValue)} />
                 <CustomDropDown label="Cluster" xs={4} sm={4}
-                    options={Object.keys(ORGANISATION)}
+                    options={ALL_CLUSTERS}
                     value={inputFields?.cluster}
                     onChange={(_, newValue) => handleInputChange("cluster")(newValue)} />
-                <CustomDropDown label="Group" xs={4} sm={4}
-                    options={inputFields.cluster ? Object.keys(ORGANISATION[inputFields.cluster!]) : ["NA"]}
-                    value={inputFields?.group}
-                    onChange={(_, newValue) => handleInputChange("group")(newValue)}
-                    disabled={!inputFields.cluster} />    {/* Cluster field must be selected before Group */}
-                <CustomDropDown label="Department" xs={4} sm={4}
-                    options={inputFields.group ? ORGANISATION[inputFields.cluster!][inputFields.group!] : ["NA"]}
-                    value={inputFields?.department}
-                    onChange={(_, newValue) => handleInputChange("department")(newValue)}
-                    disabled={!inputFields.group} />      {/* Group field must be selected before Department */}
+
 
                 <CustomTextField label="Event OIC Name" sm={12}
                     name="eventOIC"

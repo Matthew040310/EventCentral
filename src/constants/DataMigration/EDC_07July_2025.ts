@@ -22,7 +22,7 @@ const EVENT4_DETAILS =
     "embargoed": "No",
     "startDate": new Date("2025-07-07T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -36,7 +36,7 @@ const EVENT4_DETAILS =
     "department": "AMD",
     "OIC": "AD(AMD) Lim Lan Si",
     "OICEmail": "Lim.Lan.Si@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 }
 
 const EVENT4_CIA = {
@@ -68,7 +68,7 @@ const EVENT5_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-07-03T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -82,7 +82,7 @@ const EVENT5_DETAILS = {
     "department": "AMD",
     "OIC": "SDD(AMD) Yvonne Chong",
     "OICEmail": "Yvonne.Chong@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 const EVENT9_DETAILS = {
@@ -90,7 +90,7 @@ const EVENT9_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-07-07T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -104,7 +104,7 @@ const EVENT9_DETAILS = {
     "department": "AMD",
     "OIC": "AD(AMD) Lim Lan Si",
     "OICEmail": "Lim.Lan.Si@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 // MPD
@@ -113,7 +113,7 @@ const EVENT27_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-07-02T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -127,7 +127,7 @@ const EVENT27_DETAILS = {
     "department": "MPD",
     "OIC": "DD(MP) Joanne Lim",
     "OICEmail": "Joanne.Lim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 const EVENT28_DETAILS = {
@@ -135,7 +135,7 @@ const EVENT28_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-07-02T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -149,7 +149,7 @@ const EVENT28_DETAILS = {
     "department": "MPD",
     "OIC": "DD(MP) Joanne Lim",
     "OICEmail": "Joanne.Lim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 const EVENT30_DETAILS = {
@@ -157,7 +157,7 @@ const EVENT30_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-07-02T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -171,7 +171,7 @@ const EVENT30_DETAILS = {
     "department": "MPD",
     "OIC": "DD(MP) Joanne Lim",
     "OICEmail": "Joanne.Lim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 const EVENT31_DETAILS = {
@@ -179,7 +179,7 @@ const EVENT31_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-07-02T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -193,7 +193,7 @@ const EVENT31_DETAILS = {
     "department": "MPD",
     "OIC": "SM(MP) Zafirah Salim",
     "OICEmail": "Zafirah.Salim@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 // OPD
@@ -202,7 +202,7 @@ const EVENT33_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-07-04T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -216,7 +216,7 @@ const EVENT33_DETAILS = {
     "department": "OPD",
     "OIC": "AD(Nur Diana Jamaludin)",
     "OICEmail": "Nur.Diana.Jamaludin@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 const EVENT34_DETAILS = {
@@ -224,7 +224,7 @@ const EVENT34_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-07-12T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -238,7 +238,7 @@ const EVENT34_DETAILS = {
     "department": "OPD",
     "OIC": "DD(OP) Teo Zhijia",
     "OICEmail": "Teo.Zhijia@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 // HED
@@ -261,7 +261,7 @@ const EVENT116_DETAILS = {
     "department": "HED",
     "OIC": "M(HE) Yeo PeiXiu",
     "OICEmail": "Yeo.PeiXiu@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 // RSD
@@ -270,7 +270,7 @@ const EVENT123_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-07-10T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -288,7 +288,7 @@ const EVENT123_DETAILS = {
     "department": "RSG",
     "OIC": "SDD(RS) Jit Yong Yap",
     "OICEmail": "Jit.Yong.Yap@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 const EVENT124_DETAILS = {
@@ -313,7 +313,7 @@ const EVENT124_DETAILS = {
     "department": "RSG",
     "OIC": "SDD(RS) Serene Goh",
     "OICEmail": "Serene.Goh@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 // NAC
@@ -322,7 +322,7 @@ const EVENT155_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-07-28T16:00:00.000Z"),
     "endDate": null,
-    "frequency": "Ad-hoc",
+    "frequency": "One-off",
     "frequencyInterval": null,
     "customFrequency": null,
     "selectedDay": null,
@@ -336,7 +336,7 @@ const EVENT155_DETAILS = {
     "department": "NAC",
     "OIC": "M(NAC) Alezec Wang",
     "OICEmail": "Alezec.Wang@cpf.com.sg",
-    "reportStatus": "Completed"
+    // "reportStatus": "Completed"
 };
 
 const EVENTS = [

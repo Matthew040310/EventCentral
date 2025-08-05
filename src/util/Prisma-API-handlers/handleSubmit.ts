@@ -47,18 +47,19 @@ export default async function handleSubmit(
         scope = { "Update Scope": updateScope };
     };
 
+    // Automatically modify eventDetails and impactAssessment before sending
+    eventDetails.eventDate = eventDetails.startDate || eventDetails.estimatedStartDate || null;
     impactAssessment = cleanImpactAssessment(impactAssessment);
-    let requestBody = {
-        "Event Details": eventDetails,
-        "Impact Assessment": impactAssessment,
-        ...scope
-    }
 
     try {
         const response = await fetch(targetLink, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(requestBody),
+            body: JSON.stringify({
+                "Event Details": eventDetails,
+                "Impact Assessment": impactAssessment,
+                ...scope
+            }),
         });
 
         if (!response.ok) {

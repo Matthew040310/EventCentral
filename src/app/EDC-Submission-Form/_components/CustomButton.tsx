@@ -10,6 +10,7 @@ export interface ICustomButtonProps {
     endIcon?: React.ReactNode;
     children?: React.ReactNode;
     button_mt?: number;
+    width?: number;
 }
 
 const CustomButton: React.FC<ICustomButtonProps> = ({
@@ -21,6 +22,7 @@ const CustomButton: React.FC<ICustomButtonProps> = ({
     endIcon,
     children,
     button_mt = 2,
+    width = 150,
 }) => (
     <Grid mt={1} size={{ sm: sm, xs: xs }}>
         <Stack alignItems="center" justifyContent="center" sx={{ mt: button_mt }}>
@@ -29,7 +31,7 @@ const CustomButton: React.FC<ICustomButtonProps> = ({
                 color={color}
                 onClick={onClick}
                 disabled={disabled}
-                sx={{ width: 100, mb: 1 }}
+                sx={{ width: width, mb: 1 }}
                 endIcon={endIcon}
             >
                 {children}

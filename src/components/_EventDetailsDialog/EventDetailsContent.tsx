@@ -12,9 +12,9 @@ import { lastRecurringDate } from '@/util/replicateEventDates';
 import { TypographyS2 } from './DialogComponents';
 
 const EventDetailsContent = ({ eventDetails }: { eventDetails: Partial<FullEventReport> }) => {
-    const { parentid, startDate, endDate, frequency, frequencyInterval, customFrequency, selectedDay,
+    const { parentid, startDate, eventDate, endDate, frequency, frequencyInterval, customFrequency, selectedDay,
         scheme, cluster, group, department, description,
-        affectedCohortDescription, estimatedCohortSize, reportStatus,
+        affectedCohortDescription, estimatedCohortSize,
         OIC, OICEmail
     } = eventDetails;
 
@@ -22,16 +22,16 @@ const EventDetailsContent = ({ eventDetails }: { eventDetails: Partial<FullEvent
 
     useEffect(() => {
         const fetchChildrenCount = async () => {
-            const count = await getChildrenEvents(parentid as string, startDate as Date);
+            const count = await getChildrenEvents(parentid as string, eventDate as Date);
             setChildrenCount(count);
         }
         fetchChildrenCount();
-    }, [parentid, startDate]);
+    }, [parentid, eventDate]);
 
     const recurrenceMessage = useMemo(() => {
         if (endDate) {
             const recurringDateParams = {
-                startDate: new Date(startDate || ""),
+                startDate: new Date(eventDate || ""),
                 endDate: new Date(endDate || ""),
                 frequency: frequency,
                 frequencyInterval: frequencyInterval,
@@ -43,7 +43,7 @@ const EventDetailsContent = ({ eventDetails }: { eventDetails: Partial<FullEvent
             return `(${message.split("until")[0].trim()})`;
         }
         return "";
-    }, [startDate, endDate, frequency, frequencyInterval, customFrequency, selectedDay]);
+    }, [eventDate, endDate, frequency, frequencyInterval, customFrequency, selectedDay]);
 
     return (
         <Grid container spacing={2}>
@@ -78,8 +78,8 @@ const EventDetailsContent = ({ eventDetails }: { eventDetails: Partial<FullEvent
                 <Typography>{affectedCohortDescription}</Typography>
                 <TypographyS2>Estimated Cohort Size</TypographyS2>
                 <Typography>{estimatedCohortSize?.toLocaleString()}</Typography>
-                <TypographyS2>Report Status</TypographyS2>
-                <Typography>{reportStatus}</Typography>
+                {/* <TypographyS2>Report Status</TypographyS2>
+                <Typography>{reportStatus}</Typography> */}
             </Grid>
             {/* Contact Details */}
             <Grid size={{ xs: 12, md: 6 }}>

@@ -8,7 +8,7 @@ import { View, Views } from 'react-big-calendar';
 import FullEventReport from '@/types/IFullEventReport';
 import UserRole from '@/types/TUserRole';
 
-import CalendarToolBar from '@/app/_home/_components/ToolBar';
+import CalendarToolBar from '@/app/(HomePage)/_components/ToolBar';
 import EventStatistics from '../../components/EventStatistics';
 import CalendarView from '@/components/CalendarView';
 import EventWriteUpSection from './_components/EventWriteUpSection';
@@ -34,7 +34,7 @@ const CMMReport: React.FC = () => {
     () => {
       const startOfMonth = dayjs(datumDate).startOf("month").startOf("week").toDate();
       const endOfMonth = dayjs(datumDate).endOf("month").endOf("week").toDate();
-      return { startDate: { gte: startOfMonth, lte: endOfMonth } };
+      return { eventDate: { gte: startOfMonth, lte: endOfMonth } };
     }, [datumDate]);
 
   const { filteredSubmittedEvents, filteredDraftEvents } = useMemo(() =>

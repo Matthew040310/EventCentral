@@ -51,13 +51,14 @@ const EventFormButtonSection: React.FC<EventFormButtonsProps> = ({
         </ButtonWithDialog>
 
         {/* Save Button */}
-        <CustomButton
+        <CustomButton sm={6}
             color="secondary"
             disabled={(!eventDetails.estimatedStartDate && !eventDetails.startDate)}
             endIcon={<Save />}
             onClick={handleSave}
+            width={175}
         >
-            Save
+            Save as Draft
         </CustomButton>
 
         {/* Submit / Update Button */}

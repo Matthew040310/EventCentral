@@ -32,10 +32,15 @@ export default function determineCategory(
         styleObject.backgroundColor = Event_Legend['New/Changes']
         styleObject.borderColor = Event_Legend['New/Changes']
     }
+    else if (event.type === "Existing" && (event.estimatedCohortSize ?? 0) >= 100000) {
+        styleObject.label = "Existing >=100k"
+        styleObject.textColor = Event_Legend['Existing >=100k']
+        styleObject.borderColor = Event_Legend['Existing >=100k']
+    }
     else if (event.type === "Existing") {
-        styleObject.label = "Existing"
-        styleObject.textColor = Event_Legend['Existing']
-        styleObject.borderColor = Event_Legend['Existing']
+        styleObject.label = "Existing <100k"
+        styleObject.textColor = Event_Legend['Existing <100k']
+        styleObject.borderColor = Event_Legend['Existing <100k']
     }
 
     return styleObject

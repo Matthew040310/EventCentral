@@ -4,8 +4,9 @@ const DefaultEventDetails = {
     embargoed: null,
     estimatedStartDate: null,           // optional field for draft events
     startDate: null,
+    eventDate: null,
     endDate: null,
-    frequency: "Ad-hoc",
+    frequency: "One-off",
     frequencyInterval: null,            // optional field for recurring events
     customFrequency: null,              // optional field for custom frequency
     selectedDay: null,                  // optional field for custom frequency (e.g., "First Monday of Month")
@@ -19,7 +20,7 @@ const DefaultEventDetails = {
     department: null,
     OIC: "",
     OICEmail: "",
-    reportStatus: null,
+    // reportStatus: null,
 
     // (Future) Fields for Event Details
     // updatedBy: session?.user?.email

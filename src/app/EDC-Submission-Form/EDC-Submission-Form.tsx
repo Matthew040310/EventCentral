@@ -2,9 +2,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Head from 'next/head';
+import Link from 'next/link';
 
 // Components
 import { Alert, Box, Button, Container, Fade, Grid, Tooltip, Typography } from '@mui/material';
+import { Home } from '@mui/icons-material';
 import EventDetailsSection from './EventDetailsSection';
 import ImpactAssessmentSection from './ImpactAssessmentSection';
 import EventFormButtonSection from './EventFormButtonSection';
@@ -105,11 +107,13 @@ const EventForm = () => {
             <Head>
                 <title>EventCentral - EDC Submission Form</title>
             </Head>
+
             {failedRetrieveEventID.id &&
                 <Typography variant="subtitle1" sx={{ mt: 3, mb: 0.5 }} color="red">
                     Provided Event ID <b><u>{failedRetrieveEventID.id}</u></b> does not exist in <b><u>{failedRetrieveEventID.state}</u></b> state.
                 </Typography>
             }
+
             <Box sx={{ mt: 3 }}>
                 <h2>Event and Demand Submission Form</h2>
 
@@ -122,7 +126,7 @@ const EventForm = () => {
                     inputFields={eventDetails}
                     state={state === "Submitted" ? "Submitted" : "Draft"} />
 
-                {/* Impact Assessment Inputs - Only shown for New or Recurring with Changes Events */}
+                {/* Impact Assessment Inputs - Only shown for New or Existing with Changes Events */}
                 {(eventDetails.type === "New" || eventDetails.type === "Existing with Changes") &&
                     <>
                         <Typography variant='subtitle2' sx={{ mt: 5, bgcolor: 'warning.light' }}>
@@ -166,12 +170,12 @@ const EventForm = () => {
                     </>}
 
                 {/* Report Status */}
-                <Grid size={12}>
+                {/* <Grid size={12}>
                     <CustomDropDown label="Report Status?" sm={12}
                         options={STATUS}
                         value={eventDetails.reportStatus}
                         onChange={(_, newValue) => handleChange("Event Details")("reportStatus")(newValue)} />
-                </Grid>
+                </Grid> */}
 
                 <EventFormButtonSection
                     eventDetails={eventDetails}
@@ -187,6 +191,10 @@ const EventForm = () => {
                     <Fade in={alert.open} timeout={1000}>
                         <Alert severity={alert.severity} onClose={() => setAlert({ ...alert, open: false })}>
                             {alert.message}
+                            <br />
+                            <Link href="/" style={{ display: "flex", alignItems: "center", marginTop: "5px", textDecoration: "underline" }}>
+                                <Home />Return to Home
+                            </Link>
                         </Alert>
                     </Fade>
                 </Grid>

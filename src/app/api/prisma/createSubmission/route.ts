@@ -66,15 +66,15 @@ export async function POST(request: Request) {
         });
       }
 
-      // Do auto replication of event dates if eventDetails.frequency is not "Ad-hoc"
-      if (eventDetails.frequency !== "Ad-hoc") {
+      // Do auto replication of event dates if eventDetails.frequency is not "One-off"
+      if (eventDetails.frequency !== "One-off") {
 
         // Reset id so that Prisma will auto assign an id upon creation
         const { id, ...replicatedEvent } = createdEventSubmission;
         replicatedEvent.type = "Existing";
 
         // Get all recurring dates based on eventDetails
-        let recurringDateParams = {
+        const recurringDateParams = {
           startDate: new Date(eventDetails.startDate),
           endDate: new Date(eventDetails.endDate),
           frequency: eventDetails.frequency,
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
 
         // Create new entry in submittedEvent table for each date
         for (let date of replicationDates) {
-          replicatedEvent.startDate = new Date(date);
+          replicatedEvent.eventDate = new Date(date);
           await tx.submittedEvent.create({
             data: replicatedEvent
           });

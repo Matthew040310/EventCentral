@@ -12,7 +12,7 @@ const TitleContent: React.FC<TitleContentProps> = ({
     eventDetails,
     eventColor,
 }) => {
-    const { title, eventDate, embargoed } = eventDetails;
+    const { title, embargoed } = eventDetails;
 
     return (
         <>
@@ -24,14 +24,6 @@ const TitleContent: React.FC<TitleContentProps> = ({
                 {embargoed === "Yes" &&
                     <Chip label="Embargoed" size="small" color="error" />
                 }
-            </Stack>
-            <Stack direction="row" alignItems="center" spacing={1} mt={0.2}>
-                <Typography variant="subtitle1" component="span" fontWeight="bold">
-                    Event Date:
-                </Typography>
-                <Typography variant="subtitle1" component="span">
-                    {dateFormatter(eventDate as Date)}
-                </Typography>
             </Stack>
         </>
     )

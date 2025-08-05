@@ -16,13 +16,13 @@ export async function POST(request: Request) {
     const datumDate = dayjs(body.datumDate);
     const startOfMonth = datumDate.startOf('month').toDate();
     const endOfMonth = datumDate.endOf('month').toDate();
-    const dateRange = { startDate: { gte: startOfMonth, lte: endOfMonth } }
+    const dateRange = { eventDate: { gte: startOfMonth, lte: endOfMonth } }
 
     const dailyStackbarData = await prisma.submittedEvent.groupBy({
-      by: ["startDate", "type"],
+      by: ["eventDate", "type"],
       _count: true,
       where: dateRange,
-      orderBy: [{ startDate: 'asc' }],
+      orderBy: [{ eventDate: 'asc' }],
     })
 
     return Response.json(
@@ -50,17 +50,17 @@ Example of returned data
   : [
       {
           "_count": 1,
-          "startDate": "2025-06-26T16:00:00.000Z",
+          "eventDate": "2025-06-26T16:00:00.000Z",
           "type": "New"
       },
       {
           "_count": 2,
-          "startDate": "2025-06-26T16:00:00.000Z",
+          "eventDate": "2025-06-26T16:00:00.000Z",
           "type": "Existing"
       },
       {
           "_count": 1,
-          "startDate": "2025-06-28T16:00:00.000Z",
+          "eventDate": "2025-06-28T16:00:00.000Z",
           "type": "Existing"
       },
       ...Other entries

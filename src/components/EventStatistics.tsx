@@ -23,19 +23,23 @@ const EventStatistics: React.FC<EventStatisticsProps> = ({
             p: 2, flexDirection: 'row',
             display: 'flex', justifyContent: 'space-evenly', alignItems: 'stretch',
         }}>
-            <EventStatisticsCard count={eventStats.highImpact} color={Event_Legend["High Impact"]}>
+            <EventStatisticsCard count={eventStats.HighImpact} color={Event_Legend["High Impact"]}>
                 High Impact Events
             </EventStatisticsCard>
 
-            <EventStatisticsCard count={eventStats.newChanges} color={Event_Legend["New/Changes"]}>
+            <EventStatisticsCard count={eventStats.Change_New} color={Event_Legend["New/Changes"]}>
                 New / Changes Events
             </EventStatisticsCard>
 
-            <EventStatisticsCard count={eventStats.existing} color={Event_Legend["Existing"]}>
-                Existing Events
+            <EventStatisticsCard count={eventStats.Existing_MoreThan100k} color={Event_Legend["Existing >=100k"]}>
+                Existing Events {">="} 100k Cohort Size
             </EventStatisticsCard>
 
-            <EventStatisticsCard count={eventStats.total}>
+            <EventStatisticsCard count={eventStats.Existing_LessThan100k} color={Event_Legend["Existing <100k"]}>
+                Existing Events {"<"} 100k Cohort Size
+            </EventStatisticsCard>
+
+            <EventStatisticsCard count={eventStats.total} color='black'>
                 Total Events
             </EventStatisticsCard>
 

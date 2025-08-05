@@ -13,17 +13,19 @@ interface CategoryData {
 interface CategorizedResult {
     HighImpact: CategoryData;
     Change_New: CategoryData;
-    Existing: CategoryData;
+    Existing_MoreThan100k: CategoryData;
+    Existing_LessThan100k: CategoryData;
 }
 
 export default function categorizeMonthlyEvents(submittedEventReports: FullEventReport[]): CategorizedResult {
     // Prepare empty arrays for 12 months
     const highImpactCounts = Array(12).fill(0);
     const changeNewCounts = Array(12).fill(0);
-    const existingCounts = Array(12).fill(0);
+    const existingMoreThan100k = Array(12).fill(0);
+    const existingLessThan100k = Array(12).fill(0);
 
     submittedEventReports.forEach((event) => {
-        const month = dayjs(event.startDate).month();
+        const month = dayjs(event.eventDate).month();
         const category = determineCategory(event).label;
 
         if (category === "High Impact") {
@@ -32,8 +34,11 @@ export default function categorizeMonthlyEvents(submittedEventReports: FullEvent
         else if (category === "New/Changes") {
             changeNewCounts[month]++;
         }
-        else if (category === "Existing") {
-            existingCounts[month]++;
+        else if (category === "Existing >=100k") {
+            existingMoreThan100k[month]++;
+        }
+        else if (category === "Existing <100k") {
+            existingLessThan100k[month]++;
         }
     })
 
@@ -50,11 +55,17 @@ export default function categorizeMonthlyEvents(submittedEventReports: FullEvent
             label: "Change / New",
             color: Event_Legend["New/Changes"]
         },
-        Existing: {
-            data: existingCounts,
+        Existing_MoreThan100k: {
+            data: existingMoreThan100k,
             stack: "total",
             label: "Existing",
-            color: Event_Legend["Existing"]
+            color: Event_Legend["Existing >=100k"]
+        },
+        Existing_LessThan100k: {
+            data: existingMoreThan100k,
+            stack: "total",
+            label: "Existing",
+            color: Event_Legend["Existing <100k"]
         }
     }
 };

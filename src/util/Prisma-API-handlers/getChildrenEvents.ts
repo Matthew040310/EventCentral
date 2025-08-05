@@ -3,14 +3,14 @@ import getFullEventReports from "@/util/Prisma-API-handlers/getFullEventReports"
 
 export default async function getChildrenEvents(
     parentid: string,
-    startDate: Date,
+    eventDate: Date,
 ): Promise<number> {
 
     const params: FullEventReportParams = {
         state: "Submitted",
         filters: {
             parentid: parentid,
-            startDate: { gt: startDate }
+            eventDate: { gt: eventDate }
         }
     }
 

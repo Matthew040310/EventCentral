@@ -21,7 +21,7 @@ function eventDetailsValid(
     let requiredFieldsValid = Boolean(
         eventDetails.type &&
         eventDetails.embargoed &&
-        (eventDetails.startDate && eventDetails.startDate >= today) &&
+        eventDetails.startDate &&
         eventDetails.frequency &&
         eventDetails.title &&
         eventDetails.scheme &&
@@ -32,8 +32,8 @@ function eventDetailsValid(
         eventDetails.group &&
         eventDetails.department &&
         eventDetails.OIC &&
-        eventDetails.OICEmail &&
-        eventDetails.reportStatus
+        eventDetails.OICEmail
+        // && eventDetails.reportStatus
     )
 
     function nonAdHocFieldsValid(): boolean {
@@ -44,7 +44,7 @@ function eventDetailsValid(
                 eventDetails.customFrequency &&
                 eventDetails.selectedDay)
         }
-        else if (eventDetails.frequency !== "Ad-hoc") {
+        else if (eventDetails.frequency !== "One-off") {
             return Boolean(
                 (eventDetails.endDate && eventDetails.endDate > new Date()) &&
                 eventDetails.frequencyInterval)
