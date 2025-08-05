@@ -402,7 +402,7 @@ const ROW16_DETAILS = {
     "embargoed": "No",
     "startDate": new Date("2025-01-01T16:00:00.000Z"),
     "endDate": new Date("2025-12-31T16:00:00.000Z"),
-    "frequency": "Daily",
+    "frequency": "Monthly",
     "frequencyInterval": 1,
     "customFrequency": null,
     "selectedDay": null,
