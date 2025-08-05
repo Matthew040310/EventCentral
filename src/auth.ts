@@ -1,16 +1,27 @@
 // auth.ts
 import NextAuth, { User } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
+import type { Provider } from "next-auth/providers"
 import Google from "next-auth/providers/google";
 // import AzureADProvider from "next-auth/providers/azure-ad";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/app/api/prisma/dbClient";
 
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+const providers: Provider[] = [
+    Google({
+        clientId: process.env.AUTH_GOOGLE_ID!,
+        clientSecret: process.env.AUTH_GOOGLE_SECRET!,
+    }),
+    // MicrosoftEntraID({
+    //   clientId: process.env.AUTH_MICROSOFT_ENTRA_ID_ID!,
+    //   clientSecret: process.env.AUTH_MICROSOFT_ENTRA_ID_SECRET!,
+    //   issuer: process.env.AUTH_MICROSOFT_ENTRA_ID_ISSUER!,
+    // })
+];
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-    adapter: PrismaAdapter(prisma),
-    providers: [Google],
+    basePath: `${APP_BASE_PATH}/api/auth`,
+    providers,
     callbacks: {
         async signIn({ user }: { user: User | null }) {
             // Check if email is not a string, convert it to a string
@@ -40,20 +51,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             // User's email is authorized, allow access
             return true;
         },
-        // async session({ session, token }) {
-        //     // Ensure session is properly populated with user ID
-        //     if (session.user) {
-        //         (session.user as { id?: string }).id = token.sub as string;
-        //     }
-        //     return session;
-        // },
-        // async jwt({ token, user }) {
-        //     // Ensure user ID is included in token
-        //     if (user) {
-        //         token.sub = user.id;
-        //     }
-        //     return token;
-        // },
     },
     // debug: process.env.NODE_ENV === 'development',
 })
