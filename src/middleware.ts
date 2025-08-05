@@ -1,24 +1,25 @@
-export { auth as middleware } from "@/auth"
+// middleware.ts
+import { auth } from "@/auth";
+import { NextResponse } from "next/server";
 
-// import { NextResponse } from "next/server";
-// import { auth } from "@/auth";
+export default auth((req) => {
+  const { pathname } = req.nextUrl;
 
-// const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  // Allow access to the sign in page without redirect
+  if (pathname === "/SignIn") {
+    return NextResponse.next();
+  }
 
-// export const config = {
-//     matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
-// };
+  // Redirect unauthenticated users to /SignIn
+  if (!req.auth) {
+    return NextResponse.redirect(new URL("/eventcentral/SignIn", req.url));
+  }
 
-// export default auth((req) => {
-//     const reqUrl = new URL(req.url);
-//     if (!req.auth && reqUrl?.pathname !== "/") {
-//         return NextResponse.redirect(
-//             new URL(
-//                 `${BASE_PATH}/profile?callbackUrl=${encodeURIComponent(
-//                     reqUrl?.pathname
-//                 )}`,
-//                 req.url
-//             )
-//         );
-//     }
-// });
+  // Allow authenticated users
+  return NextResponse.next();
+});
+
+export const config = {
+  matcher: ["/((?!api|_next/).*)"],
+  debug: true,
+};
