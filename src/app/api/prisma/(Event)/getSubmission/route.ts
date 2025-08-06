@@ -1,24 +1,24 @@
-// getDraft.ts
-import prisma from '../dbClient';
+// getSubmission.ts
+import prisma from '../../dbClient';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
 // Handles GET requests (no filters)
 export async function GET(request: Request) {
   try {
-    const draftEvents = await prisma.draftEvent.findMany({
+    const submittedEvents = await prisma.submittedEvent.findMany({
       where: {},
       orderBy: [],
-      include: { draftImpactAssessment: true }
+      include: { submittedImpactAssessment: true }
     });
 
     return Response.json(
-      { response: draftEvents },
+      { response: submittedEvents },
       { status: 200 }
     );
   }
   catch (error: any) {
     return Response.json(
-      { error: primsaErrorHandler("Failed to retrieve draft", error) },
+      { error: primsaErrorHandler("Failed to retrieve submission", error) },
       { status: 500 }
     );
   }
@@ -31,20 +31,20 @@ export async function POST(request: Request) {
     const filters = body.filters || {};
     const sortby = body.sortby || [];
 
-    const draftEvents = await prisma.draftEvent.findMany({
+    const submittedEvents = await prisma.submittedEvent.findMany({
       where: filters,
       orderBy: sortby,
-      include: { draftImpactAssessment: true }
+      include: { submittedImpactAssessment: true }
     });
 
     return Response.json(
-      { response: draftEvents },
+      { response: submittedEvents },
       { status: 200 }
     );
   }
   catch (error: any) {
     return Response.json(
-      { error: primsaErrorHandler("Failed to retrieve draft", error) },
+      { error: primsaErrorHandler("Failed to retrieve submission", error) },
       { status: 500 }
     );
   }

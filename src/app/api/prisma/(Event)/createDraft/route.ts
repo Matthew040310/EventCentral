@@ -1,4 +1,4 @@
-import prisma from '../dbClient';
+import prisma from '../../dbClient';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
 // createDraft.ts

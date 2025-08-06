@@ -1,4 +1,4 @@
-import prisma from '../dbClient';
+import prisma from '../../dbClient';
 import type { Prisma } from '@prisma/client';
 import purgeImpactAssessments from '../deleteSubmission/purgeImpactAssessments';
 

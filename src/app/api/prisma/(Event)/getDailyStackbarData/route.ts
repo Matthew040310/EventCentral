@@ -3,7 +3,7 @@
 // This API will handle the logic for fetching and grouping submitted events by date and type
 
 // getDailyStackbarData.ts
-import prisma from '../dbClient';
+import prisma from '../../dbClient';
 import dayjs from 'dayjs';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
