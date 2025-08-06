@@ -1,5 +1,5 @@
 // getSubmission.ts
-import prisma from '../../dbClient';
+import prisma from '@/app/api/prisma/dbClient';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
 // Handles GET requests (no filters)

@@ -1,5 +1,5 @@
 // createSubmission.ts
-import prisma from '../../dbClient';
+import prisma from '@/app/api/prisma/dbClient';
 import TRecurringDateParams from '@/types/TRecurringDateParams';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 import { recurringDates } from '@/util/replicateEventDates';

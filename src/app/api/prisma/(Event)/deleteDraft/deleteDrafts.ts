@@ -1,6 +1,6 @@
 // Seperate database delete and API call logic
 // So that the database delete function can be reused without API call (e.g. By createSubmission)
-import prisma from '../../dbClient';
+import prisma from '@/app/api/prisma/dbClient';
 import type { Prisma } from '@prisma/client';
 
 export default async function deleteDrafts(

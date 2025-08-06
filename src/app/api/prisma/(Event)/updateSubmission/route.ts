@@ -1,5 +1,5 @@
 // updateSubmission.ts
-import prisma from '../../dbClient';
+import prisma from '@/app/api/prisma/dbClient';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 import TRecurringDateParams from '@/types/TRecurringDateParams';
 import { UPDATE_OPTIONS } from '@/constants/EventCentralConstants';
