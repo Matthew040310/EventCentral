@@ -73,11 +73,8 @@ CREATE TABLE "SubmittedEvent" (
     "department" TEXT NOT NULL,
     "OIC" TEXT NOT NULL,
     "OICEmail" TEXT NOT NULL,
-<<<<<<<< HEAD:prisma/migrations/20250805100449_init/migration.sql
-========
     "lastUpdatedBy" TEXT,
     "lastUpdated" TIMESTAMP(3) NOT NULL,
->>>>>>>> 47d473952bda67e81132478c6534b2366c517c8b:prisma/migrations/20250806101337_init/migration.sql
 
     CONSTRAINT "SubmittedEvent_pkey" PRIMARY KEY ("id")
 );
@@ -100,11 +97,8 @@ CREATE TABLE "SubmittedImpactAssessment" (
     "initiativesDetails" TEXT NOT NULL,
     "eventWriteUp" TEXT NOT NULL,
     "clearingHOD" TEXT,
-<<<<<<<< HEAD:prisma/migrations/20250805100449_init/migration.sql
-========
     "lastUpdatedBy" TEXT,
     "lastUpdated" TIMESTAMP(3) NOT NULL,
->>>>>>>> 47d473952bda67e81132478c6534b2366c517c8b:prisma/migrations/20250806101337_init/migration.sql
 
     CONSTRAINT "SubmittedImpactAssessment_pkey" PRIMARY KEY ("id")
 );
