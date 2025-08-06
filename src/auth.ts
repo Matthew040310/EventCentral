@@ -40,7 +40,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 await prisma.authorizedUsers.create({
                     data: {
                         email: userEmail,
-                        // Set any other properties you want to store for this user
+                        group: "TEMP",
+                        department: "TEMP",
                     },
                 });
             }
