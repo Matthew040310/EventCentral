@@ -9,14 +9,14 @@ import theme from "@/styles/theme";
 export default function Providers({ children }: { children: React.ReactNode }) {
     return (
         <AppRouterCacheProvider>
-            <SessionProvider>
-                <ThemeProvider theme={theme}>
-                    <SnackbarProvider maxSnack={3}>
-                        <CssBaseline />
-                        {children}
-                    </SnackbarProvider>
-                </ThemeProvider>
-            </SessionProvider>
+            {/* <SessionProvider> */}
+            <ThemeProvider theme={theme}>
+                <SnackbarProvider maxSnack={3}>
+                    <CssBaseline />
+                    {children}
+                </SnackbarProvider>
+            </ThemeProvider>
+            {/* </SessionProvider> */}
         </AppRouterCacheProvider>
     );
 }

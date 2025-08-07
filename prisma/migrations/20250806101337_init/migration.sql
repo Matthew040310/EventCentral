@@ -7,6 +7,7 @@ CREATE TABLE "DraftEvent" (
     "embargoed" TEXT,
     "estimatedStartDate" TIMESTAMP(3),
     "startDate" TIMESTAMP(3),
+    "eventDate" TIMESTAMP(3),
     "endDate" TIMESTAMP(3),
     "frequency" TEXT,
     "frequencyInterval" INTEGER,
@@ -22,7 +23,6 @@ CREATE TABLE "DraftEvent" (
     "department" TEXT,
     "OIC" TEXT,
     "OICEmail" TEXT,
-    "reportStatus" TEXT,
 
     CONSTRAINT "DraftEvent_pkey" PRIMARY KEY ("id")
 );
@@ -44,6 +44,7 @@ CREATE TABLE "DraftImpactAssessment" (
     "dataInsightDetails" TEXT,
     "initiativesDetails" TEXT,
     "eventWriteUp" TEXT,
+    "clearingHOD" TEXT,
 
     CONSTRAINT "DraftImpactAssessment_pkey" PRIMARY KEY ("id")
 );
@@ -56,6 +57,7 @@ CREATE TABLE "SubmittedEvent" (
     "type" TEXT NOT NULL,
     "embargoed" TEXT NOT NULL,
     "startDate" TIMESTAMP(3) NOT NULL,
+    "eventDate" TIMESTAMP(3) NOT NULL,
     "endDate" TIMESTAMP(3),
     "frequency" TEXT NOT NULL,
     "frequencyInterval" INTEGER,
@@ -71,7 +73,8 @@ CREATE TABLE "SubmittedEvent" (
     "department" TEXT NOT NULL,
     "OIC" TEXT NOT NULL,
     "OICEmail" TEXT NOT NULL,
-    "reportStatus" TEXT NOT NULL,
+    "lastUpdatedBy" TEXT,
+    "lastUpdated" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "SubmittedEvent_pkey" PRIMARY KEY ("id")
 );
@@ -93,6 +96,9 @@ CREATE TABLE "SubmittedImpactAssessment" (
     "dataInsightDetails" TEXT NOT NULL,
     "initiativesDetails" TEXT NOT NULL,
     "eventWriteUp" TEXT NOT NULL,
+    "clearingHOD" TEXT,
+    "lastUpdatedBy" TEXT,
+    "lastUpdated" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "SubmittedImpactAssessment_pkey" PRIMARY KEY ("id")
 );
@@ -147,10 +153,15 @@ CREATE TABLE "VerificationToken" (
 CREATE TABLE "AuthorizedUsers" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "role" TEXT DEFAULT 'guest',
+    "role" TEXT NOT NULL DEFAULT 'guest',
+    "group" TEXT NOT NULL,
+    "department" TEXT NOT NULL,
 
     CONSTRAINT "AuthorizedUsers_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE INDEX "SubmittedEvent_eventDate_idx" ON "SubmittedEvent"("eventDate");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Account_provider_providerAccountId_key" ON "Account"("provider", "providerAccountId");

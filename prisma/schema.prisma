@@ -81,8 +81,8 @@ model SubmittedEvent {
   OIC                       String
   OICEmail                  String
   // reportStatus              String
-  // lastUpdatedBy          String?
-  // lastUpdated                 DateTime?                  @updatedAt()
+  lastUpdatedBy             String?
+  lastUpdated               DateTime                   @updatedAt()
 
   @@index(fields: [eventDate])
 }
@@ -105,8 +105,8 @@ model SubmittedImpactAssessment {
   initiativesDetails          String
   eventWriteUp                String
   clearingHOD                 String?
-  // lastUpdatedBy          String?
-  // lastUpdated                   DateTime?        @updatedAt()
+  lastUpdatedBy               String?
+  lastUpdated                 DateTime         @updatedAt()
 }
 
 model Account {
@@ -143,8 +143,6 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  // group         String?
-  // department    String?
 }
 
 model VerificationToken {
@@ -157,7 +155,9 @@ model VerificationToken {
 
 // To Remove Later
 model AuthorizedUsers {
-  id    String  @id @default(cuid())
-  email String  @unique
-  role  String? @default("guest")
+  id         String @id @default(cuid())
+  email      String @unique
+  role       String @default("guest")
+  group      String
+  department String
 }
