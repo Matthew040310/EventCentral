@@ -2,6 +2,8 @@
 import { auth } from "@/auth";
 import { NextResponse } from "next/server";
 
+const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default auth((req) => {
   const { pathname } = req.nextUrl;
 
@@ -12,7 +14,7 @@ export default auth((req) => {
 
   // Redirect unauthenticated users to /SignIn
   if (!req.auth) {
-    return NextResponse.redirect(new URL("/eventcentral/SignIn", req.url));
+    return NextResponse.redirect(new URL(`${APP_BASE_PATH}/SignIn`, req.url));
   }
 
   // Allow authenticated users

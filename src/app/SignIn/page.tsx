@@ -3,9 +3,11 @@ import { signIn } from "next-auth/react";
 import { useEffect } from "react";
 import { Typography } from "@mui/material";
 
+const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export default function SignIn() {
     useEffect(() => {
-        signIn("google", { callbackUrl: "/eventcentral" });
+        signIn("google", { callbackUrl: `${APP_BASE_PATH}` });
     }, []);
 
     return (
