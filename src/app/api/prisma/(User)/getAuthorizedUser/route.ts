@@ -3,9 +3,9 @@ import prisma from '@/app/api/prisma/dbClient';
 import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
 export async function POST(request: Request) {
-    const body = await request.json();
 
     try {
+        const body = await request.json();
         const existingAuthorizedUser = await prisma.authorizedUsers.findUnique({
             where: { email: body.email },
         });
