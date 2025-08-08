@@ -8,9 +8,9 @@ import ImpactAssessment from '@/types/IImpactAssessment';
 import { Department_Group_Cluster_Map } from '@/constants/EventCentralConstants';
 
 // Utility Functions
-import triggerSubmit from '@/util/Prisma-API-handlers/handleSubmit';
-import triggerDelete from '@/util/Prisma-API-handlers/handleDelete';
-import triggerSave from '@/util/Prisma-API-handlers/handleSave';
+import triggerSubmit from '@/util/Prisma-API-handlers/Event/handleSubmit';
+import triggerDelete from '@/util/Prisma-API-handlers/Event/handleDelete';
+import triggerSave from '@/util/Prisma-API-handlers/Event/handleSave';
 import validImpactAssessmentId from './validImpactAssessmentId';
 
 type SectionMap = {

@@ -1,5 +1,5 @@
 import FullEventReportParams from "@/types/IFullEventReportParams";
-import getFullEventReports from "@/util/Prisma-API-handlers/getFullEventReports";
+import getFullEventReports from "@/util/Prisma-API-handlers/Event/getFullEventReports";
 
 export default async function getChildrenEvents(
     parentid: string,

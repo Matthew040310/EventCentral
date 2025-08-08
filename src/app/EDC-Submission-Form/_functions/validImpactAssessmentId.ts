@@ -1,6 +1,6 @@
 import EventDetails from '@/types/IEventDetails';
 import ImpactAssessment from '@/types/IImpactAssessment';
-import getEventReportByID from '@/util/Prisma-API-handlers/getEventReportByID';
+import getEventReportByID from '@/util/Prisma-API-handlers/Event/getEventReportByID';
 
 export default async function validImpactAssessmentId(
     eventDetails: EventDetails,

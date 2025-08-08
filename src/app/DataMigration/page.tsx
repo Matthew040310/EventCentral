@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { Button, Container, Stack } from '@mui/material';
 
 // Functions
-import handleSubmit from '@/util/Prisma-API-handlers/handleSubmit';
+import handleSubmit from '@/util/Prisma-API-handlers/Event/handleSubmit';
 import JAN_EVENTS from '@/constants/DataMigration/EDC_01Jan_2025';
 import FEB_EVENTS from '@/constants/DataMigration/EDC_02Feb_2025';
 import MAR_EVENTS from '@/constants/DataMigration/EDC_03Mar_2025';

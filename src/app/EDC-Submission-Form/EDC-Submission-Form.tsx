@@ -21,7 +21,7 @@ import DefaultEventDetails from '@/constants/DefaultEventDetails';
 import DefaultImpactAssessment from '@/constants/DefaultImpactAssessment';
 
 // Functions
-import getEventReportByID from '@/util/Prisma-API-handlers/getEventReportByID';
+import getEventReportByID from '@/util/Prisma-API-handlers/Event/getEventReportByID';
 import clickToCopy from '@/util/clickToCopy';
 import fieldsValid from './_functions/fieldsValid';
 

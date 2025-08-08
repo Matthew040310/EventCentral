@@ -2,7 +2,7 @@ import EventDetails from "@/types/IEventDetails";
 import ImpactAssessment from "@/types/IImpactAssessment";
 import FullEventReportParams from "@/types/IFullEventReportParams";
 import EventState from "@/types/TEventState";
-import getFullEventReports from "@/util/Prisma-API-handlers/getFullEventReports";
+import getFullEventReports from "@/util/Prisma-API-handlers/Event/getFullEventReports";
 
 interface ExtendedEventDetails extends EventDetails {
     parentid?: string;

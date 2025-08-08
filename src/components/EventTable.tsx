@@ -12,7 +12,7 @@ import UserRole from '@/types/TUserRole';
 import { DELETE_OPTIONS } from '@/constants/EventCentralConstants';
 import EventTableHeader from '@/constants/EventTableHeader';
 
-import triggerDelete from '@/util/Prisma-API-handlers/handleDelete';
+import triggerDelete from '@/util/Prisma-API-handlers/Event/handleDelete';
 
 const initialState: GridInitialState = {
   pagination: {

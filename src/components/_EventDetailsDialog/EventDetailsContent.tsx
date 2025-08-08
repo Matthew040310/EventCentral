@@ -5,7 +5,7 @@ import { Person, Email } from '@mui/icons-material';
 import FullEventReport from '@/types/IFullEventReport';
 import TRecurringDateParams from '@/types/TRecurringDateParams';
 
-import getChildrenEvents from '@/util/Prisma-API-handlers/getChildrenEvents';
+import getChildrenEvents from '@/util/Prisma-API-handlers/Event/getChildrenEvents';
 import dateFormatter from '@/util/dateFormatter';
 import { lastRecurringDate } from '@/util/replicateEventDates';
 

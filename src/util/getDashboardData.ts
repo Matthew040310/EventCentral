@@ -1,4 +1,4 @@
-import getFullEventReports from '@/util/Prisma-API-handlers/getFullEventReports';
+import getFullEventReports from '@/util/Prisma-API-handlers/Event/getFullEventReports';
 import { FullEventReportWithFilters } from '@/types/IFullEventReportParams';
 
 export default async function getDashboardData(prismaFilters: Partial<FullEventReportWithFilters>) {
