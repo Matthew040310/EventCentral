@@ -85,7 +85,7 @@ export const ORGANISATION: Organisation = {
   "SVC":
   // SVC GROUPS AND DEPARTMENTS
   {
-    "RIG": ["RSG", "RIU", "RWD", "NAC"],
+    "RIG": ["RSD", "RIU", "RWD", "NAC"],
     "HFG": ["HPD", "HID", "HCP"],
     "HIG": ["HSD", "IVD", "HED"],
     "ASG": ["AGP", "AMD"],
