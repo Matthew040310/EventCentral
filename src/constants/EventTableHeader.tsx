@@ -19,7 +19,7 @@ const Yes_No_Params: Partial<GridColDef> = {
 
 const EventTableHeader = (
     state: EventState,
-    role: UserRole = "Admin",
+    role: UserRole,
     openDeleteDialog: (eventID: string) => void,
     onHyperlinkClick: (eventDetails: Partial<FullEventReport>) => void
 ) => {

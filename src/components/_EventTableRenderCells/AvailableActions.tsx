@@ -9,7 +9,7 @@ import UserRole from "@/types/TUserRole";
 export default function AvailableActions(
     params: GridRowParams,
     state: EventState,
-    role: UserRole = "User",
+    role: UserRole,
     openDeleteDialog: (eventID: string) => void, // WIP: To delete specific event
 ): JSX.Element[] {
 
