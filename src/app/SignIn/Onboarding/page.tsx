@@ -5,23 +5,18 @@ import { useState } from "react";
 import { Autocomplete, Box, Button, Container, Grid, TextField, Typography } from "@mui/material";
 
 import { ALL_DEPARTMENTS, ALL_GROUPS, ALL_CLUSTERS, Department_Group_Cluster_Map } from "@/constants/EventCentralConstants";
+import UserDetails from "@/types/IUserDetails";
 
-interface UserDetails {
-    email: string;
-    name: string;
-    department: string;
-    group: string;
-    cluster: string;
-}
 
 const Onboarding = () => {
     const session = useSession();
     const [userDetails, setUserDetails] = useState<UserDetails>({
-        email: session.data?.user?.email || "Temporary User",
-        name: session.data?.user?.name || "Temporary Name",
+        email: "Temporary User",
+        name: "Temporary Name",
         department: "",
         group: "",
         cluster: "",
+        role: "Guest"
     });
 
     const handleFieldChange = (fieldName: keyof UserDetails) => (newValue: string | null) => {
