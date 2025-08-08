@@ -6,7 +6,6 @@ import dayjs from 'dayjs';
 import { View, Views } from 'react-big-calendar';
 
 import FullEventReport from '@/types/IFullEventReport';
-import UserRole from '@/types/TUserRole';
 
 import CalendarToolBar from '@/app/(HomePage)/_components/ToolBar';
 import EventStatistics from '../../components/EventStatistics';
@@ -19,8 +18,6 @@ import filteredEvents from '@/util/filteredEvents';
 import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 
 const CMMReport: React.FC = () => {
-  const [role, setRole] = useState<UserRole>('Admin');
-
   const [datumDate, setDatumDate] = useState<Date>(dayjs().toDate());
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>(["High Impact", "New/Changes"]);
