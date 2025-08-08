@@ -7,7 +7,6 @@ import { Autocomplete, Box, Button, Container, Grid, TextField, Typography } fro
 import { ALL_DEPARTMENTS, ALL_GROUPS, ALL_CLUSTERS, Department_Group_Cluster_Map } from "@/constants/EventCentralConstants";
 import UserDetails from "@/types/IUserDetails";
 
-
 const Onboarding = () => {
     const session = useSession();
     const [userDetails, setUserDetails] = useState<UserDetails>({
@@ -39,6 +38,12 @@ const Onboarding = () => {
         }
     };
 
+    const fieldsValid = (): Boolean => {
+        return Object.values(userDetails).every(
+            (v) => typeof v === 'string' && v.trim().length > 0
+        );
+    }
+
     return (
         <Container maxWidth="md" sx={{ mt: 5 }}>
             <Typography variant="h2" textAlign="center" gutterBottom>
@@ -60,7 +65,7 @@ const Onboarding = () => {
                 required
                 disabled
                 label="Email"
-                value={userDetails.email || "Temporary User"}
+                value={userDetails.email || ""}
             />
 
             <TextField sx={{ mb: 2 }}
@@ -69,7 +74,7 @@ const Onboarding = () => {
                 required
                 disabled
                 label="Name"
-                value={userDetails.name || "Temporary Name"}
+                value={userDetails.name || ""}
             />
 
             <Grid container sx={{ mb: 2 }} spacing={2}>
@@ -111,7 +116,7 @@ const Onboarding = () => {
             </Grid>
 
             <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-                <Button variant="contained" color="primary" size="large">
+                <Button variant="contained" color="primary" size="large" disabled={!fieldsValid()}>
                     Complete
                 </Button>
             </Box>
