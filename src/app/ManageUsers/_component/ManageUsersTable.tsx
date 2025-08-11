@@ -96,14 +96,14 @@ const ManageUsersTable: React.FC<ManageUsersTableProps> = ({
                     </Button>
 
                     {/* Delete Button */}
-                    <Button
+                    {/* <Button
                         variant='contained'
                         color='error'
                         disabled={selectedUsers.length === 0}
                         onClick={() => setDialogOpen(true)}
                         endIcon={<Delete />}>
                         Delete Users
-                    </Button>
+                    </Button> */}
                 </Box>
             </Box>
 
