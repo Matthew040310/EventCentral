@@ -8,36 +8,34 @@ import getAuthorizedUser from '@/util/Prisma-API-handlers/User/getAuthorizedUser
 const AccessRights = ({
     params,
 }: {
-    params: Promise<{ UserEmail: string }>
+    params: Promise<{ UserEmail?: string[] }>
 }) => {
     // Function that requires the user to have the "Admin" role
     // If the user does not have the required role, they will be redirected to the NotAuthorized page
     const { session } = useRequireRole("Admin");
 
-    const { UserEmail } = use(params)
-    const decodedEmail = decodeURIComponent(UserEmail[0]);
+    const { UserEmail } = use(params);
+    const decodedEmail = UserEmail && UserEmail.length > 0
+        ? decodeURIComponent(UserEmail[0])
+        : undefined;
     const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id'>>(DefaultUserDetails);
 
     useEffect(() => {
         const getUserDetails = async () => {
             try {
-                const user = await getAuthorizedUser(decodedEmail.toLowerCase());
+                const user = await getAuthorizedUser(decodedEmail!.toLowerCase());
                 if (user) {
-                    user.delete("id");
-                    setUserDetails(user);
-                }
-                else {
-                    setUserDetails({
-                        ...DefaultUserDetails,
-                        email: decodedEmail.toLowerCase(),
-                    })
+                    const { id, ...ExistingUserDetails } = user as UserDetails;
+                    setUserDetails(ExistingUserDetails);
                 }
             }
             catch (error) {
                 console.error("Error fetching user details:", error);
             }
         }
-        getUserDetails();
+        if (decodedEmail !== "New" && decodedEmail) {
+            getUserDetails();
+        }
     }, [decodedEmail]);
 
     return (
