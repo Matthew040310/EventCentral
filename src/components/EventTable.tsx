@@ -10,7 +10,7 @@ import FullEventReport from "@/types/IFullEventReport";
 import EventState from '@/types/TEventState';
 import UserRole from '@/types/TUserRole';
 import { DELETE_OPTIONS } from '@/constants/EventCentralConstants';
-import EventTableHeader from '@/constants/EventTableHeader';
+import EventTableHeader from '@/components/EventTableHeader';
 
 import triggerDelete from '@/util/Prisma-API-handlers/Event/handleDelete';
 
