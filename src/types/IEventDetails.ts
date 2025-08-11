@@ -1,3 +1,5 @@
+import { Departments, Groups, Clusters } from "./Organisation";
+
 export default interface EventDetails {
     id: string | null;
     type: string;
@@ -15,9 +17,9 @@ export default interface EventDetails {
     description: string;
     affectedCohortDescription: string;
     estimatedCohortSize: number | null;
-    cluster: string | null;
-    group: string | null;
-    department: string | null;
+    cluster: Clusters | null;
+    group: Groups | null;
+    department: Departments | null;
     OIC: string;
     OICEmail: string;
     // reportStatus: string | null;
