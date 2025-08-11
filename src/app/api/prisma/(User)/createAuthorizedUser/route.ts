@@ -6,7 +6,7 @@ import UserDetails from '@/types/IUserDetails';
 export async function POST(request: Request) {
 
     try {
-        const userDetails: UserDetails = await request.json();
+        const userDetails: Omit<UserDetails, 'id'> = await request.json();
         const newUser = await prisma.authorizedUsers.create({
             data: userDetails,
         });
