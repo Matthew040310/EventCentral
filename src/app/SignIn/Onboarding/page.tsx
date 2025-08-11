@@ -4,19 +4,13 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { Autocomplete, Box, Button, Container, Grid, TextField, Typography } from "@mui/material";
 
+import DefaultUserDetails from '@/constants/DefaultUserDetails'
 import { ALL_DEPARTMENTS, ALL_GROUPS, ALL_CLUSTERS, Department_Group_Cluster_Map } from "@/constants/EventCentralConstants";
 import UserDetails from "@/types/IUserDetails";
 
 const Onboarding = () => {
     const session = useSession();
-    const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id'>>({
-        email: "Temporary User",
-        name: "Temporary Name",
-        department: "",
-        group: "",
-        cluster: "",
-        role: "Guest"
-    });
+    const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id'>>(DefaultUserDetails);
 
     const handleFieldChange = (fieldName: keyof UserDetails) => (newValue: string | null) => {
         if (fieldName === "department") {
