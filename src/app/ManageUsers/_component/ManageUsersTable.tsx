@@ -90,7 +90,7 @@ const ManageUsersTable: React.FC<ManageUsersTableProps> = ({
                     <Button
                         variant='contained'
                         color='primary'
-                        onClick={() => router.push("#")}
+                        onClick={() => router.push("/ManageUsers/AccessRights")}
                         endIcon={<Add />}>
                         Add New User
                     </Button>
