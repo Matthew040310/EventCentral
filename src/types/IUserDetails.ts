@@ -1,6 +1,7 @@
 import UserRole from "./TUserRole";
 
 interface UserDetails {
+    id: string;
     email: string;
     name: string;
     department: string;

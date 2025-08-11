@@ -9,7 +9,7 @@ import UserDetails from "@/types/IUserDetails";
 
 const Onboarding = () => {
     const session = useSession();
-    const [userDetails, setUserDetails] = useState<UserDetails>({
+    const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id'>>({
         email: "Temporary User",
         name: "Temporary Name",
         department: "",
