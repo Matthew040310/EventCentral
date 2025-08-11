@@ -1,6 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
 import useRequireRole from "@/hooks/useRequiredRole";
 import getAllAuthorizedUsers from "@/util/Prisma-API-handlers/User/getAllAuthorizedUsers";
@@ -10,7 +8,7 @@ import ManageUsersTable from "./_component/ManageUsersTable";
 const ManageUsers: React.FC = () => {
     // Function that requires the user to have the "Admin" role
     // If the user does not have the required role, they will be redirected to the NotAuthorized page
-    const { session, status } = useRequireRole("Admin");
+    const { session } = useRequireRole("Admin");
 
     const [authorisedUsers, setAuthorisedUsers] = useState<UserDetails[]>([]);
 
@@ -36,4 +34,4 @@ const ManageUsers: React.FC = () => {
     )
 }
 
-export default ManageUsers
+export default ManageUsers;
