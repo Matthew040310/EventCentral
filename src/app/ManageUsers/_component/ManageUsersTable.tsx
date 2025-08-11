@@ -3,7 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { DataGrid, GridCallbackDetails, GridFilterModel, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
 import { Alert, AlertColor, Box, Button, Fade, Paper, Typography } from '@mui/material';
-import { Delete } from '@mui/icons-material';
+import { Add, Delete } from '@mui/icons-material';
 
 import PopUpDialog from '@/components/popUpDialog';
 
@@ -85,15 +85,26 @@ const ManageUsersTable: React.FC<ManageUsersTableProps> = ({
                     </Alert>
                 </Fade>
 
-                {/* Delete Button */}
-                <Button
-                    variant='contained'
-                    color='error'
-                    disabled={selectedUsers.length === 0}
-                    onClick={() => setDialogOpen(true)}
-                    endIcon={<Delete />}>
-                    Delete
-                </Button>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                    {/* Add Button */}
+                    <Button
+                        variant='contained'
+                        color='primary'
+                        onClick={() => router.push("#")}
+                        endIcon={<Add />}>
+                        Add New User
+                    </Button>
+
+                    {/* Delete Button */}
+                    <Button
+                        variant='contained'
+                        color='error'
+                        disabled={selectedUsers.length === 0}
+                        onClick={() => setDialogOpen(true)}
+                        endIcon={<Delete />}>
+                        Delete Users
+                    </Button>
+                </Box>
             </Box>
 
             {/* Dialog for Delete Button Click */}
