@@ -1,5 +1,5 @@
 import { GridColDef, GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
-
+import { useRouter } from "next/navigation";
 import HyperlinkTitle from '@/components/_EventTableRenderCells/HyperlinkTitle';
 import AvailableActions from '@/components/_EventTableRenderCells/AvailableActions';
 
@@ -18,6 +18,7 @@ const Yes_No_Params: Partial<GridColDef> = {
 }
 
 const EventTableHeader = (
+    router: ReturnType<typeof useRouter>,
     state: EventState,
     role: UserRole,
     openDeleteDialog: (eventID: string) => void,
@@ -63,7 +64,7 @@ const EventTableHeader = (
         },
         {
             field: 'actions', type: 'actions', flex: 1,
-            getActions: (params: GridRowParams) => (AvailableActions(params, state, role, openDeleteDialog))
+            getActions: (params: GridRowParams) => (AvailableActions(router, params, state, role, openDeleteDialog))
         },
     ];
 

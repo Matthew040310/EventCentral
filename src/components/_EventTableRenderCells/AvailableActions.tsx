@@ -7,6 +7,7 @@ import UserRole from "@/types/TUserRole";
 
 // Declared as function as it elements are required to be returned as an array
 export default function AvailableActions(
+    router: ReturnType<typeof useRouter>,
     params: GridRowParams,
     state: EventState,
     role: UserRole,
@@ -14,7 +15,6 @@ export default function AvailableActions(
 ): JSX.Element[] {
 
     const canDelete = role === "Admin"
-    const router = useRouter();
 
     const AllowedActions = [
         <GridActionsCellItem label="Duplicate" title="Duplicate" icon={<ContentCopy />}
