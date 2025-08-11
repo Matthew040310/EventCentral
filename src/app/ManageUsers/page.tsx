@@ -1,51 +1,33 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useRequireRole from "@/hooks/useRequiredRole";
+import getAllAuthorizedUsers from "@/util/Prisma-API-handlers/User/getAllAuthorizedUsers";
 import UserDetails from "@/types/IUserDetails";
 import ManageUsersTable from "./_component/ManageUsersTable";
 
 const ManageUsers: React.FC = () => {
-    const { data: session, status } = useSession();
-    const router = useRouter();
+    // Function that requires the user to have the "Admin" role
+    // If the user does not have the required role, they will be redirected to the NotAuthorized page
+    const { session, status } = useRequireRole("Admin");
+
+    const [authorisedUsers, setAuthorisedUsers] = useState<UserDetails[]>([]);
+
+    const fetchAuthorizedUsers = useCallback(async () => {
+        const allAuthorizedUsers = await getAllAuthorizedUsers();
+        setAuthorisedUsers(allAuthorizedUsers as UserDetails[] || []);
+    }, []);
 
     useEffect(() => {
-        if (status === "authenticated") {
-            if (session?.user?.role !== "Admin") {
-                router.push("/NotAuthorized");
-            }
-        }
-        if (status === "unauthenticated") {
-            router.push("/SignIn");
-        }
-    }, [status, session, router]);
-
-    const Users: UserDetails[] = [
-        {
-            id: "1",
-            name: "John Doe",
-            email: "john.doe@example.com",
-            department: "Engineering",
-            group: "Development",
-            cluster: "Cluster A",
-            role: "Admin"
-        },
-        {
-            id: "2",
-            name: "Adam Doe",
-            email: "adam.doe@example.com",
-            department: "Engineering",
-            group: "Development",
-            cluster: "Cluster A",
-            role: "Admin"
-        }
-    ]
+        fetchAuthorizedUsers();
+    }, [fetchAuthorizedUsers]);
 
     return (
         session?.user?.role === "Admin" &&
         <>
             <ManageUsersTable
-                users={Users}
+                users={authorisedUsers}
                 onDeleteSuccess={() => {
                     console.log("Delete successful");
                 }}
