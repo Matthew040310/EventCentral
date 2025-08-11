@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import getDashboardData from "@/util/getDashboardData";
+import getDashboardData from "@/util/Prisma-API-handlers/Event/getDashboardData";
 import FullEventReport from "@/types/IFullEventReport";
 import { FullEventReportWithFilters } from '@/types/IFullEventReportParams';
 
