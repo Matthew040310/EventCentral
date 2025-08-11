@@ -1,3 +1,5 @@
-type UserRole = "Admin" | "Director" | "EDC-Rep" | "Guest";
+import { USER_ROLES } from "@/constants/EventCentralConstants";
+
+type UserRole = typeof USER_ROLES[number];
 
 export default UserRole;

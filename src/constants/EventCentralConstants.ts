@@ -171,3 +171,10 @@ export const DELETE_OPTIONS: TDialogButton[] = [
   { buttonOption: "Confirm", color: "error" },
   { buttonOption: "Cancel", color: "secondary" }
 ];
+
+export const USER_ROLES = [
+  "Admin",
+  "Director",
+  "EDC-Rep",
+  "Guest"
+]
