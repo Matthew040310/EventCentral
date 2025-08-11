@@ -11,8 +11,8 @@ const ManageUsersTableHeader = (
 ) => {
 
     const ColumnHeaders: GridColDef[] = [
-        { field: 'name', headerName: 'User Name', flex: 1, },
-        { field: 'email', headerName: 'Email', flex: 1, },
+        { field: 'name', headerName: 'User Name', flex: 2, },
+        { field: 'email', headerName: 'Email', flex: 2, },
         { field: 'role', headerName: 'Role', type: "singleSelect", valueOptions: USER_ROLES, flex: 1, },
         { field: 'department', headerName: 'Department', type: "singleSelect", valueOptions: ALL_DEPARTMENTS, flex: 1, },
         { field: 'group', headerName: 'Group', type: "singleSelect", valueOptions: ALL_GROUPS, flex: 1, },
@@ -20,11 +20,11 @@ const ManageUsersTableHeader = (
         {
             field: 'actions', type: 'actions', flex: 1,
             getActions: (params: GridRowParams) => [
-                <GridActionsCellItem label="Duplicate" title="Duplicate" icon={<ContentCopy />}
-                    onClick={() => router.push(`#`)}
-                />,
+                // <GridActionsCellItem label="Duplicate" title="Duplicate" icon={<ContentCopy />}
+                //     onClick={() => router.push(`#`)}
+                // />,
                 <GridActionsCellItem label="Edit" title="Edit" icon={<Edit />}
-                    onClick={() => router.push(`#`)}
+                    onClick={() => router.push(`/ManageUsers/AccessRights/${encodeURIComponent(params.row.email)}`)}
                 />,
                 <GridActionsCellItem label="Delete" title="Delete" icon={<Delete />}
                     onClick={() => openDeleteDialog(params.id as string)}
