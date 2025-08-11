@@ -155,9 +155,11 @@ model VerificationToken {
 
 // To Remove Later
 model AuthorizedUsers {
-  id         String @id @default(cuid())
-  email      String @unique
-  role       String @default("guest")
+  id         String  @id @default(cuid())
+  email      String  @unique
+  name       String
+  role       String  @default("Guest")
   group      String
   department String
+  cluster    String
 }
