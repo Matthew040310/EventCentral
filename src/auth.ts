@@ -37,15 +37,40 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
             if (!authorizedUser) {
                 // If the user's email is not authorized, add the user to the AuthorizedUsers table
-                await prisma.authorizedUsers.create({
-                    data: {
-                        email: userEmail,
-                        group: "TEMP",
-                        department: "TEMP",
-                    },
-                });
+                return false;
+
+                // Future Development. To route to Onboarding Page to create new Authorized User
+                return `${APP_BASE_PATH}/SignIn/Onboarding`;
             }
             return true;
+        },
+        async jwt({ token, user }) {
+            // When user signs in (user object only available at sign-in)
+            if (user) {
+                const userEmail = typeof user.email === "string" ? user.email : user.email || "";
+                const authorizedUser = await prisma.authorizedUsers.findUnique({
+                    where: { email: userEmail },
+                });
+
+                if (authorizedUser) {
+                    token.role = authorizedUser.role;
+                    token.group = authorizedUser.group;
+                    token.department = authorizedUser.department;
+                    token.cluster = authorizedUser.cluster;
+                }
+            }
+            return token;
+        },
+
+        async session({ session, token }) {
+            // Add the authorized user fields to the session.user object
+            if (token) {
+                session.user.role = token.role || "Guest";
+                session.user.group = token.group || "";
+                session.user.department = token.department || "";
+                session.user.cluster = token.cluster || "";
+            }
+            return session;
         },
     },
     // debug: process.env.NODE_ENV === 'development',
