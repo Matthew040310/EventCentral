@@ -172,9 +172,10 @@ export const DELETE_OPTIONS: TDialogButton[] = [
   { buttonOption: "Cancel", color: "secondary" }
 ];
 
-export const USER_ROLES = [
-  "Admin",
-  "Director",
-  "EDC-Rep",
-  "Guest"
-]
+export const USER_ROLES = {
+  "Admin": "Edit and Delete All Events.\n\n Access Manage Users Page",
+  "GD": "Edit and Delete Events in own Group",
+  "HOD": "Edit and Delete Events in own Department",
+  "EDC-Rep": "Edit and Delete Events in own Department",
+  "Guest": "Edit Events in own Department",
+}
