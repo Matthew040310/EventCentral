@@ -4,7 +4,7 @@ import UserDetails from '@/types/IUserDetails'
 import DefaultUserDetails from '@/constants/DefaultUserDetails'
 import useRequireRole from "@/hooks/useRequiredRole";
 import getAuthorizedUser from '@/util/Prisma-API-handlers/User/getAuthorizedUser';
-import UserDetailsFields from '../UserDetailsFields';
+import UserDetailsFields from './_components/UserDetailsFields';
 
 const AccessRights = ({
     params,
@@ -40,9 +40,7 @@ const AccessRights = ({
     }, [decodedEmail]);
 
     return (
-        <>
-            <UserDetailsFields userDetails={userDetails} setUserDetails={setUserDetails} />
-        </>
+        <UserDetailsFields userDetails={userDetails} setUserDetails={setUserDetails} />
     )
 }
 
