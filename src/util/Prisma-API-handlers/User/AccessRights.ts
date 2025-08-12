@@ -1,31 +1,34 @@
-function canManageUsers(accessRights: string[]): boolean {
-    // If getAuthorizedUser.role === "Admin" then return true
-    // Else return false
-    return Boolean(null);
-}
-
-function enableEventTableDeleteAll(accessRights: string[]): boolean {
-    // If getAuthorizedUser.role === "Admin" then return true
-    // Else return false
-    return Boolean(null);
-}
-
+import { Session } from "next-auth";
 import FullEventReport from "@/types/IFullEventReport";
-function canDeleteEvent(accessRights: string[], event: FullEventReport): boolean {
-    // If getAuthorizedUser.role === "Admin" then return true for any event
-    // Elseif getAuthorizedUser.role === "Director" || getAuthorizedUser.role === "EDC-Rep"
-    // **caa Aug 25. Director and EDC-Rep have the same access rights. Separate category for future proofing
-    //      && If getAuthorizedUser.group === event.group then return true
-    // Elseif getAuthorizedUser.email === event.lastUpdatedBy then return true
+
+function canManageUsers(session: Session): boolean {
+    // If session.role === "Admin" then return true
     // Else return false
     return Boolean(null);
 }
 
-function canEditEvent(accessRights: string[], event: FullEventReport): boolean {
-    // If getAuthorizedUser.role === "Admin" then return true for any event
-    // Elseif getAuthorizedUser.role === "Director" || getAuthorizedUser.role === "EDC-Rep"
-    //      If getAuthorizedUser.group === event.group then return true
-    // Elseif getAuthorizedUser.department === event.department then return true
+function enableEventTableDeleteAll(session: Session): boolean {
+    // If session.role === "Admin" then return true
+    // Else return false
+    return Boolean(null);
+}
+
+function canDeleteEvent(session: Session, event: FullEventReport): boolean {
+    // If session.role === "Admin" then return true for any event
+    // Elseif session.role === "GD" && session.group === event.group then return true
+    // Elseif session.role === "HOD" || session.role === "EDC-Rep"
+    //      && If session.department === event.department then return true
+    // Elseif session.email === event.lastUpdatedBy then return true
+    // Else return false
+    return Boolean(null);
+}
+
+function canEditEvent(session: Session, event: FullEventReport): boolean {
+    // If session.role === "Admin" then return true for any event
+    // Elseif session.role === "GD" && session.group === event.group then return true
+    // Elseif session.role === "HOD" || session.role === "EDC-Rep"
+    //      && If session.department === event.department then return true
+    // Elseif session.department === event.department then return true
     // Else return false
     return Boolean(null);
 }
