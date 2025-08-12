@@ -13,7 +13,7 @@ const ManageUsersTableHeader = (
     const ColumnHeaders: GridColDef[] = [
         { field: 'name', headerName: 'User Name', flex: 2, },
         { field: 'email', headerName: 'Email', flex: 2, },
-        { field: 'role', headerName: 'Role', type: "singleSelect", valueOptions: USER_ROLES, flex: 1, },
+        { field: 'role', headerName: 'Role', type: "singleSelect", valueOptions: Object.keys(USER_ROLES), flex: 1, },
         { field: 'department', headerName: 'Department', type: "singleSelect", valueOptions: ALL_DEPARTMENTS, flex: 1, },
         { field: 'group', headerName: 'Group', type: "singleSelect", valueOptions: ALL_GROUPS, flex: 1, },
         { field: 'cluster', headerName: 'Cluster', type: "singleSelect", valueOptions: ALL_CLUSTERS, flex: 1, },

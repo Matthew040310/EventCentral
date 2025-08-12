@@ -1,5 +1,5 @@
 import { USER_ROLES } from "@/constants/EventCentralConstants";
 
-type UserRole = typeof USER_ROLES[number];
+type UserRole = keyof typeof USER_ROLES;
 
 export default UserRole;
