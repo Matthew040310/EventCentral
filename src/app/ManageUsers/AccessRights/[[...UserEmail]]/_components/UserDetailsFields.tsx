@@ -1,7 +1,11 @@
 "use client";
-import { Autocomplete, Chip, Container, Grid, Stack, TextField, Typography, Box, Button } from "@mui/material";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import UserDetails from "@/types/IUserDetails";
-import { ALL_DEPARTMENTS, ALL_GROUPS, ALL_CLUSTERS, Department_Group_Cluster_Map, USER_ROLES } from "@/constants/EventCentralConstants";
+import { ALL_GROUPS, ALL_CLUSTERS, USER_ROLES } from "@/constants/EventCentralConstants";
+import TextInputField from "./TextInputField";
+import DepartmentField from "./DepartmentField";
+import DropDownField from "./DropDownField";
+import useUserDetailsHandlers from "../_hooks/useUserDetailsHandler";
 
 interface UserDetailsFieldsProps {
     userDetails: Omit<UserDetails, 'id'>;
@@ -11,35 +15,7 @@ interface UserDetailsFieldsProps {
 const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
     userDetails, setUserDetails
 }) => {
-
-    const handleFieldChange = (fieldName: keyof UserDetails) => (newValue: string | string[] | null) => {
-        if (fieldName === "department") {
-            const department = newValue || "";
-            // Get mapped group and cluster for new department or fallback empty
-            const mapping = Department_Group_Cluster_Map[department[0]] || { group: "", cluster: "" };
-
-            setUserDetails((prev) => ({
-                ...prev,
-                department: department as string[],
-                group: mapping.group,
-                cluster: mapping.cluster,
-            }));
-        } else {
-            setUserDetails((prev) => ({
-                ...prev,
-                [fieldName]: newValue || "",
-            }));
-        }
-    };
-
-    const UserDetailsValid = (): Boolean => {
-        return Object.entries(userDetails).every(([key, value]) => {
-            if (key === "department") {
-                return Array.isArray(value) && value.length > 0;
-            }
-            return typeof value === "string" && value.trim() !== "";
-        });
-    }
+    const { handleFieldChange, UserDetailsValid } = useUserDetailsHandlers(setUserDetails);
 
     return (
         <>
@@ -50,38 +26,31 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
 
                 <Grid container sx={{ my: 3 }} spacing={2}>
                     <Grid size={{ xs: 12, sm: 4 }}>
-                        <TextField sx={{ bgcolor: "white" }}
-                            fullWidth
-                            margin="dense"
-                            required
+                        <TextInputField
                             label="Name"
-                            value={userDetails.name || ""}
-                            onChange={(e) => handleFieldChange("name")(e.target.value)}
+                            value={userDetails.name}
+                            onChange={handleFieldChange("name")}
                         />
                     </Grid>
 
                     <Grid size={{ xs: 12, sm: 4 }}>
-                        <TextField sx={{ bgcolor: "white" }}
-                            fullWidth
-                            margin="dense"
-                            required
+                        <TextInputField
                             label="Email"
-                            value={userDetails.email || ""}
-                            onChange={(e) => handleFieldChange("email")(e.target.value)}
+                            value={userDetails.email}
+                            onChange={handleFieldChange("email")}
                         />
                     </Grid>
 
                     <Grid size={{ xs: 12, sm: 4 }}>
                         <Stack direction="column">
-                            <Autocomplete
-                                sx={{ bgcolor: "white" }}
+                            <DropDownField
+                                label="Role"
                                 options={Object.keys(USER_ROLES)}
                                 value={userDetails.role}
-                                onChange={(event, newValue) => handleFieldChange("role")(newValue)}
-                                renderInput={(params) => (
-                                    <TextField {...params} label={"Role"} required={true} />
-                                )}
-                            />
+                                onChange={(value) =>
+                                    handleFieldChange("role")(value as UserDetails["role"] | null)
+                                } />
+                            {/* Role Access Right Description */}
                             {userDetails.role && (
                                 <Typography variant="body2" mt={1} ml={1}>
                                     View and Submit Events <br />
@@ -101,57 +70,34 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
 
                 <Grid container sx={{ mb: 2 }} spacing={2}>
                     <Grid size={{ xs: 12, sm: 4 }}>
-                        <Autocomplete
-                            sx={{ bgcolor: "white" }}
-                            multiple
-                            freeSolo={true}
-                            options={ALL_DEPARTMENTS}
+                        <DepartmentField
                             value={userDetails.department}
-                            onChange={(_, newValue) => handleFieldChange("department")(newValue)}
-                            renderValue={(value, props) =>
-                                value.map((option, index) => (
-                                    <Chip label={option} {...props({ index })} key={index} />
-                                ))
-                            }
-                            renderInput={(params) => (
-                                <TextField
-                                    {...params}
-                                    label={"Department"}
-                                    placeholder="Type to create new tags"
-                                    required={true}
-                                />
-                            )}
+                            onChange={handleFieldChange("department")}
                         />
                     </Grid>
 
                     <Grid size={{ xs: 12, sm: 4 }}>
-                        <Autocomplete
-                            sx={{ bgcolor: "white" }}
+                        <DropDownField
+                            label="Group"
                             options={ALL_GROUPS}
                             value={userDetails.group}
-                            onChange={(event, newValue) => handleFieldChange("group")(newValue)}
-                            renderInput={(params) => (
-                                <TextField {...params} label={"Group"} required={true} />
-                            )}
+                            onChange={handleFieldChange("group")}
                         />
                     </Grid>
 
                     <Grid size={{ xs: 12, sm: 4 }}>
-                        <Autocomplete
-                            sx={{ bgcolor: "white" }}
+                        <DropDownField
+                            label="Cluster"
                             options={ALL_CLUSTERS}
                             value={userDetails.cluster}
-                            onChange={(event, newValue) => handleFieldChange("cluster")(newValue)}
-                            renderInput={(params) => (
-                                <TextField {...params} label={"Cluster"} required={true} />
-                            )}
+                            onChange={handleFieldChange("cluster")}
                         />
                     </Grid>
                 </Grid>
 
                 {/* Create New User */}
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-                    <Button variant="contained" color="primary" size="large" disabled={!UserDetailsValid()}
+                    <Button variant="contained" color="primary" size="large" disabled={!UserDetailsValid(userDetails)}
                         onClick={() => { console.log(userDetails) }}>
                         Create New User
                     </Button>
