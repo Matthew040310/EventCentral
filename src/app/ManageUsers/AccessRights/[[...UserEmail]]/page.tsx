@@ -4,6 +4,7 @@ import UserDetails from '@/types/IUserDetails'
 import DefaultUserDetails from '@/constants/DefaultUserDetails'
 import useRequireRole from "@/hooks/useRequiredRole";
 import getAuthorizedUser from '@/util/Prisma-API-handlers/User/getAuthorizedUser';
+import UserDetailsFields from '../UserDetailsFields';
 
 const AccessRights = ({
     params,
@@ -18,7 +19,7 @@ const AccessRights = ({
     const decodedEmail = UserEmail && UserEmail.length > 0
         ? decodeURIComponent(UserEmail[0])
         : undefined;
-    const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id'>>(DefaultUserDetails);
+    const [userDetails, setUserDetails] = useState(DefaultUserDetails);
 
     useEffect(() => {
         const getUserDetails = async () => {
@@ -40,8 +41,7 @@ const AccessRights = ({
 
     return (
         <>
-            <p>Hello</p>
-            <p>{JSON.stringify(userDetails)}</p>
+            <UserDetailsFields userDetails={userDetails} setUserDetails={setUserDetails} />
         </>
     )
 }
