@@ -1,4 +1,6 @@
-const DefaultEventDetails = {
+import EventDetails from "@/types/IEventDetails";
+
+const DefaultEventDetails: EventDetails = {
     id: "",
     type: "New",
     embargoed: null,

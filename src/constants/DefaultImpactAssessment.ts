@@ -1,4 +1,6 @@
-const DefaultImpactAssessment = {
+import ImpactAssessment from "@/types/IImpactAssessment";
+
+const DefaultImpactAssessment: ImpactAssessment = {
     id: "",
     perceivedUnhappiness: null,
     perceivedUnhappinessDetails: null,
