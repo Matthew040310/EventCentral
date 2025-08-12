@@ -5,7 +5,7 @@ interface UserDetails {
     id: string;
     email: string;
     name: string;
-    department: Departments;
+    department: Departments[];
     group: Groups;
     cluster: Clusters;
     role: UserRole;

@@ -160,6 +160,6 @@ model AuthorizedUsers {
   name       String
   role       String  @default("Guest")
   group      String
-  department String
+  department String[]
   cluster    String
 }

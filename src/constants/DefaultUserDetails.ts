@@ -1,7 +1,7 @@
 const DefaultUserDetails = {
     email: "",
     name: "",
-    department: "",
+    department: [],
     group: "",
     cluster: "",
     role: "Guest"
