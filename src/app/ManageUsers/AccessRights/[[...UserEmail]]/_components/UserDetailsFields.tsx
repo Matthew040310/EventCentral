@@ -10,6 +10,7 @@ import DepartmentField from "./DepartmentField";
 import DropDownField from "./DropDownField";
 import useUserDetailsHandlers from "../_hooks/useUserDetailsHandler";
 import createAuthorizedUser from "@/util/Prisma-API-handlers/User/createAuthorizedUser";
+import updateAuthorizedUser from "@/util/Prisma-API-handlers/User/updateAuthorizedUser";
 
 interface UserDetailsFieldsProps {
     userDetails: UserDetails;
@@ -105,6 +106,14 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
                     <Button variant="contained" color="primary" size="large" disabled={!UserDetailsValid(userDetails)}
                         onClick={() => { createAuthorizedUser(userDetails, setAlert) }}>
                         Create New User
+                    </Button>
+                </Box>
+
+                {/* Update Existing User */}
+                <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+                    <Button variant="contained" color="primary" size="large" disabled={!UserDetailsValid(userDetails)}
+                        onClick={() => { updateAuthorizedUser(userDetails, setAlert) }}>
+                        Update User Details
                     </Button>
                 </Box>
 
