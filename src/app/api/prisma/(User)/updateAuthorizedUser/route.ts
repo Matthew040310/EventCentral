@@ -5,16 +5,15 @@ import primsaErrorHandler from '@/util/Prisma-API-handlers/prismaErrorHandler';
 
 export async function POST(request: Request) {
     try {
-        const body = await request.json();
-        const UserDetails: UserDetails = body['UserDetails']
+        const UserDetails: UserDetails = await request.json();
 
-        const UpdatedUserDetails = await prisma.authorizedUsers.update({
+        await prisma.authorizedUsers.update({
             where: { id: UserDetails.id },
             data: UserDetails
         });
 
         return Response.json(
-            { message: 'User Details successfully updated!', data: UpdatedUserDetails },
+            { message: 'User Details successfully updated!' },
             { status: 201 }
         );
     }
