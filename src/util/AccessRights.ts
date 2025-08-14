@@ -31,7 +31,7 @@ function canDeleteEvent(session: Session | null, eventDetails: FullEventReport):
     if (role === "Admin") return true;
     if (role === "GD" && group === eventDetails.group) return true;
     if ((role === "HOD" || role === "EDC-Rep") && department.includes(eventDetails.department)) return true;
-    // if (email === eventDetails.lastUpdatedBy) return true;
+    if (email === eventDetails.lastUpdatedBy) return true;
 
     return false;
 }
