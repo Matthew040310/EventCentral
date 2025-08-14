@@ -26,8 +26,7 @@ const AccessRights = ({
             try {
                 const user = await getAuthorizedUser(decodedEmail!.toLowerCase());
                 if (user) {
-                    const { id, ...ExistingUserDetails } = user as UserDetails;
-                    setUserDetails(ExistingUserDetails);
+                    setUserDetails(user);
                 }
             }
             catch (error) {

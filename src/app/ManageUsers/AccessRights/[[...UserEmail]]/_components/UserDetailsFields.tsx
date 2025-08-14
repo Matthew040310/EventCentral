@@ -12,8 +12,8 @@ import useUserDetailsHandlers from "../_hooks/useUserDetailsHandler";
 import createAuthorizedUser from "@/util/Prisma-API-handlers/User/createAuthorizedUser";
 
 interface UserDetailsFieldsProps {
-    userDetails: Omit<UserDetails, 'id'>;
-    setUserDetails: React.Dispatch<React.SetStateAction<Omit<UserDetails, 'id'>>>;
+    userDetails: UserDetails;
+    setUserDetails: React.Dispatch<React.SetStateAction<UserDetails>>;
 }
 
 const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({

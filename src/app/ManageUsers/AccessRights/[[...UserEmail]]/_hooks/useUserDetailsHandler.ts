@@ -2,7 +2,7 @@ import { Department_Group_Cluster_Map } from "@/constants/EventCentralConstants"
 import type UserDetails from "@/types/IUserDetails";
 
 const useUserDetailsHandlers = (
-    setUserDetails: React.Dispatch<React.SetStateAction<Omit<UserDetails, "id">>>
+    setUserDetails: React.Dispatch<React.SetStateAction<UserDetails>>
 ) => {
     const handleFieldChange =
         <K extends keyof UserDetails>(fieldName: K) =>
@@ -25,7 +25,7 @@ const useUserDetailsHandlers = (
                 }
             };
 
-    const UserDetailsValid = (details: Omit<UserDetails, "id">) =>
+    const UserDetailsValid = (details: UserDetails) =>
         !!details.name?.trim() &&
         !!details.email?.trim() &&
         Array.isArray(details.department) &&

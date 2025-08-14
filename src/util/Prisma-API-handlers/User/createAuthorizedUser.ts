@@ -4,7 +4,7 @@ import { AlertColor } from "@mui/material/Alert";
 const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default async function createAuthorizedUser(
-    userDetails: Omit<UserDetails, 'id'>,
+    userDetails: UserDetails,
     setAlert: (alert: { open: boolean, severity: AlertColor, message: string }) => void,
 ) {
     const targetLink = `${APP_BASE_PATH}/api/prisma/createAuthorizedUser`;

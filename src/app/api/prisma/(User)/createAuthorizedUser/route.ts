@@ -6,9 +6,12 @@ import UserDetails from '@/types/IUserDetails';
 export async function POST(request: Request) {
 
     try {
-        const userDetails: Omit<UserDetails, 'id'> = await request.json();
+        const userDetails: UserDetails = await request.json();
+
+        // For new user, remove default "" id field, so that Prisma will auto-generate it
+        const { id, ...newUserDetails } = userDetails;
         await prisma.authorizedUsers.create({
-            data: userDetails,
+            data: newUserDetails,
         });
 
         return Response.json(

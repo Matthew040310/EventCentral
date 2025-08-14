@@ -1,6 +1,7 @@
 import UserDetails from "@/types/IUserDetails";
 
-const DefaultUserDetails: Omit<UserDetails, 'id'> = {
+const DefaultUserDetails: UserDetails = {
+    id: "",
     email: "",
     name: "",
     department: [],
