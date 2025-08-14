@@ -152,7 +152,7 @@ const EventDetailsSection: React.FC<EventDetailsProps> = ({
                     value={inputFields?.title}
                     onChange={(e) => handleInputChange("title")(e.target.value)} />
 
-                <CustomTextField label="Scheme Involved" sm={12}
+                <CustomTextField label="Scheme or Service Involved" sm={12}
                     name="eventScheme"
                     value={inputFields?.scheme}
                     onChange={(e) => handleInputChange("scheme")(e.target.value)} />

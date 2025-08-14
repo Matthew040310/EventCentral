@@ -91,13 +91,16 @@ const HomePage: React.FC = () => {
         onHyperlinkClick={showEventDialog}
       />
 
-      <EventTable
-        state="Draft"
-        role={role}
-        EventReports={filteredDraftEvents}
-        onDeleteSuccess={refetch}
-        onHyperlinkClick={showEventDialog}
-      />
+      {selectedCategories.includes("Draft") || selectedCategories.length === 0
+        && (
+          <EventTable
+            state="Draft"
+            role={role}
+            EventReports={filteredDraftEvents}
+            onDeleteSuccess={refetch}
+            onHyperlinkClick={showEventDialog}
+          />
+        )}
 
       <EventDetailsDialog
         open={openDialog}
