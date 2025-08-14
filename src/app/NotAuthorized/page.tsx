@@ -1,7 +1,6 @@
 import { Container, Typography } from "@mui/material";
 
 const NotAuthorized = () => {
-
     return (
         <Container maxWidth="sm" sx={{ textAlign: "center", mt: 8 }}>
             <Typography variant="h3" color="error" gutterBottom>

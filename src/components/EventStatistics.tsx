@@ -1,10 +1,12 @@
-import React from 'react'
 import { useMemo } from 'react'
 import { Box } from '@mui/material'
-import FullEventReport from '@/types/IFullEventReport';
 import { Event_Legend } from '@/styles/theme';
 
+// Components
 import EventStatisticsCard from '@/components/EventStatisticsCard';
+// Types
+import FullEventReport from '@/types/IFullEventReport';
+// Functions
 import eventStatistics from '@/util/summariseEventStats'
 
 interface EventStatisticsProps {

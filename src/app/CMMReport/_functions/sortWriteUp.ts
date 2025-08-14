@@ -1,5 +1,5 @@
-import determineCategory from "@/util/determineCategory";
 import FullEventReport from "@/types/IFullEventReport";
+import determineCategory from "@/util/determineCategory";
 
 const CATEGORY_INDEX: Record<string, number> = {
     "High Impact": 0,

@@ -1,6 +1,6 @@
+import { useState } from "react";
 import CustomButton, { ICustomButtonProps } from "./CustomButton";
 import PopUpDialog, { TPopUpDialogProps } from "@/components/popUpDialog";
-import { useState } from "react";
 
 interface ButtonWithDialogProps extends
     Omit<ICustomButtonProps, "onClick">,

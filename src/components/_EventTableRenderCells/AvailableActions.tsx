@@ -6,7 +6,6 @@ import { ContentCopy, Delete, Edit } from "@mui/icons-material";
 
 // Interfaces
 import EventState from "@/types/TEventState";
-
 // Functions
 import { canEditEvent, canDeleteEvent } from "@/util/AccessRights";
 

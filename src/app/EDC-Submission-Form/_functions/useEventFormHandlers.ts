@@ -28,7 +28,6 @@ export default function useEventFormHandlers(
     const [impactAssessment, setImpactAssessment] = useState<ImpactAssessment>(initialImpactAssessment);
     const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' });
 
-    // handleChange
     const handleChange = <S extends keyof SectionMap>(formSection: S) => (fieldName: keyof SectionMap[S]) => (
         newValue: string | string[] | number | Date | null
     ) => {
@@ -40,8 +39,6 @@ export default function useEventFormHandlers(
                     : { customFrequency: null, selectedDay: null };
             }
             if (fieldName === 'customFrequency') return { selectedDay: null };
-            // if (fieldName === 'cluster') return { group: null, department: null };
-            // if (fieldName === 'group') return { department: null };
             if (fieldName === 'department') {
                 const department = newValue as string;
                 const { cluster, group } = Department_Group_Cluster_Map[department] || { cluster: null, group: null };
@@ -66,7 +63,6 @@ export default function useEventFormHandlers(
         }
     };
 
-    // handleDelete
     const handleDelete = (state: EventState) => (userResponse: string) => {
         if (userResponse === "Confirm") {
             triggerDelete(eventDetails.id, setAlert, state)
@@ -74,30 +70,24 @@ export default function useEventFormHandlers(
         }
     };
 
-    // handleSave
     const handleSave = () => {
         triggerSave(eventDetails, impactAssessment, handleChange, setAlert)
     }
 
-    // handleSubmit
     const handleSubmit = async () => {
         const isValid = await validImpactAssessmentId(eventDetails, impactAssessment, setInvalidImpactAssessmentId);
         if (!isValid) return;
         triggerSubmit(eventDetails, impactAssessment, setAlert);
     }
 
-    // handleUpdate
     const handleUpdate = async (userResponse: string) => {
         triggerSubmit(eventDetails, impactAssessment, setAlert, userResponse);
     }
 
     return {
-        eventDetails,
-        setEventDetails,
-        impactAssessment,
-        setImpactAssessment,
-        alert,
-        setAlert,
+        eventDetails, setEventDetails,
+        impactAssessment, setImpactAssessment,
+        alert, setAlert,
         handleChange,
         handleDelete,
         handleSave,

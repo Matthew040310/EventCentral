@@ -1,6 +1,4 @@
-import React from "react";
 import { Autocomplete, Grid, TextField } from '@mui/material';
-
 
 type CustomDropDownProps = {
     label: string;

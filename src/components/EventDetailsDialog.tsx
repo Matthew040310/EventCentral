@@ -1,14 +1,15 @@
-import React from "react";
 import { Dialog, DialogTitle, DialogContent, Grid } from "@mui/material";
 import { Info, Subject, } from "@mui/icons-material";
 
+// Components
 import { DividerWithText, TypographyB2 } from "./_EventDetailsDialog/DialogComponents";
 import TitleContent from "./_EventDetailsDialog/TitleContent";
 import EventDetailsContent from "./_EventDetailsDialog/EventDetailsContent";
 import ImpactAssessmentContent from "./_EventDetailsDialog/ImpactAssessmentContent";
 import DialogButtons from "./_EventDetailsDialog/DialogButtons";
-
+// Types
 import FullEventReport from "@/types/IFullEventReport";
+// Functions
 import determineCategory from "@/util/determineCategory";
 
 interface EventDetailsDialogProps {

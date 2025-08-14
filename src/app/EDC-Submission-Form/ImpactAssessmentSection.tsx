@@ -1,11 +1,11 @@
-import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
+// Components
 import CustomDropDown from "@/app/EDC-Submission-Form/_components/CustomDropDown"
 import CustomTextField from "@/app/EDC-Submission-Form/_components/CustomTextField"
 import CustomMultiSelect from '@/app/EDC-Submission-Form/_components/CustomMultiSelect';
 import ToggleSampleResponse from '@/components/ToggleSampleResponse';
-
+// Types and Constants
 import ImpactAssessmentProps from '@/types/IImpactAssessmentProps';
 import { ANNOUNCEMENT_TYPES, NOTIFICATION_TYPES } from "@/constants/EventCentralConstants"
 
@@ -189,7 +189,6 @@ const ImpactAssessmentSection: React.FC<ImpactAssessmentProps> = ({
       </>
     )}
 
-    {/* Not in ppt requirements but in CIA */}
     {/* Question 2.6 */}
     <Typography variant="subtitle2" sx={{ mt: 3, mb: 0.5 }}>
       2.6 What are your data insights of the response rate based on historical events? Please provide:

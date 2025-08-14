@@ -1,14 +1,16 @@
 "use client";
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { DataGrid, GridCallbackDetails, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
 import { Alert, AlertColor, Box, Button, Fade, Paper, Typography } from '@mui/material';
 import { Add, Delete } from '@mui/icons-material';
 
+// Components
 import PopUpDialog from '@/components/popUpDialog';
-
+// Types and Constants
 import UserDetails from '@/types/IUserDetails';
 import { DELETE_OPTIONS } from '@/constants/EventCentralConstants';
+// Functions
 import ManageUsersTableHeaders from './ManageUsersTableHeader';
 import deleteAuthorizedUsers from '@/util/Prisma-API-handlers/User/deleteAuthorizedUser';
 

@@ -1,10 +1,11 @@
-import React from 'react'
 import { useMemo, useState } from 'react';
 import { Button, Paper, Stack } from '@mui/material'
 
+// Components
 import EventWriteUp from './EventWriteUp';
+// Types
 import FullEventReport from "@/types/IFullEventReport";
-
+// Functions
 import determineCategory from '@/util/determineCategory';
 import sortWriteUps from '../_functions/sortWriteUp';
 

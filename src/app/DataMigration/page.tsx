@@ -33,28 +33,31 @@ function MigrateAllData() {
     }
 }
 
-const DataMigration = () => (
-    < Container maxWidth="sm" >
-        <Head>
+const DataMigration = () => {
+    return (
+        <>
             <title>Event Central - Migrate Data</title>
-        </Head>
-        <h2>Migrate 2025 EDC Data</h2>
 
-        <Stack spacing={2}>
-            <Button onClick={() => { MigrateHistoricData(JAN_EVENTS) }} variant='contained'>Migrate Jan 25 Data</Button>
-            <Button onClick={() => { MigrateHistoricData(FEB_EVENTS) }} variant='contained'>Migrate Feb 25 Data</Button>
-            <Button onClick={() => { MigrateHistoricData(MAR_EVENTS) }} variant='contained'>Migrate Mar 25 Data</Button>
-            <Button onClick={() => { MigrateHistoricData(APR_EVENTS) }} variant='contained'>Migrate Apr 25 Data</Button>
-            <Button onClick={() => { MigrateHistoricData(MAY_EVENTS) }} variant='contained'>Migrate May 25 Data</Button>
-            <Button onClick={() => { MigrateHistoricData(JUN_EVENTS) }} variant='contained'>Migrate Jun 25 Data</Button>
-            <Button onClick={() => { MigrateHistoricData(JUL_EVENTS) }} variant='contained'>Migrate Jul 25 Data</Button>
-        </Stack>
+            <Container maxWidth="sm" >
+                <h2>Migrate 2025 EDC Data</h2>
 
-        <Stack mt={5}>
-            <Button onClick={MigrateAllData} variant='outlined' color='warning'>Migrate All Data</Button>
-        </Stack>
+                <Stack spacing={2}>
+                    <Button onClick={() => { MigrateHistoricData(JAN_EVENTS) }} variant='contained'>Migrate Jan 25 Data</Button>
+                    <Button onClick={() => { MigrateHistoricData(FEB_EVENTS) }} variant='contained'>Migrate Feb 25 Data</Button>
+                    <Button onClick={() => { MigrateHistoricData(MAR_EVENTS) }} variant='contained'>Migrate Mar 25 Data</Button>
+                    <Button onClick={() => { MigrateHistoricData(APR_EVENTS) }} variant='contained'>Migrate Apr 25 Data</Button>
+                    <Button onClick={() => { MigrateHistoricData(MAY_EVENTS) }} variant='contained'>Migrate May 25 Data</Button>
+                    <Button onClick={() => { MigrateHistoricData(JUN_EVENTS) }} variant='contained'>Migrate Jun 25 Data</Button>
+                    <Button onClick={() => { MigrateHistoricData(JUL_EVENTS) }} variant='contained'>Migrate Jul 25 Data</Button>
+                </Stack>
 
-    </Container >
-);
+                <Stack mt={5}>
+                    <Button onClick={MigrateAllData} variant='outlined' color='warning'>Migrate All Data</Button>
+                </Stack>
+
+            </Container>
+        </>
+    )
+}
 
 export default DataMigration;

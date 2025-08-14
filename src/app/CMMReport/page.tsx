@@ -5,8 +5,7 @@ import Head from 'next/head';
 import dayjs from 'dayjs';
 import { View, Views } from 'react-big-calendar';
 
-import FullEventReport from '@/types/IFullEventReport';
-
+// Components
 import CalendarToolBar from '@/app/(HomePage)/_components/ToolBar';
 import EventStatistics from '../../components/EventStatistics';
 import CalendarView from '@/components/CalendarView';
@@ -14,6 +13,10 @@ import EventWriteUpSection from './_components/EventWriteUpSection';
 import StackedBarChart from './_components/StackedBarChart';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
 
+// Interfaces & Constants
+import FullEventReport from '@/types/IFullEventReport';
+
+// Functions
 import filteredEvents from '@/util/filteredEvents';
 import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 
@@ -46,9 +49,7 @@ const CMMReport: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>EventCentral - Core Management Meeting Report</title>
-      </Head>
+      <title>EventCentral - Overview</title>
 
       <StackedBarChart
         datumDate={datumDate} />

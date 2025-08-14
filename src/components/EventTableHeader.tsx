@@ -5,12 +5,10 @@ import { Session } from 'next-auth';
 // Components
 import HyperlinkTitle from '@/components/_EventTableRenderCells/HyperlinkTitle';
 import AvailableActions from '@/components/_EventTableRenderCells/AvailableActions';
-
 // Interfaces & Constants`
 import FullEventReport from '@/types/IFullEventReport';
 import EventState from '@/types/TEventState';
 import { EVENT_TYPE } from '@/constants/EventCentralConstants';
-
 // Functions
 import dateFormatter from '@/util/dateFormatter';
 

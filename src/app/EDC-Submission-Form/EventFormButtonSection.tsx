@@ -1,9 +1,10 @@
 import { Grid } from '@mui/material';
 import { Delete, Save, Send } from '@mui/icons-material';
 
+// Components
 import ButtonWithDialog from '@/app/EDC-Submission-Form/_components/ButtonWithDialog'
 import CustomButton from '@/app/EDC-Submission-Form/_components/CustomButton';
-
+// Types and Constants
 import EventDetails from '@/types/IEventDetails';
 import EventState from '@/types/TEventState';
 import { UPDATE_OPTIONS, DELETE_OPTIONS } from '@/constants/EventCentralConstants';

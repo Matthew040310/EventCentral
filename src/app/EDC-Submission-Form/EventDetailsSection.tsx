@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
+// Components
 import CustomDropDown from "@/app/EDC-Submission-Form/_components/CustomDropDown"
 import CustomTextField from "@/app/EDC-Submission-Form/_components/CustomTextField"
 import CustomDatePicker from "@/components/CustomDatePicker"
+// Types and Constants
 import EventDetailsProps from '@/types/IEventDetailsProps';
 import TRecurringDateParams from '@/types/TRecurringDateParams';
-
 import { EVENT_FREQUENCY, CUSTOM_EVENT_FREQUENCY, ALL_DEPARTMENTS, ALL_GROUPS, ALL_CLUSTERS } from '@/constants/EventCentralConstants';
+// Functions
 import { lastRecurringDate } from '@/util/replicateEventDates';
 
 const EventDetailsSection: React.FC<EventDetailsProps> = ({

@@ -1,6 +1,6 @@
+import type { AlertColor } from '@mui/material/Alert';
 import EventDetails from "@/types/IEventDetails";
 import ImpactAssessment from "@/types/IImpactAssessment";
-import type { AlertColor } from '@mui/material/Alert';
 
 const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 

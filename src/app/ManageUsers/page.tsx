@@ -1,9 +1,12 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
+// Component
+import ManageUsersTable from "./_component/ManageUsersTable";
+// Types
+import UserDetails from "@/types/IUserDetails";
+// Functions
 import useRequireRole from "@/hooks/useRequiredRole";
 import getAllAuthorizedUsers from "@/util/Prisma-API-handlers/User/getAllAuthorizedUsers";
-import UserDetails from "@/types/IUserDetails";
-import ManageUsersTable from "./_component/ManageUsersTable";
 
 const ManageUsers: React.FC = () => {
     // Function that requires the user to have the "Admin" role
@@ -22,13 +25,12 @@ const ManageUsers: React.FC = () => {
     }, [fetchAuthorizedUsers]);
 
     return (
-        session?.user?.role === "Admin" &&
-        <>
+        session?.user?.role === "Admin" && (
             <ManageUsersTable
                 users={authorisedUsers}
                 onDeleteSuccess={fetchAuthorizedUsers}
             />
-        </>
+        )
     )
 }
 

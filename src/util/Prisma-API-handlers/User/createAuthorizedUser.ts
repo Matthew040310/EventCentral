@@ -1,5 +1,5 @@
-import UserDetails from "@/types/IUserDetails";
 import { AlertColor } from "@mui/material/Alert";
+import UserDetails from "@/types/IUserDetails";
 
 const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 

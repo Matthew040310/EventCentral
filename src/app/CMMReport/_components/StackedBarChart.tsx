@@ -2,8 +2,10 @@ import React, { useMemo, useState } from 'react';
 import dayjs from 'dayjs';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { Box, Typography } from '@mui/material';
-import Legend from '@/components/Legend';
 
+// Components
+import Legend from '@/components/Legend';
+// Functions
 import categoriseMonthlyEvents from '../_functions/categoriseMonthlyEvents';
 import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 

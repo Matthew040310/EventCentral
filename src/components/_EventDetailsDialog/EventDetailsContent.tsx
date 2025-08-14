@@ -2,14 +2,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Box, Chip, Grid, Stack, Typography } from '@mui/material';
 import { Person, Email } from '@mui/icons-material';
+
+// Components
+import { TypographyS2 } from './DialogComponents';
+// Types
 import FullEventReport from '@/types/IFullEventReport';
 import TRecurringDateParams from '@/types/TRecurringDateParams';
-
+// Functions
 import getChildrenEvents from '@/util/Prisma-API-handlers/Event/getChildrenEvents';
 import dateFormatter from '@/util/dateFormatter';
 import { lastRecurringDate } from '@/util/replicateEventDates';
 
-import { TypographyS2 } from './DialogComponents';
 
 const EventDetailsContent = ({ eventDetails }: { eventDetails: Partial<FullEventReport> }) => {
     const { parentid, startDate, eventDate, endDate, frequency, frequencyInterval, customFrequency, selectedDay,

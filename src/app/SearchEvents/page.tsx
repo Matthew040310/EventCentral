@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Grid, Typography } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
@@ -13,7 +13,6 @@ import EventDetailsDialog from '@/components/EventDetailsDialog';
 
 // Interfaces & Constants
 import FullEventReport from '@/types/IFullEventReport';
-import UserRole from '@/types/TUserRole';
 
 // Functions
 import filteredEvents from '@/util/filteredEvents';

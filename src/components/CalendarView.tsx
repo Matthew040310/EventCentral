@@ -4,9 +4,13 @@ import { Box, Button, Typography } from '@mui/material'
 import { ArrowLeft, ArrowRight } from '@mui/icons-material'
 import { Calendar, Components, EventWrapperProps, View, Views, dayjsLocalizer } from 'react-big-calendar'
 import dayjs from 'dayjs'
+
+// Components
+import CalendarEvent from '@/components/CalendarEvent'
+// Types
 import FullEventReport from '@/types/IFullEventReport';
 import RBCEvent from "@/types/IRBCEvent"
-import CalendarEvent from '@/components/CalendarEvent'
+// Functions
 import filterUniqueCalendarEvents from "@/util/filterUniqueCalendarEvents"
 
 interface CalendarViewProps {

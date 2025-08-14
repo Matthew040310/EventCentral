@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from "next/navigation";
 import { Session } from 'next-auth';
 import { DataGrid, GridCallbackDetails, GridFilterModel, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
@@ -8,13 +8,11 @@ import { Delete } from '@mui/icons-material';
 
 // Components
 import PopUpDialog from '@/components/popUpDialog';
-
 // Interfaces & Constants
 import FullEventReport from "@/types/IFullEventReport";
 import EventState from '@/types/TEventState';
 import { DELETE_OPTIONS } from '@/constants/EventCentralConstants';
 import EventTableHeader from '@/components/EventTableHeader';
-
 // Functions
 import triggerDelete from '@/util/Prisma-API-handlers/Event/handleDelete';
 

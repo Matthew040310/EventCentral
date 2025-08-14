@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -13,18 +13,15 @@ import EventFormButtonSection from './EventFormButtonSection';
 import CustomTextField from './_components/CustomTextField';
 import CustomDropDown from './_components/CustomDropDown';
 import PopUpDialog from '@/components/popUpDialog';
-
 // Interfaces & Constants
 import EventState from '@/types/TEventState';
 import { STATUS } from '@/constants/EventCentralConstants';
 import DefaultEventDetails from '@/constants/DefaultEventDetails';
 import DefaultImpactAssessment from '@/constants/DefaultImpactAssessment';
-
 // Functions
 import getEventReportByID from '@/util/Prisma-API-handlers/Event/getEventReportByID';
 import clickToCopy from '@/util/clickToCopy';
 import fieldsValid from './_functions/fieldsValid';
-
 // Hooks
 import useEventFormHandlers from './_functions/useEventFormHandlers';
 

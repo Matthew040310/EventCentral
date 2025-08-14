@@ -3,11 +3,15 @@ import { useState } from "react";
 import { Alert, AlertColor, Box, Button, Container, Fade, Grid, Stack, Typography } from "@mui/material";
 import { Home } from "@mui/icons-material";
 import Link from "next/link";
-import UserDetails from "@/types/IUserDetails";
-import { ALL_GROUPS, ALL_CLUSTERS, USER_ROLES } from "@/constants/EventCentralConstants";
+
+// Components
 import TextInputField from "./TextInputField";
 import DepartmentField from "./DepartmentField";
 import DropDownField from "./DropDownField";
+// Types and Constants
+import UserDetails from "@/types/IUserDetails";
+import { ALL_GROUPS, ALL_CLUSTERS, USER_ROLES } from "@/constants/EventCentralConstants";
+// Functions
 import useUserDetailsHandlers from "../_hooks/useUserDetailsHandler";
 import createAuthorizedUser from "@/util/Prisma-API-handlers/User/createAuthorizedUser";
 import updateAuthorizedUser from "@/util/Prisma-API-handlers/User/updateAuthorizedUser";

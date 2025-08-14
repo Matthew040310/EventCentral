@@ -1,9 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { AppBar, Box, Grid, IconButton, Toolbar, Menu, MenuItem, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { AccountCircle, AddCircleOutline, Assessment, CalendarMonth, Home, Group, Logout, ManageAccounts, Search, Info } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
+
+// Component
 import NavBarButton from "./NavBarButton";
 
 const CustomNavBar: React.FC = () => {

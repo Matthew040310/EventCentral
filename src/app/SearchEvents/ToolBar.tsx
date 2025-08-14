@@ -1,4 +1,3 @@
-import React from 'react'
 import { Autocomplete, Chip, Grid, TextField } from '@mui/material'
 import CustomDatePicker from '@/components/CustomDatePicker'
 import Legend from '@/components/Legend'

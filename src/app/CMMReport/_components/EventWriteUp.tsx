@@ -1,9 +1,12 @@
-import React from 'react'
 import { Box, Paper, Stack, Typography } from '@mui/material'
 
-import FullEventReport from "@/types/IFullEventReport";
-import dateFormatter from '@/util/dateFormatter';
+// Components
 import TitleContent from "./WriteUpTitle";
+// Types
+import FullEventReport from "@/types/IFullEventReport";
+// Function
+import dateFormatter from '@/util/dateFormatter';
+
 
 interface EventWriteUpProps {
     eventDetails: Partial<FullEventReport>;

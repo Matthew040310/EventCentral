@@ -1,7 +1,6 @@
 import RBCEvent from "@/types/IRBCEvent"
 import determineCategory from "@/util/determineCategory"
 import { Button } from "@mui/material"
-import React from "react";
 
 interface CalendarEventProps {
     EventObject: RBCEvent;

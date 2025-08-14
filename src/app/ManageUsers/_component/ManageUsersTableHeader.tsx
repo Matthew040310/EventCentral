@@ -1,9 +1,8 @@
 import { GridColDef, GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
 import { useRouter } from 'next/navigation';
-import { ContentCopy, Delete, Edit } from "@mui/icons-material";
+import { Delete, Edit } from "@mui/icons-material";
 
 import { USER_ROLES, ALL_DEPARTMENTS, ALL_GROUPS, ALL_CLUSTERS } from '@/constants/EventCentralConstants';
-
 
 const ManageUsersTableHeader = (
     router: ReturnType<typeof useRouter>,
@@ -20,9 +19,6 @@ const ManageUsersTableHeader = (
         {
             field: 'actions', type: 'actions', flex: 1,
             getActions: (params: GridRowParams) => [
-                // <GridActionsCellItem label="Duplicate" title="Duplicate" icon={<ContentCopy />}
-                //     onClick={() => router.push(`#`)}
-                // />,
                 <GridActionsCellItem label="Edit" title="Edit" icon={<Edit />}
                     onClick={() => router.push(`/ManageUsers/AccessRights/${encodeURIComponent(params.row.email)}`)}
                 />,

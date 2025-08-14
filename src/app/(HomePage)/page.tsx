@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { Box, Grid } from '@mui/material';
 import Head from 'next/head';
@@ -52,9 +52,7 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>EventCentral - Calendar Overview</title>
-      </Head>
+      <title>EventCentral - Home</title>
 
       <CalendarOverviewHeader />
 

@@ -1,8 +1,10 @@
-import { Campaign, Groups, Interests, Insights, Quiz, NotificationsActive, SentimentVeryDissatisfied, Square } from '@mui/icons-material';
+import { Campaign, Groups, Interests, Insights, Quiz, NotificationsActive, SentimentVeryDissatisfied } from '@mui/icons-material';
+
+// Components
+import { ImpactAssessmentQuestion } from './DialogComponents';
+// Types
 import FullEventReport from '@/types/IFullEventReport';
 import ImpactAssessment from '@/types/IImpactAssessment';
-
-import { ImpactAssessmentQuestion } from './DialogComponents';
 
 const ImpactAssessmentContent = ({ eventDetails }: { eventDetails: Partial<FullEventReport> }) => {
     const impactAssessmentReference = eventDetails.submittedImpactAssessment || eventDetails.draftImpactAssessment;
