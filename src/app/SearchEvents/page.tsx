@@ -1,23 +1,27 @@
 "use client";
 import React, { useMemo, useState } from 'react';
 import { Grid, Typography } from '@mui/material';
+import { useSession } from 'next-auth/react';
 import Head from 'next/head';
 import dayjs from 'dayjs';
 
-import FullEventReport from '@/types/IFullEventReport';
-import UserRole from '@/types/TUserRole';
-
+// Components
 import Header from './Header';
 import SearchEventToolBar from './ToolBar';
 import EventTable from '@/components/EventTable';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
 
+// Interfaces & Constants
+import FullEventReport from '@/types/IFullEventReport';
+import UserRole from '@/types/TUserRole';
+
+// Functions
 import filteredEvents from '@/util/filteredEvents';
 import dateFormatter from '@/util/dateFormatter';
 import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 
 const SearchEvents: React.FC = () => {
-    const [role, setRole] = useState<UserRole>('Admin');
+    const { data: session } = useSession();
 
     const [datumStartDate, setDatumStartDate] = useState<Date>(dayjs().startOf('year').toDate());
     const [datumEndDate, setDatumEndDate] = useState<Date>(dayjs().endOf('year').toDate());
@@ -36,7 +40,6 @@ const SearchEvents: React.FC = () => {
     const { filteredSubmittedEvents, filteredDraftEvents } = useMemo(() =>
         filteredEvents(submittedEventReports, draftEventReports, selectedDepartments, selectedCategories),
         [submittedEventReports, draftEventReports, selectedDepartments, selectedCategories]);
-    //
 
     const showEventDialog = (eventDetails: Partial<FullEventReport>) => {
         setSelectedEvent(eventDetails);
@@ -72,7 +75,7 @@ const SearchEvents: React.FC = () => {
 
             <EventTable
                 state="Submitted"
-                role={role}
+                sessionToken={session}
                 EventReports={filteredSubmittedEvents}
                 onDeleteSuccess={refetch}
                 onHyperlinkClick={showEventDialog}
@@ -82,7 +85,7 @@ const SearchEvents: React.FC = () => {
 
             <EventTable
                 state="Draft"
-                role={role}
+                sessionToken={session}
                 EventReports={filteredDraftEvents}
                 onDeleteSuccess={refetch}
                 onHyperlinkClick={showEventDialog}
