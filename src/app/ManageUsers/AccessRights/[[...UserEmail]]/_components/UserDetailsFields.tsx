@@ -1,5 +1,8 @@
 "use client";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { useState } from "react";
+import { Alert, AlertColor, Box, Button, Container, Fade, Grid, Stack, Typography } from "@mui/material";
+import { Home } from "@mui/icons-material";
+import Link from "next/link";
 import UserDetails from "@/types/IUserDetails";
 import { ALL_GROUPS, ALL_CLUSTERS, USER_ROLES } from "@/constants/EventCentralConstants";
 import TextInputField from "./TextInputField";
@@ -16,6 +19,7 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
     userDetails, setUserDetails
 }) => {
     const { handleFieldChange, UserDetailsValid } = useUserDetailsHandlers(setUserDetails);
+    const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' });
 
     return (
         <>
@@ -102,6 +106,22 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
                         Create New User
                     </Button>
                 </Box>
+
+                <Box sx={{ display: "flex", justifyContent: "center", textAlign: "center", mt: 2 }}>
+                    <Fade in={alert.open} timeout={1000}>
+                        <Alert severity={alert.severity} onClose={() => setAlert({ ...alert, open: false })}>
+                            {alert.message}
+                            <br />
+                            <Link href="/" style={{
+                                display: "flex", marginTop: "5px",
+                                alignItems: "center", justifyContent: "center", textDecoration: "underline"
+                            }}>
+                                <Home />Return to Home
+                            </Link>
+                        </Alert>
+                    </Fade>
+                </Box>
+
             </Container>
         </>
     )
