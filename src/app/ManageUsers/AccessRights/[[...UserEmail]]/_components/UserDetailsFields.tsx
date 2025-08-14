@@ -15,10 +15,11 @@ import updateAuthorizedUser from "@/util/Prisma-API-handlers/User/updateAuthoriz
 interface UserDetailsFieldsProps {
     userDetails: UserDetails;
     setUserDetails: React.Dispatch<React.SetStateAction<UserDetails>>;
+    isNewUser: boolean;
 }
 
 const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
-    userDetails, setUserDetails
+    userDetails, setUserDetails, isNewUser
 }) => {
     const { handleFieldChange, UserDetailsValid } = useUserDetailsHandlers(setUserDetails);
     const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' });
@@ -27,7 +28,7 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
         <>
             <Container maxWidth="lg" sx={{ mt: 5 }}>
                 <Typography variant="h2" textAlign="center" gutterBottom>
-                    Add New User
+                    {isNewUser ? "Add New User" : "Edit User Details"}
                 </Typography>
 
                 <Grid container sx={{ my: 3 }} spacing={2}>
@@ -67,7 +68,6 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
                     </Grid>
                 </Grid>
 
-
                 <Typography variant="subtitle1" my={2}>
                     Please select user's <b>department(s)</b> with the following dropdown.<br />
                     - Groups and Cluster will be automatically assigned based on user's department, but you may edit them as required.<br />
@@ -101,21 +101,22 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
                     </Grid>
                 </Grid>
 
-                {/* Create New User */}
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-                    <Button variant="contained" color="primary" size="large" disabled={!UserDetailsValid(userDetails)}
-                        onClick={() => { createAuthorizedUser(userDetails, setAlert) }}>
-                        Create New User
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        size="large"
+                        disabled={!UserDetailsValid(userDetails)}
+                        onClick={() =>
+                            isNewUser
+                                ? createAuthorizedUser(userDetails, setAlert)
+                                : updateAuthorizedUser(userDetails, setAlert)
+                        }
+                    >
+                        {isNewUser ? "Create New User" : "Update User Details"}
                     </Button>
                 </Box>
 
-                {/* Update Existing User */}
-                <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-                    <Button variant="contained" color="primary" size="large" disabled={!UserDetailsValid(userDetails)}
-                        onClick={() => { updateAuthorizedUser(userDetails, setAlert) }}>
-                        Update User Details
-                    </Button>
-                </Box>
 
                 <Box sx={{ display: "flex", justifyContent: "center", textAlign: "center", mt: 2 }}>
                     <Fade in={alert.open} timeout={1000}>
@@ -132,7 +133,7 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
                     </Fade>
                 </Box>
 
-            </Container>
+            </Container >
         </>
     )
 }

@@ -20,6 +20,7 @@ const AccessRights = ({
         ? decodeURIComponent(UserEmail[0])
         : undefined;
     const [userDetails, setUserDetails] = useState(DefaultUserDetails);
+    const [isNewUser, setIsNewUser] = useState(true);
 
     useEffect(() => {
         const getUserDetails = async () => {
@@ -27,6 +28,7 @@ const AccessRights = ({
                 const user = await getAuthorizedUser(decodedEmail!.toLowerCase());
                 if (user) {
                     setUserDetails(user);
+                    setIsNewUser(false);
                 }
             }
             catch (error) {
@@ -39,7 +41,7 @@ const AccessRights = ({
     }, [decodedEmail]);
 
     return (
-        <UserDetailsFields userDetails={userDetails} setUserDetails={setUserDetails} />
+        <UserDetailsFields userDetails={userDetails} setUserDetails={setUserDetails} isNewUser={isNewUser} />
     )
 }
 
