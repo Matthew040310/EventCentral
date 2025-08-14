@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { DataGrid, GridCallbackDetails, GridFilterModel, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
+import { DataGrid, GridCallbackDetails, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
 import { Alert, AlertColor, Box, Button, Fade, Paper, Typography } from '@mui/material';
 import { Add, Delete } from '@mui/icons-material';
 
@@ -10,7 +10,7 @@ import PopUpDialog from '@/components/popUpDialog';
 import UserDetails from '@/types/IUserDetails';
 import { DELETE_OPTIONS } from '@/constants/EventCentralConstants';
 import ManageUsersTableHeaders from './ManageUsersTableHeader';
-
+import deleteAuthorizedUsers from '@/util/Prisma-API-handlers/User/deleteAuthorizedUser';
 
 const initialState: GridInitialState = {
     pagination: {
@@ -34,7 +34,7 @@ const ManageUsersTable: React.FC<ManageUsersTableProps> = ({
 }) => {
     const router = useRouter();
     const [selectedUsers, setSelectedUsers] = useState<GridRowId[]>([]);
-    const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' })
+    const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: true, severity: 'success', message: '' })
     const [dialogOpen, setDialogOpen] = useState(false);
 
     const handleRowSelection = (
@@ -50,7 +50,7 @@ const ManageUsersTable: React.FC<ManageUsersTableProps> = ({
 
     const handleDelete = async (userResponse: string) => {
         if (userResponse === "Confirm") {
-            console.log("Trigger Delete")
+            await deleteAuthorizedUsers(selectedUsers as UserDetails["id"][], setAlert);
             onDeleteSuccess()
         }
         setDialogOpen(false)

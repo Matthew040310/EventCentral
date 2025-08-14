@@ -6,7 +6,7 @@ export async function DELETE(request: Request) {
 
     try {
         const body = await request.json();
-        await deleteAuthorizedUsers(body["targetEmails"]);
+        await deleteAuthorizedUsers(body);
 
         return Response.json(
             { response: "User(s) successfully deleted!" },

@@ -26,9 +26,7 @@ const ManageUsers: React.FC = () => {
         <>
             <ManageUsersTable
                 users={authorisedUsers}
-                onDeleteSuccess={() => {
-                    console.log("Delete successful");
-                }}
+                onDeleteSuccess={fetchAuthorizedUsers}
             />
         </>
     )
