@@ -1,18 +1,21 @@
 "use client";
 import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter } from "next/navigation";
+import { Session } from 'next-auth';
 import { DataGrid, GridCallbackDetails, GridFilterModel, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
 import { Alert, AlertColor, Box, Button, Fade, Paper, Typography } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 
+// Components
 import PopUpDialog from '@/components/popUpDialog';
 
+// Interfaces & Constants
 import FullEventReport from "@/types/IFullEventReport";
 import EventState from '@/types/TEventState';
-import UserRole from '@/types/TUserRole';
 import { DELETE_OPTIONS } from '@/constants/EventCentralConstants';
 import EventTableHeader from '@/components/EventTableHeader';
 
+// Functions
 import triggerDelete from '@/util/Prisma-API-handlers/Event/handleDelete';
 
 const initialState: GridInitialState = {
@@ -26,7 +29,7 @@ const initialState: GridInitialState = {
 
 interface EventTableProps {
   state: EventState;
-  role: UserRole;
+  sessionToken: Session | null;
   backgroundColor?: string;
   EventReports: Partial<FullEventReport>[] | FullEventReport[];
   onDeleteSuccess: () => void
@@ -37,7 +40,7 @@ interface EventTableProps {
 
 const EventTable: React.FC<EventTableProps> = ({
   state,
-  role,
+  sessionToken,
   backgroundColor = "white",
   EventReports,
   onDeleteSuccess,
@@ -92,7 +95,7 @@ const EventTable: React.FC<EventTableProps> = ({
     }
   }, [alert.open]);
 
-  const headers = useMemo(() => EventTableHeader(router, state, role, openDeleteDialog, onHyperlinkClick), [state, role, openDeleteDialog, onHyperlinkClick]);
+  const headers = useMemo(() => EventTableHeader(router, state, sessionToken, openDeleteDialog, onHyperlinkClick), [state, sessionToken, openDeleteDialog, onHyperlinkClick]);
   const pageSizeOptions = useMemo(() => [5, 10, 20, 50], []);
   const deleteDescription = useMemo(() => `Are you sure you want to delete <u><b>${selectedEvents.length}</b></u> event(s)? This action cannot be undone.`, [selectedEvents.length]);
 
@@ -112,14 +115,16 @@ const EventTable: React.FC<EventTableProps> = ({
         </Fade>
 
         {/* Delete Button */}
-        <Button
-          variant='contained'
-          color='error'
-          disabled={selectedEvents.length === 0}
-          onClick={() => setDialogOpen(true)}
-          endIcon={<Delete />}>
-          Delete
-        </Button>
+        {sessionToken?.user?.role === 'Admin' && (
+          <Button
+            variant='contained'
+            color='error'
+            disabled={selectedEvents.length === 0}
+            onClick={() => setDialogOpen(true)}
+            endIcon={<Delete />}>
+            Delete
+          </Button>
+        )}
       </Box>
 
       {/* Dialog for Delete Button Click */}

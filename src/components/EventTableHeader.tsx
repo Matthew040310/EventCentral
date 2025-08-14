@@ -1,13 +1,17 @@
-import { GridColDef, GridActionsCellItem, GridRowParams } from '@mui/x-data-grid';
+import { GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { useRouter } from "next/navigation";
+import { Session } from 'next-auth';
+
+// Components
 import HyperlinkTitle from '@/components/_EventTableRenderCells/HyperlinkTitle';
 import AvailableActions from '@/components/_EventTableRenderCells/AvailableActions';
 
+// Interfaces & Constants`
 import FullEventReport from '@/types/IFullEventReport';
 import EventState from '@/types/TEventState';
-import UserRole from '@/types/TUserRole';
 import { EVENT_TYPE } from '@/constants/EventCentralConstants';
 
+// Functions
 import dateFormatter from '@/util/dateFormatter';
 
 const Yes_No_Params: Partial<GridColDef> = {
@@ -20,7 +24,7 @@ const Yes_No_Params: Partial<GridColDef> = {
 const EventTableHeader = (
     router: ReturnType<typeof useRouter>,
     state: EventState,
-    role: UserRole,
+    sessionToken: Session | null,
     openDeleteDialog: (eventID: string) => void,
     onHyperlinkClick: (eventDetails: Partial<FullEventReport>) => void
 ) => {
@@ -64,7 +68,7 @@ const EventTableHeader = (
         },
         {
             field: 'actions', type: 'actions', flex: 1,
-            getActions: (params: GridRowParams) => (AvailableActions(router, params, state, role, openDeleteDialog))
+            getActions: (params: GridRowParams) => (AvailableActions(router, params, state, sessionToken, openDeleteDialog))
         },
     ];
 

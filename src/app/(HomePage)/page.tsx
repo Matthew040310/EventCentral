@@ -1,13 +1,12 @@
 "use client";
 import React, { useMemo, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { Box, Grid } from '@mui/material';
 import Head from 'next/head';
 import dayjs from 'dayjs';
 import { View, Views } from 'react-big-calendar';
 
-import FullEventReport from '@/types/IFullEventReport';
-import UserRole from '@/types/TUserRole';
-
+// Components
 import CalendarOverviewHeader from '@/app/(HomePage)/_components/Header';
 import CalendarToolBar from '@/app/(HomePage)/_components/ToolBar';
 import EventStatistics from '@/components/EventStatistics';
@@ -15,11 +14,15 @@ import CalendarView from '@/components/CalendarView';
 import EventTable from '@/components/EventTable';
 import EventDetailsDialog from '@/components/EventDetailsDialog';
 
+// Interfaces & Constants
+import FullEventReport from '@/types/IFullEventReport';
+
+// Functions
 import filteredEvents from '@/util/filteredEvents';
 import useDashboardEventReports from '@/hooks/useDashboardEventReports';
 
 const HomePage: React.FC = () => {
-  const [role, setRole] = useState<UserRole>('Admin');
+  const { data: session } = useSession();
 
   const [datumDate, setDatumDate] = useState<Date>(dayjs().toDate());
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
@@ -85,7 +88,7 @@ const HomePage: React.FC = () => {
 
       <EventTable
         state="Submitted"
-        role={role}
+        sessionToken={session}
         EventReports={filteredSubmittedEvents}
         onDeleteSuccess={refetch}
         onHyperlinkClick={showEventDialog}
@@ -95,7 +98,7 @@ const HomePage: React.FC = () => {
         && (
           <EventTable
             state="Draft"
-            role={role}
+            sessionToken={session}
             EventReports={filteredDraftEvents}
             onDeleteSuccess={refetch}
             onHyperlinkClick={showEventDialog}
