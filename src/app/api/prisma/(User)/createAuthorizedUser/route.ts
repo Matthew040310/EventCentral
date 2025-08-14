@@ -7,18 +7,18 @@ export async function POST(request: Request) {
 
     try {
         const userDetails: Omit<UserDetails, 'id'> = await request.json();
-        const newUser = await prisma.authorizedUsers.create({
+        await prisma.authorizedUsers.create({
             data: userDetails,
         });
 
         return Response.json(
-            { response: newUser },
-            { status: 200 }
+            { message: 'User creation successful!' },
+            { status: 201 }
         );
     }
     catch (error: any) {
         return Response.json(
-            { error: primsaErrorHandler("Failed to retrieve Authorized User", error) },
+            { error: primsaErrorHandler("Failed to create Authorized User", error) },
             { status: 500 }
         );
     }
