@@ -9,7 +9,6 @@ import NavBarButton from "./NavBarButton";
 const CustomNavBar: React.FC = () => {
   const theme = useTheme();
   const { data: session } = useSession();
-  console.log("Session Data:", session);
 
   // Collapsable Menu State
   const isSmallScreen = useMediaQuery(theme.breakpoints.down(750));       // true when screen width <= 750px
@@ -51,8 +50,8 @@ const CustomNavBar: React.FC = () => {
                 <MenuItem onClick={() => setAnchorEl(null)}>{ManageUsersButton}</MenuItem>
               </Menu>
             </Grid>
-            {/* <Grid ml="auto">{loggedInUser}</Grid> */}
-            <Grid ml="auto">{LogoutButton}</Grid>
+            <Grid ml="auto">{loggedInUser}</Grid>
+            {/* <Grid ml="auto">{LogoutButton}</Grid> */}
           </Grid>)
           :
           /* Layout for larger screens */
@@ -63,8 +62,8 @@ const CustomNavBar: React.FC = () => {
             <Box ml="auto">{SubmitNewEventButton}</Box>
             <Box ml={2}>{SearchButton}</Box>
             <Box ml={2}>{ManageUsersButton}</Box>
-            {/* <Box ml={2}>{loggedInUser}</Box> */}
-            <Box ml={2}>{LogoutButton}</Box>
+            <Box ml={2}>{loggedInUser}</Box>
+            {/* <Box ml={2}>{LogoutButton}</Box> */}
           </>)}
       </Toolbar>
     </AppBar>
