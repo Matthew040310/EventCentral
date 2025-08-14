@@ -19,23 +19,20 @@ export default function AvailableActions(
     openDeleteDialog: (eventID: string) => void
 ): JSX.Element[] {
 
-    const canDelete = sessionToken?.user?.role === "Admin"
+    const canDelete = canDeleteEvent(sessionToken, params.row);
+    const canEdit = canEditEvent(sessionToken, params.row);
 
     const AllowedActions = [
         <GridActionsCellItem label="Duplicate" title="Duplicate" icon={<ContentCopy />}
             onClick={() => router.push(`/EDC-Submission-Form?id=${params.id}&state=${state}&duplicate=true`)}
         />,
-        <GridActionsCellItem label="Edit" title="Edit" icon={<Edit />}
+        <GridActionsCellItem label="Edit" title="Edit" icon={<Edit />} disabled={!canEdit}
             onClick={() => router.push(`/EDC-Submission-Form?id=${params.id}&state=${state}`)}
+        />,
+        <GridActionsCellItem label="Delete" title="Delete" icon={<Delete />} disabled={!canDelete}
+            onClick={() => openDeleteDialog(params.id as string)}
         />
     ];
 
-    if (canDelete) {
-        AllowedActions.push(
-            <GridActionsCellItem label="Delete" title="Delete" icon={<Delete />}
-                onClick={() => openDeleteDialog(params.id as string)}
-            />
-        );
-    }
     return AllowedActions;
 }
