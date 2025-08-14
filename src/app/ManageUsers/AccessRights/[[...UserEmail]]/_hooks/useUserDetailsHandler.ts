@@ -17,6 +17,11 @@ const useUserDetailsHandlers = (
                         group: mapping.group,
                         cluster: mapping.cluster,
                     }));
+                } else if (fieldName === "email") {
+                    setUserDetails((prev) => ({
+                        ...prev,
+                        email: (newValue as string).toUpperCase() ?? "",
+                    }));
                 } else {
                     setUserDetails((prev) => ({
                         ...prev,

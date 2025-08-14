@@ -1,6 +1,5 @@
 'use client'
 import { use, useEffect, useState } from 'react'
-import UserDetails from '@/types/IUserDetails'
 import DefaultUserDetails from '@/constants/DefaultUserDetails'
 import useRequireRole from "@/hooks/useRequiredRole";
 import getAuthorizedUser from '@/util/Prisma-API-handlers/User/getAuthorizedUser';
@@ -25,7 +24,7 @@ const AccessRights = ({
     useEffect(() => {
         const getUserDetails = async () => {
             try {
-                const user = await getAuthorizedUser(decodedEmail!.toLowerCase());
+                const user = await getAuthorizedUser(decodedEmail!.toUpperCase());
                 if (user) {
                     setUserDetails(user);
                     setIsNewUser(false);
