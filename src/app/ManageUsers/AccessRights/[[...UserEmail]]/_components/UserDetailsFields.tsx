@@ -9,6 +9,7 @@ import TextInputField from "./TextInputField";
 import DepartmentField from "./DepartmentField";
 import DropDownField from "./DropDownField";
 import useUserDetailsHandlers from "../_hooks/useUserDetailsHandler";
+import createAuthorizedUser from "@/util/Prisma-API-handlers/User/createAuthorizedUser";
 
 interface UserDetailsFieldsProps {
     userDetails: Omit<UserDetails, 'id'>;
@@ -102,7 +103,7 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
                 {/* Create New User */}
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
                     <Button variant="contained" color="primary" size="large" disabled={!UserDetailsValid(userDetails)}
-                        onClick={() => { console.log(userDetails) }}>
+                        onClick={() => { createAuthorizedUser(userDetails, setAlert) }}>
                         Create New User
                     </Button>
                 </Box>
