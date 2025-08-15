@@ -1,6 +1,7 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { useState } from "react";
+import { AlertColor, Box, Button, Container, Grid, Typography } from "@mui/material";
 
 // Components
 import ActionStatusAlert from "@/components/ActionStatusAlert";
@@ -14,7 +15,9 @@ import createAuthorizedUser from "@/util/Prisma-API-handlers/User/createAuthoriz
 
 const Onboarding = () => {
     const { data: session } = useSession();
-    const { userDetails, handleFieldChange, fieldsValid, alert, setAlert } = useOnboardingForm(session);
+    const { userDetails, handleFieldChange, fieldsValid } = useOnboardingForm(session);
+    const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' });
+
 
     return (
         <Container maxWidth="md" sx={{ mt: 5 }}>

@@ -7,8 +7,6 @@ import { Department_Group_Cluster_Map } from "@/constants/EventCentralConstants"
 
 export default function useOnboardingForm(session: Session | null) {
     const [userDetails, setUserDetails] = useState<UserDetails>(DefaultUserDetails);
-    const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' });
-
 
     useEffect(() => {
         if (session?.user) {
@@ -48,5 +46,5 @@ export default function useOnboardingForm(session: Session | null) {
         !!userDetails.role?.trim()
     );
 
-    return { userDetails, handleFieldChange, fieldsValid, alert, setAlert };
+    return { userDetails, handleFieldChange, fieldsValid };
 }
