@@ -31,7 +31,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             // Check if the user's email is in the AuthorizedUsers table
             const authorizedUser = await prisma.authorizedUsers.findUnique({
                 where: {
-                    email: userEmail,
+                    email: userEmail.toUpperCase()
                 },
             });
 
@@ -49,7 +49,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (user) {
                 const userEmail = typeof user.email === "string" ? user.email : user.email || "";
                 const authorizedUser = await prisma.authorizedUsers.findUnique({
-                    where: { email: userEmail },
+                    where: { email: userEmail.toUpperCase() },
                 });
 
                 if (authorizedUser) {
