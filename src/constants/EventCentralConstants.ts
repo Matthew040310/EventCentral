@@ -174,8 +174,10 @@ export const DELETE_OPTIONS: TDialogButton[] = [
 
 export const USER_ROLES = {
   "Admin": "Edit and Delete All Events.\n\n Access Manage Users Page",
-  "GD": "Edit and Delete Events in own Group",
+  "Cluster Director": "Edit and Delete Events in own Cluster",
+  "Group Director": "Edit and Delete Events in own Group",
   "HOD": "Edit and Delete Events in own Department",
   "EDC-Rep": "Edit and Delete Events in own Department",
   "Guest": "Edit Events in own Department",
-}
+} // Changes to this object will affect the following files:
+// AccessRightsLogic.ts (Logic dependent on Keys)
