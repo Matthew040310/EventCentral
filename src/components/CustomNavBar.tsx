@@ -21,7 +21,7 @@ const CustomNavBar: React.FC = () => {
   // const InfoButton = <NavBarButton href="#" icon={<Info />} title="Wiki" /> // Future Development
   const SubmitNewEventButton = <NavBarButton href="/EDC-Submission-Form" icon={<AddCircleOutline />} title="Submit New Event" />
   const SearchButton = <NavBarButton href="/SearchEvents" icon={<Search />} title="Search Events" />
-  const ManageUsersButton = session ? <NavBarButton href="/ManageUsers" icon={<ManageAccounts />} title="Manage Users" /> : null;
+  const ManageUsersButton = session?.user?.role === "Admin" ? <NavBarButton href="/ManageUsers" icon={<ManageAccounts />} title="Manage Users" /> : null;
   const LogoutButton = <NavBarButton href="/" icon={<Logout />} title="Exit Event Central" iconAsContent={true} />
 
   const loggedInUser = (
