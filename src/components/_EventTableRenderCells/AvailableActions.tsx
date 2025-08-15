@@ -7,7 +7,7 @@ import { ContentCopy, Delete, Edit } from "@mui/icons-material";
 // Interfaces
 import EventState from "@/types/TEventState";
 // Functions
-import { canEditEvent, canDeleteEvent } from "@/util/AccessRights";
+import { canEditEvent, canDeleteEvent } from "@/util/AccessRightsLogic";
 
 // Declared as function as it elements are required to be returned as an array
 export default function AvailableActions(
