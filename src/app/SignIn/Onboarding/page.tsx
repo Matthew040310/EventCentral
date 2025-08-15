@@ -1,16 +1,32 @@
 // SignIn/Onboarding/page.tsx
 "use client";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
-import { Autocomplete, Box, Button, Container, Grid, TextField, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Alert, AlertColor, Autocomplete, Box, Button, Container, Fade, Grid, TextField, Typography } from "@mui/material";
+import { Home } from "@mui/icons-material";
+import Link from "next/link";
 
+import UserDetails from "@/types/IUserDetails";
 import DefaultUserDetails from '@/constants/DefaultUserDetails'
 import { ALL_DEPARTMENTS, ALL_GROUPS, ALL_CLUSTERS, Department_Group_Cluster_Map } from "@/constants/EventCentralConstants";
-import UserDetails from "@/types/IUserDetails";
+
+import createAuthorizedUser from "@/util/Prisma-API-handlers/User/createAuthorizedUser";
 
 const Onboarding = () => {
-    const session = useSession();
-    const [userDetails, setUserDetails] = useState<Omit<UserDetails, 'id'>>(DefaultUserDetails);
+    const { data: session } = useSession();
+    const [userDetails, setUserDetails] = useState<UserDetails>(DefaultUserDetails);
+    const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>
+        ({ open: false, severity: 'success', message: '' });
+
+    useEffect(() => {
+        if (session?.user) {
+            setUserDetails((prev) => ({
+                ...prev,
+                email: session.user.email.toUpperCase() || "",
+                name: session.user.name || "",
+            }));
+        }
+    }, [session]);
 
     const handleFieldChange = (fieldName: keyof UserDetails) => (newValue: string | null) => {
         if (fieldName === "department") {
@@ -20,7 +36,7 @@ const Onboarding = () => {
 
             setUserDetails((prev) => ({
                 ...prev,
-                department,
+                department: [department],
                 group: mapping.group,
                 cluster: mapping.cluster,
             }));
@@ -32,11 +48,14 @@ const Onboarding = () => {
         }
     };
 
-    const fieldsValid = (): Boolean => {
-        return Object.values(userDetails).every(
-            (v) => typeof v === 'string' && v.trim().length > 0
-        );
-    }
+    const fieldsValid = (): Boolean =>
+        !!userDetails.name?.trim() &&
+        !!userDetails.email?.trim() &&
+        Array.isArray(userDetails.department) &&
+        userDetails.department.length > 0 &&
+        !!userDetails.group?.trim() &&
+        !!userDetails.cluster?.trim() &&
+        !!userDetails.role?.trim();
 
     return (
         <Container maxWidth="md" sx={{ mt: 5 }}>
@@ -76,7 +95,7 @@ const Onboarding = () => {
                     <Autocomplete
                         sx={{ bgcolor: "white" }}
                         options={ALL_DEPARTMENTS}
-                        value={userDetails.department}
+                        value={userDetails.department[0] || ""}
                         onChange={(event, newValue) => handleFieldChange("department")(newValue)}
                         renderInput={(params) => (
                             <TextField {...params} label={"Department"} required={true} />
@@ -110,9 +129,25 @@ const Onboarding = () => {
             </Grid>
 
             <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-                <Button variant="contained" color="primary" size="large" disabled={!fieldsValid()}>
+                <Button variant="contained" color="primary" size="large" disabled={!fieldsValid()}
+                    onClick={() => { createAuthorizedUser(userDetails, setAlert) }}>
                     Complete
                 </Button>
+            </Box>
+
+            <Box sx={{ display: "flex", justifyContent: "center", textAlign: "center", mt: 2 }}>
+                <Fade in={alert.open} timeout={1000}>
+                    <Alert severity={alert.severity} onClose={() => setAlert({ ...alert, open: false })}>
+                        {alert.message}
+                        <br />
+                        <Link href="/" style={{
+                            display: "flex", marginTop: "5px",
+                            alignItems: "center", justifyContent: "center", textDecoration: "underline"
+                        }}>
+                            <Home />Return to Home
+                        </Link>
+                    </Alert>
+                </Fade>
             </Box>
         </Container>
     )
