@@ -2,7 +2,6 @@
 import { Box, Button, Container, Grid, Tooltip, Typography } from '@mui/material';
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Head from 'next/head';
 
 // Components
 import EventDetailsSection from './EventDetailsSection';
@@ -99,105 +98,106 @@ const EventForm = () => {
     );
 
     return (
-        <Container maxWidth="sm">
-            <Head>
-                <title>EventCentral - EDC Submission Form</title>
-            </Head>
+        <>
+            <title>EventCentral - EDC Submission Form</title>
 
-            {failedRetrieveEventID.id &&
-                <Typography variant="subtitle1" sx={{ mt: 3, mb: 0.5 }} color="red">
-                    Provided Event ID <b><u>{failedRetrieveEventID.id}</u></b> does not exist in <b><u>{failedRetrieveEventID.state}</u></b> state.
-                </Typography>
-            }
+            <Container maxWidth="sm">
 
-            <Box sx={{ mt: 3 }}>
-                <h2>Event and Demand Submission Form</h2>
-
-                <Typography fontSize={20} sx={{ mb: 2 }}>
-                    1. Event Details
-                </Typography>
-
-                <EventDetailsSection
-                    handleInputChange={handleChange("Event Details")}
-                    inputFields={eventDetails}
-                    state={state === "Submitted" ? "Submitted" : "Draft"} />
-
-                {/* Impact Assessment Inputs - Only shown for New or Existing with Changes Events */}
-                {(eventDetails.type === "New" || eventDetails.type === "Existing with Changes") &&
-                    <>
-                        <Typography variant='subtitle2' sx={{ mt: 5, bgcolor: 'warning.light' }}>
-                            As this is a <u>{eventDetails.type}</u> event, it requires collaboration with CUG to assess its impact and develop mitigation strategies.
-                            Please provide the following details
-                        </Typography>
-
-                        <Typography fontSize={20} sx={{ mt: 2 }}>
-                            2. Impact Assessment
-                            {state === "Submitted" &&
-                                <Tooltip title={copied ? "Copied!" : "Copy ID"} arrow>
-                                    <Box component="span" sx={{ float: "right", width: { xs: "100%", sm: "auto" }, mb: 2, fontSize: '0.8rem' }} >
-                                        ID:
-                                        <Button color="info" size="small"
-                                            onClick={() => clickToCopy(impactAssessment.id!, setCopied)}>
-                                            {impactAssessment.id}
-                                        </Button>
-                                    </Box>
-                                </Tooltip>}
-                        </Typography>
-
-                        <ImpactAssessmentSection
-                            handleInputChange={handleChange("Impact Assessment")}
-                            inputFields={impactAssessment} />
-                    </>
+                {failedRetrieveEventID.id &&
+                    <Typography variant="subtitle1" sx={{ mt: 3, mb: 0.5 }} color="red">
+                        Provided Event ID <b><u>{failedRetrieveEventID.id}</u></b> does not exist in <b><u>{failedRetrieveEventID.state}</u></b> state.
+                    </Typography>
                 }
 
-                {/* Optional field to tag existing event to previously submitted Impact Assessment */}
-                {eventDetails.type === "Existing" &&
-                    <>
-                        <Typography variant='body2' sx={{ mt: 2, bgcolor: 'lightgrey' }}>
-                            <u><strong>Optional</strong></u>:{" "}
-                            Enter the <b>Original Impact Assessment ID</b> if you want to associate this event with an existing Impact Assessment.
-                        </Typography>
-                        <CustomTextField label="Impact Assessment ID"
-                            name="parentid"
-                            value={impactAssessment.id ?? ""}
-                            onChange={(e) => handleChange("Impact Assessment")("id")(e.target.value) ?? ""}
-                            disabled={state == "Submitted"}
-                            required={false} />
-                    </>}
+                <Box sx={{ mt: 3 }}>
+                    <h2>Event and Demand Submission Form</h2>
 
-                {/* Report Status */}
-                {/* <Grid size={12}>
+                    <Typography fontSize={20} sx={{ mb: 2 }}>
+                        1. Event Details
+                    </Typography>
+
+                    <EventDetailsSection
+                        handleInputChange={handleChange("Event Details")}
+                        inputFields={eventDetails}
+                        state={state === "Submitted" ? "Submitted" : "Draft"} />
+
+                    {/* Impact Assessment Inputs - Only shown for New or Existing with Changes Events */}
+                    {(eventDetails.type === "New" || eventDetails.type === "Existing with Changes") &&
+                        <>
+                            <Typography variant='subtitle2' sx={{ mt: 5, bgcolor: 'warning.light' }}>
+                                As this is a <u>{eventDetails.type}</u> event, it requires collaboration with CUG to assess its impact and develop mitigation strategies.
+                                Please provide the following details
+                            </Typography>
+
+                            <Typography fontSize={20} sx={{ mt: 2 }}>
+                                2. Impact Assessment
+                                {state === "Submitted" &&
+                                    <Tooltip title={copied ? "Copied!" : "Copy ID"} arrow>
+                                        <Box component="span" sx={{ float: "right", width: { xs: "100%", sm: "auto" }, mb: 2, fontSize: '0.8rem' }} >
+                                            ID:
+                                            <Button color="info" size="small"
+                                                onClick={() => clickToCopy(impactAssessment.id!, setCopied)}>
+                                                {impactAssessment.id}
+                                            </Button>
+                                        </Box>
+                                    </Tooltip>}
+                            </Typography>
+
+                            <ImpactAssessmentSection
+                                handleInputChange={handleChange("Impact Assessment")}
+                                inputFields={impactAssessment} />
+                        </>
+                    }
+
+                    {/* Optional field to tag existing event to previously submitted Impact Assessment */}
+                    {eventDetails.type === "Existing" &&
+                        <>
+                            <Typography variant='body2' sx={{ mt: 2, bgcolor: 'lightgrey' }}>
+                                <u><strong>Optional</strong></u>:{" "}
+                                Enter the <b>Original Impact Assessment ID</b> if you want to associate this event with an existing Impact Assessment.
+                            </Typography>
+                            <CustomTextField label="Impact Assessment ID"
+                                name="parentid"
+                                value={impactAssessment.id ?? ""}
+                                onChange={(e) => handleChange("Impact Assessment")("id")(e.target.value) ?? ""}
+                                disabled={state == "Submitted"}
+                                required={false} />
+                        </>}
+
+                    {/* Report Status */}
+                    {/* <Grid size={12}>
                     <CustomDropDown label="Report Status?" sm={12}
                         options={STATUS}
                         value={eventDetails.reportStatus}
                         onChange={(_, newValue) => handleChange("Event Details")("reportStatus")(newValue)} />
                 </Grid> */}
 
-                <EventFormButtonSection
-                    eventDetails={eventDetails}
-                    isFieldsValid={isFieldsValid}
-                    state={state as EventState}
-                    handleDelete={handleDelete(state as EventState)}
-                    handleSave={handleSave}
-                    handleSubmit={handleSubmit}
-                    handleUpdate={handleUpdate} />
+                    <EventFormButtonSection
+                        eventDetails={eventDetails}
+                        isFieldsValid={isFieldsValid}
+                        state={state as EventState}
+                        handleDelete={handleDelete(state as EventState)}
+                        handleSave={handleSave}
+                        handleSubmit={handleSubmit}
+                        handleUpdate={handleUpdate} />
 
-                {/* Status Message of Button Click */}
-                <Grid justifyContent={"center"} display={"flex"}>
-                    <ActionStatusAlert alert={alert} setAlert={setAlert} />
-                </Grid>
+                    {/* Status Message of Button Click */}
+                    <Grid justifyContent={"center"} display={"flex"}>
+                        <ActionStatusAlert alert={alert} setAlert={setAlert} />
+                    </Grid>
 
-                {/* Error Message if Invalid Impact Assessment ID provided for recurring event */}
-                <PopUpDialog
-                    open={invalidImpactAssessmentId}
-                    onClose={() => setInvalidImpactAssessmentId(false)}
-                    onClick={() => setInvalidImpactAssessmentId(false)}
-                    title={"Error"}
-                    description={"Invalid Impact Assessment ID provided. Please check and try again."}
-                    buttons={[{ buttonOption: "Ok" }]} />
+                    {/* Error Message if Invalid Impact Assessment ID provided for recurring event */}
+                    <PopUpDialog
+                        open={invalidImpactAssessmentId}
+                        onClose={() => setInvalidImpactAssessmentId(false)}
+                        onClick={() => setInvalidImpactAssessmentId(false)}
+                        title={"Error"}
+                        description={"Invalid Impact Assessment ID provided. Please check and try again."}
+                        buttons={[{ buttonOption: "Ok" }]} />
 
-            </Box >
-        </Container >
+                </Box >
+            </Container >
+        </>
     );
 }
 

@@ -1,6 +1,4 @@
 'use client';
-import Head from 'next/head';
-
 // Components
 import { Button, Container, Stack } from '@mui/material';
 

@@ -25,12 +25,17 @@ const ManageUsers: React.FC = () => {
     }, [fetchAuthorizedUsers]);
 
     return (
-        session?.user?.role === "Admin" && (
-            <ManageUsersTable
-                users={authorisedUsers}
-                onDeleteSuccess={fetchAuthorizedUsers}
-            />
-        )
+        <>
+            <title>EventCentral - Manage Users</title>
+
+            {session?.user?.role === "Admin" && (
+                <ManageUsersTable
+                    users={authorisedUsers}
+                    onDeleteSuccess={fetchAuthorizedUsers}
+                />
+            )}
+        </>
+
     )
 }
 

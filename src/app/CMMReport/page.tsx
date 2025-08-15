@@ -1,7 +1,6 @@
 "use client";
 import React, { useMemo, useState } from 'react';
 import { Grid } from '@mui/material';
-import Head from 'next/head';
 import dayjs from 'dayjs';
 import { View, Views } from 'react-big-calendar';
 

@@ -11,8 +11,12 @@ export default function SignIn() {
     }, []);
 
     return (
-        <Typography variant="h2" textAlign="center" mt={5}>
-            Signing In...
-        </Typography>
+        <>
+            <title>Sign In</title>
+
+            <Typography variant="h2" textAlign="center" mt={5}>
+                Signing In...
+            </Typography>
+        </>
     );
 }

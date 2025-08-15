@@ -2,7 +2,6 @@
 import { useMemo, useState } from 'react';
 import { Grid, Typography } from '@mui/material';
 import { useSession } from 'next-auth/react';
-import Head from 'next/head';
 import dayjs from 'dayjs';
 
 // Components
@@ -47,10 +46,7 @@ const SearchEvents: React.FC = () => {
 
     return (
         <>
-            <Head>
-                <title>EventCentral - Search Events</title>
-                <meta name="description" content="Centralized event tracking and forecasting system" />
-            </Head>
+            <title>EventCentral - Search Events</title>
 
             <Header
                 searchKeyword={searchKeyword}

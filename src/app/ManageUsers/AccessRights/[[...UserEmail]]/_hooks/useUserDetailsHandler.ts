@@ -1,5 +1,5 @@
-import { Department_Group_Cluster_Map } from "@/constants/EventCentralConstants";
 import type UserDetails from "@/types/IUserDetails";
+import { Department_Group_Cluster_Map } from "@/constants/EventCentralConstants";
 
 const useUserDetailsHandlers = (
     setUserDetails: React.Dispatch<React.SetStateAction<UserDetails>>

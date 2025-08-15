@@ -1,6 +1,5 @@
 import { Session } from "next-auth";
 import { useEffect, useState } from "react";
-import { AlertColor } from "@mui/material";
 import type UserDetails from "@/types/IUserDetails";
 import DefaultUserDetails from '@/constants/DefaultUserDetails'
 import { Department_Group_Cluster_Map } from "@/constants/EventCentralConstants";

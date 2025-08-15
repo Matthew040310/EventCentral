@@ -20,64 +20,68 @@ const Onboarding = () => {
 
 
     return (
-        <Container maxWidth="md" sx={{ mt: 5 }}>
-            <Typography variant="h2" textAlign="center" gutterBottom>
-                Onboarding
-            </Typography>
+        <>
+            <title>Event Central - Onboarding</title>
 
-            <Typography variant="h6" gutterBottom>
-                Hi there, looks like you are new here!
-            </Typography>
+            <Container maxWidth="md" sx={{ mt: 5 }}>
+                <Typography variant="h2" textAlign="center" gutterBottom>
+                    Onboarding
+                </Typography>
 
-            <Typography variant="subtitle1" mb={5}>
-                To complete your onboarding, please select your <b>department</b> in the following dropdown.<br />
-                Groups and Cluster will be automatically assigned based on your department, but you may edit them as required.
-            </Typography>
+                <Typography variant="h6" gutterBottom>
+                    Hi there, looks like you are new here!
+                </Typography>
 
-            <TextInputField label="Name" value={userDetails.name} />
+                <Typography variant="subtitle1" mb={5}>
+                    To complete your onboarding, please select your <b>department</b> in the following dropdown.<br />
+                    Groups and Cluster will be automatically assigned based on your department, but you may edit them as required.
+                </Typography>
 
-            <TextInputField label="Email" value={userDetails.email} />
+                <TextInputField label="Name" value={userDetails.name} />
 
-            <Grid container sx={{ mb: 2 }} spacing={2}>
-                <Grid size={{ xs: 12, sm: 4 }}>
-                    <DropDownField
-                        label="Department"
-                        options={ALL_DEPARTMENTS}
-                        value={userDetails.department[0] || ""}
-                        onChange={handleFieldChange("department")}
-                    />
+                <TextInputField label="Email" value={userDetails.email} />
+
+                <Grid container sx={{ mb: 2 }} spacing={2}>
+                    <Grid size={{ xs: 12, sm: 4 }}>
+                        <DropDownField
+                            label="Department"
+                            options={ALL_DEPARTMENTS}
+                            value={userDetails.department[0] || ""}
+                            onChange={handleFieldChange("department")}
+                        />
+                    </Grid>
+
+                    <Grid size={{ xs: 12, sm: 4 }}>
+                        <DropDownField
+                            label="Group"
+                            options={ALL_GROUPS}
+                            value={userDetails.group}
+                            onChange={handleFieldChange("group")}
+                        />
+                    </Grid>
+
+                    <Grid size={{ xs: 12, sm: 4 }}>
+                        <DropDownField
+                            label="Cluster"
+                            options={ALL_CLUSTERS}
+                            value={userDetails.cluster}
+                            onChange={handleFieldChange("cluster")}
+                        />
+                    </Grid>
                 </Grid>
 
-                <Grid size={{ xs: 12, sm: 4 }}>
-                    <DropDownField
-                        label="Group"
-                        options={ALL_GROUPS}
-                        value={userDetails.group}
-                        onChange={handleFieldChange("group")}
-                    />
-                </Grid>
+                <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
+                    <Button variant="contained" color="primary" size="large" disabled={!fieldsValid()}
+                        onClick={() => { createAuthorizedUser(userDetails, setAlert) }}>
+                        Complete
+                    </Button>
+                </Box>
 
-                <Grid size={{ xs: 12, sm: 4 }}>
-                    <DropDownField
-                        label="Cluster"
-                        options={ALL_CLUSTERS}
-                        value={userDetails.cluster}
-                        onChange={handleFieldChange("cluster")}
-                    />
-                </Grid>
-            </Grid>
-
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 4 }}>
-                <Button variant="contained" color="primary" size="large" disabled={!fieldsValid()}
-                    onClick={() => { createAuthorizedUser(userDetails, setAlert) }}>
-                    Complete
-                </Button>
-            </Box>
-
-            <Box sx={{ display: "flex", justifyContent: "center", textAlign: "center", mt: 2 }}>
-                <ActionStatusAlert alert={alert} setAlert={setAlert} />
-            </Box>
-        </Container>
+                <Box sx={{ display: "flex", justifyContent: "center", textAlign: "center", mt: 2 }}>
+                    <ActionStatusAlert alert={alert} setAlert={setAlert} />
+                </Box>
+            </Container>
+        </>
     )
 }
 

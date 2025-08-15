@@ -40,7 +40,11 @@ const AccessRights = ({
     }, [decodedEmail]);
 
     return (
-        <UserDetailsFields userDetails={userDetails} setUserDetails={setUserDetails} isNewUser={isNewUser} />
+        <>
+            <title>EventCentral - Manage Access Rights</title>
+            
+            <UserDetailsFields userDetails={userDetails} setUserDetails={setUserDetails} isNewUser={isNewUser} />
+        </>
     )
 }
 
