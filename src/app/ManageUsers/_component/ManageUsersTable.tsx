@@ -2,10 +2,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { DataGrid, GridCallbackDetails, GridRowId, GridInitialState, GridRowSelectionModel } from '@mui/x-data-grid';
-import { Alert, AlertColor, Box, Button, Fade, Paper, Typography } from '@mui/material';
+import { AlertColor, Box, Button, Paper, Typography } from '@mui/material';
 import { Add, Delete } from '@mui/icons-material';
 
 // Components
+import ActionStatusAlert from '@/components/ActionStatusAlert';
 import PopUpDialog from '@/components/popUpDialog';
 // Types and Constants
 import UserDetails from '@/types/IUserDetails';
@@ -81,11 +82,9 @@ const ManageUsersTable: React.FC<ManageUsersTableProps> = ({
                     Manage Users
                 </Typography>
 
-                <Fade in={alert.open} timeout={1000}>
-                    <Alert severity={alert.severity} onClose={() => setAlert({ ...alert, open: false })}>
-                        {alert.message}
-                    </Alert>
-                </Fade>
+                <Box ml="auto" mr="auto">
+                    <ActionStatusAlert alert={alert} setAlert={setAlert} enableReturnHome={false} />
+                </Box>
 
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     {/* Add Button */}

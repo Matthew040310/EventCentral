@@ -1,10 +1,9 @@
 "use client";
 import { useState } from "react";
-import { Alert, AlertColor, Box, Button, Container, Fade, Grid, Stack, Typography } from "@mui/material";
-import { Home } from "@mui/icons-material";
-import Link from "next/link";
+import { AlertColor, Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 
 // Components
+import ActionStatusAlert from "@/components/ActionStatusAlert";
 import TextInputField from "./TextInputField";
 import DepartmentField from "./DepartmentField";
 import DropDownField from "./DropDownField";
@@ -123,18 +122,7 @@ const UserDetailsFields: React.FC<UserDetailsFieldsProps> = ({
 
 
                 <Box sx={{ display: "flex", justifyContent: "center", textAlign: "center", mt: 2 }}>
-                    <Fade in={alert.open} timeout={1000}>
-                        <Alert severity={alert.severity} onClose={() => setAlert({ ...alert, open: false })}>
-                            {alert.message}
-                            <br />
-                            <Link href="/" style={{
-                                display: "flex", marginTop: "5px",
-                                alignItems: "center", justifyContent: "center", textDecoration: "underline"
-                            }}>
-                                <Home />Return to Home
-                            </Link>
-                        </Alert>
-                    </Fade>
+                    <ActionStatusAlert alert={alert} setAlert={setAlert} />
                 </Box>
 
             </Container >

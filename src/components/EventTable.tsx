@@ -7,6 +7,7 @@ import { Alert, AlertColor, Box, Button, Fade, Paper, Typography } from '@mui/ma
 import { Delete } from '@mui/icons-material';
 
 // Components
+import ActionStatusAlert from './ActionStatusAlert';
 import PopUpDialog from '@/components/popUpDialog';
 // Interfaces & Constants
 import FullEventReport from "@/types/IFullEventReport";
@@ -106,11 +107,9 @@ const EventTable: React.FC<EventTableProps> = ({
           {state} Events{` (${EventReports.length})`}
         </Typography>
 
-        <Fade in={alert.open} timeout={1000}>
-          <Alert severity={alert.severity} onClose={() => setAlert({ ...alert, open: false })}>
-            {alert.message}
-          </Alert>
-        </Fade>
+        <Box ml="auto" mr="auto">
+          <ActionStatusAlert alert={alert} setAlert={setAlert} enableReturnHome={false} />
+        </Box>
 
         {/* Delete Button */}
         {sessionToken?.user?.role === 'Admin' && (

@@ -1,18 +1,17 @@
 "use client";
+import { Box, Button, Container, Grid, Tooltip, Typography } from '@mui/material';
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Head from 'next/head';
-import Link from 'next/link';
 
 // Components
-import { Alert, Box, Button, Container, Fade, Grid, Tooltip, Typography } from '@mui/material';
-import { Home } from '@mui/icons-material';
 import EventDetailsSection from './EventDetailsSection';
 import ImpactAssessmentSection from './ImpactAssessmentSection';
 import EventFormButtonSection from './EventFormButtonSection';
 import CustomTextField from './_components/CustomTextField';
 import CustomDropDown from './_components/CustomDropDown';
 import PopUpDialog from '@/components/popUpDialog';
+import ActionStatusAlert from '@/components/ActionStatusAlert';
 // Interfaces & Constants
 import EventState from '@/types/TEventState';
 import { STATUS } from '@/constants/EventCentralConstants';
@@ -185,15 +184,7 @@ const EventForm = () => {
 
                 {/* Status Message of Button Click */}
                 <Grid justifyContent={"center"} display={"flex"}>
-                    <Fade in={alert.open} timeout={1000}>
-                        <Alert severity={alert.severity} onClose={() => setAlert({ ...alert, open: false })}>
-                            {alert.message}
-                            <br />
-                            <Link href="/" style={{ display: "flex", alignItems: "center", marginTop: "5px", textDecoration: "underline" }}>
-                                <Home />Return to Home
-                            </Link>
-                        </Alert>
-                    </Fade>
+                    <ActionStatusAlert alert={alert} setAlert={setAlert} />
                 </Grid>
 
                 {/* Error Message if Invalid Impact Assessment ID provided for recurring event */}
