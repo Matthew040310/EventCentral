@@ -85,32 +85,32 @@ export const ORGANISATION: Organisation = {
   "SVC":
   // SVC GROUPS AND DEPARTMENTS
   {
-    "RIG": ["RSD", "RIU", "RWD", "NAC"],
-    "HFG": ["HPD", "HID", "HCP"],
-    "HIG": ["HSD", "IVD", "HED"],
     "ASG": ["AGP", "AMD"],
-    "CUG": ["SLD", "SCD", "CCC"],
-    "ECE": ["CSD", "CED", "SED"]
+    "CUG": ["CCC", "SCD", "SLD"],
+    "ECE": ["CED", "CSD", "SED"],
+    "HFG": ["HCP", "HPD", "HID"],
+    "HIG": ["HED", "HSD", "IVD"],
+    "RIG": ["NAC", "RIU", "RSD", "RWD"],
   },
 
   "IDS": {
     // IDS GROUPS AND DEPARTMENTS
-    "BAS": ["AAD", "RDD", "HIS", "BSP"],
-    "CIG": ["CSS", "DCD", "DPD", "NED", "CSO"],
-    "DSG": ["DSD", "MDD", "EDD", "CDD"],
     "AHC": ["CDS", "HCA", "HCD"],
-    "CIO": ["BIA", "ISS"]
+    "BAS": ["AAD", "BSP", "HIS", "RDD"],
+    "CIG": ["CSO", "CSS", "DCD", "DPD", "NED"],
+    "CIO": ["ISS"],
+    "DSG": ["BIA", "CDD", "DSD", "EDD", "MDD"],
   },
 
   "PCD": {
     // PCD GROUPS AND DEPARTMENTS
-    "PSR": ["POD", "DSA", "AIS", "RAD"],
-    "FPG": ["FIN", "FOT", "PYD", "PCM"],
-    "SRG": ["SPD", "RMD", "RHS"],
-    "COM": ["MPD", "OPD"],
-    "HCM": ["HRD", "COD", "CPFB Academy"],
     "AIG": ["ASD", "IMD"],
-    "LGL": ["NA"]
+    "COM": ["MPD", "OPD"],
+    "FPG": ["FIN", "FOT", "PYD", "PCM"],
+    "HCM": ["CPFB Academy", "COD", "HRD",],
+    "LGL": ["NA"],
+    "PSR": ["AIS", "DSA", "POD", "RAD"],
+    "SRG": ["RHS", "RMD", "SPD",],
   },
 
   "IA": {
