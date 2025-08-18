@@ -37,7 +37,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
             if (!authorizedUser) {
                 // If the user's email is not authorized, add the user to the AuthorizedUsers table
-                return false;
+                return `${APP_BASE_PATH}/NotAuthorized`;
 
                 // Future Development. To route to Onboarding Page to create new Authorized User
                 return `${APP_BASE_PATH}/SignIn/Onboarding`;

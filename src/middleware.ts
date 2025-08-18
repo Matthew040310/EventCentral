@@ -8,7 +8,7 @@ export default auth((req) => {
   const { pathname } = req.nextUrl;
 
   // Allow access to the sign in page without redirect
-  if (pathname === "/SignIn") {
+  if (pathname === "/SignIn" || pathname === "/NotAuthorized") {
     return NextResponse.next();
   }
 
