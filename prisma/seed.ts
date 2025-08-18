@@ -1,4 +1,5 @@
-const { PrismaClient } = require("@prisma/client");
+import { PrismaClient, User } from "@prisma/client";
+import USERS from "@/constants/DataMigration/Email_WhiteList";
 
 const prisma = new PrismaClient();
 require("dotenv");
@@ -8,38 +9,41 @@ async function seed() {
     // Seed data for AuthorizedUsers
     // console.log(`SUPEREMAIL: ${process.env.SUPEREMAIL}`);
 
-    const authorizedUserData = {
-      email: process.env.SUPEREMAIL,
-      role: "admin",
-    };
+    for (const user of USERS) {
+      // Remove id if your DB auto-generates this on create, or handle as needed
+      const { id, ...userData } = user;
+      userData.email = userData.email.toUpperCase(); // Ensure email is case-insensitive
 
-    // Check if the authorized user already exists
-    const existingAuthorizedUser = await prisma.authorizedUsers.findUnique({
-      where: {
-        email: authorizedUserData.email,
-      },
-    });
-
-    if (!existingAuthorizedUser) {
-      await prisma.authorizedUsers.create({
-        data: authorizedUserData,
-      });
-      console.log(`Created authorized user: ${authorizedUserData.email}`);
-    } else {
-      await prisma.authorizedUsers.update({
+      // Check if user already exists by email (adjust as needed)
+      const existingUser = await prisma.authorizedUsers.findUnique({
         where: {
-          email: authorizedUserData.email,
+          email: userData.email, // Ensure email is case-insensitive
         },
-        data: authorizedUserData,
       });
-      console.log(`Updated authorized user: ${authorizedUserData.email}`);
+
+      if (!existingUser) {
+        await prisma.authorizedUsers.create({
+          data: userData,
+        });
+        console.log(`Created user: ${userData.email}`);
+      } else {
+        await prisma.authorizedUsers.update({
+          where: {
+            email: userData.email,
+          },
+          data: userData,
+        });
+        console.log(`Updated user: ${userData.email}`);
+      }
     }
 
-    // Check if ENV is 'dev', and add an additional user if needed
+    // Check if ENV is 'dev', and add developer as additional user if needed
     if (process.env.ENV === "dev") {
       const additionalUserData = {
-        email: "matthew150612@gmail.com",
-        role: "admin",
+        // Change developer email here
+        email: ("developer@example.com").toUpperCase(),
+        name: "Developer User",
+        role: "Admin",
       };
 
       const existingAdditionalUser = await prisma.authorizedUsers.findUnique({
