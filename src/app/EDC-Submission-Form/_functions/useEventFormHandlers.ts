@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { AlertColor } from '@mui/material';
 
 // Interface and Constants
 import EventDetails from '@/types/IEventDetails';
+import FullEventReport from '@/types/IFullEventReport';
 import EventState from '@/types/TEventState';
 import ImpactAssessment from '@/types/IImpactAssessment';
 import { Department_Group_Cluster_Map } from '@/constants/EventCentralConstants';
@@ -15,16 +17,17 @@ import validImpactAssessmentId from './validImpactAssessmentId';
 
 type SectionMap = {
     // formSection    : fieldName types
-    "Event Details": EventDetails;
+    "Event Details": EventDetails | FullEventReport;
     "Impact Assessment": ImpactAssessment;
 };
 
 export default function useEventFormHandlers(
-    initialEventDetails: EventDetails,
+    initialEventDetails: EventDetails | FullEventReport,
     initialImpactAssessment: ImpactAssessment,
     setInvalidImpactAssessmentId: (val: boolean) => void
 ) {
-    const [eventDetails, setEventDetails] = useState<EventDetails>(initialEventDetails);
+    const { data: session } = useSession();
+    const [eventDetails, setEventDetails] = useState<EventDetails | FullEventReport>(initialEventDetails);
     const [impactAssessment, setImpactAssessment] = useState<ImpactAssessment>(initialImpactAssessment);
     const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' });
 
@@ -32,7 +35,7 @@ export default function useEventFormHandlers(
         newValue: string | string[] | number | Date | null
     ) => {
         // Reset dependent fields based on the field being changed
-        const resetDependencyFields = (): Partial<EventDetails> => {
+        const resetDependencyFields = (): Partial<EventDetails | FullEventReport> => {
             if (fieldName === 'frequency') {
                 return newValue === 'One-off'
                     ? { endDate: null, frequencyInterval: null, customFrequency: null, selectedDay: null }
@@ -49,7 +52,7 @@ export default function useEventFormHandlers(
 
         // Determines which state to modify. Event Details or Impact Assessment
         if (formSection === "Event Details") {
-            setEventDetails((currentEventDetails: EventDetails) => ({
+            setEventDetails((currentEventDetails: EventDetails | FullEventReport) => ({
                 ...currentEventDetails,
                 [fieldName]: newValue,
                 ...resetDependencyFields()
@@ -71,16 +74,19 @@ export default function useEventFormHandlers(
     };
 
     const handleSave = () => {
+        eventDetails.lastUpdatedBy = session?.user?.email || "";
         triggerSave(eventDetails, impactAssessment, handleChange, setAlert)
     }
 
     const handleSubmit = async () => {
+        eventDetails.lastUpdatedBy = session?.user?.email || "";
         const isValid = await validImpactAssessmentId(eventDetails, impactAssessment, setInvalidImpactAssessmentId);
         if (!isValid) return;
         triggerSubmit(eventDetails, impactAssessment, setAlert);
     }
 
     const handleUpdate = async (userResponse: string) => {
+        eventDetails.lastUpdatedBy = session?.user?.email || "";
         triggerSubmit(eventDetails, impactAssessment, setAlert, userResponse);
     }
 

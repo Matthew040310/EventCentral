@@ -53,6 +53,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 });
 
                 if (authorizedUser) {
+                    token.email = authorizedUser.email;
                     token.role = authorizedUser.role;
                     token.group = authorizedUser.group;
                     token.department = authorizedUser.department;
@@ -65,6 +66,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         async session({ session, token }) {
             // Add the authorized user fields to the session.user object
             if (token) {
+                session.user.email = token.email || "";
                 session.user.role = token.role || "Guest";
                 session.user.group = token.group || "";
                 session.user.department = token.department || "";

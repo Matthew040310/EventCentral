@@ -23,4 +23,5 @@ export default interface EventDetails {
     OIC: string;
     OICEmail: string;
     // reportStatus: string | null;
+    lastUpdatedBy: string;
 }

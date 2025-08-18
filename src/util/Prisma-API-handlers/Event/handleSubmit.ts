@@ -1,6 +1,7 @@
 import type { AlertColor } from '@mui/material/Alert';
 import EventDetails from "@/types/IEventDetails";
 import ImpactAssessment from "@/types/IImpactAssessment";
+import FullEventReport from '@/types/IFullEventReport';
 
 const APP_BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -31,7 +32,7 @@ function cleanImpactAssessment(impactAssessment: ImpactAssessment): ImpactAssess
 }
 
 export default async function handleSubmit(
-    eventDetails: EventDetails,
+    eventDetails: EventDetails | FullEventReport,
     impactAssessment: ImpactAssessment,
     setAlert: (alert: { open: boolean, severity: AlertColor, message: string }) => void,
     updateScope?: string

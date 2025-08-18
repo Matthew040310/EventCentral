@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     const updateScope = body['Update Scope']
 
     const newParentEventID = eventDetails.id;
-    let { id, estimatedStartDate, ...updatedEventSubmission } = eventDetails;   // "let" declaration as updatedEventSubmission will be modified later
+    let { id, lastUpdated, estimatedStartDate, ...updatedEventSubmission } = eventDetails;   // "let" declaration as updatedEventSubmission will be modified later
 
     await prisma.$transaction(async (tx) => {
       // Create new impactAssessment for new submission

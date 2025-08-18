@@ -6,6 +6,5 @@ export default interface FullEventReport extends EventDetails {
     impactAssessmentId: string | null;
     submittedImpactAssessment?: ImpactAssessment;
     draftImpactAssessment?: ImpactAssessment;
-    lastUpdatedBy: string;
     lastUpdated: Date;
 }

@@ -25,7 +25,7 @@ const DefaultEventDetails: EventDetails = {
     // reportStatus: null,
 
     // (Future) Fields for Event Details
-    // updatedBy: session?.user?.email
+    lastUpdatedBy: ""
 }
 
 export default DefaultEventDetails;
