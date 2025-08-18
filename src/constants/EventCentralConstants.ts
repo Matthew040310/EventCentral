@@ -174,7 +174,7 @@ export const DELETE_OPTIONS: TDialogButton[] = [
 
 export const USER_ROLES = {
   "Admin": "Edit and Delete All Events.\n\n Access Manage Users Page",
-  "Cluster Director": "Edit and Delete Events in own Cluster",
+  "Deputy CEO": "Edit and Delete Events in own Cluster",
   "Group Director": "Edit and Delete Events in own Group",
   "HOD": "Edit and Delete Events in own Department",
   "EDC-Rep": "Edit and Delete Events in own Department",
