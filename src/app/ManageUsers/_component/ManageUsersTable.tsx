@@ -123,7 +123,7 @@ const ManageUsersTable: React.FC<ManageUsersTableProps> = ({
                 rows={users}
                 initialState={initialState}
                 pageSizeOptions={pageSizeOptions}
-                checkboxSelection
+                // checkboxSelection
                 onRowSelectionModelChange={handleRowSelection}
                 showToolbar
             />
