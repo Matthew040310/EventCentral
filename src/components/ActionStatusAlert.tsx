@@ -18,7 +18,7 @@ const ActionStatusAlert: React.FC<ActionStatusAlertProps> = ({
                 {alert.message}
                 <br />
                 {enableReturnHome && (
-                    <Link href="/" style={{ display: "flex", alignItems: "center", marginTop: "5px", textDecoration: "underline" }}>
+                    <Link href="/" style={{ display: "flex", justifyContent: "center", marginTop: "5px", textDecoration: "underline" }}>
                         <Home />Return to Home
                     </Link>
                 )}
