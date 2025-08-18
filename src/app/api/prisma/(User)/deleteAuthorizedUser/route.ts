@@ -9,7 +9,7 @@ export async function DELETE(request: Request) {
         await deleteAuthorizedUsers(body);
 
         return Response.json(
-            { response: "User(s) successfully deleted!" },
+            { message: "User(s) successfully deleted!" },
             { status: 200 }
         );
     }
