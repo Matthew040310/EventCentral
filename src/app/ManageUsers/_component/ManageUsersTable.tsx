@@ -17,7 +17,7 @@ import deleteAuthorizedUsers from '@/util/Prisma-API-handlers/User/deleteAuthori
 
 const initialState: GridInitialState = {
     pagination: {
-        paginationModel: { pageSize: 5, },
+        paginationModel: { pageSize: 10, },
     },
     sorting: {
         sortModel: [{ field: 'name', sort: 'asc' }],
@@ -37,7 +37,7 @@ const ManageUsersTable: React.FC<ManageUsersTableProps> = ({
 }) => {
     const router = useRouter();
     const [selectedUsers, setSelectedUsers] = useState<GridRowId[]>([]);
-    const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: true, severity: 'success', message: '' })
+    const [alert, setAlert] = useState<{ open: boolean; severity: AlertColor; message: string }>({ open: false, severity: 'success', message: '' })
     const [dialogOpen, setDialogOpen] = useState(false);
 
     const handleRowSelection = (
