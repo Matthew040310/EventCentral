@@ -6,8 +6,10 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const eventDetails = body['Event Details']
+    const fullEventDetails = body['Event Details']
     const impactAssessment = body['Impact Assessment']
+
+    const { lastUpdated, ...eventDetails } = fullEventDetails
 
     await prisma.$transaction(async (tx) => {
       // Update event details draft in draftEvent Table
