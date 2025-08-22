@@ -22,7 +22,9 @@ export default function determineCategory(
 
     // High Impact and New/Change Events colors are applied to border and background
     // Text default to white for contrast
-    else if (event.embargoed === "Yes" || event.submittedImpactAssessment?.perceivedUnhappiness === "Yes") {
+    else if (event.embargoed === "Yes"
+        || event.submittedImpactAssessment?.perceivedUnhappiness === "Yes"
+        || (event.estimatedCohortSize ?? 0) >= 2000000) {
         styleObject.label = "High Impact"
         styleObject.backgroundColor = Event_Legend['High Impact']
         styleObject.borderColor = Event_Legend['High Impact']
