@@ -21,7 +21,8 @@ const EventWriteUp: React.FC<EventWriteUpProps> = ({
 }) => (
     <Paper sx={{
         p: 2, mb: 1,
-        border: `1px solid ${eventColor}`
+        border: `1px solid ${eventColor}`,
+        '&:hover': { cursor: 'pointer', }
     }}
         onClick={() => { onClick(eventDetails) }}
         title="Click to view more details"
