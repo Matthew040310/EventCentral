@@ -8,7 +8,9 @@ export default auth((req) => {
   const { pathname } = req.nextUrl;
 
   // Allow access to the sign in page without redirect
-  if (pathname === "/SignIn" || pathname === "/NotAuthorized") {
+  if (pathname === "/SignIn" || pathname === "/NotAuthorized"
+    || pathname === "/" // Only for vercel version
+  ) {
     return NextResponse.next();
   }
 
